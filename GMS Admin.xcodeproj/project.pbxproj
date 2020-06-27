@@ -1,0 +1,595 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 50;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		6B72209E24A7578B004424CA /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6B72209D24A7578B004424CA /* AppDelegate.swift */; };
+		6B7220A024A7578B004424CA /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6B72209F24A7578B004424CA /* SceneDelegate.swift */; };
+		6B7220A224A7578B004424CA /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6B7220A124A7578B004424CA /* ViewController.swift */; };
+		6B7220A524A7578B004424CA /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 6B7220A324A7578B004424CA /* Main.storyboard */; };
+		6B7220A724A75792004424CA /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 6B7220A624A75792004424CA /* Assets.xcassets */; };
+		6B7220AA24A75792004424CA /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 6B7220A824A75792004424CA /* LaunchScreen.storyboard */; };
+		6B7220B524A75792004424CA /* GMS_AdminTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6B7220B424A75792004424CA /* GMS_AdminTests.swift */; };
+		6B7220C024A75792004424CA /* GMS_AdminUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6B7220BF24A75792004424CA /* GMS_AdminUITests.swift */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		6B7220B124A75792004424CA /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 6B72209224A7578B004424CA /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 6B72209924A7578B004424CA;
+			remoteInfo = "GMS Admin";
+		};
+		6B7220BC24A75792004424CA /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 6B72209224A7578B004424CA /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 6B72209924A7578B004424CA;
+			remoteInfo = "GMS Admin";
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXFileReference section */
+		6B72209A24A7578B004424CA /* GMS Admin.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "GMS Admin.app"; sourceTree = BUILT_PRODUCTS_DIR; };
+		6B72209D24A7578B004424CA /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
+		6B72209F24A7578B004424CA /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
+		6B7220A124A7578B004424CA /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
+		6B7220A424A7578B004424CA /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
+		6B7220A624A75792004424CA /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		6B7220A924A75792004424CA /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
+		6B7220AB24A75792004424CA /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		6B7220B024A75792004424CA /* GMS AdminTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "GMS AdminTests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
+		6B7220B424A75792004424CA /* GMS_AdminTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GMS_AdminTests.swift; sourceTree = "<group>"; };
+		6B7220B624A75792004424CA /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		6B7220BB24A75792004424CA /* GMS AdminUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "GMS AdminUITests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
+		6B7220BF24A75792004424CA /* GMS_AdminUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GMS_AdminUITests.swift; sourceTree = "<group>"; };
+		6B7220C124A75792004424CA /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		6B72209724A7578B004424CA /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		6B7220AD24A75792004424CA /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		6B7220B824A75792004424CA /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		6B72209124A7578B004424CA = {
+			isa = PBXGroup;
+			children = (
+				6B72209C24A7578B004424CA /* GMS Admin */,
+				6B7220B324A75792004424CA /* GMS AdminTests */,
+				6B7220BE24A75792004424CA /* GMS AdminUITests */,
+				6B72209B24A7578B004424CA /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		6B72209B24A7578B004424CA /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				6B72209A24A7578B004424CA /* GMS Admin.app */,
+				6B7220B024A75792004424CA /* GMS AdminTests.xctest */,
+				6B7220BB24A75792004424CA /* GMS AdminUITests.xctest */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		6B72209C24A7578B004424CA /* GMS Admin */ = {
+			isa = PBXGroup;
+			children = (
+				6B72209D24A7578B004424CA /* AppDelegate.swift */,
+				6B72209F24A7578B004424CA /* SceneDelegate.swift */,
+				6B7220A124A7578B004424CA /* ViewController.swift */,
+				6B7220A324A7578B004424CA /* Main.storyboard */,
+				6B7220A624A75792004424CA /* Assets.xcassets */,
+				6B7220A824A75792004424CA /* LaunchScreen.storyboard */,
+				6B7220AB24A75792004424CA /* Info.plist */,
+			);
+			path = "GMS Admin";
+			sourceTree = "<group>";
+		};
+		6B7220B324A75792004424CA /* GMS AdminTests */ = {
+			isa = PBXGroup;
+			children = (
+				6B7220B424A75792004424CA /* GMS_AdminTests.swift */,
+				6B7220B624A75792004424CA /* Info.plist */,
+			);
+			path = "GMS AdminTests";
+			sourceTree = "<group>";
+		};
+		6B7220BE24A75792004424CA /* GMS AdminUITests */ = {
+			isa = PBXGroup;
+			children = (
+				6B7220BF24A75792004424CA /* GMS_AdminUITests.swift */,
+				6B7220C124A75792004424CA /* Info.plist */,
+			);
+			path = "GMS AdminUITests";
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		6B72209924A7578B004424CA /* GMS Admin */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 6B7220C424A75792004424CA /* Build configuration list for PBXNativeTarget "GMS Admin" */;
+			buildPhases = (
+				6B72209624A7578B004424CA /* Sources */,
+				6B72209724A7578B004424CA /* Frameworks */,
+				6B72209824A7578B004424CA /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = "GMS Admin";
+			productName = "GMS Admin";
+			productReference = 6B72209A24A7578B004424CA /* GMS Admin.app */;
+			productType = "com.apple.product-type.application";
+		};
+		6B7220AF24A75792004424CA /* GMS AdminTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 6B7220C724A75792004424CA /* Build configuration list for PBXNativeTarget "GMS AdminTests" */;
+			buildPhases = (
+				6B7220AC24A75792004424CA /* Sources */,
+				6B7220AD24A75792004424CA /* Frameworks */,
+				6B7220AE24A75792004424CA /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				6B7220B224A75792004424CA /* PBXTargetDependency */,
+			);
+			name = "GMS AdminTests";
+			productName = "GMS AdminTests";
+			productReference = 6B7220B024A75792004424CA /* GMS AdminTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
+		6B7220BA24A75792004424CA /* GMS AdminUITests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 6B7220CA24A75792004424CA /* Build configuration list for PBXNativeTarget "GMS AdminUITests" */;
+			buildPhases = (
+				6B7220B724A75792004424CA /* Sources */,
+				6B7220B824A75792004424CA /* Frameworks */,
+				6B7220B924A75792004424CA /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				6B7220BD24A75792004424CA /* PBXTargetDependency */,
+			);
+			name = "GMS AdminUITests";
+			productName = "GMS AdminUITests";
+			productReference = 6B7220BB24A75792004424CA /* GMS AdminUITests.xctest */;
+			productType = "com.apple.product-type.bundle.ui-testing";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		6B72209224A7578B004424CA /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastSwiftUpdateCheck = 1150;
+				LastUpgradeCheck = 1150;
+				ORGANIZATIONNAME = HappySanzTech;
+				TargetAttributes = {
+					6B72209924A7578B004424CA = {
+						CreatedOnToolsVersion = 11.5;
+					};
+					6B7220AF24A75792004424CA = {
+						CreatedOnToolsVersion = 11.5;
+						TestTargetID = 6B72209924A7578B004424CA;
+					};
+					6B7220BA24A75792004424CA = {
+						CreatedOnToolsVersion = 11.5;
+						TestTargetID = 6B72209924A7578B004424CA;
+					};
+				};
+			};
+			buildConfigurationList = 6B72209524A7578B004424CA /* Build configuration list for PBXProject "GMS Admin" */;
+			compatibilityVersion = "Xcode 9.3";
+			developmentRegion = en;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = 6B72209124A7578B004424CA;
+			productRefGroup = 6B72209B24A7578B004424CA /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				6B72209924A7578B004424CA /* GMS Admin */,
+				6B7220AF24A75792004424CA /* GMS AdminTests */,
+				6B7220BA24A75792004424CA /* GMS AdminUITests */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		6B72209824A7578B004424CA /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				6B7220AA24A75792004424CA /* LaunchScreen.storyboard in Resources */,
+				6B7220A724A75792004424CA /* Assets.xcassets in Resources */,
+				6B7220A524A7578B004424CA /* Main.storyboard in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		6B7220AE24A75792004424CA /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		6B7220B924A75792004424CA /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		6B72209624A7578B004424CA /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				6B7220A224A7578B004424CA /* ViewController.swift in Sources */,
+				6B72209E24A7578B004424CA /* AppDelegate.swift in Sources */,
+				6B7220A024A7578B004424CA /* SceneDelegate.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		6B7220AC24A75792004424CA /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				6B7220B524A75792004424CA /* GMS_AdminTests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		6B7220B724A75792004424CA /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				6B7220C024A75792004424CA /* GMS_AdminUITests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		6B7220B224A75792004424CA /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 6B72209924A7578B004424CA /* GMS Admin */;
+			targetProxy = 6B7220B124A75792004424CA /* PBXContainerItemProxy */;
+		};
+		6B7220BD24A75792004424CA /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 6B72209924A7578B004424CA /* GMS Admin */;
+			targetProxy = 6B7220BC24A75792004424CA /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
+/* Begin PBXVariantGroup section */
+		6B7220A324A7578B004424CA /* Main.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				6B7220A424A7578B004424CA /* Base */,
+			);
+			name = Main.storyboard;
+			sourceTree = "<group>";
+		};
+		6B7220A824A75792004424CA /* LaunchScreen.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				6B7220A924A75792004424CA /* Base */,
+			);
+			name = LaunchScreen.storyboard;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		6B7220C224A75792004424CA /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 13.5;
+				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
+				MTL_FAST_MATH = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = iphoneos;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+			};
+			name = Debug;
+		};
+		6B7220C324A75792004424CA /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 13.5;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				MTL_FAST_MATH = YES;
+				SDKROOT = iphoneos;
+				SWIFT_COMPILATION_MODE = wholemodule;
+				SWIFT_OPTIMIZATION_LEVEL = "-O";
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		6B7220C524A75792004424CA /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = 6V986NC4N5;
+				INFOPLIST_FILE = "GMS Admin/Info.plist";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = "com.gms.GMS-Admin";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		6B7220C624A75792004424CA /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = 6V986NC4N5;
+				INFOPLIST_FILE = "GMS Admin/Info.plist";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = "com.gms.GMS-Admin";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Release;
+		};
+		6B7220C824A75792004424CA /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = 6V986NC4N5;
+				INFOPLIST_FILE = "GMS AdminTests/Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 13.5;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = "com.gms.GMS-AdminTests";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/GMS Admin.app/GMS Admin";
+			};
+			name = Debug;
+		};
+		6B7220C924A75792004424CA /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = 6V986NC4N5;
+				INFOPLIST_FILE = "GMS AdminTests/Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 13.5;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = "com.gms.GMS-AdminTests";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/GMS Admin.app/GMS Admin";
+			};
+			name = Release;
+		};
+		6B7220CB24A75792004424CA /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = 6V986NC4N5;
+				INFOPLIST_FILE = "GMS AdminUITests/Info.plist";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = "com.gms.GMS-AdminUITests";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_TARGET_NAME = "GMS Admin";
+			};
+			name = Debug;
+		};
+		6B7220CC24A75792004424CA /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = 6V986NC4N5;
+				INFOPLIST_FILE = "GMS AdminUITests/Info.plist";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = "com.gms.GMS-AdminUITests";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_TARGET_NAME = "GMS Admin";
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		6B72209524A7578B004424CA /* Build configuration list for PBXProject "GMS Admin" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				6B7220C224A75792004424CA /* Debug */,
+				6B7220C324A75792004424CA /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		6B7220C424A75792004424CA /* Build configuration list for PBXNativeTarget "GMS Admin" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				6B7220C524A75792004424CA /* Debug */,
+				6B7220C624A75792004424CA /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		6B7220C724A75792004424CA /* Build configuration list for PBXNativeTarget "GMS AdminTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				6B7220C824A75792004424CA /* Debug */,
+				6B7220C924A75792004424CA /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		6B7220CA24A75792004424CA /* Build configuration list for PBXNativeTarget "GMS AdminUITests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				6B7220CB24A75792004424CA /* Debug */,
+				6B7220CC24A75792004424CA /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = 6B72209224A7578B004424CA /* Project object */;
+}
