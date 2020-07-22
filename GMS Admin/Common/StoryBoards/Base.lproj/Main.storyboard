@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="16097" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina4_7" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="16087"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <scenes>
+        <!--Login-->
+        <scene sceneID="Fsq-Oy-m1X">
+            <objects>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="NyD-7E-YUd" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+                <viewController storyboardIdentifier="login" id="3zz-RP-4aU" customClass="Login" customModule="GMS_Admin" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="vm2-lv-BTG">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" ambiguous="YES" translatesAutoresizingMaskIntoConstraints="NO" id="br8-Tq-Ert">
+                                <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                                <viewLayoutGuide key="contentLayoutGuide" id="YJ3-pS-bf3"/>
+                                <viewLayoutGuide key="frameLayoutGuide" id="Jdt-nv-Bqv"/>
+                            </scrollView>
+                        </subviews>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                        <constraints>
+                            <constraint firstItem="br8-Tq-Ert" firstAttribute="leading" secondItem="r8x-J4-Jsd" secondAttribute="leading" id="0PJ-4L-1L0"/>
+                            <constraint firstItem="br8-Tq-Ert" firstAttribute="trailing" secondItem="r8x-J4-Jsd" secondAttribute="trailing" id="0mF-xk-pOO"/>
+                            <constraint firstItem="br8-Tq-Ert" firstAttribute="bottom" secondItem="r8x-J4-Jsd" secondAttribute="bottom" id="9Jw-e7-hV0"/>
+                            <constraint firstItem="br8-Tq-Ert" firstAttribute="top" secondItem="r8x-J4-Jsd" secondAttribute="top" id="PVe-Za-K7q"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="r8x-J4-Jsd"/>
+                    </view>
+                </viewController>
+            </objects>
+            <point key="canvasLocation" x="-186.40000000000001" y="89.505247376311857"/>
+        </scene>
+        <!--Constituency-->
+        <scene sceneID="mM5-2M-q4H">
+            <objects>
+                <viewController storyboardIdentifier="constituency" id="QDn-lQ-ebQ" customClass="Constituency" customModule="GMS_Admin" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="cui-Rm-Ho3">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                        <viewLayoutGuide key="safeArea" id="BKm-u7-mEQ"/>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="JOF-8t-Dge" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="730" y="90"/>
+        </scene>
+    </scenes>
+</document>
