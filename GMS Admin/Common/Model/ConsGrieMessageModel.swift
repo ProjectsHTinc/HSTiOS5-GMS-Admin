@@ -8,7 +8,7 @@
 
 import UIKit
 
-class ConsModel: NSObject {
+class ConsGrieMessageModel: NSObject {
     
      var id: String?
      var sms_text: String?
@@ -38,10 +38,10 @@ class ConsModel: NSObject {
     }
     
     // MARK: Class Method
-    class func build(_ dict: [String: AnyObject]) -> ConsModel {
-        let consModel = ConsModel()
-        consModel.loadFromDictionary(dict)
-        return consModel
+    class func build(_ dict: [String: AnyObject]) -> ConsGrieMessageModel {
+        let consGrieMessageModel = ConsGrieMessageModel()
+        consGrieMessageModel.loadFromDictionary(dict)
+        return consGrieMessageModel
     }
 
 }

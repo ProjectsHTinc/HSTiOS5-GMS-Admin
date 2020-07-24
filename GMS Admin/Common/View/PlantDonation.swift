@@ -11,7 +11,8 @@ import UIKit
 class PlantDonation: UIViewController, PlantDonationView {
 
     let plantPresener = PlantDonationPresenter(plantDonationService: PlantDonationService())
-    
+    var plantData = [PlantDonationData]()
+        
     @IBOutlet var plantName: UILabel!
     @IBOutlet var plantNumber: UILabel!
     @IBOutlet var recivedDate: UILabel!
@@ -26,7 +27,7 @@ class PlantDonation: UIViewController, PlantDonationView {
         
         self.addCustomizedBackBtn(title:"  Plant Donation")
         plantPresener.attachView(view: self)
-        plantPresener.getPlantDonation(user_id: GlobalVariables.shared.user_id)
+        plantPresener.getPlantDonation(constituent_id: GlobalVariables.shared.constituent_Id)
     }
     
     func checkInterConnection () -> Bool
@@ -52,11 +53,11 @@ class PlantDonation: UIViewController, PlantDonationView {
         self.view.activityStopAnimating()
     }
     
-    func setPlantDonation(plant: PlantDonationData) {
-
-         self.plantName.text = plant.name_of_plant
-         self.plantNumber.text = plant.no_of_plant
-         self.recivedDate.text = plant.created_at
+    func setPlantDonation(plant: [PlantDonationData]) {
+         plantData = plant
+         self.plantName.text = plantData[0].name_of_plant
+         self.plantNumber.text = plantData[0].no_of_plant
+         self.recivedDate.text = plantData[0].created_at
     }
     
     func setEmpty(errorMessage: String) {

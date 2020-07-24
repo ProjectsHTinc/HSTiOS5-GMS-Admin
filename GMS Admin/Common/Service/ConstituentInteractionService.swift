@@ -9,5 +9,16 @@
 import UIKit
 
 class ConstituentInteractionService: NSObject {
+    
+    public func callAPIConstituentIneraction(paguthi:String, onSuccess successCallback: ((_ constituentInteractionModel: [ConstituentInteractionModel]) -> Void)?,onFailure failureCallback: ((_ errorMessage: String) -> Void)?) {
+        APIManager.instance.callAPIConstituentInteraction(
+          paguthi: paguthi, onSuccess: { (constituentInteractionModel) in
+                successCallback?(constituentInteractionModel)
+            },
+            onFailure: { (errorMessage) in
+                failureCallback?(errorMessage)
+            }
+        )
+    }
 
 }

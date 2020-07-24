@@ -15,9 +15,12 @@ enum UserDefaultsKey : String
       case userNamekey
       case clientAPiUrlkey
       case constituencyNamekey
-      case userProfilekey
+      case ConsProfilekey
       case splashkey
       case profileInfokey
+      case constituentIDkey
+      case userLocationkey
+      case userImagekey
 
 }
 
@@ -37,14 +40,14 @@ extension UserDefaults
         return encodedData.map { try! JSONDecoder().decode(type, from: $0) }
     }
     
-    open func setProfileInfo<T: Codable>(_ value: [T], forKey defaultName: String){
+    open func setConsProfileInfo<T: Codable>(_ value: [T], forKey defaultName: String){
         let data = value.map { try? JSONEncoder().encode($0) }
         
-        set(data, forKey: UserDefaultsKey.profileInfokey.rawValue)
+        set(data, forKey: UserDefaultsKey.ConsProfilekey.rawValue)
     }
     
-    open func getProfileInfo<T>(_ type: T.Type, forKey defaultName: String) -> [T] where T : Decodable {
-        guard let encodedData = array(forKey: UserDefaultsKey.profileInfokey.rawValue) as? [Data] else {
+    open func getConsProfileInfo<T>(_ type: T.Type, forKey defaultName: String) -> [T] where T : Decodable {
+        guard let encodedData = array(forKey: UserDefaultsKey.ConsProfilekey.rawValue) as? [Data] else {
             return []
         }
         
@@ -59,6 +62,10 @@ extension UserDefaults
         UserDefaults.standard.removeObject(forKey: UserDefaultsKey.userNamekey.rawValue)
         UserDefaults.standard.removeObject(forKey: UserDefaultsKey.clientAPiUrlkey.rawValue)
         UserDefaults.standard.removeObject(forKey: UserDefaultsKey.constituencyNamekey.rawValue)
-        UserDefaults.standard.removeObject(forKey: UserDefaultsKey.profileInfokey.rawValue)
+        UserDefaults.standard.removeObject(forKey: UserDefaultsKey.ConsProfilekey.rawValue)
+        UserDefaults.standard.removeObject(forKey: UserDefaultsKey.constituentIDkey.rawValue)
+        UserDefaults.standard.removeObject(forKey: UserDefaultsKey.userLocationkey.rawValue)
+        UserDefaults.standard.removeObject(forKey: UserDefaultsKey.userImagekey.rawValue)
+
     }
 }

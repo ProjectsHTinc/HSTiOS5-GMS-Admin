@@ -8,6 +8,17 @@
 
 import UIKit
 
-class PlantDonationService: NSObject {
+class PlantDonationService {
+    
+    public func callAPIPlant(constituent_id:String, onSuccess successCallback: ((_ plant: [PlantDonationModel]) -> Void)?,onFailure failureCallback: ((_ errorMessage: String) -> Void)?) {
+        APIManager.instance.callAPIPlant(
+          constituent_id: constituent_id, onSuccess: { (plant) in
+                successCallback?(plant)
+            },
+            onFailure: { (errorMessage) in
+                failureCallback?(errorMessage)
+            }
+        )
+    }
 
 }

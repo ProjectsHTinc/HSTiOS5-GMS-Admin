@@ -10,6 +10,13 @@ import UIKit
 
 class StaffCell: UITableViewCell {
 
+    @IBOutlet var profPic: UIImageView!
+    @IBOutlet var name: UILabel!
+    @IBOutlet var mail: UILabel!
+    @IBOutlet var location: UILabel!
+    @IBOutlet var status: UILabel!
+    @IBOutlet var statusView: UIView!
+    
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code

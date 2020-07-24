@@ -8,6 +8,17 @@
 
 import UIKit
 
-class SearchService: NSObject {
+class SearchService {
+    
+    public func callAPISearch(keyword:String, offset:String, rowcount:String, onSuccess successCallback: ((_ search: [SearchModel]) -> Void)?,onFailure failureCallback: ((_ errorMessage: String) -> Void)?) {
+        APIManager.instance.callAPISearch(
+          keyword: keyword, offset: offset, rowcount: rowcount, onSuccess: { (search) in
+                successCallback?(search)
+            },
+            onFailure: { (errorMessage) in
+                failureCallback?(errorMessage)
+            }
+        )
+    }
 
 }

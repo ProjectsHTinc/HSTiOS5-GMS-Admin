@@ -8,6 +8,19 @@
 
 import UIKit
 
-class ForgotPasswordModel: NSObject {
+class ForgotPasswordModel {
 
+     var msg : String?
+     var status : String?
+    
+    func loadFromDictionary(_ dict: [String: AnyObject])
+    {
+        if let data = dict["msg"] as? String {
+            self.msg = data
+        }
+        
+        if let data = dict["status"] as? String {
+            self.status = data
+        }
+    }
 }

@@ -17,4 +17,18 @@ class GlobalVariables: NSObject {
     var userCount = Int()
     var user_id = String()
     var user_name = String()
+    var user_location = String()
+    var user_Image = String()
+    var constituent_Id = String()
+    var constituent_Count = Int()
+    var interActionCount = Int()
+    var selectedPaguthiId = String()
+    var consGreivanceCount = Int()
+    var sideMenuDropdown = String()
+    var meetingAllCount = Int()
+    var profGrivance = String()
+    var staffCount = Int()
+    var result_count = Int()
+
+
 }

@@ -9,5 +9,16 @@
 import UIKit
 
 class ConstituentMemberService: NSObject {
+    
+    public func callAPIConstituentMembers(paguthi:String, onSuccess successCallback: ((_ constituentMember: ConstituentMemberModel) -> Void)?,onFailure failureCallback: ((_ errorMessage: String) -> Void)?) {
+        APIManager.instance.callAPIConstituentMembers(
+          paguthi: paguthi, onSuccess: { (constituentMember) in
+                successCallback?(constituentMember)
+            },
+            onFailure: { (errorMessage) in
+                failureCallback?(errorMessage)
+            }
+        )
+    }
 
 }

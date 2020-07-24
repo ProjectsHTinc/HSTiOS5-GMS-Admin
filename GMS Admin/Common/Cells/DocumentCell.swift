@@ -10,6 +10,8 @@ import UIKit
 
 class DocumentCell: UITableViewCell {
 
+    @IBOutlet var titleLabel: UILabel!
+    @IBOutlet var date: UILabel!
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code

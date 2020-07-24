@@ -11,8 +11,11 @@ import SDWebImage
 
 class Profile: UIViewController {
     
-    var profiledata = [ProfileData]()
+    var consprofiledata = [ConstituentDetailData]()
+    var profiledata = [GreivancesAllData]()
+
     var container: Container!
+    var From = String()
 
     @IBOutlet var userImageView: UIImageView!
     @IBOutlet var userName: UILabel!
@@ -29,7 +32,14 @@ class Profile: UIViewController {
         }
         self.view.isHidden = false
         self.navigationItem.title = "Profile"
-        profiledata = UserDefaults.standard.getProfileInfo(ProfileData.self, forKey: UserDefaultsKey.profileInfokey.rawValue)
+        if From == "GreiAll"
+        {
+            profiledata = UserDefaults.standard.getConsProfileInfo(GreivancesAllData.self, forKey: UserDefaultsKey.ConsProfilekey.rawValue)
+        }
+        else
+        {
+            consprofiledata = UserDefaults.standard.getConsProfileInfo(ConstituentDetailData.self, forKey: UserDefaultsKey.ConsProfilekey.rawValue)
+        }
         self.setAllValues()
         self.setUpControl ()
 
@@ -50,25 +60,59 @@ class Profile: UIViewController {
     
     func setUpControl ()
     {
-         segmentControl.selectedSegmentIndex = 0
-         segmentControl.backgroundColor = .white
-         segmentControl.tintColor = .white
-         segmentControl.setTitleTextAttributes([
-             NSAttributedString.Key.font : UIFont(name: "Roboto-Regular", size: 13) as Any,
-             NSAttributedString.Key.foregroundColor: UIColor.black
-             ], for: .normal)
+        if From == "GreiAll"
+        {
+            segmentControl.setTitle("Profile", forSegmentAt: 0)
+            segmentControl.setTitle("Constituency", forSegmentAt: 1)
+            segmentControl.setTitle("Interaction", forSegmentAt: 2)
+            segmentControl.selectedSegmentIndex = 0
+            segmentControl.backgroundColor = .white
+            segmentControl.tintColor = .white
+            segmentControl.setTitleTextAttributes([
+                NSAttributedString.Key.font : UIFont(name: "Roboto-Regular", size: 13) as Any,
+                NSAttributedString.Key.foregroundColor: UIColor.black
+                ], for: .normal)
 
-         segmentControl.setTitleTextAttributes([
-             NSAttributedString.Key.font : UIFont(name: "Roboto-Regular", size: 13) as Any,
-             NSAttributedString.Key.foregroundColor: UIColor.white
-         ], for: .selected)
+            segmentControl.setTitleTextAttributes([
+                NSAttributedString.Key.font : UIFont(name: "Roboto-Regular", size: 13) as Any,
+                NSAttributedString.Key.foregroundColor: UIColor.white
+            ], for: .selected)
+        }
+        else
+        {
+            segmentControl.setTitle("Profile", forSegmentAt: 0)
+            segmentControl.setTitle("Constituency", forSegmentAt: 1)
+            segmentControl.selectedSegmentIndex = 0
+            segmentControl.backgroundColor = .white
+            segmentControl.tintColor = .white
+            segmentControl.setTitleTextAttributes([
+                NSAttributedString.Key.font : UIFont(name: "Roboto-Regular", size: 13) as Any,
+                NSAttributedString.Key.foregroundColor: UIColor.black
+                ], for: .normal)
+
+            segmentControl.setTitleTextAttributes([
+                NSAttributedString.Key.font : UIFont(name: "Roboto-Regular", size: 13) as Any,
+                NSAttributedString.Key.foregroundColor: UIColor.white
+            ], for: .selected)
+        }
+
     }
     
     func setAllValues ()
     {
-        self.userImageView.sd_setImage(with: URL(string: profiledata[0].profile_picture), placeholderImage: UIImage(named: "placeholderNewsfeed.png"))
-        self.userName.text = profiledata[0].full_name
-        self.userNumber.text = String(format: "%@%@", "Serial Number : ",profiledata[0].serial_no)
+        if From == "GreiAll"
+        {
+            self.userImageView.sd_setImage(with: URL(string: ""), placeholderImage: UIImage(named: "placeholderNewsfeed.png"))
+            self.userName.text = profiledata[0].full_name
+            self.userNumber.text = profiledata[0].paguthi_name
+        }
+        else
+        {
+            self.userImageView.sd_setImage(with: URL(string: Globals.imageUrl + consprofiledata[0].profile_pic), placeholderImage: UIImage(named: "placeholderNewsfeed.png"))
+            self.userName.text = consprofiledata[0].full_name
+            self.userNumber.text = consprofiledata[0].paguthi_name
+        }
+
     }
     
     @IBAction func segmentAction(_ sender: Any) {
@@ -76,9 +120,14 @@ class Profile: UIViewController {
         {
             container!.segueIdentifierReceivedFromParent("profile")
         }
+        else if (segmentControl.selectedSegmentIndex == 1)
+        {
+            GlobalVariables.shared.profGrivance = From
+            container!.segueIdentifierReceivedFromParent("constituencyInfo")
+        }
         else
         {
-            container!.segueIdentifierReceivedFromParent("constituencyInfo")
+            container!.segueIdentifierReceivedFromParent("interaction")
         }
     }
     

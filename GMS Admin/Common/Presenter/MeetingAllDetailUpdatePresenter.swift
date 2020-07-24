@@ -8,6 +8,52 @@
 
 import UIKit
 
+struct MeetingAllDetailUpdateData {
+    
+    let msg : String
+    let status : String
+
+}
+
+protocol MeetingAllDetailUpdateView: NSObjectProtocol {
+    
+    func startLoading()
+    func finishLoading()
+    func setMeetingUpdate(msg:String, status: String)
+    func setEmpty(errorMessage:String)
+}
+
+
 class MeetingAllDetailUpdatePresenter: NSObject {
+    
+    private let meetingAllDetailUpdateService: MeetingAllDetailUpdateService
+    weak private var meetingAllDetailUpdateView : MeetingAllDetailUpdateView?
+
+    init(meetingAllDetailUpdateService:MeetingAllDetailUpdateService) {
+        self.meetingAllDetailUpdateService = meetingAllDetailUpdateService
+    }
+    
+    func attachView(view:MeetingAllDetailUpdateView) {
+        meetingAllDetailUpdateView = view
+    }
+    
+    func detachView() {
+        meetingAllDetailUpdateView = nil
+    }
+    
+    func getMeetingAllDetail(meeting_id : String, user_id : String, status : String) {
+          self.meetingAllDetailUpdateView?.startLoading()
+          meetingAllDetailUpdateService.callAPIMeetingAllDetailUpdate(
+            meeting_id: meeting_id, user_id: user_id, status: status, onSuccess: { (meettingUpdate) in
+            self.meetingAllDetailUpdateView?.finishLoading()
+                self.meetingAllDetailUpdateView?.setMeetingUpdate(msg: meettingUpdate.msg!, status: meettingUpdate.status!)
+              },
+              onFailure: { (errorMessage) in
+                  self.meetingAllDetailUpdateView?.finishLoading()
+                  self.meetingAllDetailUpdateView?.setEmpty(errorMessage: errorMessage)
+
+              }
+          )
+      }
 
 }

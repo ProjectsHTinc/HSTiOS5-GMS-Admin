@@ -1,0 +1,248 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Bucket
+   uuid = "5C230DD1-8BD2-429E-B1F7-F470B6B9A909"
+   type = "0"
+   version = "2.0">
+   <Breakpoints>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "0D4336B7-50C7-412E-82EF-C0ACC1058382"
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "GMS Admin/Common/View/ForgotPassword.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "100"
+            endingLineNumber = "100"
+            landmarkName = "setStatus(status:)"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "BF6A17E8-603F-494E-A10A-F38EF8090BB0"
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "GMS Admin/Common/View/Search.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "40"
+            endingLineNumber = "40"
+            landmarkName = "callAPISearch(offset:rowCount:)"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "9CDC4E96-0B9A-4B3E-9A17-44585049F67C"
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "GMS Admin/Common/View/Search.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "97"
+            endingLineNumber = "97"
+            landmarkName = "setValues(search:)"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "066FFDCE-B982-4DE4-8579-F7201FA3025B"
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "GMS Admin/Common/API Manager/APIManager.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "800"
+            endingLineNumber = "800"
+            landmarkName = "callAPIMeeting(constituency_id:offset:rowcount:onSuccess:onFailure:)"
+            landmarkType = "7">
+            <Locations>
+               <Location
+                  uuid = "066FFDCE-B982-4DE4-8579-F7201FA3025B - ff573ec29fd304cc"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "GMS_Admin.APIManager.callAPIMeeting(constituency_id: Swift.String, offset: Swift.String, rowcount: Swift.String, onSuccess: Swift.Optional&lt;(Swift.Array&lt;GMS_Admin.MeetingModel&gt;) -&gt; ()&gt;, onFailure: Swift.Optional&lt;(Swift.String) -&gt; ()&gt;) -&gt; ()"
+                  moduleName = "GMS Admin"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/happysanztech/Documents/HSTiOS5/GMS%20Admin/GMS%20Admin/Common/API%20Manager/APIManager.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "800"
+                  endingLineNumber = "800"
+                  offsetFromSymbolStart = "692">
+               </Location>
+               <Location
+                  uuid = "066FFDCE-B982-4DE4-8579-F7201FA3025B - 1ad2e06bd8a3bc5e"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "closure #1 (SwiftyJSON.JSON) -&gt; () in GMS_Admin.APIManager.callAPIMeeting(constituency_id: Swift.String, offset: Swift.String, rowcount: Swift.String, onSuccess: Swift.Optional&lt;(Swift.Array&lt;GMS_Admin.MeetingModel&gt;) -&gt; ()&gt;, onFailure: Swift.Optional&lt;(Swift.String) -&gt; ()&gt;) -&gt; ()"
+                  moduleName = "GMS Admin"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/happysanztech/Documents/HSTiOS5/GMS%20Admin/GMS%20Admin/Common/API%20Manager/APIManager.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "802"
+                  endingLineNumber = "802"
+                  offsetFromSymbolStart = "292">
+               </Location>
+            </Locations>
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "46025C1A-C825-4D5C-B952-854ED96E033F"
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "GMS Admin/Common/View/MeetingAllSearch.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "73"
+            endingLineNumber = "73"
+            landmarkName = "setMeetingAll(meetingAll:)"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "D8591D4C-1D56-4D08-A172-A63974E8BA6E"
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "GMS Admin/Common/View/MeetingAllSearch.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "41"
+            endingLineNumber = "41"
+            landmarkName = "callAPIMeetingSearch(url:keyword:constituency_id:offset:rowcount:)"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "DEC8BD71-01BB-495D-BA41-084F618B2A87"
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "GMS Admin/Common/View/MeetingAllDetail.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "123"
+            endingLineNumber = "123"
+            landmarkName = "setMeetingUpdate(msg:status:)"
+            landmarkType = "7">
+            <Locations>
+               <Location
+                  uuid = "DEC8BD71-01BB-495D-BA41-084F618B2A87 - 1e2e1196ddc73a2c"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "GMS_Admin.MeetingAllDetail.setMeetingUpdate(msg: Swift.String, status: Swift.String) -&gt; ()"
+                  moduleName = "GMS Admin"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/happysanztech/Documents/HSTiOS5/GMS%20Admin/GMS%20Admin/Common/View/MeetingAllDetail.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "123"
+                  endingLineNumber = "123"
+                  offsetFromSymbolStart = "248">
+               </Location>
+               <Location
+                  uuid = "DEC8BD71-01BB-495D-BA41-084F618B2A87 - f5d4b8bed0f1d7cd"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "closure #1 () -&gt; () in GMS_Admin.MeetingAllDetail.setMeetingUpdate(msg: Swift.String, status: Swift.String) -&gt; ()"
+                  moduleName = "GMS Admin"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/happysanztech/Documents/HSTiOS5/GMS%20Admin/GMS%20Admin/Common/View/MeetingAllDetail.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "124"
+                  endingLineNumber = "124"
+                  offsetFromSymbolStart = "48">
+               </Location>
+            </Locations>
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "6F292379-52E9-4601-BA33-F26A006DC11E"
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "GMS Admin/Common/View/GreivancesAll.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "266"
+            endingLineNumber = "266"
+            landmarkName = "tableView(_:willDisplay:forRowAt:)"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "FA3035AC-4ECC-41FB-8145-F3A98869BAAB"
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "GMS Admin/Common/API Manager/APIManager.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "1626"
+            endingLineNumber = "1626"
+            landmarkName = "callAPIStaffReport(url:From:from_date:to_date:status:paguthi:offset:rowcount:category:sub_category:keyword:onSuccess:onFailure:)"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "02D89DBF-4EEC-4A31-8FB6-03E89FE0C256"
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "GMS Admin/Common/API Manager/APIManager.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "1576"
+            endingLineNumber = "1576"
+            landmarkName = "callAPIStaffReport(url:From:from_date:to_date:status:paguthi:offset:rowcount:category:sub_category:keyword:onSuccess:onFailure:)"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "5D31772B-DFA8-4F72-9D4C-104456EA5E9F"
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "GMS Admin/Common/View/ReportList.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "142"
+            endingLineNumber = "142"
+            landmarkName = "setEmpty(errorMessage:)"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+   </Breakpoints>
+</Bucket>

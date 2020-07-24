@@ -8,6 +8,16 @@
 
 import UIKit
 
-class AppVersionService: NSObject {
+class AppVersionService {
 
+      public func callAPIAppversion(version_code:String, onSuccess successCallback: ((_ appversion: AppVersionModel) -> Void)?,onFailure failureCallback: ((_ errorMessage: String) -> Void)?) {
+          APIManager.instance.callAPIAppversion(
+            version_code: version_code, onSuccess: { (appversion) in
+                  successCallback?(appversion)
+              },
+              onFailure: { (errorMessage) in
+                  failureCallback?(errorMessage)
+              }
+          )
+      }
 }

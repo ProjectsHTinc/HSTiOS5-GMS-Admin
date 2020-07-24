@@ -10,4 +10,14 @@ import UIKit
 
 class TotalMeetingService: NSObject {
 
+    public func callAPITotalMeetings(paguthi:String, onSuccess successCallback: ((_ totalMeetings: TotalMeetings) -> Void)?,onFailure failureCallback: ((_ errorMessage: String) -> Void)?) {
+        APIManager.instance.callAPITotalMeetings(
+          paguthi: paguthi, onSuccess: { (totalMeetings) in
+                successCallback?(totalMeetings)
+            },
+            onFailure: { (errorMessage) in
+                failureCallback?(errorMessage)
+            }
+        )
+    }
 }

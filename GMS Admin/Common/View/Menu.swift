@@ -9,9 +9,9 @@
 import UIKit
 import SDWebImage
 
-class SideMenu: UITableViewController {
+class Menu: UITableViewController {
     
-    var ConstituentisClicked = true
+    var ConstituentisClicked = false
 
     @IBOutlet var userLocation: UILabel!
     @IBOutlet var userName: UILabel!
@@ -24,12 +24,31 @@ class SideMenu: UITableViewController {
 
         // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
         // self.navigationItem.rightBarButtonItem = self.editButtonItem
+        /*Set BackgroundColor*/
+        self.view.backgroundColor = UIColor.white
+        /*Removeing NavigationBar Bottom Line*/
+        self.navigationController?.navigationBar.setBackgroundImage(UIImage(), for:.default)
+        self.navigationController?.navigationBar.shadowImage = UIImage()
+        self.navigationController?.navigationBar.layoutIfNeeded()
+        /*Update UI*/
+        self.updateUI()
         
+        if (GlobalVariables.shared.sideMenuDropdown == "true")
+        {
+            self.tableView.reloadData()
+        }
+    }
+    
+    func updateUI ()
+    {
+        self.userImage.sd_setImage(with: URL(string: GlobalVariables.shared.user_Image), placeholderImage: UIImage(named: "placeholder.png"))
+        self.userName.text = GlobalVariables.shared.user_name
+        self.userLocation.text = GlobalVariables.shared.user_location
         
+        print(GlobalVariables.shared.user_Image,GlobalVariables.shared.user_name)
     }
 
     // MARK: - Table view data source
-
     override func numberOfSections(in tableView: UITableView) -> Int {
         // #warning Incomplete implementation, return the number of sections
         return 1
@@ -37,7 +56,7 @@ class SideMenu: UITableViewController {
 
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         // #warning Incomplete implementation, return the number of rows
-        return 7
+        return 8
     }
     
     override func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat
@@ -48,7 +67,7 @@ class SideMenu: UITableViewController {
         }
         else if (indexPath.row == 2)
         {
-            if (ConstituentisClicked == true)
+            if (GlobalVariables.shared.sideMenuDropdown == "true")
             {
                 return 119
             }
@@ -70,13 +89,13 @@ class SideMenu: UITableViewController {
             if (ConstituentisClicked == false)
             {
                 ConstituentisClicked = true
-                
+                GlobalVariables.shared.sideMenuDropdown = "true"
                 tableView.reloadData()
             }
             else
             {
                 ConstituentisClicked = false
-                
+                GlobalVariables.shared.sideMenuDropdown = "false"
                 tableView.reloadData()
             }
         }
@@ -138,3 +157,4 @@ class SideMenu: UITableViewController {
     */
 
 }
+

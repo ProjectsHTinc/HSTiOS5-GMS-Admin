@@ -225,7 +225,7 @@ fileprivate extension ACFloatingTextfield {
         labelPlaceholder?.text = placeholderText
         labelPlaceholder?.textAlignment = self.textAlignment
         labelPlaceholder?.textColor = placeHolderColor
-        labelPlaceholder?.font = UIFont.init(name: (self.font?.fontName ?? "helvetica")!, size: 12)
+        labelPlaceholder?.font = UIFont.init(name: (self.font?.fontName ?? "Roboto-Regular")!, size: 15)
         labelPlaceholder?.isHidden = true
         labelPlaceholder?.sizeToFit()
         labelPlaceholder?.translatesAutoresizingMaskIntoConstraints = false
@@ -253,7 +253,7 @@ fileprivate extension ACFloatingTextfield {
         labelErrorPlaceholder?.text = self.errorText
         labelErrorPlaceholder?.textAlignment = self.textAlignment
         labelErrorPlaceholder?.textColor = errorTextColor
-        labelErrorPlaceholder?.font = UIFont(name: (self.font?.fontName ?? "helvetica")!, size: 12)
+        labelErrorPlaceholder?.font = UIFont(name: (self.font?.fontName ?? "Roboto-Regular")!, size: 15)
         labelErrorPlaceholder?.sizeToFit()
         labelErrorPlaceholder?.translatesAutoresizingMaskIntoConstraints = false
         self.addSubview(labelErrorPlaceholder!)
@@ -412,7 +412,7 @@ fileprivate extension ACFloatingTextfield {
 extension UIView {
     func shake() {
         let animation = CAKeyframeAnimation(keyPath: "transform.translation.x")
-        animation.timingFunction = CAMediaTimingFunction(name: kCAMediaTimingFunctionLinear)
+        animation.timingFunction = CAMediaTimingFunction(name: CAMediaTimingFunctionName.linear)
         animation.duration = 0.6
         animation.values = [-20.0, 20.0, -20.0, 20.0, -10.0, 10.0, -5.0, 5.0, 0.0 ]
         layer.add(animation, forKey: "shake")

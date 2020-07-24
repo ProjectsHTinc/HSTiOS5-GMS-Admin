@@ -10,4 +10,14 @@ import UIKit
 
 class TotalGreviancesSerVice: NSObject {
 
+    public func callAPITotalGreivances(paguthi:String, onSuccess successCallback: ((_ totalGreviancesModel: TotalGreviancesModel) -> Void)?,onFailure failureCallback: ((_ errorMessage: String) -> Void)?) {
+        APIManager.instance.callAPITotalGreivances(
+          paguthi: paguthi, onSuccess: { (totalGreviancesModel) in
+                successCallback?(totalGreviancesModel)
+            },
+            onFailure: { (errorMessage) in
+                failureCallback?(errorMessage)
+            }
+        )
+    }
 }

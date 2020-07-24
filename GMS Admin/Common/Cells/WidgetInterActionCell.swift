@@ -10,6 +10,8 @@ import UIKit
 
 class WidgetInterActionCell: UITableViewCell {
 
+    @IBOutlet var question: UILabel!
+    @IBOutlet var anscount: UILabel!
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code

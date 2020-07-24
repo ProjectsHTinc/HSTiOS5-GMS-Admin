@@ -10,7 +10,7 @@ import UIKit
 
 class ProfileDetails: UITableViewController {
     
-    var profiledata = [ProfileData]()
+    var consprofiledata = [ConstituentDetailData]()
 
     @IBOutlet var fatherName: UITextField!
     @IBOutlet var guardianName: UITextField!
@@ -33,24 +33,25 @@ class ProfileDetails: UITableViewController {
         // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
         // self.navigationItem.rightBarButtonItem = self.editButtonItem
         self.tableView.backgroundColor = .white
-        profiledata = UserDefaults.standard.getProfileInfo(ProfileData.self, forKey: UserDefaultsKey.profileInfokey.rawValue)
+        consprofiledata = UserDefaults.standard.getConsProfileInfo(ConstituentDetailData.self, forKey: UserDefaultsKey.ConsProfilekey.rawValue)
+        
         self.setAllValues()
     }
     
     func setAllValues ()
     {
-        self.fatherName.text = profiledata[0].father_husband_name
-        // self.guardianName.text = profiledata[0].full_name
-        self.emailId.text = profiledata[0].email_id
-        self.watsappNumber.text = profiledata[0].whatsapp_no
-        self.phoneNumber.text = profiledata[0].mobile_no
-        self.dob.text = profiledata[0].dob
-        self.gender.text = profiledata[0].gender
-        self.religion.text = profiledata[0].religion_name
-        self.address.text = profiledata[0].address
-        self.pincode.text = profiledata[0].pin_code
-        self.voterId.text = profiledata[0].voter_id_no
-        self.adharNumber.text = profiledata[0].aadhaar_no
+        self.fatherName.text = consprofiledata[0].full_name
+        //self.guardianName.text = profiledata[0].full_name
+        self.emailId.text = consprofiledata[0].email_id
+        self.watsappNumber.text = consprofiledata[0].whatsapp_no
+        self.phoneNumber.text = consprofiledata[0].mobile_no
+        self.dob.text = consprofiledata[0].dob
+        self.gender.text = consprofiledata[0].gender
+        self.religion.text = consprofiledata[0].religion_name
+        self.address.text = consprofiledata[0].address
+        self.pincode.text = consprofiledata[0].pin_code
+        self.voterId.text = consprofiledata[0].voter_id_no
+        self.adharNumber.text = consprofiledata[0].aadhaar_no
         
     }
 

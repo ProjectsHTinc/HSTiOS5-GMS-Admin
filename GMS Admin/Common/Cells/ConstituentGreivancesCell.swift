@@ -10,6 +10,14 @@ import UIKit
 
 class ConstituentGreivancesCell: UITableViewCell {
 
+    @IBOutlet var pettionNumber: UILabel!
+    @IBOutlet var greivanesType: UILabel!
+    @IBOutlet var greivanceName: UILabel!
+    @IBOutlet var subCategoeryName: UILabel!
+    @IBOutlet var status: UILabel!
+    @IBOutlet var date: UILabel!
+    @IBOutlet var statusBgView: SideRoundedCornerView!
+    
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code

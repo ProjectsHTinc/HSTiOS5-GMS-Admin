@@ -10,6 +10,9 @@ import UIKit
 
 class ConstituentGreivancesMessageCell: UITableViewCell {
 
+    @IBOutlet var message: UILabel!
+    @IBOutlet var sentBy: UILabel!
+    @IBOutlet var date: UILabel!
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code

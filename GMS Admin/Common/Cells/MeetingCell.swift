@@ -12,9 +12,10 @@ class MeetingCell: UITableViewCell {
 
     @IBOutlet var meetingTitle: UILabel!
     @IBOutlet var meetingdate: UILabel!
-    @IBOutlet var meetingStatus: SideRoundedCornerLabel!
     @IBOutlet var titleImageGroup: UIImageView!
     @IBOutlet var calenderImage: UIImageView!
+    @IBOutlet var meetingStatus: UILabel!
+    @IBOutlet var sidedBg: SideRoundedCornerView!
     
     override func awakeFromNib() {
         super.awakeFromNib()

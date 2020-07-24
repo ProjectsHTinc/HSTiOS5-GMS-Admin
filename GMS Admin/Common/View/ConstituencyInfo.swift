@@ -10,7 +10,9 @@ import UIKit
 
 class ConstituencyInfo: UITableViewController {
 
-    var profiledata = [ProfileData]()
+   var consprofiledata = [ConstituentDetailData]()
+   var profiledata = [GreivancesAllData]()
+
 
     @IBOutlet var paguthi: UITextField!
     @IBOutlet var ward: UITextField!
@@ -26,18 +28,34 @@ class ConstituencyInfo: UITableViewController {
         // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
         // self.navigationItem.rightBarButtonItem = self.editButtonItem
         self.tableView.backgroundColor = .white
-        profiledata = UserDefaults.standard.getProfileInfo(ProfileData.self, forKey: UserDefaultsKey.profileInfokey.rawValue)
+        if GlobalVariables.shared.profGrivance == "GreiAll"{
+            profiledata = UserDefaults.standard.getConsProfileInfo(GreivancesAllData.self, forKey: UserDefaultsKey.ConsProfilekey.rawValue)
+        }
+        else{
+            consprofiledata = UserDefaults.standard.getConsProfileInfo(ConstituentDetailData.self, forKey: UserDefaultsKey.ConsProfilekey.rawValue)
+        }
         self.setAllValues()
     }
     
 
     func setAllValues ()
     {
-        self.paguthi.text = profiledata[0].paguthi_name
-        self.ward.text = profiledata[0].ward_name
-        self.booth.text = profiledata[0].booth_name
-        self.boothAddress.text = profiledata[0].booth_address
-        self.serialNumber.text = profiledata[0].serial_no
+        if GlobalVariables.shared.profGrivance == "GreiAll"{
+            self.paguthi.text = profiledata[0].paguthi_name
+//            self.ward.text = profiledata[0].ward_name
+//            self.booth.text = profiledata[0].booth_name
+//            self.boothAddress.text = profiledata[0].booth_address
+//            self.serialNumber.text = profiledata[0].serial_no
+        }
+        else
+        {
+            self.paguthi.text = consprofiledata[0].paguthi_name
+            self.ward.text = consprofiledata[0].ward_name
+            self.booth.text = consprofiledata[0].booth_name
+            self.boothAddress.text = consprofiledata[0].booth_address
+            self.serialNumber.text = consprofiledata[0].serial_no
+        }
+
     }
     // MARK: - Table view data source
 

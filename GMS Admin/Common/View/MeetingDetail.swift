@@ -13,10 +13,13 @@ class MeetingDetail: UIViewController {
     var meeting_Title = String()
     var meeting_Discrption = String()
     var meeting_Date = String()
+    var meeting_Status = String()
 
     @IBOutlet var meetingTitle: UILabel!
     @IBOutlet var meetingDiscrption: UILabel!
     @IBOutlet var meetingDate: UILabel!
+    @IBOutlet var meetingStatus: UILabel!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 
@@ -25,7 +28,8 @@ class MeetingDetail: UIViewController {
         self.addCustomizedBackBtn(title:"  Details of Meeting")
         self.meetingTitle.text = meeting_Title
         self.meetingDiscrption.text = meeting_Discrption
-        self.meetingDate.text =  String(format: "%@ %@", "Date :",meeting_Date) 
+        self.meetingDate.text =  String(format: "%@ %@", "Date :",meeting_Date)
+        self.meetingStatus.text = meeting_Status
     }
     
 

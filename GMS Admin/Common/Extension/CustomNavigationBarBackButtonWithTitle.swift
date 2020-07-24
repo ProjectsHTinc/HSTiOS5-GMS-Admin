@@ -14,7 +14,7 @@ extension UIViewController
             //Back buttion
             let btnLeftMenu: UIButton = UIButton()
             btnLeftMenu.setTitle(title, for: .normal)
-            btnLeftMenu.setImage(UIImage(named: "backbutton"), for: UIControl.State())
+            btnLeftMenu.setImage(UIImage(named: "back"), for: UIControl.State())
             btnLeftMenu.addTarget(self, action: #selector(backButtonClick), for: UIControl.Event.touchUpInside)
             btnLeftMenu.frame = CGRect(x: 00, y: 0, width: 30, height: 30)
             let barButton = UIBarButtonItem(customView: btnLeftMenu)
@@ -38,6 +38,22 @@ extension UIViewController
     }
     
     @objc public func rightButtonClick()
+    {
+        
+    }
+    
+    func sideMenuButton()
+    {
+        //Back buttion
+        let btnRighttMenu: UIButton = UIButton()
+        btnRighttMenu.setImage(UIImage(named: "sideMenu"), for: UIControl.State())
+        btnRighttMenu.addTarget(self, action: #selector(sideMenuButtonClick), for: UIControl.Event.touchUpInside)
+        btnRighttMenu.frame = CGRect(x: 0, y: 0, width: 33/2, height: 27/2)
+        let barButton = UIBarButtonItem(customView: btnRighttMenu)
+        self.navigationItem.leftBarButtonItem  = barButton
+    }
+    
+    @objc public func sideMenuButtonClick()
     {
         
     }

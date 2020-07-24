@@ -8,6 +8,17 @@
 
 import UIKit
 
-class AreaService: NSObject {
+class AreaService {
+    
+    public func callAPIPaguthi(constituency_id:String, onSuccess successCallback: ((_ paguthi: [AreaModel]) -> Void)?,onFailure failureCallback: ((_ errorMessage: String) -> Void)?) {
+        APIManager.instance.callAPIPaguthi(
+          constituency_id: constituency_id, onSuccess: { (paguthi) in
+                successCallback?(paguthi)
+            },
+            onFailure: { (errorMessage) in
+                failureCallback?(errorMessage)
+            }
+        )
+    }
 
 }

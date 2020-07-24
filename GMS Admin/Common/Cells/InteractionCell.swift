@@ -10,6 +10,9 @@ import UIKit
 
 class InteractionCell: UITableViewCell {
 
+    @IBOutlet var question: UILabel!
+    @IBOutlet var yesLabel: UILabel!
+    @IBOutlet var noLabel: UILabel!
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code

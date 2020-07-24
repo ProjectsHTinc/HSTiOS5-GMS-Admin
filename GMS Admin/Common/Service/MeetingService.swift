@@ -8,6 +8,17 @@
 
 import UIKit
 
-class MeetingService: NSObject {
+class MeetingService {
+    
+    public func callAPIMeeting(constituency_id:String,offset:String,rowcount:String, onSuccess successCallback: ((_ meeting: [MeetingModel]) -> Void)?,onFailure failureCallback: ((_ errorMessage: String) -> Void)?) {
+        APIManager.instance.callAPIMeeting(
+          constituency_id: constituency_id,offset: offset,rowcount: rowcount, onSuccess: { (meeting) in
+                successCallback?(meeting)
+            },
+            onFailure: { (errorMessage) in
+                failureCallback?(errorMessage)
+            }
+        )
+    }
 
 }

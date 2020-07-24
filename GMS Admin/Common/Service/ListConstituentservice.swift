@@ -8,6 +8,17 @@
 
 import UIKit
 
-class ListConstituentservice: NSObject {
+class ListConstituentservice {
+    
+    public func callAPIConstituentList(paguthi:String, offset:String, rowcount:String, onSuccess successCallback: ((_ listConstiuentModel: [ListConstiuentModel]) -> Void)?,onFailure failureCallback: ((_ errorMessage: String) -> Void)?) {
+        APIManager.instance.callAPIConstituentList(
+            paguthi: paguthi, offset: offset, rowcount: rowcount, onSuccess: { (listConstiuentModel) in
+                successCallback?(listConstiuentModel)
+            },
+            onFailure: { (errorMessage) in
+                failureCallback?(errorMessage)
+            }
+        )
+    }
 
 }

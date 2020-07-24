@@ -1,0 +1,14 @@
+   platform :ios, '10.0'
+   use_frameworks!
+
+   target 'GMS Admin' do
+   pod 'Alamofire', '~> 4.7.2'
+   pod 'AlamofireObjectMapper', '~> 5.2'
+   pod 'SwiftyJSON', '~> 4.0'
+   pod 'SDWebImage', '~> 5.0'
+   pod 'IQKeyboardManagerSwift'
+   pod 'SideMenu'
+   pod 'Charts'
+   pod 'HMSegmentedControl'
+   pod 'ACFloatingTextfield-Swift', '~> 1.8'
+   end

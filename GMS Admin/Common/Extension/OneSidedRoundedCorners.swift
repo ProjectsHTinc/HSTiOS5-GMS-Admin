@@ -9,7 +9,7 @@
 import UIKit
 
 @IBDesignable
-class SideRoundedCornerLabel: UILabel {
+class SideRoundedCornerView: UIView {
 
     var cornerRadiusValue : CGFloat = 0
     var corners : UIRectCorner = []

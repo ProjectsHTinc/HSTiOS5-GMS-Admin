@@ -8,7 +8,7 @@
 
 import UIKit
 
-class MeetingAll: NSObject {
+class MeetingAllModel: NSObject {
     
      var id: String?
      var full_name: String?
@@ -53,10 +53,10 @@ class MeetingAll: NSObject {
     }
     
     // MARK: Class Method
-    class func build(_ dict: [String: AnyObject]) -> MeetingAll {
-        let meetingAll = MeetingAll()
-        meetingAll.loadFromDictionary(dict)
-        return meetingAll
+    class func build(_ dict: [String: AnyObject]) -> MeetingAllModel {
+        let meetingAllModel = MeetingAllModel()
+        meetingAllModel.loadFromDictionary(dict)
+        return meetingAllModel
     }
 
 }

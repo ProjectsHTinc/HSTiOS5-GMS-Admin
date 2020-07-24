@@ -8,6 +8,17 @@
 
 import UIKit
 
-class ConstituentGreivancesService: NSObject {
+class ConstituentGreivancesService {
+    
+    public func callAPIConstituentGrievances(constituent_id:String, onSuccess successCallback: ((_ constituentGreivancesModel: [ConstituentGreivancesModel]) -> Void)?,onFailure failureCallback: ((_ errorMessage: String) -> Void)?) {
+        APIManager.instance.callAPIConstituentGrievances(
+          constituent_id: constituent_id, onSuccess: { (constituentGreivancesModel) in
+                successCallback?(constituentGreivancesModel)
+            },
+            onFailure: { (errorMessage) in
+                failureCallback?(errorMessage)
+            }
+        )
+    }
 
 }

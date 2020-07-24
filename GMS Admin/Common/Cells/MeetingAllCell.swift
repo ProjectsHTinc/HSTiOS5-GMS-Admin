@@ -10,6 +10,12 @@ import UIKit
 
 class MeetingAllCell: UITableViewCell {
 
+    @IBOutlet var name: UILabel!
+    @IBOutlet var date: UILabel!
+    @IBOutlet var paguthi: UILabel!
+    @IBOutlet var title: UILabel!
+    @IBOutlet var status: UILabel!
+    @IBOutlet var createdBy: UILabel!
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code

@@ -8,6 +8,17 @@
 
 import UIKit
 
-class ConstituencyService: NSObject {
+class ConstituencyService {
+    
+    public func callAPIGetConstituencyList(partyID:String,onSuccess successCallback: ((_ constituencyName: [ConstituencyModel]) -> Void)?,onFailure failureCallback: ((_ errorMessage: String) -> Void)?) {
+        APIManager.instance.callAPIGetConstituencyList(
+            partyID: partyID, onSuccess: { (constituencyName) in
+                successCallback?(constituencyName)
+            },
+            onFailure: { (errorMessage) in
+                failureCallback?(errorMessage)
+            }
+        )
+    }
 
 }

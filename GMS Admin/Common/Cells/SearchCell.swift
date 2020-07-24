@@ -9,7 +9,10 @@
 import UIKit
 
 class SearchCell: UITableViewCell {
-
+    @IBOutlet var userImage: UIImageView!
+    @IBOutlet var username: UILabel!
+    @IBOutlet var mobileNumber: UILabel!
+    @IBOutlet var serialNumber: UILabel!
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code

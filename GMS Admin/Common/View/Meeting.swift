@@ -16,6 +16,8 @@ class Meeting: UIViewController {
     var meeting_Title = String()
     var meeting_Discrption = String()
     var meeting_Date = String()
+    var meeting_Status = String()
+    var From = String()
 
     @IBOutlet var tableView: UITableView!
     override func viewDidLoad() {
@@ -28,13 +30,22 @@ class Meeting: UIViewController {
         }
         
         self.view.isHidden = false
-        self.addCustomizedBackBtn(title:"  Meeting")
-        /*set delegates*/
-        self.tableView?.delegate = self
-        self.tableView?.dataSource = self
+        if From == "Cd"{
+        }
+        else{
+            /*Set Side menu*/
+            self.sideMenuButton()
+            self.title = "Meeting"
+        }
+        //self.addCustomizedBackBtn(title:"  Meeting")
         self.tableView?.backgroundColor = .white
         /*Call API*/
-        self.callAPI()
+        self.callAPI(offset: "0", rowcount: "50")
+    }
+    
+    @objc public override func sideMenuButtonClick()
+    {
+        self.performSegue(withIdentifier: "to_sideMenu", sender: self)
     }
     
     func checkInterConnection () -> Bool
@@ -49,10 +60,10 @@ class Meeting: UIViewController {
               return true
     }
 
-    func callAPI()
+    func callAPI(offset:String,rowcount:String)
     {
         meetingPresener.attachView(view: self)
-        meetingPresener.getMeeting(user_id: GlobalVariables.shared.user_id)
+        meetingPresener.getMeeting(constituency_id: GlobalVariables.shared.constituent_Id, offset: offset, rowcount: rowcount)
     }
     
     
@@ -69,6 +80,7 @@ class Meeting: UIViewController {
             vc.meeting_Title = meeting_Title
             vc.meeting_Discrption = meeting_Discrption
             vc.meeting_Date = meeting_Date
+            vc.meeting_Status = meeting_Status
 
         }
     }
@@ -96,7 +108,7 @@ extension Meeting: UITableViewDelegate,UITableViewDataSource
             cell.meetingdate.textColor = UIColor(red: 0/255, green: 0/255, blue: 0/255, alpha: 1.0)
             cell.titleImageGroup.image = UIImage(named: "meetingGroupIcon")
             cell.calenderImage.image = UIImage(named: "meetingDate")
-            cell.meetingStatus.backgroundColor = UIColor(red: 253.0/255, green: 166.0/255, blue: 68.0/255, alpha: 1.0)
+            cell.sidedBg.backgroundColor = UIColor(red: 253.0/255, green: 166.0/255, blue: 68.0/255, alpha: 1.0)
         }
         else
         {
@@ -104,7 +116,7 @@ extension Meeting: UITableViewDelegate,UITableViewDataSource
             cell.meetingdate.textColor = UIColor(red: 0/255, green: 0/255, blue: 0/255, alpha: 0.6)
             cell.titleImageGroup.image = UIImage(named: "meetingCompleted")
             cell.calenderImage.image = UIImage(named: "meetingCompletedDate")
-            cell.meetingStatus.backgroundColor =  UIColor(red: 112.0/255, green: 173.0/255, blue: 71.0/255, alpha: 0.6)
+            cell.sidedBg.backgroundColor =  UIColor(red: 112.0/255, green: 173.0/255, blue: 71.0/255, alpha: 0.6)
         }
 
         return cell
@@ -114,11 +126,26 @@ extension Meeting: UITableViewDelegate,UITableViewDataSource
         return 154
     }
     
+    func tableView(_ tableView: UITableView, willDisplay cell: UITableViewCell, forRowAt indexPath: IndexPath) {
+        let totalRows = tableView.numberOfRows(inSection: indexPath.section)
+        if indexPath.row == (totalRows - 1)
+        {
+            if totalRows >= 50
+            {
+                print("came to last row")
+                self.callAPI(offset: String(totalRows), rowcount: "50")
+            }
+        }
+    }
+    
+
+    
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         let data = meetingeData[indexPath.row]
         self.meeting_Title = data.meeting_title
         self.meeting_Discrption = data.meeting_detail
         self.meeting_Date = data.meeting_date
+        self.meeting_Status = data.meeting_status
         self.performSegue(withIdentifier: "to_MeetingDetails", sender: self)
     }
     

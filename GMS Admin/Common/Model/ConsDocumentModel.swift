@@ -8,7 +8,7 @@
 
 import UIKit
 
-class DocumentModel {
+class ConsDocumentModel {
     
      var id: String?
      var doc_name: String?
@@ -38,10 +38,10 @@ class DocumentModel {
     }
     
     // MARK: Class Method
-    class func build(_ dict: [String: AnyObject]) -> DocumentModel {
-        let documentModel = DocumentModel()
-        documentModel.loadFromDictionary(dict)
-        return documentModel
+    class func build(_ dict: [String: AnyObject]) -> ConsDocumentModel {
+        let consDocumentModel = ConsDocumentModel()
+        consDocumentModel.loadFromDictionary(dict)
+        return consDocumentModel
     }
 
 }
