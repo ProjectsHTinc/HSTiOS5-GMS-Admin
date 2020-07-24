@@ -49,7 +49,7 @@ class Report: UIViewController {
     }
     
     @IBAction func birthday(_ sender: Any) {
-        self.performSegue(withIdentifier: "to_reportStatus", sender: self.from)
+        self.performSegue(withIdentifier: "to_birthday", sender: self.from)
     }
     
     

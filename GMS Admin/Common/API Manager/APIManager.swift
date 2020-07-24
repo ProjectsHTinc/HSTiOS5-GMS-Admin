@@ -55,6 +55,8 @@ class APIManager: NSObject {
           case staffDetailUrl = "apiios/staffDetails"
           case categoeryUrl = "apiios/activeCategory"
           case SubcategoeryUrl = "apiios/activeSubcategory"
+          case staffreportUrl = "apiios/reportStaff"
+
 //        case otpUrl = "apiconstituentios/mobile_verify"
 //        case bannerImageUrl = "apiconstituentios/view_banners"
 //        case newsFeedUrl = "apiconstituentios/newsfeed_list"
@@ -1592,7 +1594,7 @@ class APIManager: NSObject {
             }
             else
             {
-                parameters = ["from_date": from_date,"to_date": to_date,"status": status,"paguthi": paguthi,"offset": offset,"rowcount": rowcount,"keyword":keyword]
+                parameters = ["from_date": from_date,"to_date": to_date,"category": category,"offset": offset,"rowcount": rowcount,"keyword":keyword]
             }
         }
         else if (From == "subCate"){
@@ -1603,7 +1605,7 @@ class APIManager: NSObject {
             }
             else
             {
-                parameters = ["from_date": from_date,"to_date": to_date,"status": status,"paguthi": paguthi,"offset": offset,"rowcount": rowcount,"keyword":keyword]
+                parameters = ["from_date": from_date,"to_date": to_date,"sub_category": sub_category,"offset": offset,"rowcount": rowcount,"keyword":keyword]
             }
         }
         else {
@@ -1614,7 +1616,7 @@ class APIManager: NSObject {
             }
             else
             {
-                parameters = ["from_date": from_date,"to_date": to_date,"status": status,"paguthi": paguthi,"offset": offset,"rowcount": rowcount,"keyword":keyword]
+                parameters = ["from_date": from_date,"to_date": to_date,"paguthi": paguthi,"offset": offset,"rowcount": rowcount,"keyword":keyword]
             }
         }
 
@@ -1836,4 +1838,190 @@ class APIManager: NSObject {
         }
     }
     
+    //MARK: GET REPORT MEETING ALL RESPONSE
+    func callAPIReportMeeting(url : String, keyword: String, from_date:String, to_date:String, offset:String, rowcount:String, onSuccess successCallback: ((_ meetingAllModel: [MeetingAllModel]) -> Void)?,onFailure failureCallback: ((_ errorMessage: String) -> Void)?) {
+        // Build URL
+        let url = GlobalVariables.shared.CLIENTURL + url
+        let parameters: Parameters
+        // Set Parameters
+        if keyword == "no"{
+              parameters =  ["from_date": from_date, "to_date": to_date, "offset": offset, "rowcount": rowcount]
+        }
+        else{
+             parameters =  ["from_date": from_date, "to_date": to_date, "offset": offset, "rowcount": rowcount, "keyword": keyword]
+        }
+        // call API
+        self.createRequestReportMeeting(url, method: .post, headers: nil, parameters: parameters as? [String : String], onSuccess: {(responseObject: JSON) -> Void in
+        // Create dictionary
+        print(responseObject)
+          
+          guard let msg = responseObject["status"].string, msg == "Success" else{
+              failureCallback?(responseObject["msg"].string!)
+              return
+        }
+            
+         GlobalVariables.shared.meetingAllCount = responseObject["result_count"].int!
+
+          if let responseDict = responseObject["meetings_report"].arrayObject
+          {
+                let meetingAllModel = responseDict as! [[String:AnyObject]]
+                // Create object
+                var data = [MeetingAllModel]()
+                for item in meetingAllModel {
+                    let single = MeetingAllModel.build(item)
+                    data.append(single)
+                }
+                // Fire callback
+              successCallback?(data)
+           } else {
+                failureCallback?("An error has occured.")
+            }
+        },
+        onFailure: {(errorMessage: String) -> Void in
+            failureCallback?(errorMessage)
+        }
+     )
+    }
+    
+    // MARK: MAKE REPORT MEETING ALL URL REQUEST
+    func createRequestReportMeeting(_ url: String,method: HTTPMethod,headers: [String: String]?,parameters: [String:String]?,onSuccess successCallback: ((JSON) -> Void)?,onFailure failureCallback: ((String) -> Void)?)
+    {
+        manager.request(url, method: .post, parameters: parameters, encoding: JSONEncoding.default, headers: headers).responseJSON { (responseObject) -> Void in
+            print(responseObject)
+            
+            if responseObject.result.isSuccess
+            {
+                let resJson = JSON(responseObject.result.value!)
+                successCallback?(resJson)
+            }
+            
+            if responseObject.result.isFailure
+            {
+               let error : Error = responseObject.result.error!
+                failureCallback!(error.localizedDescription)
+            }
+        }
+    }
+    
+    //MARK: GET REPORT STAFF RESPONSE
+    func callAPIReportStaff(from_date:String, to_date:String, onSuccess successCallback: ((_ reportStaffModel: [ReportStaffModel]) -> Void)?,onFailure failureCallback: ((_ errorMessage: String) -> Void)?) {
+        // Build URL
+        let url = GlobalVariables.shared.CLIENTURL + Endpoint.staffreportUrl.rawValue
+        // Set Parameters
+        let parameters: Parameters =  ["from_date": from_date, "to_date": to_date]
+        // call API
+        self.createReportStaff(url, method: .post, headers: nil, parameters: parameters as? [String : String], onSuccess: {(responseObject: JSON) -> Void in
+        // Create dictionary
+        print(responseObject)
+          
+          guard let status = responseObject["status"].string, status == "Success" else{
+              failureCallback?(responseObject["msg"].string!)
+              return
+        }
+
+        if let responseDict = responseObject["staff_report"].arrayObject
+          {
+                let reportStaffModel = responseDict as! [[String:AnyObject]]
+                // Create object
+                var data = [ReportStaffModel]()
+                for item in reportStaffModel {
+                    let single = ReportStaffModel.build(item)
+                    data.append(single)
+                }
+                // Fire callback
+              successCallback?(data)
+           } else {
+                failureCallback?("An error has occured.")
+            }
+        },
+        onFailure: {(errorMessage: String) -> Void in
+            failureCallback?(errorMessage)
+        }
+     )
+    }
+    
+    // MARK: MAKE CATEGOERY REQUEST
+    func createReportStaff(_ url: String,method: HTTPMethod,headers: [String: String]?,parameters: [String:String]?,onSuccess successCallback: ((JSON) -> Void)?,onFailure failureCallback: ((String) -> Void)?)
+    {
+        manager.request(url, method: .post, parameters: parameters, encoding: JSONEncoding.default, headers: headers).responseJSON { (responseObject) -> Void in
+            print(responseObject)
+            
+            if responseObject.result.isSuccess
+            {
+                let resJson = JSON(responseObject.result.value!)
+                successCallback?(resJson)
+            }
+            
+            if responseObject.result.isFailure
+            {
+               let error : Error = responseObject.result.error!
+                failureCallback!(error.localizedDescription)
+            }
+        }
+    }
+    
+    //MARK: GET REPORT BIRTHDAY ALL RESPONSE
+    func callAPIReportBirthday(url:String, select_month : String, keyword: String, offset:String, rowcount:String, onSuccess successCallback: ((_ reportBirthdayModel: [ReportBirthdayModel]) -> Void)?,onFailure failureCallback: ((_ errorMessage: String) -> Void)?) {
+        // Build URL
+        let url = GlobalVariables.shared.CLIENTURL + url
+        let parameters: Parameters
+        // Set Parameters
+        if keyword == "no"{
+              parameters =  ["select_month": select_month, "offset": offset, "rowcount": rowcount]
+        }
+        else{
+             parameters =  ["select_month": select_month, "keyword": keyword, "offset": offset, "rowcount": rowcount]
+        }
+        // call API
+        self.createRequestReportBirthday(url, method: .post, headers: nil, parameters: parameters as? [String : String], onSuccess: {(responseObject: JSON) -> Void in
+        // Create dictionary
+        print(responseObject)
+          
+          guard let msg = responseObject["status"].string, msg == "Success" else{
+              failureCallback?(responseObject["msg"].string!)
+              return
+        }
+            
+         GlobalVariables.shared.meetingAllCount = responseObject["result_count"].int!
+
+          if let responseDict = responseObject["birthday_report"].arrayObject
+          {
+                let reportBirthdayModel = responseDict as! [[String:AnyObject]]
+                // Create object
+                var data = [ReportBirthdayModel]()
+                for item in reportBirthdayModel {
+                    let single = ReportBirthdayModel.build(item)
+                    data.append(single)
+                }
+                // Fire callback
+              successCallback?(data)
+           } else {
+                failureCallback?("An error has occured.")
+            }
+        },
+        onFailure: {(errorMessage: String) -> Void in
+            failureCallback?(errorMessage)
+        }
+     )
+    }
+    
+    // MARK: MAKE REPORT BIRTHDAY ALL URL REQUEST
+    func createRequestReportBirthday(_ url: String,method: HTTPMethod,headers: [String: String]?,parameters: [String:String]?,onSuccess successCallback: ((JSON) -> Void)?,onFailure failureCallback: ((String) -> Void)?)
+    {
+        manager.request(url, method: .post, parameters: parameters, encoding: JSONEncoding.default, headers: headers).responseJSON { (responseObject) -> Void in
+            print(responseObject)
+            
+            if responseObject.result.isSuccess
+            {
+                let resJson = JSON(responseObject.result.value!)
+                successCallback?(resJson)
+            }
+            
+            if responseObject.result.isFailure
+            {
+               let error : Error = responseObject.result.error!
+                failureCallback!(error.localizedDescription)
+            }
+        }
+    }
 }

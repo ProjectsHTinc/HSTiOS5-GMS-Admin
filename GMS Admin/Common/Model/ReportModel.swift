@@ -20,6 +20,7 @@ class ReportModel: NSObject {
     var created_by : String?
     var grievance_name : String?
     var role_name : String?
+    var grievance_type : String?
 
 
     // MARK: Instance Method
@@ -54,6 +55,9 @@ class ReportModel: NSObject {
         }
         if let data = dict["role_name"] as? String {
           self.role_name = data
+        }
+        if let data = dict["grievance_type"] as? String {
+          self.grievance_type = data
         }
     }
     

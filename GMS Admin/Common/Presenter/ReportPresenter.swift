@@ -19,6 +19,8 @@ struct ReportData {
     let created_by : String
     let grievance_name : String
     let role_name : String
+    let grievance_type : String?
+
 }
 
 protocol ReportView: NSObjectProtocol {
@@ -53,7 +55,7 @@ class ReportPresenter: NSObject {
                 if (report.count == 0){
                 } else {
                   let mappedUsers = report.map {
-                    return ReportData(id: "\($0.id ?? "")", paguthi_name: "\($0.paguthi_name ?? "")", petition_enquiry_no: "\($0.petition_enquiry_no ?? "")", grievance_date: "\($0.grievance_date ?? "")", status: "\($0.status ?? "")", full_name: "\($0.full_name ?? "")", mobile_no: "\($0.mobile_no ?? "")", created_by: "\($0.created_by ?? "")", grievance_name: "\($0.grievance_name ?? "")", role_name: "\($0.role_name ?? "")")
+                    return ReportData(id: "\($0.id ?? "")", paguthi_name: "\($0.paguthi_name ?? "")", petition_enquiry_no: "\($0.petition_enquiry_no ?? "")", grievance_date: "\($0.grievance_date ?? "")", status: "\($0.status ?? "")", full_name: "\($0.full_name ?? "")", mobile_no: "\($0.mobile_no ?? "")", created_by: "\($0.created_by ?? "")", grievance_name: "\($0.grievance_name ?? "")", role_name: "\($0.role_name ?? "")", grievance_type: "\($0.grievance_type ?? "")")
                      }
                     self.reportView?.setReport(report: mappedUsers)
                 }

@@ -211,8 +211,18 @@ class ReportStatus: UIViewController {
         guard CheckValuesAreEmpty () else {
               return
         }
-        
-        self.performSegue(withIdentifier: "to_reportList", sender: self.from)
+        if (from == "status")
+        {
+            self.performSegue(withIdentifier: "to_reportList", sender: self.from)
+        }
+        else if (from == "meeting")
+        {
+            self.performSegue(withIdentifier: "to_reportMeeting", sender: self)
+        }
+        else if from == "staff"
+        {
+            self.performSegue(withIdentifier: "to_reportStaff", sender: self)
+        }
     }
     
     func CheckValuesAreEmpty () -> Bool{
@@ -286,6 +296,16 @@ class ReportStatus: UIViewController {
             vc.fromdate = self.fromDate.text!
             vc.todate = self.toDate.text!
             vc.status = self.status.text!
+        }
+        else if (segue.identifier == "to_reportMeeting"){
+            let vc = segue.destination as! ReportMeeting
+            vc.fromdate = self.fromDate.text!
+            vc.todate = self.toDate.text!
+        }
+        else if (segue.identifier == "to_reportStaff"){
+            let vc = segue.destination as! ReportStaff
+            vc.fromdate = self.fromDate.text!
+            vc.todate = self.toDate.text!
         }
     }
     

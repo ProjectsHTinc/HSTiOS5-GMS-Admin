@@ -1,35 +1,34 @@
 //
-//  MeetingAll.swift
+//  ReportMeeting.swift
 //  GMS Admin
 //
-//  Created by Happy Sanz Tech on 22/07/20.
+//  Created by Happy Sanz Tech on 25/07/20.
 //  Copyright © 2020 HappySanzTech. All rights reserved.
 //
 
 import UIKit
 
-let meetingUrl = "apiios/meetingRequestnew"
+let reportMeetingUrl = "apiios/reportMeetingsnew"
 
-class MeetingAll: UIViewController {
+class ReportMeeting: UIViewController {
     
-    /*Get Meeting All List*/
-    let presenter = MeetingAllPresenter(meetingAllService: MeetingAllService())
-    var data = [MeetingAllData]()
-
+    /*Get Report List*/
+    let presenter = ReportMeetingPresenter(reportMeetingService: ReportMeetingService())
+    var reportData = [ReportMeetingData]()
+    
     var searchBar = UISearchController()
 
-    @IBOutlet var baseLine: UILabel!
+    var fromdate = String()
+    var todate = String()
+    var keyword = String()
+
     @IBOutlet var meetingCount: UILabel!
     @IBOutlet var tableView: UITableView!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 
         // Do any additional setup after loading the view.
-        self.title = "Meeting"
-        /*Set Side menu*/
-        self.sideMenuButton()
-        /*Right Navigation Bar*/
-        self.addrightButton(bg_ImageName:"ConstituentSearch")
         self.tableView.backgroundColor = UIColor.white
         guard Reachability.isConnectedToNetwork() == true else {
               AlertController.shared.offlineAlert(targetVc: self, complition: {
@@ -37,18 +36,20 @@ class MeetingAll: UIViewController {
              })
              return
         }
-        self.callAPIMeetingAll(url: meetingUrl, keyword: "no", constituency_id: GlobalVariables.shared.constituent_Id, offset: "0", rowcount: "50")
+        /*Right Navigation Bar*/
+        self.addrightButton(bg_ImageName:"ConstituentSearch")
+        self.keyword = "no"
+        self.callAPI(url: reportMeetingUrl,from_date: fromdate, to_date: todate, offset:"0",rowCount:"50", keyword: keyword)
     }
     
-    func callAPIMeetingAll (url:String, keyword: String,constituency_id:String, offset: String, rowcount:String)
+    func callAPI (url: String, from_date: String, to_date: String, offset:String,rowCount:String,keyword: String)
     {
         presenter.attachView(view: self)
-        presenter.getMeetingAll(url:url, keyword: keyword,constituency_id: constituency_id, offset: offset, rowcount: rowcount)
+        presenter.getReportMeeting(url: url, keyword: keyword, from_date: from_date, to_date: to_date, offset: offset, rowcount: rowCount)
     }
-        
+    
     @objc public override func rightButtonClick()
     {
-
         searchBar = UISearchController(searchResultsController: nil)
         // Set any properties (in this case, don't hide the nav bar and don't show the emoji keyboard option)
         searchBar.hidesNavigationBarDuringPresentation = false
@@ -58,11 +59,6 @@ class MeetingAll: UIViewController {
         self.searchBar.searchBar.delegate = self
         present(searchBar, animated: true, completion: nil)
     }
-    
-    @objc public override func sideMenuButtonClick()
-    {
-        self.performSegue(withIdentifier: "to_sideMenu", sender: self)
-    }
 
     
     // MARK: - Navigation
@@ -71,48 +67,19 @@ class MeetingAll: UIViewController {
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         // Get the new view controller using segue.destination.
         // Pass the selected object to the new view controller.
-        
-        if (segue.identifier == "meetingsearch")
-        {
-            let vc = segue.destination as! MeetingAllSearch
+        if (segue.identifier == "to_reportMeetingSearch"){
+            let vc = segue.destination as! ReportMeetingSearch
+            vc.fromdate = fromdate
+            vc.todate = todate
             vc.keyword = sender as! String
-        }
-        else
-        {
-            if (segue.identifier == "to_meetingallDetail"){
-                let vc = segue.destination as! MeetingAllDetail
-                vc.meetingId = sender as! String
-            }
         }
     }
     
 
 }
 
-extension MeetingAll : MeetingAllDataView, UISearchBarDelegate ,  UITableViewDelegate, UITableViewDataSource
+extension ReportMeeting : ReportMeetingView ,UITableViewDelegate, UITableViewDataSource, UISearchBarDelegate
 {
-    func startLoading() {
-        //
-    }
-    
-    func finishLoading() {
-        //
-    }
-    
-    func setMeetingAll(meetingAll: [MeetingAllData]) {
-        data = meetingAll
-        self.meetingCount.text = String(GlobalVariables.shared.meetingAllCount) + " Meetings"
-        self.tableView.isHidden = false
-        self.meetingCount.isHidden = false
-        self.baseLine.isHidden = false
-        self.tableView.reloadData()
-    }
-    
-    func setEmpty(errorMessage: String) {
-        AlertController.shared.showAlert(targetVc: self, title: Globals.alertTitle, message: errorMessage, complition: {
-        })
-        self.tableView.isHidden = true
-    }
     
     func searchBarSearchButtonClicked( _ searchBar: UISearchBar)
     {
@@ -123,22 +90,40 @@ extension MeetingAll : MeetingAllDataView, UISearchBarDelegate ,  UITableViewDel
              return
         }
         
-        self.performSegue(withIdentifier: "meetingsearch", sender: searchBar.text!)
+        self.performSegue(withIdentifier: "to_reportMeetingSearch", sender: searchBar.text!)
         self.searchBar.isActive = false
 
     }
     
-    func searchBarCancelButtonClicked(_ searchBar: UISearchBar){
-
+    func startLoading() {
+        //
+    }
+    
+    func finishLoading() {
+        //
+    }
+    
+    func setReport(report: [ReportMeetingData]) {
+        reportData = report
+        self.meetingCount.text = String(GlobalVariables.shared.meetingAllCount) + " Meetings"
+        self.tableView.isHidden = false
+        self.tableView.reloadData()
+    }
+    
+    func setEmpty(errorMessage: String) {
+        AlertController.shared.showAlert(targetVc: self, title: Globals.alertTitle, message: errorMessage, complition: {
+        })
+        self.meetingCount.text = String(format: "%@ %@","0","Meetings")
+        self.tableView.isHidden = true
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-           return data.count
+           return reportData.count
     }
        
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
            let cell = tableView.dequeueReusableCell(withIdentifier: "cell", for: indexPath) as! MeetingAllCell
-           let meetingData = data[indexPath.row]
+           let meetingData = reportData[indexPath.row]
            cell.name.text = meetingData.full_name
            cell.date.text = meetingData.meeting_date
            cell.paguthi.text = meetingData.paguthi_name + "(Paguthi)"
@@ -159,16 +144,11 @@ extension MeetingAll : MeetingAllDataView, UISearchBarDelegate ,  UITableViewDel
                if totalRows >= 50
                {
                  print("came to last row")
-                self.callAPIMeetingAll(url: "apiios/meetingRequestnew", keyword: "no", constituency_id: GlobalVariables.shared.constituent_Id, offset: String(totalRows), rowcount: "50")
+                 self.callAPI(url: reportMeetingUrl,from_date: fromdate, to_date: todate, offset:String(totalRows),rowCount:"50", keyword: keyword)
 
                }
     
            }
-    }
-       
-    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-          let meeting_id = data[indexPath.row]
-          self.performSegue(withIdentifier: "to_meetingallDetail", sender: meeting_id.id)
     }
     
 }

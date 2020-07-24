@@ -95,19 +95,31 @@ class ReportList: UIViewController {
         }
     }
 
-    /*
+    
     // MARK: - Navigation
 
     // In a storyboard-based application, you will often want to do a little preparation before navigation
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         // Get the new view controller using segue.destination.
         // Pass the selected object to the new view controller.
+        if (segue.identifier == "to_reportSearch"){
+            let vc = segue.destination as! ReportSearch
+            vc.from = from
+            vc.paguthi = paguthi
+            vc.paguthi = paguthi
+            vc.category = category
+            vc.sub_category = sub_category
+            vc.fromdate = fromdate
+            vc.todate = todate
+            vc.keyword = sender as! String
+            vc.status = status
+        }
     }
-    */
+    
 
 }
 
-extension ReportList : ReportView,UITableViewDelegate,UITableViewDataSource, UISearchBarDelegate {
+extension ReportList : ReportView, UITableViewDelegate, UITableViewDataSource, UISearchBarDelegate {
     
     func searchBarSearchButtonClicked( _ searchBar: UISearchBar)
     {
@@ -118,8 +130,8 @@ extension ReportList : ReportView,UITableViewDelegate,UITableViewDataSource, UIS
              return
         }
         
-        //self.performSegue(withIdentifier: "to_greivanceAllSearch", sender: searchBar.text!)
-        //self.searchBar.isActive = false
+        self.performSegue(withIdentifier: "to_reportSearch", sender: searchBar.text!)
+        self.searchBar.isActive = false
 
     }
     
@@ -152,7 +164,14 @@ extension ReportList : ReportView,UITableViewDelegate,UITableViewDataSource, UIS
         func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
             let cell = tableView.dequeueReusableCell(withIdentifier: "cell", for: indexPath) as! ReportListCell
             let data = reportData[indexPath.row]
-            cell.pettionNumber.text = "Petition Number - " +  " " + data.petition_enquiry_no
+            let type = data.grievance_type
+            if type  == "P"{
+                cell.pettionNumber.text = "Petition Number - " +  " " + data.petition_enquiry_no
+            }
+            else{
+                cell.pettionNumber.text = "Enquiry Number - " +  " " + data.petition_enquiry_no
+            }
+            cell.mobile.text = data.mobile_no
             cell.docName.text = data.grievance_name
             cell.userName.text = data.full_name
             cell.subCategoeryName.text = data.created_by + "(\(data.role_name))"

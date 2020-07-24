@@ -69,6 +69,21 @@
 		6BA49F2B24CAFF2C00262ED2 /* CategoeryPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6BA49F2A24CAFF2C00262ED2 /* CategoeryPresenter.swift */; };
 		6BA49F2D24CAFF4000262ED2 /* SubCategoeryPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6BA49F2C24CAFF4000262ED2 /* SubCategoeryPresenter.swift */; };
 		6BA955D224B5D806007982B8 /* AFWrapper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6BA955D124B5D806007982B8 /* AFWrapper.swift */; };
+		6BAC94E924CB6D500082FCD3 /* ReportMeeting.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6BAC94E824CB6D500082FCD3 /* ReportMeeting.swift */; };
+		6BAC94EB24CB6D6B0082FCD3 /* ReportMeetingSearch.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6BAC94EA24CB6D6B0082FCD3 /* ReportMeetingSearch.swift */; };
+		6BAC94EF24CB6EB70082FCD3 /* ReportMeetingService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6BAC94EE24CB6EB70082FCD3 /* ReportMeetingService.swift */; };
+		6BAC94F124CB6F000082FCD3 /* ReportMeetingPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6BAC94F024CB6F000082FCD3 /* ReportMeetingPresenter.swift */; };
+		6BAC94F524CB7CC80082FCD3 /* ReportStaff.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6BAC94F424CB7CC80082FCD3 /* ReportStaff.swift */; };
+		6BAC94F924CB80C10082FCD3 /* ReportStaffCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6BAC94F824CB80C10082FCD3 /* ReportStaffCell.swift */; };
+		6BAC94FB24CB81340082FCD3 /* ReportStaffModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6BAC94FA24CB81340082FCD3 /* ReportStaffModel.swift */; };
+		6BAC94FD24CB82400082FCD3 /* ReportStaffService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6BAC94FC24CB82400082FCD3 /* ReportStaffService.swift */; };
+		6BAC94FF24CB828E0082FCD3 /* ReportStaffPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6BAC94FE24CB828E0082FCD3 /* ReportStaffPresenter.swift */; };
+		6BAC950124CB8A0D0082FCD3 /* ReportBirthday.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6BAC950024CB8A0D0082FCD3 /* ReportBirthday.swift */; };
+		6BAC950324CB8A2B0082FCD3 /* ReportBirthDaySearch.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6BAC950224CB8A2B0082FCD3 /* ReportBirthDaySearch.swift */; };
+		6BAC950524CB8A510082FCD3 /* ReportBirthdayCellTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6BAC950424CB8A510082FCD3 /* ReportBirthdayCellTableViewCell.swift */; };
+		6BAC950724CB8C1F0082FCD3 /* ReportBirthdayModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6BAC950624CB8C1F0082FCD3 /* ReportBirthdayModel.swift */; };
+		6BAC950924CB8D310082FCD3 /* ReportBirthDayService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6BAC950824CB8D310082FCD3 /* ReportBirthDayService.swift */; };
+		6BAC950B24CB8DBE0082FCD3 /* ReportBirthdayPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6BAC950A24CB8DBE0082FCD3 /* ReportBirthdayPresenter.swift */; };
 		6BAEF77424BEE52200CB458A /* DashBoardModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6BAEF77324BEE52200CB458A /* DashBoardModel.swift */; };
 		6BB5FCF324CAB89F003B5F56 /* ReportModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6BB5FCF224CAB89F003B5F56 /* ReportModel.swift */; };
 		6BB5FCF524CABE74003B5F56 /* ReportService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6BB5FCF424CABE74003B5F56 /* ReportService.swift */; };
@@ -277,6 +292,21 @@
 		6BA49F2A24CAFF2C00262ED2 /* CategoeryPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CategoeryPresenter.swift; sourceTree = "<group>"; };
 		6BA49F2C24CAFF4000262ED2 /* SubCategoeryPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SubCategoeryPresenter.swift; sourceTree = "<group>"; };
 		6BA955D124B5D806007982B8 /* AFWrapper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AFWrapper.swift; sourceTree = "<group>"; };
+		6BAC94E824CB6D500082FCD3 /* ReportMeeting.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReportMeeting.swift; sourceTree = "<group>"; };
+		6BAC94EA24CB6D6B0082FCD3 /* ReportMeetingSearch.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReportMeetingSearch.swift; sourceTree = "<group>"; };
+		6BAC94EE24CB6EB70082FCD3 /* ReportMeetingService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReportMeetingService.swift; sourceTree = "<group>"; };
+		6BAC94F024CB6F000082FCD3 /* ReportMeetingPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReportMeetingPresenter.swift; sourceTree = "<group>"; };
+		6BAC94F424CB7CC80082FCD3 /* ReportStaff.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReportStaff.swift; sourceTree = "<group>"; };
+		6BAC94F824CB80C10082FCD3 /* ReportStaffCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReportStaffCell.swift; sourceTree = "<group>"; };
+		6BAC94FA24CB81340082FCD3 /* ReportStaffModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReportStaffModel.swift; sourceTree = "<group>"; };
+		6BAC94FC24CB82400082FCD3 /* ReportStaffService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReportStaffService.swift; sourceTree = "<group>"; };
+		6BAC94FE24CB828E0082FCD3 /* ReportStaffPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReportStaffPresenter.swift; sourceTree = "<group>"; };
+		6BAC950024CB8A0D0082FCD3 /* ReportBirthday.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReportBirthday.swift; sourceTree = "<group>"; };
+		6BAC950224CB8A2B0082FCD3 /* ReportBirthDaySearch.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReportBirthDaySearch.swift; sourceTree = "<group>"; };
+		6BAC950424CB8A510082FCD3 /* ReportBirthdayCellTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReportBirthdayCellTableViewCell.swift; sourceTree = "<group>"; };
+		6BAC950624CB8C1F0082FCD3 /* ReportBirthdayModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReportBirthdayModel.swift; sourceTree = "<group>"; };
+		6BAC950824CB8D310082FCD3 /* ReportBirthDayService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReportBirthDayService.swift; sourceTree = "<group>"; };
+		6BAC950A24CB8DBE0082FCD3 /* ReportBirthdayPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReportBirthdayPresenter.swift; sourceTree = "<group>"; };
 		6BAEF77324BEE52200CB458A /* DashBoardModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DashBoardModel.swift; sourceTree = "<group>"; };
 		6BB5FCF224CAB89F003B5F56 /* ReportModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReportModel.swift; sourceTree = "<group>"; };
 		6BB5FCF424CABE74003B5F56 /* ReportService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReportService.swift; sourceTree = "<group>"; };
@@ -537,6 +567,8 @@
 				6BB5FCF224CAB89F003B5F56 /* ReportModel.swift */,
 				6BA49F2224CAFCBB00262ED2 /* CaategoeryModel.swift */,
 				6BA49F2424CAFCD500262ED2 /* SubCategoeryModel.swift */,
+				6BAC94FA24CB81340082FCD3 /* ReportStaffModel.swift */,
+				6BAC950624CB8C1F0082FCD3 /* ReportBirthdayModel.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -591,6 +623,9 @@
 				6BB5FCF424CABE74003B5F56 /* ReportService.swift */,
 				6BA49F2624CAFEBD00262ED2 /* CategoeryService.swift */,
 				6BA49F2824CAFED000262ED2 /* SubCategoeryService.swift */,
+				6BAC94EE24CB6EB70082FCD3 /* ReportMeetingService.swift */,
+				6BAC94FC24CB82400082FCD3 /* ReportStaffService.swift */,
+				6BAC950824CB8D310082FCD3 /* ReportBirthDayService.swift */,
 			);
 			path = Service;
 			sourceTree = "<group>";
@@ -627,6 +662,9 @@
 				6BB5FCF624CABF18003B5F56 /* ReportPresenter.swift */,
 				6BA49F2A24CAFF2C00262ED2 /* CategoeryPresenter.swift */,
 				6BA49F2C24CAFF4000262ED2 /* SubCategoeryPresenter.swift */,
+				6BAC94F024CB6F000082FCD3 /* ReportMeetingPresenter.swift */,
+				6BAC94FE24CB828E0082FCD3 /* ReportStaffPresenter.swift */,
+				6BAC950A24CB8DBE0082FCD3 /* ReportBirthdayPresenter.swift */,
 			);
 			path = Presenter;
 			sourceTree = "<group>";
@@ -690,6 +728,11 @@
 				6B966D5724CA28680045BB3A /* ReportStatus.swift */,
 				6B966D5924CA28800045BB3A /* ReportList.swift */,
 				6B966D5B24CA28960045BB3A /* ReportSearch.swift */,
+				6BAC94E824CB6D500082FCD3 /* ReportMeeting.swift */,
+				6BAC94EA24CB6D6B0082FCD3 /* ReportMeetingSearch.swift */,
+				6BAC94F424CB7CC80082FCD3 /* ReportStaff.swift */,
+				6BAC950024CB8A0D0082FCD3 /* ReportBirthday.swift */,
+				6BAC950224CB8A2B0082FCD3 /* ReportBirthDaySearch.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -754,6 +797,8 @@
 				6B2B1E3524C82BB700D78634 /* MeetingAllCell.swift */,
 				6BE603C124C8EA6400DA7ED5 /* StaffCell.swift */,
 				6B966D5D24CA28AE0045BB3A /* ReportListCell.swift */,
+				6BAC94F824CB80C10082FCD3 /* ReportStaffCell.swift */,
+				6BAC950424CB8A510082FCD3 /* ReportBirthdayCellTableViewCell.swift */,
 			);
 			path = Cells;
 			sourceTree = "<group>";
@@ -979,8 +1024,11 @@
 				6BB7E15324B2FB9300E46D28 /* AppVersionPresenter.swift in Sources */,
 				6BC8FE3B24BCF8E9007457A2 /* PlantDonation.swift in Sources */,
 				6BC8FE4724BD0B16007457A2 /* DocumentCell.swift in Sources */,
+				6BAC94F924CB80C10082FCD3 /* ReportStaffCell.swift in Sources */,
 				6BE02EDD24B49F1300AA463A /* SearchModel.swift in Sources */,
 				6B1703EE24B84A9C0029DDF4 /* TotalGreviancesModel.swift in Sources */,
+				6BAC94E924CB6D500082FCD3 /* ReportMeeting.swift in Sources */,
+				6BAC94FF24CB828E0082FCD3 /* ReportStaffPresenter.swift in Sources */,
 				6BC8FE4D24BD0F51007457A2 /* GriDocumentModel.swift in Sources */,
 				6BE603B224C8BE9100DA7ED5 /* GreivancesAll.swift in Sources */,
 				6B966D5E24CA28AE0045BB3A /* ReportListCell.swift in Sources */,
@@ -1013,17 +1061,21 @@
 				6BE4E10F24B1EF0200FD735B /* UserDefault.swift in Sources */,
 				6B2B1E3A24C83B4000D78634 /* MeetingAllSearch.swift in Sources */,
 				6BA49F2D24CAFF4000262ED2 /* SubCategoeryPresenter.swift in Sources */,
+				6BAC950924CB8D310082FCD3 /* ReportBirthDayService.swift in Sources */,
 				6B7C2E1C24C7178F0077FAC2 /* ProfileDetails.swift in Sources */,
 				6BB7E14524B2F11100E46D28 /* APIManager.swift in Sources */,
 				6B74F78424BB9EC600CC95F9 /* ListConstiuentModel.swift in Sources */,
 				6BEF3F2724B87A44009BA5DF /* TotalGreviancesPresenter.swift in Sources */,
 				6BB5FCF524CABE74003B5F56 /* ReportService.swift in Sources */,
+				6BAC950124CB8A0D0082FCD3 /* ReportBirthday.swift in Sources */,
 				6BC8FE2F24BCE536007457A2 /* MeetingCell.swift in Sources */,
 				6B71CDED24B3AB660099ECC8 /* Menu.swift in Sources */,
 				6B74F77B24BB7C1700CC95F9 /* ViewController.m in Sources */,
 				6B1703F224B8515F0029DDF4 /* ConstituentMemberService.swift in Sources */,
 				6BE4E0FF24B1EEE800FD735B /* RoundedcornerForUIView.swift in Sources */,
 				6B966D5A24CA28800045BB3A /* ReportList.swift in Sources */,
+				6BAC94EF24CB6EB70082FCD3 /* ReportMeetingService.swift in Sources */,
+				6BAC94F524CB7CC80082FCD3 /* ReportStaff.swift in Sources */,
 				6B7220EB24A75962004424CA /* ConstituencyPresenter.swift in Sources */,
 				6BC8FE2D24BCE4DF007457A2 /* MeetingPresenter.swift in Sources */,
 				6B2B1E3C24C844DE00D78634 /* MeetingAllDetail.swift in Sources */,
@@ -1054,7 +1106,9 @@
 				6B7220A224A7578B004424CA /* Login.swift in Sources */,
 				6BE02EE124B4A34400AA463A /* SearchPresenter.swift in Sources */,
 				6BE4E10324B1EEE800FD735B /* CustomNavigationBarBackButtonWithTitle.swift in Sources */,
+				6BAC94EB24CB6D6B0082FCD3 /* ReportMeetingSearch.swift in Sources */,
 				6BE7922724B749EF00FB087F /* MoreGraph.swift in Sources */,
+				6BAC94F124CB6F000082FCD3 /* ReportMeetingPresenter.swift in Sources */,
 				6BC8FE3F24BCFD15007457A2 /* InteractionService.swift in Sources */,
 				6BE4E10C24B1EF0200FD735B /* AlertController.swift in Sources */,
 				6BE603C224C8EA6400DA7ED5 /* StaffCell.swift in Sources */,
@@ -1062,6 +1116,7 @@
 				6BE603CC24C8F6D800DA7ED5 /* StaffDetailService.swift in Sources */,
 				6BA955D224B5D806007982B8 /* AFWrapper.swift in Sources */,
 				6B72209E24A7578B004424CA /* AppDelegate.swift in Sources */,
+				6BAC950724CB8C1F0082FCD3 /* ReportBirthdayModel.swift in Sources */,
 				6BB5FCF324CAB89F003B5F56 /* ReportModel.swift in Sources */,
 				6B7220E524A75936004424CA /* LoginService.swift in Sources */,
 				6BB7E14924B2F41000E46D28 /* ClientUrlService.swift in Sources */,
@@ -1072,6 +1127,7 @@
 				6BE02EDF24B4A2FE00AA463A /* SearchService.swift in Sources */,
 				6BEF3F2D24B88988009BA5DF /* ConstituentinterActionPresenter.swift in Sources */,
 				6BE603BE24C8E9F600DA7ED5 /* Staff.swift in Sources */,
+				6BAC94FB24CB81340082FCD3 /* ReportStaffModel.swift in Sources */,
 				6B7C2E1724C717690077FAC2 /* EmptySegue.swift in Sources */,
 				6B966D5824CA28680045BB3A /* ReportStatus.swift in Sources */,
 				6BC8FE3D24BCFC2A007457A2 /* InteractionModel.swift in Sources */,
@@ -1087,6 +1143,7 @@
 				6BE4E10024B1EEE800FD735B /* ShadowEffectForUIView.swift in Sources */,
 				6BB7E14D24B2F4A500E46D28 /* ConstituencyCell.swift in Sources */,
 				6BA49F2724CAFEBD00262ED2 /* CategoeryService.swift in Sources */,
+				6BAC950524CB8A510082FCD3 /* ReportBirthdayCellTableViewCell.swift in Sources */,
 				6B7220E924A75955004424CA /* LoginPresenter.swift in Sources */,
 				6BE603C624C8ED0E00DA7ED5 /* StaffService.swift in Sources */,
 				6BC8FE3724BCF791007457A2 /* PlantDonationService.swift in Sources */,
@@ -1099,10 +1156,12 @@
 				6BD604E924B5132400EB84D3 /* DashBoard.swift in Sources */,
 				6BE4E11024B1EF0200FD735B /* RechabilityManager.swift in Sources */,
 				6BE4E10424B1EEE800FD735B /* OneSidedRoundedCorners.swift in Sources */,
+				6BAC950324CB8A2B0082FCD3 /* ReportBirthDaySearch.swift in Sources */,
 				6BC8FE4B24BD0D58007457A2 /* ConsDocumentModel.swift in Sources */,
 				6BC295E324BC89F400DB8640 /* GradientColors.swift in Sources */,
 				6BC8FE3924BCF825007457A2 /* PlantDonationPresenter.swift in Sources */,
 				6BE4E10224B1EEE800FD735B /* TapToDismissKeypad.swift in Sources */,
+				6BAC94FD24CB82400082FCD3 /* ReportStaffService.swift in Sources */,
 				6BE603B624C8C0DF00DA7ED5 /* GreivancesAllPresenter.swift in Sources */,
 				6BC0724D24C6094A00BD09E4 /* ConstituentgreivancesPresenter.swift in Sources */,
 				6BD8B8F724C68902007525D9 /* ConsGrieMessageModel.swift in Sources */,
@@ -1111,6 +1170,7 @@
 				6B2B1E3E24C845D600D78634 /* MeetingAllDetailModel.swift in Sources */,
 				6BEF3F2324B87468009BA5DF /* TotalMeetingService.swift in Sources */,
 				6B7220A024A7578B004424CA /* SceneDelegate.swift in Sources */,
+				6BAC950B24CB8DBE0082FCD3 /* ReportBirthdayPresenter.swift in Sources */,
 				6BC0724B24C608F900BD09E4 /* ConstituentGreivancesService.swift in Sources */,
 				6BA49F2324CAFCBB00262ED2 /* CaategoeryModel.swift in Sources */,
 				6BC8FE4124BCFD50007457A2 /* InteractionPresenter.swift in Sources */,
