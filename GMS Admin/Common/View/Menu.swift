@@ -99,6 +99,33 @@ class Menu: UITableViewController {
                 tableView.reloadData()
             }
         }
+        else if (indexPath.row == 7)
+        {
+            self.performSegue(withIdentifier: "logOut", sender: self)
+        }
+    }
+    
+    func clearAll ()
+    {
+        GlobalVariables.shared.selectedConstituencyName = ""
+        GlobalVariables.shared.CLIENTURL = ""
+        GlobalVariables.shared.Devicetoken = ""
+        GlobalVariables.shared.userCount = 0
+        GlobalVariables.shared.user_id = ""
+        GlobalVariables.shared.user_name = ""
+        GlobalVariables.shared.user_location = ""
+        GlobalVariables.shared.user_Image = ""
+        GlobalVariables.shared.constituent_Id = ""
+        GlobalVariables.shared.constituent_Count = 0
+        GlobalVariables.shared.interActionCount = 0
+        GlobalVariables.shared.selectedPaguthiId = ""
+        GlobalVariables.shared.consGreivanceCount = 0
+        GlobalVariables.shared.sideMenuDropdown = ""
+        GlobalVariables.shared.meetingAllCount = 0
+        GlobalVariables.shared.profGrivance = ""
+        GlobalVariables.shared.staffCount = 0
+        GlobalVariables.shared.result_count = 0
+        UserDefaults.standard.clearUserData()
     }
 
     /*

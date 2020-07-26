@@ -1277,6 +1277,9 @@
                                             </constraints>
                                         </tableViewCellContentView>
                                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        <connections>
+                                            <segue destination="WbK-2E-mtp" kind="show" id="jzb-bM-vpD"/>
+                                        </connections>
                                     </tableViewCell>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" rowHeight="46" id="Vxw-Xf-Rle">
                                         <rect key="frame" x="0.0" y="542" width="375" height="46"/>
@@ -1326,6 +1329,7 @@
                         <outlet property="userImage" destination="WPu-50-5K3" id="J8Z-Uc-bAd"/>
                         <outlet property="userLocation" destination="vjs-aM-Ogq" id="Gc9-7w-fDg"/>
                         <outlet property="userName" destination="d6J-Za-t3R" id="VTD-yu-hMZ"/>
+                        <segue destination="vxF-S3-sXH" kind="modal" identifier="logOut" id="8Gu-sa-YRM"/>
                     </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="1fR-5C-lmb" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
@@ -1767,6 +1771,26 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="y2t-2l-6vj" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="2133" y="318"/>
+        </scene>
+        <!--settings-->
+        <scene sceneID="6KI-oP-qMy">
+            <objects>
+                <viewControllerPlaceholder storyboardName="Profile" referencedIdentifier="settings" id="WbK-2E-mtp" sceneMemberID="viewController">
+                    <navigationItem key="navigationItem" id="E7E-94-fnu"/>
+                </viewControllerPlaceholder>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="uhI-mh-8YN" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2169" y="365"/>
+        </scene>
+        <!--login-->
+        <scene sceneID="tlq-ed-fg0">
+            <objects>
+                <viewControllerPlaceholder storyboardName="Main" referencedIdentifier="login" id="vxF-S3-sXH" sceneMemberID="viewController">
+                    <navigationItem key="navigationItem" id="bLb-1S-eeb"/>
+                </viewControllerPlaceholder>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="mgu-pb-18b" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2210" y="407"/>
         </scene>
     </scenes>
     <resources>

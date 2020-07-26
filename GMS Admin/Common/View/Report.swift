@@ -16,6 +16,13 @@ class Report: UIViewController {
         super.viewDidLoad()
 
         // Do any additional setup after loading the view.
+        self.sideMenuButton()
+
+    }
+    
+    @objc public override func sideMenuButtonClick()
+    {
+        self.performSegue(withIdentifier: "to_sideMenu", sender: self)
     }
     
     @IBAction func status(_ sender: Any) {
