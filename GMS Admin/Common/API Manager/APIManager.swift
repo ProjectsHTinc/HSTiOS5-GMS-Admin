@@ -56,7 +56,10 @@ class APIManager: NSObject {
           case categoeryUrl = "apiios/activeCategory"
           case SubcategoeryUrl = "apiios/activeSubcategory"
           case staffreportUrl = "apiios/reportStaff"
-
+          case profileDetailsUrl = "apiios/profileDetails"
+          case profilePicUrl = "apiios/profilePictureUpload"
+          case profileUpdateUrl = "apiios/profileUpdate"
+          case changePasswordUrl = "apiios/changePassword"
 //        case otpUrl = "apiconstituentios/mobile_verify"
 //        case bannerImageUrl = "apiconstituentios/view_banners"
 //        case newsFeedUrl = "apiconstituentios/newsfeed_list"
@@ -2007,6 +2010,231 @@ class APIManager: NSObject {
     
     // MARK: MAKE REPORT BIRTHDAY ALL URL REQUEST
     func createRequestReportBirthday(_ url: String,method: HTTPMethod,headers: [String: String]?,parameters: [String:String]?,onSuccess successCallback: ((JSON) -> Void)?,onFailure failureCallback: ((String) -> Void)?)
+    {
+        manager.request(url, method: .post, parameters: parameters, encoding: JSONEncoding.default, headers: headers).responseJSON { (responseObject) -> Void in
+            print(responseObject)
+            
+            if responseObject.result.isSuccess
+            {
+                let resJson = JSON(responseObject.result.value!)
+                successCallback?(resJson)
+            }
+            
+            if responseObject.result.isFailure
+            {
+               let error : Error = responseObject.result.error!
+                failureCallback!(error.localizedDescription)
+            }
+        }
+    }
+    
+    //MARK: GET USER PROFILE DETAILS RESPONSE
+    func callAPIUserProfileDetails(user_id:String, onSuccess successCallback: ((_ userProfileModel: UserProfileModel) -> Void)?,onFailure failureCallback: ((_ errorMessage: String) -> Void)?) {
+        // Build URL
+        let url = GlobalVariables.shared.CLIENTURL + Endpoint.profileDetailsUrl.rawValue
+        // Set Parameters
+        let parameters: Parameters =  ["user_id": user_id]
+        // call API
+        self.createUserProfileDetails(url, method: .post, headers: nil, parameters: parameters as? [String : String], onSuccess: {(responseObject: JSON) -> Void in
+        // Create dictionary
+        print(responseObject)
+          
+          guard let status = responseObject["status"].string, status == "Success" else{
+              failureCallback?(responseObject["msg"].string!)
+              return
+        }
+
+          let respphone_number = responseObject["userData"]["phone_number"].string
+          let respuser_role = responseObject["userData"]["user_role"].string
+          let resPro_pic = responseObject["userData"]["picture_url"].string
+          let resppugathi_id = responseObject["userData"]["pugathi_id"].string
+          let respconstituency_id = responseObject["userData"]["constituency_id"].string
+          let respemail_id = responseObject["userData"]["email_id"].string
+          let respfull_name = responseObject["userData"]["full_name"].string
+          let respaddress = responseObject["userData"]["address"].string
+          let respgender = responseObject["userData"]["gender"].string
+          let respuser_id = responseObject["userData"]["user_id"].string
+
+            
+          // Create object
+          let sendToModel = UserProfileModel()
+          sendToModel.phone_number = respphone_number
+          sendToModel.user_role = respuser_role
+          sendToModel.picture_url = resPro_pic
+          sendToModel.pugathi_id = resppugathi_id
+          sendToModel.constituency_id = respconstituency_id
+          sendToModel.email_id = respemail_id
+          sendToModel.full_name = respfull_name
+          sendToModel.address = respaddress
+          sendToModel.gender = respgender
+          sendToModel.user_id = respuser_id
+          successCallback?(sendToModel)
+          
+        },
+        onFailure: {(errorMessage: String) -> Void in
+            failureCallback?(errorMessage)
+        }
+     )
+    }
+    
+    // MARK: MAKE USER PROFILE DETAILS REQUEST
+    func createUserProfileDetails(_ url: String,method: HTTPMethod,headers: [String: String]?,parameters: [String:String]?,onSuccess successCallback: ((JSON) -> Void)?,onFailure failureCallback: ((String) -> Void)?)
+    {
+        manager.request(url, method: .post, parameters: parameters, encoding: JSONEncoding.default, headers: headers).responseJSON { (responseObject) -> Void in
+            print(responseObject)
+            
+            if responseObject.result.isSuccess
+            {
+                let resJson = JSON(responseObject.result.value!)
+                successCallback?(resJson)
+            }
+            
+            if responseObject.result.isFailure
+            {
+               let error : Error = responseObject.result.error!
+                failureCallback!(error.localizedDescription)
+            }
+        }
+    }
+    
+    
+    //MARK: GET USER PROFILE UPDATE RESPONSE
+    func callAPIUserProfileUpdate(user_id:String,name:String,address:String,phone:String,email:String,gender:String, onSuccess successCallback: ((_ userProfileUpdateModel: UserProfileUpdateModel) -> Void)?,onFailure failureCallback: ((_ errorMessage: String) -> Void)?) {
+        // Build URL
+        let url = GlobalVariables.shared.CLIENTURL + Endpoint.profileUpdateUrl.rawValue
+        // Set Parameters
+        let parameters: Parameters =  ["user_id": user_id,"name": name,"address": address,"phone": phone,"email": email,"gender": gender]
+        // call API
+        self.createUserProfileUpdate(url, method: .post, headers: nil, parameters: parameters as? [String : String], onSuccess: {(responseObject: JSON) -> Void in
+        // Create dictionary
+        print(responseObject)
+          
+          guard let status = responseObject["status"].string, status == "Success" else{
+              failureCallback?(responseObject["msg"].string!)
+              return
+        }
+
+         let respMsg = responseObject["msg"].string
+         let respStatus = responseObject["status"].string
+
+
+         // Create object
+         let sendToModel = UserProfileUpdateModel()
+         sendToModel.msg = respMsg
+         sendToModel.status = respStatus
+        
+        successCallback?(sendToModel)
+        },
+        onFailure: {(errorMessage: String) -> Void in
+            failureCallback?(errorMessage)
+        }
+     )
+    }
+    
+    // MARK: MAKE USER PROFILE  UPDATE REQUEST
+    func createUserProfileUpdate(_ url: String,method: HTTPMethod,headers: [String: String]?,parameters: [String:String]?,onSuccess successCallback: ((JSON) -> Void)?,onFailure failureCallback: ((String) -> Void)?)
+    {
+        manager.request(url, method: .post, parameters: parameters, encoding: JSONEncoding.default, headers: headers).responseJSON { (responseObject) -> Void in
+            print(responseObject)
+            
+            if responseObject.result.isSuccess
+            {
+                let resJson = JSON(responseObject.result.value!)
+                successCallback?(resJson)
+            }
+            
+            if responseObject.result.isFailure
+            {
+               let error : Error = responseObject.result.error!
+                failureCallback!(error.localizedDescription)
+            }
+        }
+    }
+    
+    //MARK: GET USER PROFILE PIC UPDATE RESPONSE
+    func callAPIUserProfilePicUpdate(user_pic:String, onSuccess successCallback: ((_ userProfilePicModel: UserProfilePicModel) -> Void)?,onFailure failureCallback: ((_ errorMessage: String) -> Void)?) {
+        // Build URL
+        let url = GlobalVariables.shared.CLIENTURL + Endpoint.profilePicUrl.rawValue
+        // Set Parameters
+        let parameters: Parameters =  ["user_pic": user_pic]
+        // call API
+        self.createUserProfilePicUpdate(url, method: .post, headers: nil, parameters: parameters as? [String : String], onSuccess: {(responseObject: JSON) -> Void in
+        // Create dictionary
+        print(responseObject)
+          
+          guard let status = responseObject["status"].string, status == "Success" else{
+              failureCallback?(responseObject["msg"].string!)
+              return
+        }
+
+         let respMsg = responseObject["msg"].string
+         let respStatus = responseObject["status"].string
+         let resPro_pic = responseObject["picture_url"].string
+
+         // Create object
+         let sendToModel = UserProfilePicModel()
+         sendToModel.msg = respMsg
+         sendToModel.status = respStatus
+         sendToModel.picture_url = resPro_pic
+        },
+        onFailure: {(errorMessage: String) -> Void in
+            failureCallback?(errorMessage)
+        }
+     )
+    }
+    
+    // MARK: MAKE USER PROFILE PIC UPDATE REQUEST
+    func createUserProfilePicUpdate(_ url: String,method: HTTPMethod,headers: [String: String]?,parameters: [String:String]?,onSuccess successCallback: ((JSON) -> Void)?,onFailure failureCallback: ((String) -> Void)?)
+    {
+        manager.request(url, method: .post, parameters: parameters, encoding: JSONEncoding.default, headers: headers).responseJSON { (responseObject) -> Void in
+            print(responseObject)
+            
+            if responseObject.result.isSuccess
+            {
+                let resJson = JSON(responseObject.result.value!)
+                successCallback?(resJson)
+            }
+            
+            if responseObject.result.isFailure
+            {
+               let error : Error = responseObject.result.error!
+                failureCallback!(error.localizedDescription)
+            }
+        }
+    }
+    
+    //MARK: GET CHANGE PASSWORD RESPONSE
+    func callAPIChangePassword(user_id:String,new_password:String,old_password:String, onSuccess successCallback: ((_ changePasswordModel: ChangePasswordModel) -> Void)?,onFailure failureCallback: ((_ errorMessage: String) -> Void)?) {
+        // Build URL
+        let url = GlobalVariables.shared.CLIENTURL + Endpoint.changePasswordUrl.rawValue
+        // Set Parameters
+        let parameters: Parameters =  ["user_id": user_id,"new_password": new_password,"old_password": old_password]
+        // call API
+        self.createChangePassword(url, method: .post, headers: nil, parameters: parameters as? [String : String], onSuccess: {(responseObject: JSON) -> Void in
+        // Create dictionary
+        print(responseObject)
+          
+          guard let status = responseObject["status"].string, status == "Success" else{
+              failureCallback?(responseObject["msg"].string!)
+              return
+        }
+
+        let respMsg = responseObject["msg"].string
+        let respStatus = responseObject["status"].string
+
+        // Create object
+        let sendToModel = ChangePasswordModel()
+        sendToModel.msg = respMsg
+        sendToModel.status = respStatus
+        },
+        onFailure: {(errorMessage: String) -> Void in
+            failureCallback?(errorMessage)
+        }
+     )
+    }
+    
+    // MARK: MAKE CHANGE PASSWORD REQUEST
+    func createChangePassword(_ url: String,method: HTTPMethod,headers: [String: String]?,parameters: [String:String]?,onSuccess successCallback: ((JSON) -> Void)?,onFailure failureCallback: ((String) -> Void)?)
     {
         manager.request(url, method: .post, parameters: parameters, encoding: JSONEncoding.default, headers: headers).responseJSON { (responseObject) -> Void in
             print(responseObject)

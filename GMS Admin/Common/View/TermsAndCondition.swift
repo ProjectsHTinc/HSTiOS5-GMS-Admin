@@ -20,10 +20,11 @@ class TermsAndCondition: UIViewController {
         // Do any additional setup after loading the view.
         if (From == "terms"){
             self.title = "Terms And Condition"
+            self.pagetitle.text = "Terms And Condition"
         }
         else{
             self.title = "Privacy Policy"
-
+            self.pagetitle.text = "Privacy Policy"
         }
     }
     
