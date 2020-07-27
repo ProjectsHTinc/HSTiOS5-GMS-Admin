@@ -43,7 +43,6 @@ class UserProfile: UIViewController, ProfileDetailsView, UIImagePickerController
         genderSegment.setTitleTextAttributes([NSAttributedString.Key.foregroundColor: UIColor.white], for: .selected)
         genderSegment.setTitleTextAttributes([NSAttributedString.Key.foregroundColor: UIColor.black], for: .normal)
         genderSegment.setTitleTextAttributes([NSAttributedString.Key.font: UIFont(name: "Roboto-Regular", size: 13) as Any], for: .selected)
-
     }
     
     func startLoading() {

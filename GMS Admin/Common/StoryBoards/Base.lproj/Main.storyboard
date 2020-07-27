@@ -157,7 +157,7 @@
                                                 <color key="textColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
-                                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="admin@gms.com" placeholder="Email / Phone Number" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="6jz-fh-zne" customClass="ACFloatingTextfield" customModule="ACFloatingTextfield_Swift">
+                                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Email / Phone Number" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="6jz-fh-zne" customClass="ACFloatingTextfield" customModule="ACFloatingTextfield_Swift">
                                                 <rect key="frame" x="14" y="352" width="347" height="45"/>
                                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                 <color key="tintColor" name="AppBaseColor"/>
@@ -212,7 +212,7 @@
                                                 <color key="textColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
-                                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="123456" placeholder="Password" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="s96-Wh-bmZ" customClass="ACFloatingTextfield" customModule="ACFloatingTextfield_Swift">
+                                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Password" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="s96-Wh-bmZ" customClass="ACFloatingTextfield" customModule="ACFloatingTextfield_Swift">
                                                 <rect key="frame" x="14" y="426" width="315" height="45"/>
                                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                 <color key="tintColor" name="AppBaseColor"/>
@@ -269,7 +269,7 @@
                                                 </connections>
                                             </button>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="vAF-T6-GEs">
-                                                <rect key="frame" x="235" y="479" width="126" height="18"/>
+                                                <rect key="frame" x="237" y="479" width="124" height="18"/>
                                                 <constraints>
                                                     <constraint firstAttribute="height" constant="18" id="cYd-SZ-rad"/>
                                                 </constraints>
@@ -633,7 +633,7 @@
             <objects>
                 <viewController storyboardIdentifier="forgotPassword" modalPresentationStyle="fullScreen" id="kKV-IY-PRy" customClass="ForgotPassword" customModule="GMS_Admin" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="KRO-rh-um1">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="591"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="NdD-BC-eiN">
@@ -649,7 +649,7 @@
                                                     <constraint firstAttribute="height" constant="90" id="rpq-o2-3dm"/>
                                                 </constraints>
                                             </imageView>
-                                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="GGANESH@MAILINATOR.COM" placeholder="Email / Phone Number" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="9Sa-Lw-r7g" customClass="ACFloatingTextfield" customModule="GMS_Admin" customModuleProvider="target">
+                                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Email / Phone Number" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="9Sa-Lw-r7g" customClass="ACFloatingTextfield" customModule="GMS_Admin" customModuleProvider="target">
                                                 <rect key="frame" x="14" y="246" width="347" height="45"/>
                                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                 <color key="tintColor" name="AppBaseColor"/>

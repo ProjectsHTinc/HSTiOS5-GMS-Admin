@@ -1329,7 +1329,7 @@
                         <outlet property="userImage" destination="WPu-50-5K3" id="J8Z-Uc-bAd"/>
                         <outlet property="userLocation" destination="vjs-aM-Ogq" id="Gc9-7w-fDg"/>
                         <outlet property="userName" destination="d6J-Za-t3R" id="VTD-yu-hMZ"/>
-                        <segue destination="vxF-S3-sXH" kind="modal" identifier="logOut" id="8Gu-sa-YRM"/>
+                        <segue destination="vxF-S3-sXH" kind="push" identifier="logOut" id="8Gu-sa-YRM"/>
                     </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="1fR-5C-lmb" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>

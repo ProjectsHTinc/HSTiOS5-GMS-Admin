@@ -33,6 +33,11 @@ class Login: UIViewController  {
         //
     }
     
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        navigationController?.setNavigationBarHidden(true, animated: animated)
+    }
+    
     
     @IBAction func selectConstituency(_ sender: Any){
         
