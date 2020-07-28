@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import Alamofire
 
 class UserProfile: UIViewController, ProfileDetailsView, UIImagePickerControllerDelegate,UINavigationControllerDelegate {
 
@@ -14,8 +15,13 @@ class UserProfile: UIViewController, ProfileDetailsView, UIImagePickerController
     let presenter = ProfileDetailPresenter(profileDetailService:ProfileDetailService())
     var userData = [ProfileDetailsData]()
     
+    /*Get User Update List*/
+    let presenterUpdate = ProfileUpdatePresenter(profileUpdateService:ProfileUpdateService())
+    var profileUpdate = [ProfileUpdateData]()
+    
     var imagePicker = UIImagePickerController()
     var uploadedImage = UIImage()
+    var selectedSegmentValue = String()
 
     @IBOutlet var userImage: UIImageView!
     @IBOutlet var name: UITextField!
@@ -28,7 +34,11 @@ class UserProfile: UIViewController, ProfileDetailsView, UIImagePickerController
 
         // Do any additional setup after loading the view.
         self.callAPI()
-        
+        /*Set Delegates*/
+        self.name.delegate = self
+        self.phone.delegate = self
+        self.emailId.delegate = self
+        self.address.delegate = self
     }
     
     func callAPI (){
@@ -61,10 +71,12 @@ class UserProfile: UIViewController, ProfileDetailsView, UIImagePickerController
          let seg = gender
          if(seg == "M"){
             genderSegment.selectedSegmentIndex = 0
+            selectedSegmentValue = "M"
          }
          else
          {
             genderSegment.selectedSegmentIndex = 1
+            selectedSegmentValue = "F"
          }
          self.address.text = address
     }
@@ -133,12 +145,78 @@ class UserProfile: UIViewController, ProfileDetailsView, UIImagePickerController
              self.userImage.clipsToBounds = true
          }
          //Dismiss the UIImagePicker after selection
+         self.picUploadAPI()
          picker.dismiss(animated: true, completion: nil)
+    }
+    
+        func picUploadAPI ()
+        {
+            
+            let imgData = uploadedImage.jpegData(compressionQuality: 0.75)
+               
+            if imgData == nil
+            {
+                  //self.performSegue(withIdentifier: "back_selectPage", sender: self)
+            }
+            else
+            {
+                let functionName = "apiios/profilePictureUpload/"
+                let baseUrl = GlobalVariables.shared.CLIENTURL + functionName + GlobalVariables.shared.user_id
+                let url = URL(string: baseUrl)!
+                   
+                Alamofire.upload(multipartFormData: { multipartFormData in
+                    multipartFormData.append(imgData!, withName: "user_pic",fileName: "file.jpg", mimeType: "image/jpg")
+                },
+                 to:url)
+                { (result) in
+                    switch result {
+                    case .success(let upload, _, _):
+                           upload.uploadProgress(closure: { (progress) in
+                               print("Upload Progress: \(progress.fractionCompleted)")
+                           })
+                           upload.responseJSON { response in
+                            print(response.result.value as Any)
+                              //    ActivityIndicator().hideActivityIndicator(uiView: self.view)
+                            let JSON = response.result.value as? [String: Any]
+                            let msg = JSON?["msg"] as? String
+                            let status = JSON?["status"] as? String
+                            GlobalVariables.shared.user_Image = (JSON?["picture_url"] as? String)!
+                            print(msg!,status!)
+                            
+                        }
+                    case .failure(let encodingError):
+                        print(encodingError)
+                    }
+                 }
+               }
+           }
+    
+    @IBAction func saveProfile(_ sender: Any)
+    {
+        self.updateAPI(name: self.name.text!, phone: self.phone.text!, emailId: self.emailId.text!, genderSegment: self.selectedSegmentValue, address: self.address.text!)
     }
     
     @IBAction func genderSegement(_ sender: Any) {
         
+        if (genderSegment.selectedSegmentIndex == 0)
+        {
+            genderSegment.selectedSegmentIndex = 0
+            selectedSegmentValue = "M"
+        }
+        else
+        {
+            genderSegment.selectedSegmentIndex = 1
+            selectedSegmentValue = "F"
+
+        }
     }
+    
+    func updateAPI (name:String,phone:String,emailId:String,genderSegment:String,address:String)
+    {
+        presenterUpdate.attachView(view: self)
+        presenterUpdate.getProfileUpdate(user_id: GlobalVariables.shared.user_id, name: name, address: address, phone: phone, email: emailId, gender: genderSegment)
+    }
+    
     /*
     // MARK: - Navigation
 
@@ -149,4 +227,44 @@ class UserProfile: UIViewController, ProfileDetailsView, UIImagePickerController
     }
     */
 
+}
+
+extension UserProfile : ProfileUpdatesView, UITextFieldDelegate, UITextViewDelegate{
+    
+    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+        if (textField == self.name){
+            self.phone.becomeFirstResponder()
+        }
+        else if (textField == self.phone){
+            self.emailId.becomeFirstResponder()
+        }
+        else if (textField == self.emailId){
+            self.address.becomeFirstResponder()
+        }
+
+        return true
+    }
+    
+    func startLoadingUpdate() {
+        //
+    }
+    
+    func finishLoadingUpdate() {
+        //
+    }
+    
+    func setProfileUpdate(msg: String, status: String) {
+        if  status == "Success"{
+            AlertController.shared.showAlert(targetVc: self, title: Globals.alertTitle, message: msg, complition: {
+            })
+        }
+    }
+    
+    func setEmptyUpdate(errorMessage: String) {
+         AlertController.shared.showAlert(targetVc: self, title: Globals.alertTitle, message: errorMessage, complition: {
+         })
+    }
+    
+    
+    
 }

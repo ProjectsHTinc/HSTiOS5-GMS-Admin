@@ -269,7 +269,7 @@
                                                 </connections>
                                             </button>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="vAF-T6-GEs">
-                                                <rect key="frame" x="237" y="479" width="124" height="18"/>
+                                                <rect key="frame" x="235" y="479" width="126" height="18"/>
                                                 <constraints>
                                                     <constraint firstAttribute="height" constant="18" id="cYd-SZ-rad"/>
                                                 </constraints>
@@ -633,7 +633,7 @@
             <objects>
                 <viewController storyboardIdentifier="forgotPassword" modalPresentationStyle="fullScreen" id="kKV-IY-PRy" customClass="ForgotPassword" customModule="GMS_Admin" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="KRO-rh-um1">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="591"/>
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="NdD-BC-eiN">
