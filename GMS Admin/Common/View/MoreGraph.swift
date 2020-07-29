@@ -28,15 +28,15 @@ class MoreGraph: UIViewController, ChartViewDelegate {
         self.SetPieChart()
         /*Line Chart*/
         self.setLineChart()
+        self.addCustomizedBackBtn(title:"  Graph")
     }
     
     func SetPieChart(){
          // This will align label text to top right corner
-        self.customizeChart(dataPoints: self.grievanceName, values: self.grievance)
+         self.customizeChart(dataPoints: self.grievanceName, values: self.grievance)
     }
     
     func customizeChart(dataPoints: [String], values: [Double]) {
-      
           // 1. Set ChartDataEntry
           var dataEntries: [ChartDataEntry] = []
           for i in 0..<dataPoints.count {
@@ -66,6 +66,8 @@ class MoreGraph: UIViewController, ChartViewDelegate {
           pirechartView.backgroundColor = UIColor.white
           pirechartView.drawEntryLabelsEnabled = false
           pirechartView.legend.textColor = UIColor.black
+          pirechartView.noDataText = "You need to provide data"
+          pirechartView.noDataTextColor = UIColor.black
 
     }
     
@@ -79,7 +81,6 @@ class MoreGraph: UIViewController, ChartViewDelegate {
         for i in 0 ..< months.count {
             yVals1.append(ChartDataEntry(x:Double(i) , y:dollar[i]))
         }
-
         let set1: LineChartDataSet = LineChartDataSet(entries: yVals1, label: "")
         set1.axisDependency = .left // Line will correlate with left axis values
         set1.setColor(UIColor(red: (219/255), green: (201/255), blue: (255/255),alpha: 1.0))
@@ -89,27 +90,19 @@ class MoreGraph: UIViewController, ChartViewDelegate {
         // set1.fillColor = UIColor.blue
         // set1.highlightColor = UIColor.black
         set1.drawCircleHoleEnabled = false
-
         //3 - create an array to store our LineChartDataSets
         var dataSets : [LineChartDataSet] = [LineChartDataSet]()
         dataSets.append(set1)
-
         //4 - pass our months in for our x-axis label value along with our dataSets
         let data : LineChartData = LineChartData(dataSets: dataSets)
         linechartView.xAxis.valueFormatter = IndexAxisValueFormatter(values: months)
-
         // data.setValueTextColor(UIColor.white)
-
         //5 - finally set our data
         self.linechartView.data = data
-
         linechartView.xAxis.granularity = 1 //  to show intervals
         linechartView.xAxis.wordWrapEnabled = true
-
         linechartView.xAxis.labelFont = UIFont.boldSystemFont(ofSize: 8.0)
-
         linechartView.xAxis.labelPosition = .bottom // lebel position on graph
-
         linechartView.legend.form = .line // indexing shape
         linechartView.xAxis.drawGridLinesEnabled = false // show gird on graph
         linechartView.xAxis.labelTextColor = UIColor.darkGray
@@ -123,7 +116,8 @@ class MoreGraph: UIViewController, ChartViewDelegate {
         linechartView.scaleYEnabled = false
         linechartView.animate(yAxisDuration: 1.5, easingOption: .easeInOutQuart)
         linechartView.backgroundColor = UIColor.white
-        
+        linechartView.noDataText = "You need to provide data"
+        linechartView.noDataTextColor = UIColor.black
     }
     
 //    func setChart(dataPoints: [String], values: [Double]) {

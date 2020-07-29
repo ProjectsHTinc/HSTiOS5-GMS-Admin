@@ -33,15 +33,14 @@ class SearchPresenter {
       }
       
       func attachView(view:SearchView) {
-          searchView = view
+           searchView = view
       }
       
       func detachView() {
-          searchView = nil
+           searchView = nil
       }
       
       func getSearch(keyword:String, offset:String, rowcount:String) {
-          
           self.searchView?.startLoading()
           searchService.callAPISearch(
               keyword: keyword, offset: offset, rowcount: rowcount, onSuccess: { (search) in
@@ -57,7 +56,6 @@ class SearchPresenter {
               onFailure: { (errorMessage) in
                   self.searchView?.finishLoading()
                   self.searchView?.setEmpty(errorMessage: errorMessage)
-
               }
           )
       }

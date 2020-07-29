@@ -39,6 +39,9 @@ class UserProfile: UIViewController, ProfileDetailsView, UIImagePickerController
         self.phone.delegate = self
         self.emailId.delegate = self
         self.address.delegate = self
+        self.addCustomizedBackBtn(title:"  Edit Profile")
+        self.hideKeyboardWhenTappedAround()
+
     }
     
     func callAPI (){
@@ -245,6 +248,40 @@ extension UserProfile : ProfileUpdatesView, UITextFieldDelegate, UITextViewDeleg
         return true
     }
     
+    func textField(_ textField: UITextField, shouldChangeCharactersIn range: NSRange, replacementString string: String) -> Bool
+    {
+        if name.isFirstResponder
+        {
+            let maxLength = 30
+            let currentString: NSString = name.text! as NSString
+            let newString: NSString =
+                currentString.replacingCharacters(in: range, with: string) as NSString
+            return newString.length <= maxLength
+        }
+        else if phone.isFirstResponder
+        {
+            let maxLength = 30
+            let currentString: NSString = phone.text! as NSString
+            let newString: NSString = currentString.replacingCharacters(in: range, with: string) as NSString
+            return newString.length <= maxLength
+        }
+        else if emailId.isFirstResponder
+        {
+            let maxLength = 30
+            let currentString: NSString = emailId.text! as NSString
+            let newString: NSString = currentString.replacingCharacters(in: range, with: string) as NSString
+            return newString.length <= maxLength
+        }
+        else
+        {
+            let maxLength = 240
+            let currentString: NSString = address.text! as NSString
+            let newString: NSString = currentString.replacingCharacters(in: range, with: string) as NSString
+            return newString.length <= maxLength
+        }
+
+    }
+    
     func startLoadingUpdate() {
         //
     }
@@ -256,6 +293,7 @@ extension UserProfile : ProfileUpdatesView, UITextFieldDelegate, UITextViewDeleg
     func setProfileUpdate(msg: String, status: String) {
         if  status == "Success"{
             AlertController.shared.showAlert(targetVc: self, title: Globals.alertTitle, message: msg, complition: {
+                self.navigationController?.popViewController(animated: true)
             })
         }
     }

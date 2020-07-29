@@ -28,10 +28,35 @@ class MeetingDetail: UIViewController {
         self.addCustomizedBackBtn(title:"  Details of Meeting")
         self.meetingTitle.text = meeting_Title
         self.meetingDiscrption.text = meeting_Discrption
-        self.meetingDate.text =  String(format: "%@ %@", "Date :",meeting_Date)
+        let formatted = self.formattedDateFromString(dateString: meeting_Date, withFormat: "dd-MM-YYYY")
+        self.meetingDate.text =  String(format: "%@ %@", "Date :",formatted!)
         self.meetingStatus.text = meeting_Status
+        
+        if self.meetingStatus.text == "REQUESTED" || self.meetingStatus.text == "PROCESSING"
+        {
+            self.meetingStatus.textColor =  UIColor(red: 253.0/255, green: 166.0/255, blue: 68.0/255, alpha: 1.0)
+
+        }
+        else{
+            self.meetingStatus.textColor =  UIColor(red: 112.0/255, green: 173.0/255, blue: 71.0/255, alpha: 0.6)
+        }
     }
     
+    func formattedDateFromString(dateString: String, withFormat format: String) -> String? {
+
+        let inputFormatter = DateFormatter()
+        inputFormatter.dateFormat = "yyyy-MM-dd"
+
+        if let date = inputFormatter.date(from: dateString) {
+
+            let outputFormatter = DateFormatter()
+          outputFormatter.dateFormat = format
+
+            return outputFormatter.string(from: date)
+        }
+
+        return nil
+    }
 
     /*
     // MARK: - Navigation

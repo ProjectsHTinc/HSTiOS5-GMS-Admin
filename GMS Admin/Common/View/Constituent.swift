@@ -53,6 +53,7 @@ class Constituent: UIViewController, PaguthiView {
     
     func callAPIPaguthi ()
     {
+        print(GlobalVariables.shared.constituent_Id)
         Paguthipresenter.attachView(view: self)
         Paguthipresenter.getPaguthi(constituency_id: GlobalVariables.shared.constituent_Id)
     }
@@ -105,10 +106,7 @@ class Constituent: UIViewController, PaguthiView {
         self.callAPISearch(constituency_id: self.selectedconstitunecyId,offset: "0",rowcount: "50")
     }
     
-
-    
     // MARK: - Navigation
-
     // In a storyboard-based application, you will often want to do a little preparation before navigation
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         // Get the new view controller using segue.destination.
@@ -119,11 +117,11 @@ class Constituent: UIViewController, PaguthiView {
             vc.keyWord = sender as! String
         }
         else if (segue.identifier == "to_constituentDetail"){
-            _ = segue.destination as! ConstituentDetail
+            let vc = segue.destination as! ConstituentDetail
+            vc.selectedconstitunecyId = self.selectedconstitunecyId
+            
         }
     }
-    
-
 }
 
 extension Constituent: UISearchBarDelegate, UITableViewDelegate, UITableViewDataSource , ListConstituencyView
@@ -152,7 +150,7 @@ extension Constituent: UISearchBarDelegate, UITableViewDelegate, UITableViewData
         cell.username.text = constituent.full_name
         cell.mobileNumber.text = constituent.mobile_no
         cell.serialNumber.text = String(format: "%@ %@", "Serila number - ",constituent.serial_no)
-        cell.userImage.sd_setImage(with: URL(string: Globals.imageUrl + constituent.profile_pic), placeholderImage: UIImage(named: "PhUserImage.png"))
+        cell.userImage.sd_setImage(with: URL(string: Globals.imageUrl + constituent.profile_pic), placeholderImage: UIImage(named: "placeholder.png"))
         return cell
     }
     
@@ -175,7 +173,7 @@ extension Constituent: UISearchBarDelegate, UITableViewDelegate, UITableViewData
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         let constituent = listConstituent[indexPath.row]
-        GlobalVariables.shared.constituent_Id = constituent.id
+        self.selectedconstitunecyId = constituent.id
         self.performSegue(withIdentifier: "to_constituentDetail", sender: self)
     }
     
@@ -189,9 +187,10 @@ extension Constituent: UISearchBarDelegate, UITableViewDelegate, UITableViewData
     
     func setEmptyListConstituency(errorMessage: String) {
          AlertController.shared.showAlert(targetVc: self, title: Globals.alertTitle, message: errorMessage, complition: {
-         //self.dismiss(animated: false, completion: nil)
-        })
-         //tableView?.isHidden = true
+         })
+         print(GlobalVariables.shared.constituent_Count)
+         self.constituentCount.text =   String(format: "%@ %@", "0","Constituent")
+         tableView?.isHidden = true
     }
     
 //    func setConstituency(constituencyname: [constituencyData]) {
@@ -214,13 +213,18 @@ extension Constituent: UISearchBarDelegate, UITableViewDelegate, UITableViewData
     func setPaguthi(paguthi: [PaguthiData]) {
         
          paguthiData = paguthi
+         self.constituencyName.removeAll()
+         self.constituencyID.removeAll()
          for item in paguthiData
          {
             let constituentName = item.paguthi_name
-            let constituentId = item.constituency_id
+            let constituentId = item.id
             self.constituencyName.append(constituentName)
             self.constituencyID.append(constituentId)
          }
+        
+        self.constituencyName.insert("ALL", at: 0)
+        self.constituencyID.insert("ALL", at: 0)
 
          self.setUpSegementControl()
          self.selectedconstitunecyId = String (self.constituencyID[0])
@@ -230,7 +234,8 @@ extension Constituent: UISearchBarDelegate, UITableViewDelegate, UITableViewData
     }
     
     func setEmpty(errorMessage: String) {
-        //
+         AlertController.shared.showAlert(targetVc: self, title: Globals.alertTitle, message: errorMessage, complition: {
+         })
     }
     
     func setConstituent(constituentname: [ListConstituencyData]) {

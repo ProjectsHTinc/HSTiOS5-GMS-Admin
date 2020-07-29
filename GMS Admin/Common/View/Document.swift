@@ -22,7 +22,8 @@ class Document: UIViewController {
     var searchBar = UISearchController()
     let documentInteractionController = UIDocumentInteractionController()
 
-    
+    var selectedconstitunecyId = String()
+
     @IBOutlet var segmentControl: UISegmentedControl!
     @IBOutlet var tableView: UITableView!
     override func viewDidLoad() {
@@ -44,6 +45,8 @@ class Document: UIViewController {
         self.callAPIConsDoc ()
         /*Set delegate for Document preview*/
         documentInteractionController.delegate = self
+        self.addCustomizedBackBtn(title:"  Constituent documents")
+
     }
     
     @objc public override func rightButtonClick()
@@ -84,13 +87,13 @@ class Document: UIViewController {
     func callAPIConsDoc ()
     {
         ConPresenter.attachView(view: self)
-        ConPresenter.getConsDoc(constituent_id: GlobalVariables.shared.constituent_Id)
+        ConPresenter.getConsDoc(constituent_id: selectedconstitunecyId)
     }
     
     func callAPIGriDoc ()
     {
         GriPresenter.attachView(view: self)
-        GriPresenter.getGriDoc(constituent_id: GlobalVariables.shared.constituent_Id)
+        GriPresenter.getGriDoc(constituent_id: selectedconstitunecyId)
     }
     
     /*

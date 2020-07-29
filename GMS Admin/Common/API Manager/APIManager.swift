@@ -348,12 +348,10 @@ class APIManager: NSObject {
         self.createRequestSearch(url, method: .post, headers: nil, parameters: parameters as? [String : String], onSuccess: {(responseObject: JSON) -> Void in
         // Create dictionary
         print(responseObject)
-          
-          guard let msg = responseObject["msg"].string, msg == "Search Result" else{
+          guard let status = responseObject["status"].string, status == "Success" else{
               failureCallback?(responseObject["msg"].string!)
               return
         }
-
         if let responseDict = responseObject["search_result"].arrayObject
           {
                 let searchModel = responseDict as! [[String:AnyObject]]
@@ -1922,6 +1920,9 @@ class APIManager: NSObject {
               return
         }
 
+        GlobalVariables.shared.meetingAllCount = responseObject["result_count"].int!
+
+            
         if let responseDict = responseObject["staff_report"].arrayObject
           {
                 let reportStaffModel = responseDict as! [[String:AnyObject]]

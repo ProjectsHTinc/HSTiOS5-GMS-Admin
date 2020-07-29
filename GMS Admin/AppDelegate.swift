@@ -21,6 +21,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         IQKeyboardManager.shared.enable = true
         IQKeyboardManager.shared.previousNextDisplayMode = .alwaysHide
         IQKeyboardManager.shared.toolbarDoneBarButtonItemText = "Close"
+        IQKeyboardManager.shared.enableAutoToolbar = false
         application.registerForRemoteNotifications()
     
         return true

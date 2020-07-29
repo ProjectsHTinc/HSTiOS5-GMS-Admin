@@ -93,6 +93,7 @@
                                                     <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Select Area" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="5y2-NE-ZQd">
                                                         <rect key="frame" x="6" y="7" width="311" height="29"/>
                                                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                        <color key="tintColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                         <constraints>
                                                             <constraint firstAttribute="width" constant="311" id="3B9-Dz-VMX"/>
                                                             <constraint firstAttribute="height" constant="29" id="JH7-eI-jxt"/>
@@ -777,11 +778,22 @@
                     <navigationItem key="navigationItem" id="pun-fN-LeF"/>
                     <connections>
                         <outlet property="tableView" destination="DiB-h7-JNV" id="mS8-Z8-ls0"/>
+                        <segue destination="qmP-Mk-w5R" kind="show" identifier="to_constituentDetail" id="nUC-oE-LQi"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="thK-Ny-GNP" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="-95.200000000000003" y="942.27886056971522"/>
+        </scene>
+        <!--constituentDetail-->
+        <scene sceneID="Vtw-ez-PcF">
+            <objects>
+                <viewControllerPlaceholder storyboardName="Constituent" referencedIdentifier="constituentDetail" id="qmP-Mk-w5R" sceneMemberID="viewController">
+                    <navigationItem key="navigationItem" id="hG3-FD-1eT"/>
+                </viewControllerPlaceholder>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Pnt-ZO-AeP" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-97" y="1392"/>
         </scene>
         <!--More Graph-->
         <scene sceneID="zHf-VZ-Emv">
@@ -951,7 +963,7 @@
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="WPu-50-5K3">
-                                                    <rect key="frame" x="16" y="11" width="90" height="90"/>
+                                                    <rect key="frame" x="16" y="0.0" width="90" height="90"/>
                                                     <constraints>
                                                         <constraint firstAttribute="width" constant="90" id="b9G-IP-Vc6"/>
                                                         <constraint firstAttribute="height" constant="90" id="pBG-vd-rk5"/>
@@ -962,10 +974,10 @@
                                                         </userDefinedRuntimeAttribute>
                                                     </userDefinedRuntimeAttributes>
                                                 </imageView>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Name" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="d6J-Za-t3R">
-                                                    <rect key="frame" x="16" y="108" width="309" height="21"/>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Name" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="d6J-Za-t3R">
+                                                    <rect key="frame" x="16" y="96" width="309" height="43"/>
                                                     <constraints>
-                                                        <constraint firstAttribute="height" constant="21" id="4hZ-ni-hQs"/>
+                                                        <constraint firstAttribute="height" constant="43" id="4hZ-ni-hQs"/>
                                                         <constraint firstAttribute="width" constant="309" id="Xnh-S3-HeM"/>
                                                     </constraints>
                                                     <fontDescription key="fontDescription" name="Roboto-Medium" family="Roboto" pointSize="17"/>
@@ -973,7 +985,7 @@
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Singanallur, Coimbatore" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="vjs-aM-Ogq">
-                                                    <rect key="frame" x="16" y="135" width="309" height="21"/>
+                                                    <rect key="frame" x="16" y="140" width="309" height="21"/>
                                                     <constraints>
                                                         <constraint firstAttribute="width" constant="309" id="HGg-WL-1KU"/>
                                                         <constraint firstAttribute="height" constant="21" id="PSs-Wq-91e"/>
@@ -985,11 +997,11 @@
                                             </subviews>
                                             <color key="backgroundColor" name="AppBaseColor"/>
                                             <constraints>
-                                                <constraint firstItem="vjs-aM-Ogq" firstAttribute="top" secondItem="d6J-Za-t3R" secondAttribute="bottom" constant="6" id="Ii6-va-Tdm"/>
+                                                <constraint firstItem="vjs-aM-Ogq" firstAttribute="top" secondItem="d6J-Za-t3R" secondAttribute="bottom" constant="1" id="Ii6-va-Tdm"/>
                                                 <constraint firstItem="d6J-Za-t3R" firstAttribute="leading" secondItem="Tpq-Os-HZ0" secondAttribute="leading" constant="16" id="RZd-QB-wff"/>
                                                 <constraint firstItem="WPu-50-5K3" firstAttribute="leading" secondItem="Tpq-Os-HZ0" secondAttribute="leading" constant="16" id="UY9-za-7Co"/>
-                                                <constraint firstItem="WPu-50-5K3" firstAttribute="top" secondItem="Tpq-Os-HZ0" secondAttribute="top" constant="11" id="bkO-rz-U4r"/>
-                                                <constraint firstItem="d6J-Za-t3R" firstAttribute="top" secondItem="WPu-50-5K3" secondAttribute="bottom" constant="7" id="evK-Tf-VRN"/>
+                                                <constraint firstItem="WPu-50-5K3" firstAttribute="top" secondItem="Tpq-Os-HZ0" secondAttribute="top" id="bkO-rz-U4r"/>
+                                                <constraint firstItem="d6J-Za-t3R" firstAttribute="top" secondItem="WPu-50-5K3" secondAttribute="bottom" constant="6" id="evK-Tf-VRN"/>
                                                 <constraint firstItem="vjs-aM-Ogq" firstAttribute="leading" secondItem="Tpq-Os-HZ0" secondAttribute="leading" constant="16" id="oCc-H6-1Vh"/>
                                             </constraints>
                                         </tableViewCellContentView>

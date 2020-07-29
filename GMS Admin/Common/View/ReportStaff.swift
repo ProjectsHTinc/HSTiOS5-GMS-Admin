@@ -30,6 +30,7 @@ class ReportStaff: UIViewController, ReportStaffView ,UITableViewDelegate, UITab
              })
              return
         }
+        self.addCustomizedBackBtn(title:"  Staff report")
         self.callAPI()
     }
     
@@ -49,6 +50,7 @@ class ReportStaff: UIViewController, ReportStaffView ,UITableViewDelegate, UITab
     
     func setReportStaff(reportstaff: [ReportStaffData]) {
         reportData = reportstaff
+        self.reportCount.text = String(GlobalVariables.shared.meetingAllCount) + " Staff"
         self.tableView.isHidden = false
         self.tableView.reloadData()
     }
@@ -56,6 +58,7 @@ class ReportStaff: UIViewController, ReportStaffView ,UITableViewDelegate, UITab
     func setEmpty(errorMessage: String) {
         AlertController.shared.showAlert(targetVc: self, title: Globals.alertTitle, message: errorMessage, complition: {
         })
+        self.reportCount.text = "0" + " Staff"
         self.tableView.isHidden = true
     }
     
@@ -66,6 +69,7 @@ class ReportStaff: UIViewController, ReportStaffView ,UITableViewDelegate, UITab
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "cell", for: indexPath) as! ReportStaffCell
         let data = reportData[indexPath.row]
+        cell.userName.text = data.full_name
         cell.total.text = data.total
         cell.active.text = data.active
         cell.inactive.text = data.inactive

@@ -38,6 +38,7 @@ class GreivanceAllSearch: UIViewController, GreivancesAllView,  UITableViewDeleg
         super.viewDidLoad()
 
         // Do any additional setup after loading the view.
+        self.addCustomizedBackBtn(title:"  Grievances Search")
         self.tableView.backgroundColor = UIColor.white
         guard Reachability.isConnectedToNetwork() == true else {
               AlertController.shared.offlineAlert(targetVc: self, complition: {
@@ -88,7 +89,8 @@ class GreivanceAllSearch: UIViewController, GreivancesAllView,  UITableViewDeleg
         cell.greivanceName.text = data.grievance_name
         cell.subCategoeryName.text = data.sub_category_name
         cell.status.text = data.status
-        cell.date.text = data.grievance_date
+        let formatedDate = self.formattedDateFromString(dateString: data.grievance_date, withFormat: "dd-MM-YYYY")
+        cell.date.text = formatedDate
         
         if cell.status.text == "PROCESSING"{
             cell.statusBgView.backgroundColor = UIColor(red: 253/255, green: 166/255, blue: 68/255, alpha: 1.0)
@@ -116,21 +118,37 @@ class GreivanceAllSearch: UIViewController, GreivancesAllView,  UITableViewDeleg
        }
     }
 
-        func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-            let data = greivanceAllData[indexPath.row]
-            self._place = data.paguthi_name
-            self._seekerType = data.seeker_info
-            self._petitionNumber = data.petition_enquiry_no
-            self._refNumber = data.reference_note
-            self._greivanceName = data.grievance_name
-            self._subcat = data.sub_category_name
-            self._desc = data.description
-            self._createdon = data.created_at
-            self._updatedOn = data.updated_at
-            self._status = data.status
-            self.greivanceId = data.id
-            self.performSegue(withIdentifier: "to_GreivancesAllDetail", sender: self)
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        let data = greivanceAllData[indexPath.row]
+        self._place = data.paguthi_name
+        self._seekerType = data.seeker_info
+        self._petitionNumber = data.petition_enquiry_no
+        self._refNumber = data.reference_note
+        self._greivanceName = data.grievance_name
+        self._subcat = data.sub_category_name
+        self._desc = data.description
+        self._createdon = data.created_at
+        self._updatedOn = data.updated_at
+        self._status = data.status
+        self.greivanceId = data.id
+        self.performSegue(withIdentifier: "to_GreivancesAllDetail", sender: self)
+    }
+    
+    func formattedDateFromString(dateString: String, withFormat format: String) -> String? {
+
+        let inputFormatter = DateFormatter()
+        inputFormatter.dateFormat = "yyyy-MM-dd"
+
+        if let date = inputFormatter.date(from: dateString) {
+
+            let outputFormatter = DateFormatter()
+          outputFormatter.dateFormat = format
+
+            return outputFormatter.string(from: date)
         }
+
+        return nil
+    }
     
 
     

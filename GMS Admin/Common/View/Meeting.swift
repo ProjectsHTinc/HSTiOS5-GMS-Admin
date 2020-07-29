@@ -13,6 +13,7 @@ class Meeting: UIViewController {
     let meetingPresener = MeetingPresenter(meetingService: MeetingService())
     var meetingeData = [MeetingData]()
     
+    var selectedconstitunecyId = String()
     var meeting_Title = String()
     var meeting_Discrption = String()
     var meeting_Date = String()
@@ -63,7 +64,7 @@ class Meeting: UIViewController {
     func callAPI(offset:String,rowcount:String)
     {
         meetingPresener.attachView(view: self)
-        meetingPresener.getMeeting(constituency_id: GlobalVariables.shared.constituent_Id, offset: offset, rowcount: rowcount)
+        meetingPresener.getMeeting(constituency_id: selectedconstitunecyId, offset: offset, rowcount: rowcount)
     }
     
     
@@ -84,7 +85,6 @@ class Meeting: UIViewController {
 
         }
     }
-    
 
 }
 
@@ -99,7 +99,8 @@ extension Meeting: UITableViewDelegate,UITableViewDataSource
         let cell = tableView.dequeueReusableCell(withIdentifier: "cell", for: indexPath) as! MeetingCell
         let data = meetingeData[indexPath.row]
         cell.meetingTitle.text = data.meeting_title
-        cell.meetingdate.text = data.meeting_date
+        let formatedDate = self.formattedDateFromString(dateString: data.meeting_date, withFormat: "dd-MM-YYYY")
+        cell.meetingdate.text = formatedDate
         cell.meetingStatus.text = data.meeting_status
         
         if cell.meetingStatus.text == "REQUESTED" || cell.meetingStatus.text == "PROCESSING"
@@ -138,8 +139,6 @@ extension Meeting: UITableViewDelegate,UITableViewDataSource
         }
     }
     
-
-    
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         let data = meetingeData[indexPath.row]
         self.meeting_Title = data.meeting_title
@@ -149,6 +148,21 @@ extension Meeting: UITableViewDelegate,UITableViewDataSource
         self.performSegue(withIdentifier: "to_MeetingDetails", sender: self)
     }
     
+    func formattedDateFromString(dateString: String, withFormat format: String) -> String? {
+
+        let inputFormatter = DateFormatter()
+        inputFormatter.dateFormat = "yyyy-MM-dd"
+
+        if let date = inputFormatter.date(from: dateString) {
+
+            let outputFormatter = DateFormatter()
+          outputFormatter.dateFormat = format
+
+            return outputFormatter.string(from: date)
+        }
+
+        return nil
+    }
 }
 
 extension Meeting: MeetingView

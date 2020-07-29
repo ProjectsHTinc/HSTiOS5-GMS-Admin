@@ -36,6 +36,7 @@ class ReportMeeting: UIViewController {
              })
              return
         }
+        self.addCustomizedBackBtn(title:"  Meeting report")
         /*Right Navigation Bar*/
         self.addrightButton(bg_ImageName:"ConstituentSearch")
         self.keyword = "no"

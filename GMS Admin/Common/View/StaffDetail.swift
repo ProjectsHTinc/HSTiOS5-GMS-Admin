@@ -37,6 +37,8 @@ class StaffDetail: UIViewController, StaffDetailView {
              return
         }
         self.callAPIStaffDetail ()
+        self.addCustomizedBackBtn(title:"  Staff details")
+
     }
     
     func callAPIStaffDetail ()

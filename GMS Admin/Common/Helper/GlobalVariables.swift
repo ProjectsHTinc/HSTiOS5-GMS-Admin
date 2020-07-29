@@ -29,6 +29,10 @@ class GlobalVariables: NSObject {
     var profGrivance = String()
     var staffCount = Int()
     var result_count = Int()
+    var constituent_MemberCount = String()
+    var totalMeetingsCount = String()
+    var totalGrievancesCount = String()
+    var constituentInteractionCount = String()
 
 
 }

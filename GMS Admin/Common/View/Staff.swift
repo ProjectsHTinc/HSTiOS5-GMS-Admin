@@ -95,7 +95,7 @@ extension Staff : StaffView, UITableViewDelegate, UITableViewDataSource {
         cell.mail.text = staff.email_id
         cell.location.text = staff.paguthi_name
         cell.status.text = staff.status
-        cell.profPic.sd_setImage(with: URL(string: Globals.userImgUrl + staff.profile_pic), placeholderImage: UIImage(named: "PhUserImage.png"))
+        cell.profPic.sd_setImage(with: URL(string: Globals.userImgUrl + staff.profile_pic), placeholderImage: UIImage(named: "placeholder.png"))
 
         if cell.status.text == "ACTIVE"{
             cell.status.textColor = UIColor(red: 106/255, green: 168/255, blue: 79/255, alpha: 1.0)

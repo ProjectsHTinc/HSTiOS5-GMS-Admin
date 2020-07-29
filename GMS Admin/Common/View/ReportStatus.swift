@@ -43,6 +43,7 @@ class ReportStatus: UIViewController {
     var selectedFromDate = Date()
     var selectedToDate = Date()
 
+    @IBOutlet var pageTitle: UILabel!
     @IBOutlet var statusHeight: NSLayoutConstraint!
     @IBOutlet var paguthiHeight: NSLayoutConstraint!
     @IBOutlet var reportImageView: UIImageView!
@@ -54,30 +55,40 @@ class ReportStatus: UIViewController {
     @IBOutlet var downArrowPaguthi: UIImageView!
     override func viewDidLoad() {
         super.viewDidLoad()
-
         // Do any additional setup after loading the view.
+        /*Tap anywhere to hide keypad*/
+        self.hideKeyboardWhenTappedAround()
+        self.pickerView.selectRow(0, inComponent: 0, animated: false)
         if (from == "status"){
+            self.pageTitle.text = "Status"
+            self.addCustomizedBackBtn(title:"  Status report")
             self.reportImageView.image = UIImage(named: "ReportStatus")
-            self.statusArr = ["ALL","REQUESTED","COMPLETED"]
+            self.statusArr = ["ALL","REQUEST","COMPLETED"]
         }
         else if (from == "categoery"){
+            self.pageTitle.text = "Category"
+            self.addCustomizedBackBtn(title:"  Category report")
             self.reportImageView.image = UIImage(named: "ReportCategoery")
             status.attributedPlaceholder =
             NSAttributedString(string: "Select Categoery", attributes: [NSAttributedString.Key.foregroundColor: UIColor(red: 188 / 255, green: 188 / 255, blue: 188 / 255, alpha: 1.0)])
-            self.Cate = ["ALL","1"]
+            //self.Cate = ["ALL","1"]
             self.downArrowPaguthi.isHidden = true
             self.paguthiHeight.constant = 0
 
         }
         else if (from == "subCate"){
+            self.pageTitle.text = "Sub category"
+            self.addCustomizedBackBtn(title:"  Sub category report")
             self.reportImageView.image = UIImage(named:"ReportSubcat")
             status.attributedPlaceholder =
             NSAttributedString(string: "  Select Sub Categoery", attributes: [NSAttributedString.Key.foregroundColor: UIColor(red: 188 / 255, green: 188 / 255, blue: 188 / 255, alpha: 1.0)])
-            self.subCat = ["ALL","1"]
+            //self.subCat = ["ALL","1"]
             self.downArrowPaguthi.isHidden = true
             self.paguthiHeight.constant = 0
         }
         else if (from == "location"){
+            self.pageTitle.text = "Location"
+            self.addCustomizedBackBtn(title:"  Location report")
             self.reportImageView.image = UIImage(named: "ReportLocation")
             status.attributedPlaceholder =
             NSAttributedString(string: "Select Location", attributes: [NSAttributedString.Key.foregroundColor: UIColor(red: 188 / 255, green: 188 / 255, blue: 188 / 255, alpha: 1.0)])
@@ -85,6 +96,8 @@ class ReportStatus: UIViewController {
             self.paguthiHeight.constant = 0
         }
         else if (from == "meeting"){
+            self.pageTitle.text = "Meeting"
+            self.addCustomizedBackBtn(title:"  Meeting report")
             self.reportImageView.image = UIImage(named: "ReportMeeting")
             self.downArrowStatus.isHidden = true
             self.downArrowPaguthi.isHidden = true
@@ -92,6 +105,8 @@ class ReportStatus: UIViewController {
             self.paguthiHeight.constant = 0
         }
         else if (from == "staff"){
+            self.pageTitle.text = "Staff"
+            self.addCustomizedBackBtn(title:"  Staff report")
             self.reportImageView.image = UIImage(named: "ReportStaff")
             self.downArrowStatus.isHidden = true
             self.downArrowPaguthi.isHidden = true
@@ -102,7 +117,6 @@ class ReportStatus: UIViewController {
         self.showDatePicker()
         /*SetUp PickerView*/
         self.createPickerView()
-
         guard Reachability.isConnectedToNetwork() == true else {
               AlertController.shared.offlineAlert(targetVc: self, complition: {
                 //Custom action code
@@ -142,15 +156,18 @@ class ReportStatus: UIViewController {
     func showDatePicker(){
        //Formate Date
        datePicker.datePickerMode = .date
+       datePicker.backgroundColor = UIColor.white
+       datePicker.setValue(UIColor.black, forKeyPath: "textColor")
 
       //ToolBar
       let toolbar = UIToolbar();
       toolbar.sizeToFit()
+      toolbar.backgroundColor = UIColor.white
+      toolbar.tintColor = UIColor(red: 45/255.0, green: 148/255.0, blue: 235/255.0, alpha: 1.0)
       let doneButton = UIBarButtonItem(title: "Done", style: .plain, target: self, action: #selector(donedatePicker));
-        let spaceButton = UIBarButtonItem(barButtonSystemItem: UIBarButtonItem.SystemItem.flexibleSpace, target: nil, action: nil)
+      let spaceButton = UIBarButtonItem(barButtonSystemItem: UIBarButtonItem.SystemItem.flexibleSpace, target: nil, action: nil)
       let cancelButton = UIBarButtonItem(title: "Cancel", style: .plain, target: self, action: #selector(cancelDatePicker));
-
-     toolbar.setItems([doneButton,spaceButton,cancelButton], animated: false)
+     toolbar.setItems([cancelButton,spaceButton,doneButton], animated: false)
 
      fromDate.inputAccessoryView = toolbar
      fromDate.inputView = datePicker
@@ -185,24 +202,63 @@ class ReportStatus: UIViewController {
      }
     
     func createPickerView() {
-           pickerView.dataSource = self
-           pickerView.delegate = self
-           status.inputView = pickerView
-           paguthi.inputView = pickerView
+         pickerView.dataSource = self
+         pickerView.delegate = self
+         pickerView.backgroundColor = UIColor.white
+         pickerView.setValue(UIColor.darkGray, forKeyPath: "textColor")
+         status.inputView = pickerView
+         paguthi.inputView = pickerView
+         let toolBar = UIToolbar()
+         toolBar.sizeToFit()
+         let doneButton = UIBarButtonItem(title: "Done", style: .plain, target: self, action: #selector(self.action))
+         let spaceButton = UIBarButtonItem(barButtonSystemItem: UIBarButtonItem.SystemItem.flexibleSpace, target: nil, action: nil)
+         let cancelButton = UIBarButtonItem(title: "Cancel", style: .plain, target: self, action: #selector(self.cancel))
+
+         toolBar.setItems([doneButton,spaceButton,cancelButton], animated: true)
+         toolBar.isUserInteractionEnabled = true
+         toolBar.backgroundColor = UIColor.white
+         toolBar.tintColor = UIColor(red: 45/255.0, green: 148/255.0, blue: 235/255.0, alpha: 1.0)
+         status.inputAccessoryView = toolBar
+         paguthi.inputAccessoryView = toolBar
     }
     
     func dismissPickerView() {
-       let toolBar = UIToolbar()
-       toolBar.sizeToFit()
-       let button = UIBarButtonItem(title: "Cancel", style: .plain, target: self, action: #selector(self.action))
-       toolBar.setItems([button], animated: true)
-       toolBar.isUserInteractionEnabled = true
-       status.inputAccessoryView = toolBar
-       paguthi.inputAccessoryView = toolBar
 
     }
     
     @objc func action() {
+         let row = self.pickerView.selectedRow(inComponent: 0)
+         self.pickerView.selectRow(row, inComponent: 0, animated: false)
+         if self.status.isFirstResponder{
+         if (from == "status"){
+             status.text = self.statusArr[row] // selected item
+         }
+         else if (from == "categoery") {
+             status.text = self.categoeryName[row] // selected item
+             self.selectedPaguthuID = self.catgoeryId[row]
+             print(self.selectedPaguthuID)
+         }
+         else if (from == "subCate")
+         {
+             status.text = self.subCategoeryName[row] // selected item
+             self.selectedPaguthuID = self.subCatgoeryId[row]
+             print(self.selectedPaguthuID)
+         }
+         else
+         {
+             self.status.text = self.paguthiName[row]
+             self.selectedPaguthuID = self.paguthiId[row]
+         }
+      }
+      else if self.paguthi.isFirstResponder{
+         self.paguthi.text = self.paguthiName[row]
+         self.selectedPaguthuID = self.paguthiId[row]
+      }
+
+          view.endEditing(true)
+    }
+    
+    @objc func cancel() {
           view.endEditing(true)
     }
     
@@ -211,7 +267,7 @@ class ReportStatus: UIViewController {
         guard CheckValuesAreEmpty () else {
               return
         }
-        if (from == "status")
+        if (from == "status") || (from == "categoery") || (from == "subCate") || (from == "location")
         {
             self.performSegue(withIdentifier: "to_reportList", sender: self.from)
         }
@@ -296,6 +352,8 @@ class ReportStatus: UIViewController {
             vc.fromdate = self.fromDate.text!
             vc.todate = self.toDate.text!
             vc.status = self.status.text!
+            vc.category = self.status.text!
+            vc.sub_category = self.status.text!
         }
         else if (segue.identifier == "to_reportMeeting"){
             let vc = segue.destination as! ReportMeeting
@@ -410,14 +468,18 @@ extension ReportStatus : UIPickerViewDelegate, UIPickerViewDataSource, PaguthiVi
     
     func setPaguthi(paguthi: [PaguthiData]) {
          paguthiData = paguthi
-        for items in paguthiData
-        {
+         self.paguthiName.removeAll()
+         self.paguthiId.removeAll()
+         for items in paguthiData
+         {
             let paguthi = items.paguthi_name
             let id = items.id
             self.paguthiName.append(paguthi)
             self.paguthiId.append(id)
-            pickerView.reloadAllComponents()
-        }
+//            pickerView.reloadAllComponents()
+         }
+         self.paguthiName.insert("ALL", at: 0)
+         self.paguthiId.insert("ALL", at: 0)
     }
     
     func setEmpty(errorMessage: String) {
@@ -427,28 +489,36 @@ extension ReportStatus : UIPickerViewDelegate, UIPickerViewDataSource, PaguthiVi
     
     func setCategoery(categoery: [CategoeryData]) {
         categoeryData = categoery
+        self.categoeryName.removeAll()
+        self.catgoeryId.removeAll()
         for items in categoeryData
         {
             let cate = items.grievance_name
             let id = items.id
             self.categoeryName.append(cate)
             self.catgoeryId.append(id)
-            pickerView.reloadAllComponents()
+//            pickerView.reloadAllComponents()
         }
-        self.pickerView.reloadAllComponents()
+        self.categoeryName.insert("ALL", at: 0)
+        self.catgoeryId.insert("ALL", at: 0)
+//        self.pickerView.reloadAllComponents()
     }
     
     func setSubCategoery(subCategoery: [SubCategoeryData]) {
         subCategoeryData = subCategoery
+        self.subCategoeryName.removeAll()
+        self.subCatgoeryId.removeAll()
         for items in subCategoeryData
         {
             let cate = items.sub_category_name
             let id = items.id
             self.subCategoeryName.append(cate)
             self.subCatgoeryId.append(id)
-            pickerView.reloadAllComponents()
+//            pickerView.reloadAllComponents()
         }
-        self.pickerView.reloadAllComponents()
+        self.subCategoeryName.insert("ALL", at: 0)
+        self.subCatgoeryId.insert("ALL", at: 0)
+//        self.pickerView.reloadAllComponents()
     }
     
     func startLoadingCategoery()

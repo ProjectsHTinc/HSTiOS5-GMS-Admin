@@ -101,7 +101,7 @@ class Menu: UITableViewController {
         }
         else if (indexPath.row == 7)
         {
-            self.performSegue(withIdentifier: "logOut", sender: self)
+            self.clearAll()
         }
     }
     
@@ -125,7 +125,13 @@ class Menu: UITableViewController {
         GlobalVariables.shared.profGrivance = ""
         GlobalVariables.shared.staffCount = 0
         GlobalVariables.shared.result_count = 0
+        GlobalVariables.shared.constituent_MemberCount = ""
+        GlobalVariables.shared.totalMeetingsCount = ""
+        GlobalVariables.shared.totalGrievancesCount = ""
+        GlobalVariables.shared.constituentInteractionCount = ""
         UserDefaults.standard.clearUserData()
+        self.performSegue(withIdentifier: "logOut", sender: self)
+
     }
 
     /*

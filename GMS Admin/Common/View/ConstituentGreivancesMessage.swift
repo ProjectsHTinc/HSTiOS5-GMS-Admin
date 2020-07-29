@@ -21,7 +21,7 @@ class ConstituentGreivancesMessage: UIViewController {
         super.viewDidLoad()
 
         // Do any additional setup after loading the view.
-        
+        self.addCustomizedBackBtn(title:"  Message history")
         // Do any additional setup after loading the view.
         guard Reachability.isConnectedToNetwork() == true else {
               AlertController.shared.offlineAlert(targetVc: self, complition: {
@@ -35,6 +35,7 @@ class ConstituentGreivancesMessage: UIViewController {
         tableView.estimatedRowHeight = 157.0// the estimated row height ..the closer the better
         tableView.rowHeight = UITableView.automaticDimension
         self.callAPI ()
+        
     }
     
     func callAPI ()

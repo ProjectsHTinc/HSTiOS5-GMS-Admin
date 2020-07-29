@@ -28,6 +28,10 @@ class ChangePassword: UIViewController {
         super.viewDidLoad()
 
         // Do any additional setup after loading the view.
+        self.addCustomizedBackBtn(title:"  Change Password")
+        /*Tap anywhere to hide keypad*/
+        self.hideKeyboardWhenTappedAround()
+
     }
     
     @IBAction func save(_ sender: Any) {
@@ -41,12 +45,12 @@ class ChangePassword: UIViewController {
     @IBAction func currentPswrdVision(_ sender: Any) {
         if curentVisioIsClicked == true{
             self.curentVisioIsClicked = false
-            self.curentPswrdVisionOutlet.setImage(UIImage(named: "visionHide"), for: .selected)
+            self.curentPswrdVisionOutlet.setImage(UIImage(named: "visionHide"), for: .normal)
             self.currentPassword.isSecureTextEntry = true
         }
         else{
             self.curentVisioIsClicked = true
-            self.curentPswrdVisionOutlet.setImage(UIImage(named: "vision"), for: .selected)
+            self.curentPswrdVisionOutlet.setImage(UIImage(named: "vision"), for: .normal)
             self.currentPassword.isSecureTextEntry = false
         }
     }
@@ -54,13 +58,13 @@ class ChangePassword: UIViewController {
     @IBAction func newPswrdVision(_ sender: Any) {
         if confirmVisioIsClicked == true{
             self.confirmVisioIsClicked = false
-            self.curentPswrdVisionOutlet.setImage(UIImage(named: "visionHide"), for: .selected)
+            self.newPswrdVisionOutlet.setImage(UIImage(named: "visionHide"), for: .normal)
             self.newPassword.isSecureTextEntry = true
 
         }
         else{
             self.confirmVisioIsClicked = true
-            self.curentPswrdVisionOutlet.setImage(UIImage(named: "vision"), for: .selected)
+            self.newPswrdVisionOutlet.setImage(UIImage(named: "vision"), for: .normal)
             self.newPassword.isSecureTextEntry = false
         }
     }
@@ -68,13 +72,13 @@ class ChangePassword: UIViewController {
     @IBAction func confirmPswrdVision(_ sender: Any) {
         if curentVisioIsClicked == true{
             self.curentVisioIsClicked = false
-            self.curentPswrdVisionOutlet.setImage(UIImage(named: "visionHide"), for: .selected)
+            self.confirmPswrdVisionOutlet.setImage(UIImage(named: "visionHide"), for: .normal)
             self.confirmPassword.isSecureTextEntry = true
 
         }
         else{
             self.curentVisioIsClicked = true
-            self.curentPswrdVisionOutlet.setImage(UIImage(named: "vision"), for: .selected)
+            self.confirmPswrdVisionOutlet.setImage(UIImage(named: "vision"), for: .normal)
             self.confirmPassword.isSecureTextEntry = false
 
         }

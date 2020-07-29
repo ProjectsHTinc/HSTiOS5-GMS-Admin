@@ -21,9 +21,10 @@ class Widgets: UIViewController {
     @IBOutlet var valueLabel4: UILabel!
     @IBOutlet var widgetImageView: UIImageView!
     
+    
     var paguthi_Id = String()
     var From = String()
-    
+    var totalCounts = String()
     /*Get CM Data */
     let presenter = ConstituentMemberPresenter(constituentMemberService: ConstituentMemberService())
     /*Get TM Data */
@@ -71,7 +72,7 @@ class Widgets: UIViewController {
     func SetDataCM (member_count: Int, male_count: Int, female_count: Int, voterid_count: Int, aadhaar_count: Int)
     {
         self.widgetImageView.image = UIImage(named: "Cm.png")
-        self.titleLabel.text = "Constituent Members"
+        self.titleLabel.text = String (format: "%@ %@", "Constituent Members - " ,GlobalVariables.shared.constituent_MemberCount)
         self.label1.text = "Total Male"
         self.label2.text = "Total Female"
         self.label3.text = "No. of Voter ID"
@@ -81,13 +82,12 @@ class Widgets: UIViewController {
         self.valueLabel2.text = String (female_count)
         self.valueLabel3.text = String (voterid_count)
         self.valueLabel4.text = String (aadhaar_count)
-
     }
     
     func SetDataTM (meeting_count: Int, requested_count: Int, completed_count: Int)
     {
         self.widgetImageView.image = UIImage(named: "Tm.png")
-        self.titleLabel.text = String (format: "%@ %li", "Total Meetings - ",meeting_count)
+        self.titleLabel.text = String (format: "%@ %@", "Total Meetings - ",GlobalVariables.shared.totalMeetingsCount)
         self.label1.text = "Meeting Requested"
         self.label2.text = "Meeting Completed"
         self.label3.isHidden = true
@@ -97,14 +97,12 @@ class Widgets: UIViewController {
         self.valueLabel2.text = String (completed_count)
         self.valueLabel3.isHidden = true
         self.valueLabel4.isHidden = true
-
-
     }
     
     func SetDataTG (grievance_count: Int, enquiry_count: Int, petition_count: Int, processing_count: Int, completed_count: Int)
     {
         self.widgetImageView.image = UIImage(named: "Tg.png")
-        self.titleLabel.text = String (format: "%@ %li", "Total Meetings - ",grievance_count)
+        self.titleLabel.text = String (format: "%@ %@", "Total Meetings - ",GlobalVariables.shared.totalGrievancesCount)
         self.label1.text = "No. of Enquiry"
         self.label2.text = "No. of Petition"
         self.label3.text = "No. of Processing"
@@ -114,7 +112,6 @@ class Widgets: UIViewController {
         self.valueLabel2.text = String (petition_count)
         self.valueLabel3.text = String (processing_count)
         self.valueLabel4.text = String (completed_count)
-
     }
     
     @IBAction func close(_ sender: Any) {

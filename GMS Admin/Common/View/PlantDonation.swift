@@ -12,6 +12,8 @@ class PlantDonation: UIViewController, PlantDonationView {
 
     let plantPresener = PlantDonationPresenter(plantDonationService: PlantDonationService())
     var plantData = [PlantDonationData]()
+    
+    var selectedconstitunecyId = String()
         
     @IBOutlet var plantName: UILabel!
     @IBOutlet var plantNumber: UILabel!
@@ -27,7 +29,7 @@ class PlantDonation: UIViewController, PlantDonationView {
         
         self.addCustomizedBackBtn(title:"  Plant Donation")
         plantPresener.attachView(view: self)
-        plantPresener.getPlantDonation(constituent_id: GlobalVariables.shared.constituent_Id)
+        plantPresener.getPlantDonation(constituent_id: selectedconstitunecyId)
     }
     
     func checkInterConnection () -> Bool
@@ -57,7 +59,8 @@ class PlantDonation: UIViewController, PlantDonationView {
          plantData = plant
          self.plantName.text = plantData[0].name_of_plant
          self.plantNumber.text = plantData[0].no_of_plant
-         self.recivedDate.text = plantData[0].created_at
+         let formated = self.formattedDateFromString(dateString: plantData[0].created_at, withFormat: "dd-MM-YYYY HH:mm:ss")
+         self.recivedDate.text = formated
     }
     
     func setEmpty(errorMessage: String) {
@@ -67,6 +70,22 @@ class PlantDonation: UIViewController, PlantDonationView {
          self.plantName.text = "-"
          self.plantNumber.text = "-"
          self.recivedDate.text = "-"
+    }
+    
+    func formattedDateFromString(dateString: String, withFormat format: String) -> String? {
+
+        let inputFormatter = DateFormatter()
+        inputFormatter.dateFormat = "yyyy-MM-dd HH:mm:ss"
+
+        if let date = inputFormatter.date(from: dateString) {
+
+            let outputFormatter = DateFormatter()
+          outputFormatter.dateFormat = format
+
+            return outputFormatter.string(from: date)
+        }
+
+        return nil
     }
 
     /*

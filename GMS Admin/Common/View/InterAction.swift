@@ -13,6 +13,8 @@ class InterAction: UIViewController {
     let Presenter = InteractionPresenter(interactionService: InteractionService())
     var interactionData = [InteractionData]()
 
+    var selectedconstitunecyId = String()
+
     @IBOutlet var tableView: UITableView!
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -31,7 +33,7 @@ class InterAction: UIViewController {
     func callAPI ()
     {
         Presenter.attachView(view: self)
-        Presenter.getInteraction(constituent_id: GlobalVariables.shared.constituent_Id)
+        Presenter.getInteraction(constituent_id: selectedconstitunecyId)
     }
     
 

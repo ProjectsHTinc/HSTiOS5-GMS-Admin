@@ -19,7 +19,9 @@ class ReportBirthday: UIViewController {
     let pickerView = UIPickerView()
 
     var monthArr = [String]()
+    var monIDArr = [String]()
     var keyword = String()
+    var selectedMonthID = String()
     
     @IBOutlet var month: TextFieldWithImage!
     @IBOutlet var reportCount: UILabel!
@@ -39,13 +41,12 @@ class ReportBirthday: UIViewController {
              })
              return
         }
+        self.addCustomizedBackBtn(title:"  Birthday letter report")
         self.keyword = "no"
         self.monthArr = ["January","February","March","April","May","June","July","August","September","October","November","December"]
+        self.monIDArr = ["01","02","03","04","05","06","07","08","09","10","11","12"]
         /*SetUp PickerView*/
         self.createPickerView()
-        /*Right Navigation Bar*/
-        self.addrightButton(bg_ImageName:"ConstituentSearch")
-
     }
     
     @objc public override func rightButtonClick()
@@ -68,7 +69,21 @@ class ReportBirthday: UIViewController {
     func createPickerView() {
            pickerView.dataSource = self
            pickerView.delegate = self
+           pickerView.backgroundColor = UIColor.white
+           pickerView.setValue(UIColor.darkGray, forKeyPath: "textColor")
            month.inputView = pickerView
+           let toolBar = UIToolbar()
+           toolBar.sizeToFit()
+           let doneButton = UIBarButtonItem(title: "Done", style: .plain, target: self, action: #selector(self.action))
+           let spaceButton = UIBarButtonItem(barButtonSystemItem: UIBarButtonItem.SystemItem.flexibleSpace, target: nil, action: nil)
+           let cancelButton = UIBarButtonItem(title: "Cancel", style: .plain, target: self, action: #selector(self.cancel))
+
+           toolBar.setItems([doneButton,spaceButton,cancelButton], animated: true)
+           toolBar.isUserInteractionEnabled = true
+           toolBar.backgroundColor = UIColor.white
+           toolBar.tintColor = UIColor(red: 45/255.0, green: 148/255.0, blue: 235/255.0, alpha: 1.0)
+           month.inputAccessoryView = toolBar
+
     }
     
     func dismissPickerView() {
@@ -77,11 +92,20 @@ class ReportBirthday: UIViewController {
        let button = UIBarButtonItem(title: "Cancel", style: .plain, target: self, action: #selector(self.action))
        toolBar.setItems([button], animated: true)
        toolBar.isUserInteractionEnabled = true
-       month.inputAccessoryView = toolBar
 
     }
     
+    @objc func cancel() {
+          view.endEditing(true)
+    }
+    
     @objc func action() {
+          let row = self.pickerView.selectedRow(inComponent: 0)
+          self.pickerView.selectRow(row, inComponent: 0, animated: false)
+          if self.month.isFirstResponder{
+              month.text = self.monthArr[row]
+              self.selectedMonthID = self.monIDArr[row]// selected item
+          }
           view.endEditing(true)
     }
     
@@ -91,7 +115,7 @@ class ReportBirthday: UIViewController {
               return
         }
         
-        self.callAPI(url: reportBirthdayUrl, select_month: self.month.text!, keyword: self.keyword, offset: "0", rowcount: "50")
+        self.callAPI(url: reportBirthdayUrl, select_month: self.selectedMonthID, keyword: self.keyword, offset: "0", rowcount: "50")
 
     }
     
@@ -137,21 +161,16 @@ extension ReportBirthday : ReportBirthdayView, UITableViewDelegate, UITableViewD
     
     func searchBarSearchButtonClicked( _ searchBar: UISearchBar)
     {
-        guard CheckValuesAreEmpty () else {
-              return
-        }
-        
-        self.performSegue(withIdentifier: "to_birthdaySearch", sender: searchBar.text!)
+        self.performSegue(withIdentifier: "to_birthdaySearch", sender: searchBar.text)
         self.searchBar.isActive = false
-
     }
     
     func startLoading() {
-        //
+         //
     }
     
     func finishLoading() {
-        //
+         //
     }
     
     func setReportBirthday(reportbday: [ReportBirthdayData]) {
@@ -159,6 +178,8 @@ extension ReportBirthday : ReportBirthdayView, UITableViewDelegate, UITableViewD
         self.tableView.isHidden = false
         self.reportCount.isHidden = false
         self.baselIne.isHidden = false
+        /*Right Navigation Bar*/
+        self.addrightButton(bg_ImageName:"ConstituentSearch")
         self.tableView.reloadData()
     }
     
@@ -179,6 +200,12 @@ extension ReportBirthday : ReportBirthdayView, UITableViewDelegate, UITableViewD
            cell.db.text =  "D.O.B : " + data.dob!
            cell.mobile.text = data.mobile_no
            cell.status.text = data.birth_wish_status
+           if cell.status.text == "NotSend"{
+            cell.status.textColor = UIColor(red: 204/255.0, green: 0/255.0, blue: 0/255.0, alpha: 1.0)
+           }
+           else{
+            cell.status.textColor = UIColor(red: 106/255.0, green: 168/255.0, blue: 79/255.0, alpha: 1.0)
+           }
            return cell
     }
     
@@ -189,7 +216,7 @@ extension ReportBirthday : ReportBirthdayView, UITableViewDelegate, UITableViewD
             if totalRows >= 50
             {
              print("came to last row")
-                self.callAPI(url: reportBirthdayUrl, select_month: self.month.text!, keyword: self.keyword, offset: String(totalRows), rowcount: "50")
+                self.callAPI(url: reportBirthdayUrl, select_month: self.selectedMonthID, keyword: self.keyword, offset: String(totalRows), rowcount: "50")
             }
         }
     }
@@ -213,6 +240,5 @@ extension ReportBirthday : ReportBirthdayView, UITableViewDelegate, UITableViewD
 
     func pickerView(_ pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
         self.month.text = self.monthArr[row]
-        self.callAPI(url: reportBirthdayUrl, select_month: self.month.text!, keyword: self.keyword, offset: "0", rowcount: "50")
     }
 }

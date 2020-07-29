@@ -315,13 +315,13 @@
         <!--User Profile-->
         <scene sceneID="JIP-eO-fSU">
             <objects>
-                <viewController storyboardIdentifier="userProfile" id="M3P-Of-bQq" customClass="UserProfile" customModule="GMS_Admin" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="userProfile" modalPresentationStyle="fullScreen" id="M3P-Of-bQq" customClass="UserProfile" customModule="GMS_Admin" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="eeQ-C2-SPN">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="647"/>
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="sl0-PZ-zRi">
-                                <rect key="frame" x="0.0" y="0.0" width="375" height="647"/>
+                                <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                                 <subviews>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="wck-XC-NIu">
                                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
@@ -550,7 +550,7 @@
                                 <viewLayoutGuide key="frameLayoutGuide" id="fH3-ak-v8s"/>
                             </scrollView>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="NTk-Ra-K26">
-                                <rect key="frame" x="0.0" y="593" width="375" height="54"/>
+                                <rect key="frame" x="0.0" y="613" width="375" height="54"/>
                                 <color key="backgroundColor" name="AppBaseColor"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="54" id="k9w-eE-sSZ"/>
@@ -564,7 +564,7 @@
                                 </connections>
                             </button>
                         </subviews>
-                        <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
                             <constraint firstItem="NTk-Ra-K26" firstAttribute="trailing" secondItem="nPx-tO-l41" secondAttribute="trailing" id="Icn-Am-zyI"/>
                             <constraint firstItem="sl0-PZ-zRi" firstAttribute="trailing" secondItem="nPx-tO-l41" secondAttribute="trailing" id="Mln-gG-d6C"/>

@@ -79,7 +79,7 @@ extension ForgotPassword : UITextFieldDelegate
         // Try to find next responder
         if self.userName.isFirstResponder
         {
-            self.userName.resignFirstResponder()
+           // self.userName.resignFirstResponder()
         }
 
         return true

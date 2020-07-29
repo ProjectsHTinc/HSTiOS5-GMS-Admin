@@ -9,6 +9,8 @@
 import UIKit
 
 class Login: UIViewController  {
+    
+    var visioIsClicked = true
 
     @IBOutlet var constituency: UITextField!
     @IBOutlet var email: ACFloatingTextfield!
@@ -73,6 +75,16 @@ class Login: UIViewController  {
     
     @IBAction func hidePassword(_ sender: Any) {
         
+        if visioIsClicked == true{
+            self.visioIsClicked = false
+            self.hidePswrdOutlet.setImage(UIImage(named: "visionHide"), for: .normal)
+            self.password.isSecureTextEntry = true
+        }
+        else{
+            self.visioIsClicked = true
+            self.hidePswrdOutlet.setImage(UIImage(named: "vision"), for: .normal)
+            self.password.isSecureTextEntry = false
+        }
     }
     
     @IBAction func go(_ sender: Any){
@@ -128,11 +140,11 @@ extension Login : UITextFieldDelegate
         // Try to find next responder
         if self.email.isFirstResponder
         {
-           // self.password.becomeFirstResponder()
+            self.password.becomeFirstResponder()
         }
         else if self.password.isFirstResponder
         {
-           // self.password.resignFirstResponder()
+            self.password.resignFirstResponder()
         }
         
         return true
@@ -142,7 +154,7 @@ extension Login : UITextFieldDelegate
 extension Login : UIPopoverPresentationControllerDelegate, ConstituencyListDelegate
 {
      func saveText(strText: String) {
-        self.constituency.text = strText
+          self.constituency.text = strText
       }
 
       // MARK: - UIPopoverPresentationControllerDelegate

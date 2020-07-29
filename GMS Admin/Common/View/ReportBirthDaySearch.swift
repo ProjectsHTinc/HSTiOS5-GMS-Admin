@@ -37,7 +37,7 @@ class ReportBirthDaySearch: UIViewController {
     
     func callAPI (url:String, select_month : String, keyword: String, offset:String, rowcount:String){
         presenter.attachView(view: self)
-        presenter.getReportBirthday(url: url, select_month: select_month, keyword: keyword, offset: "0", rowcount: "50")
+        presenter.getReportBirthday(url: url, select_month: select_month, keyword: keyword, offset: offset, rowcount: rowcount)
     }
 
     /*
@@ -65,6 +65,12 @@ extension ReportBirthDaySearch : ReportBirthdayView, UITableViewDelegate, UITabl
            cell.db.text =  "D.O.B : " + data.dob!
            cell.mobile.text = data.mobile_no
            cell.status.text = data.birth_wish_status
+           if cell.status.text == "NotSend"{
+              cell.status.textColor = UIColor(red: 204/255.0, green: 0/255.0, blue: 0/255.0, alpha: 1.0)
+           }
+           else{
+              cell.status.textColor = UIColor(red: 106/255.0, green: 168/255.0, blue: 79/255.0, alpha: 1.0)
+           }
            return cell
     }
     
@@ -74,7 +80,7 @@ extension ReportBirthDaySearch : ReportBirthdayView, UITableViewDelegate, UITabl
         {
             if totalRows >= 50
             {
-             print("came to last row")
+                print("came to last row")
                 self.callAPI(url: reportBirthdaySearchUrl, select_month:self.month, keyword: self.keyword, offset: String(totalRows), rowcount: "50")
             }
         }

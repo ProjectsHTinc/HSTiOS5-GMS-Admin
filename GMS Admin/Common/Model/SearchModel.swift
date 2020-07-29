@@ -20,7 +20,6 @@ class SearchModel {
       // MARK: Instance Method
       func loadFromDictionary(_ dict: [String: AnyObject])
       {
-          
           if let data = dict["id"] as? String {
               self.id = data
           }

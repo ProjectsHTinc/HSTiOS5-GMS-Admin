@@ -1,22 +1,19 @@
 //
-//  AboutUs.swift
+//  DocumentSearch.swift
 //  GMS Admin
 //
-//  Created by Happy Sanz Tech on 26/07/20.
+//  Created by Happy Sanz Tech on 29/07/20.
 //  Copyright © 2020 HappySanzTech. All rights reserved.
 //
 
 import UIKit
 
-class AboutUs: UIViewController {
+class DocumentSearch: UIViewController {
 
-    @IBOutlet var about: UILabel!
     override func viewDidLoad() {
         super.viewDidLoad()
 
         // Do any additional setup after loading the view.
-        self.addCustomizedBackBtn(title:"  About GMS")
-
     }
     
 

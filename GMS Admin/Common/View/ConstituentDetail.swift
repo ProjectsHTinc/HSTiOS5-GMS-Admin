@@ -15,7 +15,8 @@ class ConstituentDetail: UIViewController {
     let presenter = ConstituentDetailPresenter(constituentDetailService: ConstituentDetailService())
     var constituentdetail = [ConstituentDetailData]()
 
-    
+    var selectedconstitunecyId = String()
+
     let colors = GradientBackgroundView()
 
     @IBOutlet var constituentImage: UIImageView!
@@ -37,30 +38,26 @@ class ConstituentDetail: UIViewController {
         self.navigationController?.navigationBar.layoutIfNeeded()
         /*Set Gradient View*/
         self.setGradientBackGroundView()
-        
         guard Reachability.isConnectedToNetwork() == true else {
               AlertController.shared.offlineAlert(targetVc: self, complition: {
                 //Custom action code
              })
              return
         }
-        
         self.callAPIConstituentDetail()
     }
     
     func setGradientBackGroundView (){
-        
         gradientView.backgroundColor = UIColor.white
         let backgroundLayer = colors.gl
         backgroundLayer!.frame = gradientView.frame
         gradientView.layer.insertSublayer(backgroundLayer!, at: 0)
-        
     }
     
     func callAPIConstituentDetail ()
     {
         presenter.attachView(view: self)
-        presenter.getConstituentDetailData(constituent_id: GlobalVariables.shared.constituent_Id)
+        presenter.getConstituentDetailData(constituent_id: selectedconstitunecyId)
     }
     
     @IBAction func meeting(_ sender: Any) {
@@ -87,24 +84,30 @@ class ConstituentDetail: UIViewController {
         self.performSegue(withIdentifier: "to_ConsProfile", sender: self)
     }
     
-    
     // MARK: - Navigation
-
     // In a storyboard-based application, you will often want to do a little preparation before navigation
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         // Get the new view controller using segue.destination.
         // Pass the selected object to the new view controller.
-        if (segue.identifier == "to_meeting")
-        {
+        if (segue.identifier == "to_meeting"){
             let vc = segue.destination as! Meeting
             vc.From = "Cd"
+            vc.selectedconstitunecyId = self.selectedconstitunecyId
         }
-        else if (segue.identifier == "to_plantDonation")
-        {
-            _ = segue.destination as! PlantDonation
+        else if (segue.identifier == "to_plantDonation"){
+            let vc = segue.destination as! PlantDonation
+            vc.selectedconstitunecyId = self.selectedconstitunecyId
+        }
+        else if (segue.identifier == "to_doc"){
+            let vc = segue.destination as! Document
+            vc.selectedconstitunecyId = self.selectedconstitunecyId
+
+        }
+        else if (segue.identifier == "to_ConstituentGre"){
+            let vc = segue.destination as! ConstituentGreivances
+            vc.selectedconstitunecyId = self.selectedconstitunecyId
         }
     }
-    
 
 }
 
@@ -119,14 +122,14 @@ extension ConstituentDetail: ConstituentDetailView{
     
     func setConstituentDetailData(constituentDetail: [ConstituentDetailData]) {
          constituentdetail = constituentDetail
-        self.name.text = constituentdetail[0].full_name
-        self.mobileNumber.text = constituentdetail[0].mobile_no
-        self.location.text = constituentdetail[0].address
-        self.wardNumber.text = constituentdetail[0].ward_id
-        self.serialNumber.text = constituentdetail[0].id
-        self.voterID.text = constituentdetail[0].voter_id_no
-        self.adharNumber.text = constituentdetail[0].aadhaar_no
-        self.constituentImage.sd_setImage(with: URL(string: Globals.imageUrl + constituentdetail[0].profile_pic), placeholderImage: UIImage(named: "PhUserImage.png"))
+         self.name.text = constituentdetail[0].full_name
+         self.mobileNumber.text = constituentdetail[0].mobile_no
+         self.location.text = constituentdetail[0].address
+         self.wardNumber.text = constituentdetail[0].ward_id
+         self.serialNumber.text = constituentdetail[0].id
+         self.voterID.text = constituentdetail[0].voter_id_no
+         self.adharNumber.text = constituentdetail[0].aadhaar_no
+         self.constituentImage.sd_setImage(with: URL(string: Globals.imageUrl + constituentdetail[0].profile_pic), placeholderImage: UIImage(named: "placeholder.png"))
     }
     
     func setEmpty(errorMessage: String) {

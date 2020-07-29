@@ -21,7 +21,8 @@ class GreivancesAllDetail: UIViewController {
     var _updatedOn = String()
     var _status = String()
     var greivanceId = String()
-    
+    var type = String()
+
     @IBOutlet var place: UILabel!
     @IBOutlet var seekerType: UILabel!
     @IBOutlet var petitionNumber: UILabel!
@@ -33,11 +34,13 @@ class GreivancesAllDetail: UIViewController {
     @IBOutlet var updatedOn: UILabel!
     @IBOutlet var status: UILabel!
     @IBOutlet var statusBgView: UIView!
+    @IBOutlet var petitionTitleLabel: UILabel!
 
     override func viewDidLoad() {
         super.viewDidLoad()
 
         // Do any additional setup after loading the view.
+        self.addCustomizedBackBtn(title:"  Grievance detail")
         self.place.text = _place
         self.seekerType.text = _seekerType
         self.petitionNumber.text = _petitionNumber
@@ -45,10 +48,21 @@ class GreivancesAllDetail: UIViewController {
         self.greivanceName.text = _greivanceName
         self.subcat.text = _subcat
         self.desc.text = _desc
-        self.createdon.text = _createdon
-        self.updatedOn.text = _updatedOn
+        let formatedCreated = self.formattedDateFromString(dateString: _createdon, withFormat: "dd-MM-YYYY HH:mm:ss")
+        let formatedUpdatedOn = self.formattedDateFromString(dateString: _updatedOn, withFormat: "dd-MM-YYYY HH:mm:ss")
+        self.createdon.text = formatedCreated
+        self.updatedOn.text = formatedUpdatedOn
         self.status.text = _status
         GlobalVariables.shared.constituent_Id = greivanceId
+        
+        if (type == "P")
+        {
+            self.petitionTitleLabel.text = "Petition Number"
+        }
+        else
+        {
+            self.petitionTitleLabel.text = "Enquiry Number"
+        }
         
         if (self.status.text == "PROCESSING")
         {
@@ -62,6 +76,22 @@ class GreivancesAllDetail: UIViewController {
             self.status.layer.cornerRadius = 4.0
             self.status.clipsToBounds = true
         }
+    }
+    
+    func formattedDateFromString(dateString: String, withFormat format: String) -> String? {
+
+        let inputFormatter = DateFormatter()
+        inputFormatter.dateFormat = "yyyy-MM-dd HH:mm:ss"
+
+        if let date = inputFormatter.date(from: dateString) {
+
+            let outputFormatter = DateFormatter()
+          outputFormatter.dateFormat = format
+
+            return outputFormatter.string(from: date)
+        }
+
+        return nil
     }
     
     @IBAction func messageHistory(_ sender: Any) {

@@ -82,6 +82,7 @@ class Profile: UIViewController {
         {
             segmentControl.setTitle("Profile", forSegmentAt: 0)
             segmentControl.setTitle("Constituency", forSegmentAt: 1)
+            segmentControl.removeSegment(at: 2, animated: false)
             segmentControl.selectedSegmentIndex = 0
             segmentControl.backgroundColor = .white
             segmentControl.tintColor = .white
@@ -102,13 +103,13 @@ class Profile: UIViewController {
     {
         if From == "GreiAll"
         {
-            self.userImageView.sd_setImage(with: URL(string: ""), placeholderImage: UIImage(named: "placeholderNewsfeed.png"))
+            self.userImageView.sd_setImage(with: URL(string: ""), placeholderImage: UIImage(named: "placeholder.png"))
             self.userName.text = profiledata[0].full_name
             self.userNumber.text = profiledata[0].paguthi_name
         }
         else
         {
-            self.userImageView.sd_setImage(with: URL(string: Globals.imageUrl + consprofiledata[0].profile_pic), placeholderImage: UIImage(named: "placeholderNewsfeed.png"))
+            self.userImageView.sd_setImage(with: URL(string: Globals.imageUrl + consprofiledata[0].profile_pic), placeholderImage: UIImage(named: "placeholder.png"))
             self.userName.text = consprofiledata[0].full_name
             self.userNumber.text = consprofiledata[0].paguthi_name
         }

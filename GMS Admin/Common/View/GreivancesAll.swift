@@ -40,7 +40,8 @@ class GreivancesAll: UIViewController {
     var _updatedOn = String()
     var _status = String()
     var greivanceId = String()
-    
+    var type = String()
+
     @IBOutlet var tableView: UITableView!
     @IBOutlet var greivancesCount: UILabel!
     @IBOutlet var segmentView: UIView!
@@ -74,7 +75,7 @@ class GreivancesAll: UIViewController {
     func callAPIGreviancesAll (url : String, keyword: String, paguthi:String, offset:String, rowcount:String, grievance_type: String)
     {
         presenter.attachView(view: self)
-        presenter.getGrieAll(url: url, keyword: "no", paguthi: GlobalVariables.shared.selectedPaguthiId, offset: offset, rowcount: rowcount, grievance_type: grievance_type)
+        presenter.getGrieAll(url: url, keyword: "no", paguthi: self.selectedconstitunecyId, offset: offset, rowcount: rowcount, grievance_type: grievance_type)
     }
     
     @objc public override func sideMenuButtonClick()
@@ -115,8 +116,8 @@ class GreivancesAll: UIViewController {
         print("Selected index \(segmentedControl.selectedSegmentIndex)")
         let selectedIndex = Int(segmentedControl.selectedSegmentIndex)
         let sel = self.constituencyID[selectedIndex]
-        GlobalVariables.shared.selectedPaguthiId = String (sel)
-        self.callAPIGreviancesAll(url: grevianceAllUrl, keyword: "no", paguthi: GlobalVariables.shared.selectedPaguthiId, offset: "0", rowcount: "50", grievance_type: statSelectdSeg)
+        self.selectedconstitunecyId = String (sel)
+        self.callAPIGreviancesAll(url: grevianceAllUrl, keyword: "no", paguthi: self.selectedconstitunecyId, offset: "0", rowcount: "50", grievance_type: statSelectdSeg)
     }
     
     @IBAction func segmentChanged(_ sender: Any) {
@@ -124,15 +125,15 @@ class GreivancesAll: UIViewController {
         if (statSegContrl.selectedSegmentIndex == 0)
         {
             self.statSelectdSeg = "A"
-            self.callAPIGreviancesAll(url: grevianceAllUrl, keyword: "no", paguthi: GlobalVariables.shared.selectedPaguthiId, offset: "0", rowcount: "50", grievance_type: statSelectdSeg)
+            self.callAPIGreviancesAll(url: grevianceAllUrl, keyword: "no", paguthi: self.selectedconstitunecyId, offset: "0", rowcount: "50", grievance_type: statSelectdSeg)
         }
         else if (statSegContrl.selectedSegmentIndex == 1){
             self.statSelectdSeg = "P"
-            self.callAPIGreviancesAll(url: grevianceAllUrl, keyword: "no", paguthi: GlobalVariables.shared.selectedPaguthiId, offset: "0", rowcount: "50", grievance_type: statSelectdSeg)
+            self.callAPIGreviancesAll(url: grevianceAllUrl, keyword: "no", paguthi: self.selectedconstitunecyId, offset: "0", rowcount: "50", grievance_type: statSelectdSeg)
         }
         else{
             self.statSelectdSeg = "E"
-            self.callAPIGreviancesAll(url: grevianceAllUrl, keyword: "no", paguthi: GlobalVariables.shared.selectedPaguthiId, offset: "0", rowcount: "50", grievance_type: statSelectdSeg)
+            self.callAPIGreviancesAll(url: grevianceAllUrl, keyword: "no", paguthi: self.selectedconstitunecyId, offset: "0", rowcount: "50", grievance_type: statSelectdSeg)
         }
     }
     
@@ -162,6 +163,8 @@ class GreivancesAll: UIViewController {
             vc._updatedOn = _updatedOn
             vc._status = _status
             vc.greivanceId = greivanceId
+            vc.type = self.type
+
         }
     }
     
@@ -169,9 +172,7 @@ class GreivancesAll: UIViewController {
 }
 
 extension GreivancesAll : PaguthiView , UISearchBarDelegate, GreivancesAllView , UITableViewDelegate, UITableViewDataSource
-{
-
-    
+{    
     func startLoading() {
         self.view.activityStartAnimating()
     }
@@ -182,23 +183,27 @@ extension GreivancesAll : PaguthiView , UISearchBarDelegate, GreivancesAllView ,
     
     func setPaguthi(paguthi: [PaguthiData]) {
         paguthiData = paguthi
+        self.constituencyName.removeAll()
+        self.constituencyID.removeAll()
         for item in paguthiData
         {
            let constituentName = item.paguthi_name
-           let constituentId = item.constituency_id
+           let constituentId = item.id
            self.constituencyName.append(constituentName)
            self.constituencyID.append(constituentId)
         }
-
+        self.constituencyName.insert("ALL", at: 0)
+        self.constituencyID.insert("ALL", at: 0)
         self.setUpSegementControl()
         self.selectedconstitunecyId = String (self.constituencyID[0])
         print(self.selectedconstitunecyId)
-        self.callAPIGreviancesAll(url: grevianceAllUrl, keyword: "no", paguthi: GlobalVariables.shared.selectedPaguthiId, offset: "0", rowcount: "50", grievance_type: "A")
+        self.callAPIGreviancesAll(url: grevianceAllUrl, keyword: "no", paguthi: self.selectedconstitunecyId, offset: "0", rowcount: "50", grievance_type: "A")
     }
     
     func setEmpty(errorMessage: String) {
          AlertController.shared.showAlert(targetVc: self, title: Globals.alertTitle, message: errorMessage, complition: {
          })
+         self.greivancesCount.text =  String(format: "%@ %@", "0","Greivances")
          self.tableView.isHidden = true
     }
     
@@ -238,12 +243,20 @@ extension GreivancesAll : PaguthiView , UISearchBarDelegate, GreivancesAllView ,
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "cell", for: indexPath) as! ConstituentGreivancesCell
         let data = greivanceAllData[indexPath.row]
-        cell.pettionNumber.text = "Petition Number - " +  " " + data.petition_enquiry_no
-//        cell.greivanesType.text = data.grievance_type
+        let type = data.grievance_type
+        if (type == "P"){
+            cell.pettionNumber.text = "Petition Number - " +  " " + data.petition_enquiry_no
+
+        }
+        else{
+            cell.pettionNumber.text = "Enquiry Number - " +  " " + data.petition_enquiry_no
+        }
+        cell.userName.text = data.full_name
         cell.greivanceName.text = data.grievance_name
         cell.subCategoeryName.text = data.sub_category_name
         cell.status.text = data.status
-        cell.date.text = data.grievance_date
+        let formatedDate = self.formattedDateFromString(dateString: data.grievance_date, withFormat: "dd-MM-YYYY")
+        cell.date.text = formatedDate
         
         if cell.status.text == "PROCESSING"{
             cell.statusBgView.backgroundColor = UIColor(red: 253/255, green: 166/255, blue: 68/255, alpha: 1.0)
@@ -255,7 +268,7 @@ extension GreivancesAll : PaguthiView , UISearchBarDelegate, GreivancesAllView ,
     }
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        return 164
+        return 181
     }
     
    func tableView(_ tableView: UITableView, willDisplay cell: UITableViewCell, forRowAt indexPath: IndexPath) {
@@ -265,7 +278,7 @@ extension GreivancesAll : PaguthiView , UISearchBarDelegate, GreivancesAllView ,
            if totalRows >= 50
            {
              print("came to last row")
-            self.callAPIGreviancesAll(url: grevianceAllUrl, keyword: "no", paguthi: GlobalVariables.shared.selectedPaguthiId, offset: String(totalRows), rowcount: "50", grievance_type: statSelectdSeg)
+            self.callAPIGreviancesAll(url: grevianceAllUrl, keyword: "no", paguthi: self.selectedconstitunecyId, offset: String(totalRows), rowcount: "50", grievance_type: statSelectdSeg)
            }
 
        }
@@ -284,6 +297,23 @@ extension GreivancesAll : PaguthiView , UISearchBarDelegate, GreivancesAllView ,
         self._updatedOn = data.updated_at
         self._status = data.status
         self.greivanceId = data.constituent_id
+        self.type = data.grievance_type
         self.performSegue(withIdentifier: "to_GreivancesAllDetail", sender: self)
+    }
+    
+    func formattedDateFromString(dateString: String, withFormat format: String) -> String? {
+
+        let inputFormatter = DateFormatter()
+        inputFormatter.dateFormat = "yyyy-MM-dd"
+
+        if let date = inputFormatter.date(from: dateString) {
+
+            let outputFormatter = DateFormatter()
+          outputFormatter.dateFormat = format
+
+            return outputFormatter.string(from: date)
+        }
+
+        return nil
     }
 }

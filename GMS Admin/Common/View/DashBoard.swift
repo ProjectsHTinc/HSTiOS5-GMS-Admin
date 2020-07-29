@@ -28,6 +28,7 @@ class DashBoard: UIViewController, ChartViewDelegate {
     var paguthiName = [String]()
     var paguthiId = [String]()
     let pickerView = UIPickerView()
+
 //    var selctedPaguthiId = String ()
     
     var dispMonth = [String]()
@@ -66,6 +67,8 @@ class DashBoard: UIViewController, ChartViewDelegate {
         GlobalVariables.shared.sideMenuDropdown =  "false"
         self.callAPI(paguthi:GlobalVariables.shared.selectedPaguthiId)
         setupView()
+        /*Tap anywhere to hide keypad*/
+        self.hideKeyboardWhenTappedAround()
     }
     
 
@@ -76,21 +79,41 @@ class DashBoard: UIViewController, ChartViewDelegate {
     }
     
     func createPickerView() {
-           pickerView.dataSource = self
-           pickerView.delegate = self
-           area.inputView = pickerView
+         pickerView.dataSource = self
+         pickerView.delegate = self
+         pickerView.backgroundColor = UIColor.white
+         pickerView.setValue(UIColor.black, forKeyPath: "textColor")
+        
+         let toolBar = UIToolbar()
+         toolBar.sizeToFit()
+         let doneButton = UIBarButtonItem(title: "Done", style: .plain, target: self, action: #selector(self.action))
+         let spaceButton = UIBarButtonItem(barButtonSystemItem: UIBarButtonItem.SystemItem.flexibleSpace, target: nil, action: nil)
+         let cancelButton = UIBarButtonItem(title: "Cancel", style: .plain, target: self, action: #selector(self.cancel))
+
+         toolBar.setItems([cancelButton,spaceButton,doneButton], animated: true)
+         toolBar.isUserInteractionEnabled = true
+         toolBar.barTintColor = UIColor(red: 250/255.0, green: 250/255.0, blue: 248/255.0, alpha: 1.0)
+         toolBar.tintColor = UIColor(red: 45/255.0, green: 148/255.0, blue: 235/255.0, alpha: 1.0)
+         toolBar.isUserInteractionEnabled = true
+         toolBar.isTranslucent = true
+         area.inputView = pickerView
+         area.inputAccessoryView = toolBar
     }
     
-    func dismissPickerView() {
-       let toolBar = UIToolbar()
-       toolBar.sizeToFit()
-       let button = UIBarButtonItem(title: "Cancel", style: .plain, target: self, action: #selector(self.action))
-       toolBar.setItems([button], animated: true)
-       toolBar.isUserInteractionEnabled = true
-       area.inputAccessoryView = toolBar
-    }
     
     @objc func action() {
+          let row = self.pickerView.selectedRow(inComponent: 0)
+          self.pickerView.selectRow(row, inComponent: 0, animated: false)
+          if self.area.isFirstResponder{
+             area.text = self.paguthiName[row]// selected item
+             GlobalVariables.shared.selectedPaguthiId = self.paguthiId[row]
+          }
+          self.callAPI(paguthi:GlobalVariables.shared.selectedPaguthiId)
+          self.area.resignFirstResponder()
+          view.endEditing(true)
+    }
+    
+    @objc func cancel() {
           view.endEditing(true)
     }
     
@@ -116,7 +139,19 @@ class DashBoard: UIViewController, ChartViewDelegate {
                             self.meetingLabel.text = json["widgets_count"]["meeting_count"].stringValue
                             self.grievanceLabel.text = json["widgets_count"]["grievance_count"].stringValue
                             self.interactionLabel.text = json["widgets_count"]["interaction_count"].stringValue
+                            
+                            GlobalVariables.shared.constituent_MemberCount = self.constituentlabel.text!
+                            GlobalVariables.shared.totalMeetingsCount = self.meetingLabel.text!
+                            GlobalVariables.shared.totalGrievancesCount = self.grievanceLabel.text!
+                            //GlobalVariables.shared.interActionCount = self.interactionLabel.text!
+                            GlobalVariables.shared.constituentInteractionCount = self.interactionLabel.text!
 
+                            self.dispMonth.removeAll()
+                            self.new_grev.removeAll()
+                            self.repeeated_grev.removeAll()
+                            self.grivenacegraph.removeAll()
+                            self.meeting_request.removeAll()
+                            self.month_year.removeAll()
                             /*Bar Chart*/
                             let footFall = json["footfall_graph"]
                             for i in 0..<(footFall.count)
@@ -133,7 +168,6 @@ class DashBoard: UIViewController, ChartViewDelegate {
                                 //self.total.append(_total!)
                             }
                             self.setupView()
-
                             /*Pie Chart*/
                             let gerv_ecount = json["grievance_graph"]["gerv_ecount"].doubleValue
                             let gerv_ppcount = json["grievance_graph"]["gerv_ppcount"].doubleValue
@@ -207,7 +241,7 @@ class DashBoard: UIViewController, ChartViewDelegate {
         
         
         barchart.delegate = self
-        barchart.noDataText = "You need to provide data for the chart."
+        //barchart.noDataText = "You need to provide data"
         barchart.noDataTextColor = UIColor.darkGray
         barchart.chartDescription?.textColor = UIColor.clear
         
@@ -215,7 +249,7 @@ class DashBoard: UIViewController, ChartViewDelegate {
     }
     func setChart(dispMonth: [String], newgrev: [Double], repetedgrev: [Double]) {
         
-        barchart.noDataText = "Loading...!!"
+        barchart.noDataText = "You need to provide data"
         var dataEntries: [BarChartDataEntry] = []
         var dataEntries1: [BarChartDataEntry] = []
         
@@ -325,7 +359,10 @@ class DashBoard: UIViewController, ChartViewDelegate {
         else if (segue.identifier == "to_ci"){
             let vc = segue.destination as! WidgetInterAction
             vc.paguthi_Id = GlobalVariables.shared.selectedPaguthiId
-
+        }
+        else if (segue.identifier == "to_search"){
+            let vc = segue.destination as! Search
+            vc.keyWord = sender as! String
         }
     }
     
@@ -338,34 +375,28 @@ extension DashBoard : PaguthiView, UIPickerViewDelegate, UIPickerViewDataSource,
     {
         if textField == searchText
         {
-            if searchText.text?.isEmpty == true
-            {
-                AlertController.shared.showAlert(targetVc: self, title: Globals.alertTitle, message: "Empty", complition: {
-                    
-                  })
+            if searchText.text?.isEmpty == true{
+               AlertController.shared.showAlert(targetVc: self, title: Globals.alertTitle, message: "Empty", complition: {
+               })
             }
-            else
-            {
-                
-                self.performSegue(withIdentifier: "to_search", sender: self)
+            else{
+                self.performSegue(withIdentifier: "to_search", sender: searchText.text)
             }
         }
-        return true
+            return true
     }
     
     
     func textFieldShouldBeginEditing(_ textField: UITextField) -> Bool {
-        if textField == area
-        {
+        if textField == area{
             self.callAPIPaguthi ()
         }
-        
         return true
     }
     
     /*Presenter Delegate*/
     func startLoading(){
-        self.view.activityStartAnimating()
+         self.view.activityStartAnimating()
     }
     
     func finishLoading(){
@@ -374,15 +405,18 @@ extension DashBoard : PaguthiView, UIPickerViewDelegate, UIPickerViewDataSource,
     
     func setPaguthi(paguthi: [PaguthiData]) {
          paguthiData = paguthi
-        
-        for items in paguthiData
-        {
+         self.paguthiName.removeAll()
+         self.paguthiId.removeAll()
+         for items in paguthiData
+         {
             let paguthi = items.paguthi_name
             let id = items.id
             self.paguthiName.append(paguthi)
             self.paguthiId.append(id)
-            pickerView.reloadAllComponents()
-        }
+         }
+         self.paguthiName.insert("ALL", at: 0)
+         self.paguthiId.insert("ALL", at: 0)
+         pickerView.reloadAllComponents()
     }
     
     func setEmpty(errorMessage: String) {
@@ -391,13 +425,12 @@ extension DashBoard : PaguthiView, UIPickerViewDelegate, UIPickerViewDataSource,
          })
     }
     /*Picker View*/
-    
     func numberOfComponents(in pickerView: UIPickerView) -> Int {
-        return 1
+         return 1
     }
     
     func pickerView(_ pickerView: UIPickerView, numberOfRowsInComponent component: Int) -> Int {
-        return self.paguthiName.count
+         return self.paguthiName.count
     }
     
     func pickerView(_ pickerView: UIPickerView, titleForRow row: Int, forComponent component: Int) -> String? {
@@ -407,7 +440,6 @@ extension DashBoard : PaguthiView, UIPickerViewDelegate, UIPickerViewDataSource,
     func pickerView(_ pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
          area.text = self.paguthiName[row] // selected item
          GlobalVariables.shared.selectedPaguthiId = self.paguthiId[row]
-         self.callAPI(paguthi:GlobalVariables.shared.selectedPaguthiId)
     }
         
 }

@@ -14,6 +14,7 @@ class ConstituentGreivances: UIViewController {
     let Presenter = ConstituentgreivancesPresenter(constituentGreivancesService: ConstituentGreivancesService())
     var PresenterData = [ConstituentGreivancesData]()
     
+    var selectedconstitunecyId = String()
     var _place = String()
     var _seekerType = String()
     var _petitionNumber = String()
@@ -25,6 +26,8 @@ class ConstituentGreivances: UIViewController {
     var _updatedOn = String()
     var _status = String()
     var greivanceId = String()
+    var type = String()
+
 
     @IBOutlet var greivanceCount: UILabel!
     @IBOutlet var tableView: UITableView!
@@ -40,12 +43,15 @@ class ConstituentGreivances: UIViewController {
         }
         self.tableView.backgroundColor = UIColor.white
         self.callAPI ()
+        self.addCustomizedBackBtn(title:"  Grievances")
+
     }
     
     func callAPI ()
     {
+        print(selectedconstitunecyId)
         Presenter.attachView(view: self)
-        Presenter.getConsGrie(constituent_id: GlobalVariables.shared.constituent_Id)
+        Presenter.getConsGrie(constituent_id: selectedconstitunecyId)
     }
     
 
@@ -70,6 +76,7 @@ class ConstituentGreivances: UIViewController {
             vc._status = _status
             vc.greivanceId = greivanceId
             vc._refNumber = _refNumber
+            vc.type = self.type
         }
     }
     
@@ -96,6 +103,7 @@ extension ConstituentGreivances : ConstituentGreivancesView, UITableViewDelegate
     func setEmpty(errorMessage: String) {
         AlertController.shared.showAlert(targetVc: self, title: Globals.alertTitle, message: errorMessage, complition: {
         })
+        self.greivanceCount.text = String(GlobalVariables.shared.consGreivanceCount) + " " + "Greviances"
         self.tableView.isHidden = true
     }
     
@@ -106,12 +114,21 @@ extension ConstituentGreivances : ConstituentGreivancesView, UITableViewDelegate
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "cell", for: indexPath) as! ConstituentGreivancesCell
         let data = PresenterData[indexPath.row]
-        cell.pettionNumber.text = "Petition Number - " +  " " + data.petition_enquiry_no
-//        cell.greivanesType.text = data.grievance_type
+        let type = data.grievance_type
+        if (type == "P")
+        {
+            cell.pettionNumber.text = "Petition Number - " +  " " + data.petition_enquiry_no
+        }
+        else
+        {
+            cell.pettionNumber.text = "Enquiry Number - " +  " " + data.petition_enquiry_no
+        }
+//      cell.greivanesType.text = data.grievance_type
         cell.greivanceName.text = data.grievance_name
         cell.subCategoeryName.text = data.sub_category_name
         cell.status.text = data.status
-        cell.date.text = data.grievance_date
+        let formatedDate = self.formattedDateFromString(dateString: data.grievance_date, withFormat: "dd-MM-YYYY")
+        cell.date.text = formatedDate
         
         if cell.status.text == "PROCESSING"{
             cell.statusBgView.backgroundColor = UIColor(red: 253/255, green: 166/255, blue: 68/255, alpha: 1.0)
@@ -139,7 +156,23 @@ extension ConstituentGreivances : ConstituentGreivancesView, UITableViewDelegate
         self._updatedOn = data.updated_at
         self._status = data.status
         self.greivanceId = data.id
+        self.type = data.grievance_type
         self.performSegue(withIdentifier: "to_constituentGreDetail", sender: self)
     }
     
+    func formattedDateFromString(dateString: String, withFormat format: String) -> String? {
+
+        let inputFormatter = DateFormatter()
+        inputFormatter.dateFormat = "yyyy-MM-dd"
+
+        if let date = inputFormatter.date(from: dateString) {
+
+            let outputFormatter = DateFormatter()
+          outputFormatter.dateFormat = format
+
+            return outputFormatter.string(from: date)
+        }
+
+        return nil
+    }
 }

@@ -17,6 +17,7 @@ class ConstituentGreivancesCell: UITableViewCell {
     @IBOutlet var status: UILabel!
     @IBOutlet var date: UILabel!
     @IBOutlet var statusBgView: SideRoundedCornerView!
+    @IBOutlet var userName: UILabel!
     
     override func awakeFromNib() {
         super.awakeFromNib()

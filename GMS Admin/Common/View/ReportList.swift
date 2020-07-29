@@ -48,15 +48,19 @@ class ReportList: UIViewController {
         self.keyword = "no"
         if (from == "status")
         {
+            self.addCustomizedBackBtn(title:"  Status report")
             self.callAPI(url: reportStatus, From: from, from_date: fromdate, to_date: todate, status: status, paguthi: paguthi,offset:"0",rowCount:"50",category: category, sub_category: sub_category, keyword: keyword)
         }
         else if (from == "categoery"){
+            self.addCustomizedBackBtn(title:"  Category report")
             self.callAPI(url: reportCategoery, From: from, from_date: fromdate, to_date: todate, status: status, paguthi: paguthi,offset:"0",rowCount:"50",category: category, sub_category: sub_category, keyword: keyword)
         }
         else if (from == "subCate"){
+            self.addCustomizedBackBtn(title:"  Sub category report")
             self.callAPI(url: reportSubCategoery, From: from, from_date: fromdate, to_date: todate, status: status, paguthi: paguthi,offset:"0",rowCount:"50",category: category, sub_category: sub_category, keyword: keyword)
         }
         else if (from == "location"){
+            self.addCustomizedBackBtn(title:"  Location report")
             self.callAPI(url: reportLocation, From: from, from_date: fromdate, to_date: todate, status: status, paguthi: paguthi,offset:"0",rowCount:"50",category: category, sub_category: sub_category, keyword: keyword)
         }
 

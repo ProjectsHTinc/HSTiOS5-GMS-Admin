@@ -54,19 +54,43 @@ class MeetingAllDetail: UIViewController ,MeetingAllDetailView, UIPickerViewDele
     func createPickerView() {
            pickerView.dataSource = self
            pickerView.delegate = self
+           pickerView.backgroundColor = UIColor.white
+           pickerView.setValue(UIColor.black, forKeyPath: "textColor")
            status.inputView = pickerView
+        
+           let toolBar = UIToolbar()
+           toolBar.sizeToFit()
+           let doneButton = UIBarButtonItem(title: "Done", style: .plain, target: self, action: #selector(self.action))
+           let spaceButton = UIBarButtonItem(barButtonSystemItem: UIBarButtonItem.SystemItem.flexibleSpace, target: nil, action: nil)
+           let cancelButton = UIBarButtonItem(title: "Cancel", style: .plain, target: self, action: #selector(self.cancel))
+
+           toolBar.setItems([cancelButton,spaceButton,doneButton], animated: true)
+           toolBar.isUserInteractionEnabled = true
+           toolBar.barTintColor = UIColor(red: 250/255.0, green: 250/255.0, blue: 248/255.0, alpha: 1.0)
+           toolBar.tintColor = UIColor(red: 45/255.0, green: 148/255.0, blue: 235/255.0, alpha: 1.0)
+           toolBar.isUserInteractionEnabled = true
+           toolBar.isTranslucent = true
+           status.inputAccessoryView = toolBar
+        
+
+    }
+    
+    @objc func cancel() {
+          view.endEditing(true)
     }
     
     func dismissPickerView() {
-       let toolBar = UIToolbar()
-       toolBar.sizeToFit()
-       let button = UIBarButtonItem(title: "Cancel", style: .plain, target: self, action: #selector(self.action))
-       toolBar.setItems([button], animated: true)
-       toolBar.isUserInteractionEnabled = true
-       status.inputAccessoryView = toolBar
+
     }
     @objc func action() {
-          view.endEditing(true)
+        let row = self.pickerView.selectedRow(inComponent: 0)
+        self.pickerView.selectRow(row, inComponent: 0, animated: false)
+        if self.status.isFirstResponder{
+            status.text = self.statusArr[row]// selected item
+            self.callAPIMeetingUpdate(meeting_id: meetingId, user_id: GlobalVariables.shared.user_id, status: status.text!)
+        }
+        self.status.resignFirstResponder()
+        view.endEditing(true)
     }
     
     /*Picker View*/
@@ -85,9 +109,6 @@ class MeetingAllDetail: UIViewController ,MeetingAllDetailView, UIPickerViewDele
     
     func pickerView(_ pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
          status.text = self.statusArr[row] // selected item
-         view.endEditing(true)
-         self.callAPIMeetingUpdate(meeting_id: meetingId, user_id: GlobalVariables.shared.user_id, status: status.text!)
-         
     }
     
     func callAPIMeetingUpdate(meeting_id: String, user_id: String, status: String){
