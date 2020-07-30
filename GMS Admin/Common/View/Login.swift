@@ -182,10 +182,12 @@ extension Login : LoginView
          UserDefaults.standard.set(userName, forKey: UserDefaultsKey.userNamekey.rawValue)
          UserDefaults.standard.set(userlocation, forKey: UserDefaultsKey.userLocationkey.rawValue)
          UserDefaults.standard.set(userImage, forKey: UserDefaultsKey.userImagekey.rawValue)
+         //UserDefaults.standard.set(user_role, forKey: UserDefaultsKey.userRolekey.rawValue)
          GlobalVariables.shared.user_id = UserDefaults.standard.object(forKey: UserDefaultsKey.userIDkey.rawValue) as! String
          GlobalVariables.shared.user_Image = UserDefaults.standard.object(forKey: UserDefaultsKey.userImagekey.rawValue) as! String
          GlobalVariables.shared.user_name = UserDefaults.standard.object(forKey: UserDefaultsKey.userNamekey.rawValue) as! String
          GlobalVariables.shared.user_location = UserDefaults.standard.object(forKey: UserDefaultsKey.userLocationkey.rawValue) as! String
+         //GlobalVariables.shared.user_role = UserDefaults.standard.object(forKey: UserDefaultsKey.userRolekey.rawValue) as! String
          self.performSegue(withIdentifier: "to_dashboard", sender: self)
     }
     

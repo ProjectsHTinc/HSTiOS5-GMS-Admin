@@ -21,7 +21,7 @@ enum UserDefaultsKey : String
       case constituentIDkey
       case userLocationkey
       case userImagekey
-
+      case userRolekey
 }
 
 extension UserDefaults
@@ -66,6 +66,7 @@ extension UserDefaults
         UserDefaults.standard.removeObject(forKey: UserDefaultsKey.constituentIDkey.rawValue)
         UserDefaults.standard.removeObject(forKey: UserDefaultsKey.userLocationkey.rawValue)
         UserDefaults.standard.removeObject(forKey: UserDefaultsKey.userImagekey.rawValue)
+        UserDefaults.standard.removeObject(forKey: UserDefaultsKey.userRolekey.rawValue)
 
     }
 }

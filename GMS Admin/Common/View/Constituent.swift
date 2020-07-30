@@ -21,6 +21,8 @@ class Constituent: UIViewController, PaguthiView {
     var constituencyName = [String]()
     var constituencyID = [String]()
     var selectedconstitunecyId = String()
+    
+    var loadMore = false
 
     /*Get Search List*/
     let presenter = ListConstituentPresenter(listConstituentservice: ListConstituentservice())
@@ -159,18 +161,15 @@ extension Constituent: UISearchBarDelegate, UITableViewDelegate, UITableViewData
     }
     
     func tableView(_ tableView: UITableView, willDisplay cell: UITableViewCell, forRowAt indexPath: IndexPath) {
-        let totalRows = tableView.numberOfRows(inSection: indexPath.section)
-        if indexPath.row == (totalRows - 1)
+        let lastElement = listConstituent.count - 1
+        print (lastElement)
+        if indexPath.row == lastElement
         {
-            if totalRows >= 50
-            {
-                print("came to last row")
-                self.callAPISearch(constituency_id: self.selectedconstitunecyId,offset: String(totalRows),rowcount: "50")
-            }
- 
+            print (lastElement)
+            self.callAPISearch(constituency_id: self.selectedconstitunecyId,offset: String(lastElement),rowcount: "50")
         }
     }
-    
+        
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         let constituent = listConstituent[indexPath.row]
         self.selectedconstitunecyId = constituent.id
@@ -178,11 +177,11 @@ extension Constituent: UISearchBarDelegate, UITableViewDelegate, UITableViewData
     }
     
     func startLoading() {
-        //self.view.activityStartAnimating()
+        self.view.activityStartAnimating()
     }
     
     func finishLoading() {
-        //self.view.activityStopAnimating()
+        self.view.activityStopAnimating()
     }
     
     func setEmptyListConstituency(errorMessage: String) {
@@ -240,10 +239,12 @@ extension Constituent: UISearchBarDelegate, UITableViewDelegate, UITableViewData
     
     func setConstituent(constituentname: [ListConstituencyData]) {
         listConstituent = constituentname
+        print(listConstituent.count)
         self.constituentCount.text =   String(format: "%@ %@", String (GlobalVariables.shared.constituent_Count),"Constituent")
         self.constituentCount.isHidden = false
         self.bottomLine.isHidden = false
         tableView?.isHidden = false
+        loadMore = true
         self.tableView.reloadData()
     }
 }

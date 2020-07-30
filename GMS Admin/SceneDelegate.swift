@@ -32,7 +32,8 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         let userLocation = UserDefaults.standard.object(forKey: UserDefaultsKey.userLocationkey.rawValue) ?? ""
         let userImage = UserDefaults.standard.object(forKey: UserDefaultsKey.userImagekey.rawValue) ?? ""
         let constituent_id = UserDefaults.standard.object(forKey: UserDefaultsKey.constituentIDkey.rawValue) ?? ""
-
+        let userRole = UserDefaults.standard.object(forKey: UserDefaultsKey.userRolekey.rawValue) ?? ""
+        let constituencyName = UserDefaults.standard.object(forKey: UserDefaultsKey.constituencyNamekey.rawValue) ?? ""
         if user_id as! String == ""
         {
             guard let window = self.window else { return }
@@ -49,6 +50,8 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
             GlobalVariables.shared.user_location = userLocation as! String
             GlobalVariables.shared.user_Image = userImage as! String
             GlobalVariables.shared.constituent_Id = constituent_id as! String
+            GlobalVariables.shared.user_role = userRole as! String
+            GlobalVariables.shared.selectedConstituencyName = constituencyName as! String
             guard let window = self.window else { return }
             self.window = window
               // Set initial view controller from Main storyboard as root view controller of UIWindow

@@ -33,6 +33,7 @@ class GlobalVariables: NSObject {
     var totalMeetingsCount = String()
     var totalGrievancesCount = String()
     var constituentInteractionCount = String()
+    var user_role = String()
 
 
 }

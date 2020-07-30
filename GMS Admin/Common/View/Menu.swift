@@ -32,7 +32,6 @@ class Menu: UITableViewController {
         self.navigationController?.navigationBar.layoutIfNeeded()
         /*Update UI*/
         self.updateUI()
-        
         if (GlobalVariables.shared.sideMenuDropdown == "true")
         {
             self.tableView.reloadData()
@@ -43,9 +42,8 @@ class Menu: UITableViewController {
     {
         self.userImage.sd_setImage(with: URL(string: GlobalVariables.shared.user_Image), placeholderImage: UIImage(named: "placeholder.png"))
         self.userName.text = GlobalVariables.shared.user_name
-        self.userLocation.text = GlobalVariables.shared.user_location
-        
-        print(GlobalVariables.shared.user_Image,GlobalVariables.shared.user_name)
+        self.userLocation.text = GlobalVariables.shared.selectedConstituencyName
+        print(GlobalVariables.shared.user_Image,GlobalVariables.shared.selectedConstituencyName)
     }
 
     // MARK: - Table view data source

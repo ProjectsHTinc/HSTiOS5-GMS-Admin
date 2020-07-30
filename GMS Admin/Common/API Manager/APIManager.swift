@@ -2110,7 +2110,7 @@ class APIManager: NSObject {
         // Create dictionary
         print(responseObject)
           
-          guard let status = responseObject["status"].string, status == "Success" else{
+          guard let status = responseObject["status"].string, status == "success" else{
               failureCallback?(responseObject["msg"].string!)
               return
         }
@@ -2209,18 +2209,19 @@ class APIManager: NSObject {
         // Create dictionary
         print(responseObject)
           
-          guard let status = responseObject["status"].string, status == "Success" else{
+          guard let status = responseObject["status"].string, status == "success" else{
               failureCallback?(responseObject["msg"].string!)
               return
         }
 
-        let respMsg = responseObject["msg"].string
-        let respStatus = responseObject["status"].string
+          let respMsg = responseObject["msg"].string
+          let respStatus = responseObject["status"].string
 
-        // Create object
-        let sendToModel = ChangePasswordModel()
-        sendToModel.msg = respMsg
-        sendToModel.status = respStatus
+          // Create object
+          let sendToModel = ChangePasswordModel()
+          sendToModel.msg = respMsg
+          sendToModel.status = respStatus
+          successCallback?(sendToModel)
         },
         onFailure: {(errorMessage: String) -> Void in
             failureCallback?(errorMessage)

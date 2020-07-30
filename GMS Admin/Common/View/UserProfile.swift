@@ -72,6 +72,14 @@ class UserProfile: UIViewController, ProfileDetailsView, UIImagePickerController
          self.phone.text = phone_number
          self.emailId.text = email_id
          let seg = gender
+         let userRole = user_role
+         if userRole == "2"
+         {
+            AlertController.shared.showAlert(targetVc: self, title: Globals.alertTitle, message: "Sub Admin Cannot access", complition: {
+                self.navigationController?.popViewController(animated: true)
+            })
+         }
+         print(userRole)
          if(seg == "M"){
             genderSegment.selectedSegmentIndex = 0
             selectedSegmentValue = "M"
@@ -90,7 +98,6 @@ class UserProfile: UIViewController, ProfileDetailsView, UIImagePickerController
     }
     
     @IBAction func changeImage(_ sender: Any) {
-        
         let alert = UIAlertController(title: nil, message: nil, preferredStyle: .actionSheet)
         alert.addAction(UIAlertAction(title: "Take Photo", style: .default, handler: { _ in
                 self.openCamera()
@@ -184,7 +191,7 @@ class UserProfile: UIViewController, ProfileDetailsView, UIImagePickerController
                             let msg = JSON?["msg"] as? String
                             let status = JSON?["status"] as? String
                             GlobalVariables.shared.user_Image = (JSON?["picture_url"] as? String)!
-                            print(msg!,status!)
+                            print(msg!,status!,GlobalVariables.shared.user_Image)
                             
                         }
                     case .failure(let encodingError):
@@ -260,7 +267,7 @@ extension UserProfile : ProfileUpdatesView, UITextFieldDelegate, UITextViewDeleg
         }
         else if phone.isFirstResponder
         {
-            let maxLength = 30
+            let maxLength = 10
             let currentString: NSString = phone.text! as NSString
             let newString: NSString = currentString.replacingCharacters(in: range, with: string) as NSString
             return newString.length <= maxLength
@@ -291,7 +298,7 @@ extension UserProfile : ProfileUpdatesView, UITextFieldDelegate, UITextViewDeleg
     }
     
     func setProfileUpdate(msg: String, status: String) {
-        if  status == "Success"{
+        if  status == "success"{
             AlertController.shared.showAlert(targetVc: self, title: Globals.alertTitle, message: msg, complition: {
                 self.navigationController?.popViewController(animated: true)
             })

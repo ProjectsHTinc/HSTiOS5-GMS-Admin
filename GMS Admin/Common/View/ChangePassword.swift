@@ -31,6 +31,10 @@ class ChangePassword: UIViewController {
         self.addCustomizedBackBtn(title:"  Change Password")
         /*Tap anywhere to hide keypad*/
         self.hideKeyboardWhenTappedAround()
+        /*Set Delegates to TextField*/
+        currentPassword.delegate = self
+        newPassword.delegate = self
+        confirmPassword.delegate = self
 
     }
     
@@ -143,7 +147,25 @@ class ChangePassword: UIViewController {
 
 }
 
-extension ChangePassword : ChangePasswordView{
+extension ChangePassword : ChangePasswordView, UITextFieldDelegate{
+    
+    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+        // Try to find next responder
+        if self.currentPassword.isFirstResponder
+        {
+            self.newPassword.becomeFirstResponder()
+        }
+        else if self.newPassword.isFirstResponder
+        {
+            self.confirmPassword.becomeFirstResponder()
+        }
+        else if self.confirmPassword.isFirstResponder
+        {
+            self.confirmPassword.resignFirstResponder()
+        }
+        return true
+     }
+    
     func startLoading() {
          //
     }
@@ -153,9 +175,14 @@ extension ChangePassword : ChangePasswordView{
     }
     
     func setChangePassword(msg: String, status: String) {
-         if  status == "Success"{
+        
+         if  status == "success"{
              AlertController.shared.showAlert(targetVc: self, title: Globals.alertTitle, message: msg, complition: {
                 self.navigationController?.popViewController(animated: true)
+             })
+         }
+         else{
+             AlertController.shared.showAlert(targetVc: self, title: Globals.alertTitle, message: msg, complition: {
              })
          }
     }

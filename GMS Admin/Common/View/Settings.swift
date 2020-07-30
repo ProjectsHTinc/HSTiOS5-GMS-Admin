@@ -32,6 +32,9 @@ class Settings: UIViewController {
         self.performSegue(withIdentifier: "to_terms", sender: "privacy")
     }
     
+    @IBAction func editProfile(_ sender: Any) {
+        self.performSegue(withIdentifier: "to_UserProfile", sender: self)
+    }
     
     // MARK: - Navigation
 
