@@ -123,6 +123,12 @@ class Login: UIViewController  {
              return false
          }
         
+        guard self.password.text!.count >= 6  else {
+              AlertController.shared.showAlert(targetVc: self, title: Globals.alertTitle, message: "Short passwords are easy to guess!\nTry one with atleast 6 characters", complition: {
+              })
+             return false
+         }
+        
           return true
     }
     
@@ -148,6 +154,20 @@ extension Login : UITextFieldDelegate
         }
         
         return true
+     }
+    
+     func textField(_ textField: UITextField, shouldChangeCharactersIn range: NSRange, replacementString string: String) -> Bool
+     {
+         if password.isFirstResponder
+         {
+             let maxLength = 12
+             let currentString: NSString = password.text! as NSString
+             let newString: NSString =
+                 currentString.replacingCharacters(in: range, with: string) as NSString
+             return newString.length <= maxLength
+         }
+        
+         return true
      }
 }
 

@@ -104,12 +104,28 @@ class ChangePassword: UIViewController {
              return false
          }
         
+        guard self.currentPassword.text!.count >= 6  else {
+              AlertController.shared.showAlert(targetVc: self, title: Globals.alertTitle, message: "Short passwords are easy to guess!\nTry one with atleast 6 characters", complition: {
+                
+              })
+             return false
+         }
+        
+        
         guard self.newPassword.text?.count != 0  else {
               AlertController.shared.showAlert(targetVc: self, title: Globals.alertTitle, message: "New Password is Empty", complition: {
                   
                 })
              return false
          }
+        
+        guard self.newPassword.text!.count >= 6  else {
+              AlertController.shared.showAlert(targetVc: self, title: Globals.alertTitle, message: "Short passwords are easy to guess!\nTry one with atleast 6 characters", complition: {
+                
+              })
+             return false
+         }
+        
         
         guard self.confirmPassword.text?.count != 0  else {
               AlertController.shared.showAlert(targetVc: self, title: Globals.alertTitle, message: "Confirm Password is Empty", complition: {
@@ -118,13 +134,20 @@ class ChangePassword: UIViewController {
              return false
          }
         
+        guard self.confirmPassword.text!.count >= 6  else {
+              AlertController.shared.showAlert(targetVc: self, title: Globals.alertTitle, message: "Short passwords are easy to guess!\nTry one with atleast 6 characters", complition: {
+                
+              })
+             return false
+         }
+        
+        
         guard self.newPassword.text == self.confirmPassword.text  else {
               AlertController.shared.showAlert(targetVc: self, title: Globals.alertTitle, message: "Password Mismatch", complition: {
                   
                 })
              return false
          }
-        
         
           return true
     }
@@ -153,18 +176,51 @@ extension ChangePassword : ChangePasswordView, UITextFieldDelegate{
         // Try to find next responder
         if self.currentPassword.isFirstResponder
         {
+            let cp = self.self.currentPassword.text
+            self.currentPassword.text = cp?.uppercased()
             self.newPassword.becomeFirstResponder()
         }
         else if self.newPassword.isFirstResponder
         {
+            let cp = self.self.newPassword.text
+            self.newPassword.text = cp?.uppercased()
             self.confirmPassword.becomeFirstResponder()
         }
         else if self.confirmPassword.isFirstResponder
         {
+            let cp = self.self.confirmPassword.text
+            self.confirmPassword.text = cp?.uppercased()
             self.confirmPassword.resignFirstResponder()
         }
         return true
      }
+    
+    func textField(_ textField: UITextField, shouldChangeCharactersIn range: NSRange, replacementString string: String) -> Bool
+    {
+        if currentPassword.isFirstResponder
+        {
+            let maxLength = 12
+            let currentString: NSString = currentPassword.text! as NSString
+            let newString: NSString =
+                currentString.replacingCharacters(in: range, with: string) as NSString
+            return newString.length <= maxLength
+        }
+        else if newPassword.isFirstResponder
+        {
+            let maxLength = 12
+            let currentString: NSString = newPassword.text! as NSString
+            let newString: NSString = currentString.replacingCharacters(in: range, with: string) as NSString
+            return newString.length <= maxLength
+        }
+        else
+        {
+            let maxLength = 12
+            let currentString: NSString = confirmPassword.text! as NSString
+            let newString: NSString = currentString.replacingCharacters(in: range, with: string) as NSString
+            return newString.length <= maxLength
+        }
+
+    }
     
     func startLoading() {
          //
