@@ -23,6 +23,11 @@ class ReportBirthday: UIViewController {
     var keyword = String()
     var selectedMonthID = String()
     
+    var userNameArr = [String]()
+    var dobArr = [String]()
+    var mobileArr = [String]()
+    var wishStatusArr = [String]()
+
     @IBOutlet var month: TextFieldWithImage!
     @IBOutlet var reportCount: UILabel!
     @IBOutlet var tableView: UITableView!
@@ -41,6 +46,12 @@ class ReportBirthday: UIViewController {
              })
              return
         }
+        /*set Array Empty*/
+        self.userNameArr.removeAll()
+        self.dobArr.removeAll()
+        self.mobileArr.removeAll()
+        self.wishStatusArr.removeAll()
+        //
         self.addCustomizedBackBtn(title:"  Birthday letter report")
         self.keyword = "no"
         self.monthArr = ["January","February","March","April","May","June","July","August","September","October","November","December"]
@@ -70,7 +81,7 @@ class ReportBirthday: UIViewController {
            pickerView.dataSource = self
            pickerView.delegate = self
            pickerView.backgroundColor = UIColor.white
-           pickerView.setValue(UIColor.darkGray, forKeyPath: "textColor")
+           pickerView.setValue(UIColor.black, forKeyPath: "textColor")
            month.inputView = pickerView
            let toolBar = UIToolbar()
            toolBar.sizeToFit()
@@ -139,6 +150,21 @@ class ReportBirthday: UIViewController {
           return true
     }
     
+    func formattedDateFromString(dateString: String, withFormat format: String) -> String? {
+
+        let inputFormatter = DateFormatter()
+        inputFormatter.dateFormat = "yyyy-MM-dd"
+
+        if let date = inputFormatter.date(from: dateString) {
+
+            let outputFormatter = DateFormatter()
+          outputFormatter.dateFormat = format
+
+            return outputFormatter.string(from: date)
+        }
+
+        return nil
+    }
     
     // MARK: - Navigation
 
@@ -175,8 +201,21 @@ extension ReportBirthday : ReportBirthdayView, UITableViewDelegate, UITableViewD
     
     func setReportBirthday(reportbday: [ReportBirthdayData]) {
         reportData = reportbday
+        for items in reportData
+        {
+            let fullname = items.full_name
+            let db = items.dob
+            let mobile = items.mobile_no
+            let status = items.birth_wish_status
+            
+            self.userNameArr.append(fullname!)
+            self.dobArr.append(db!)
+            self.mobileArr.append(mobile!)
+            self.wishStatusArr.append(status!)
+        }
         self.tableView.isHidden = false
         self.reportCount.isHidden = false
+        self.reportCount.text = String(format: "%@ %@", String (GlobalVariables.shared.meetingAllCount),"Records")
         self.baselIne.isHidden = false
         /*Right Navigation Bar*/
         self.addrightButton(bg_ImageName:"ConstituentSearch")
@@ -184,24 +223,35 @@ extension ReportBirthday : ReportBirthdayView, UITableViewDelegate, UITableViewD
     }
     
     func setEmpty(errorMessage: String) {
-        AlertController.shared.showAlert(targetVc: self, title: Globals.alertTitle, message: errorMessage, complition: {
-        })
-        self.tableView.isHidden = true
+        if userNameArr.count == 0
+        {
+            AlertController.shared.showAlert(targetVc: self, title: Globals.alertTitle, message: errorMessage, complition: {
+            })
+            self.reportCount.text = String(format: "%@ %@", "0","Records")
+            self.tableView.isHidden = true
+        }
+        else{
+            AlertController.shared.showAlert(targetVc: self, title: Globals.alertTitle, message: errorMessage, complition: {
+            })
+            self.reportCount.text = String(format: "%@ %@", String (GlobalVariables.shared.meetingAllCount),"Records")
+            self.tableView.isHidden = false
+        }
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-           return reportData.count
+           return userNameArr.count
     }
        
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
            let cell = tableView.dequeueReusableCell(withIdentifier: "cell", for: indexPath) as! ReportBirthdayCellTableViewCell
-           let data = reportData[indexPath.row]
-           cell.userName.text = data.full_name
-           cell.db.text =  "D.O.B : " + data.dob!
-           cell.mobile.text = data.mobile_no
-           cell.status.text = data.birth_wish_status
+//         let data = reportData[indexPath.row]
+           cell.userName.text = userNameArr[indexPath.row]
+           let formatedDate = self.formattedDateFromString(dateString: dobArr[indexPath.row], withFormat: "dd-MM-YYYY")
+           cell.db.text =  "D.O.B : " + formatedDate!
+           cell.mobile.text = mobileArr[indexPath.row]
+           cell.status.text = wishStatusArr[indexPath.row]
            if cell.status.text == "NotSend"{
-            cell.status.textColor = UIColor(red: 204/255.0, green: 0/255.0, blue: 0/255.0, alpha: 1.0)
+             cell.status.textColor = UIColor(red: 204/255.0, green: 0/255.0, blue: 0/255.0, alpha: 1.0)
            }
            else{
             cell.status.textColor = UIColor(red: 106/255.0, green: 168/255.0, blue: 79/255.0, alpha: 1.0)
@@ -210,13 +260,13 @@ extension ReportBirthday : ReportBirthdayView, UITableViewDelegate, UITableViewD
     }
     
     func tableView(_ tableView: UITableView, willDisplay cell: UITableViewCell, forRowAt indexPath: IndexPath) {
-        let totalRows = tableView.numberOfRows(inSection: indexPath.section)
-        if indexPath.row == (totalRows - 1)
+        if userNameArr.count == 0
         {
-            if totalRows >= 50
+            let lastElement = userNameArr.count - 1
+            if indexPath.row == lastElement
             {
-             print("came to last row")
-                self.callAPI(url: reportBirthdayUrl, select_month: self.selectedMonthID, keyword: self.keyword, offset: String(totalRows), rowcount: "50")
+                 print("came to last row")
+                    self.callAPI(url: reportBirthdayUrl, select_month: self.selectedMonthID, keyword: self.keyword, offset: String(lastElement), rowcount: "50")
             }
         }
     }

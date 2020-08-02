@@ -42,6 +42,21 @@ class GreivancesAll: UIViewController {
     var greivanceId = String()
     var type = String()
 
+    var placeArr = [String]()
+    var seekerTypeArr = [String]()
+    var petitionNumberArr = [String]()
+    var refNumberArr = [String]()
+    var greivanceNameArr = [String]()
+    var subcatArr = [String]()
+    var descArr = [String]()
+    var createdonArr = [String]()
+    var updatedOnArr = [String]()
+    var statusArr = [String]()
+    var greivanceIdArr = [String]()
+    var typeArr = [String]()
+    var userNameArr = [String]()
+    var dateArr = [String]()
+
     @IBOutlet var tableView: UITableView!
     @IBOutlet var greivancesCount: UILabel!
     @IBOutlet var segmentView: UIView!
@@ -62,6 +77,22 @@ class GreivancesAll: UIViewController {
              })
              return
         }
+        /*Remove Array Values*/
+        self.placeArr.removeAll()
+        self.seekerTypeArr.removeAll()
+        self.petitionNumberArr.removeAll()
+        self.refNumberArr.removeAll()
+        self.greivanceNameArr.removeAll()
+        self.subcatArr.removeAll()
+        self.descArr.removeAll()
+        self.createdonArr.removeAll()
+        self.updatedOnArr.removeAll()
+        self.statusArr.removeAll()
+        self.greivanceIdArr.removeAll()
+        self.typeArr.removeAll()
+        self.userNameArr.removeAll()
+        self.dateArr.removeAll()
+        //
         self.statSelectdSeg = "A"
         self.callAPIPaguthi ()
     }
@@ -110,9 +141,40 @@ class GreivancesAll: UIViewController {
         segmentedControl.selectionIndicatorHeight = 2.0
         segmentedControl.selectionIndicatorColor = UIColor(red: 45/155, green: 148/255, blue: 235/255, alpha: 1.0)
         segmentedControl.titleTextAttributes = [NSAttributedString.Key.font: UIFont(name: "Roboto-Medium", size: 15.0)!]
+        self.setUpStatSegmentControl ()
+    }
+    
+    func setUpStatSegmentControl ()
+    {
+        statSegContrl.backgroundColor = UIColor.white
+        statSegContrl.tintColor = UIColor.white
+        statSegContrl.setTitleTextAttributes([
+            NSAttributedString.Key.font : UIFont(name: "Roboto-Regular", size: 13) as Any,
+            NSAttributedString.Key.foregroundColor: UIColor(red: 45.0/255.0, green: 148.0/255.0, blue: 235.0/255.0, alpha: 1.0)
+            ], for: .normal)
+
+        statSegContrl.setTitleTextAttributes([
+            NSAttributedString.Key.font : UIFont(name: "Roboto-Regular", size: 13) as Any,
+            NSAttributedString.Key.foregroundColor: UIColor.white
+        ], for: .selected)
     }
     
     @objc func segmentedControlChangedValue(segmentedControl: HMSegmentedControl) {
+        self.placeArr.removeAll()
+        self.seekerTypeArr.removeAll()
+        self.petitionNumberArr.removeAll()
+        self.refNumberArr.removeAll()
+        self.greivanceNameArr.removeAll()
+        self.subcatArr.removeAll()
+        self.descArr.removeAll()
+        self.createdonArr.removeAll()
+        self.updatedOnArr.removeAll()
+        self.statusArr.removeAll()
+        self.greivanceIdArr.removeAll()
+        self.typeArr.removeAll()
+        self.userNameArr.removeAll()
+        self.dateArr.removeAll()
+        self.reloadAndScrollToTop()
         print("Selected index \(segmentedControl.selectedSegmentIndex)")
         let selectedIndex = Int(segmentedControl.selectedSegmentIndex)
         let sel = self.constituencyID[selectedIndex]
@@ -121,6 +183,21 @@ class GreivancesAll: UIViewController {
     }
     
     @IBAction func segmentChanged(_ sender: Any) {
+        self.placeArr.removeAll()
+        self.seekerTypeArr.removeAll()
+        self.petitionNumberArr.removeAll()
+        self.refNumberArr.removeAll()
+        self.greivanceNameArr.removeAll()
+        self.subcatArr.removeAll()
+        self.descArr.removeAll()
+        self.createdonArr.removeAll()
+        self.updatedOnArr.removeAll()
+        self.statusArr.removeAll()
+        self.greivanceIdArr.removeAll()
+        self.typeArr.removeAll()
+        self.userNameArr.removeAll()
+        self.dateArr.removeAll()
+        self.reloadAndScrollToTop()
         
         if (statSegContrl.selectedSegmentIndex == 0)
         {
@@ -137,6 +214,11 @@ class GreivancesAll: UIViewController {
         }
     }
     
+    func reloadAndScrollToTop() {
+        tableView.reloadData()
+        tableView.layoutIfNeeded()
+        tableView.contentOffset = CGPoint(x: 0, y: -tableView.contentInset.top)
+    }
     
     // MARK: - Navigation
 
@@ -167,8 +249,6 @@ class GreivancesAll: UIViewController {
 
         }
     }
-    
-
 }
 
 extension GreivancesAll : PaguthiView , UISearchBarDelegate, GreivancesAllView , UITableViewDelegate, UITableViewDataSource
@@ -197,26 +277,67 @@ extension GreivancesAll : PaguthiView , UISearchBarDelegate, GreivancesAllView ,
         self.setUpSegementControl()
         self.selectedconstitunecyId = String (self.constituencyID[0])
         print(self.selectedconstitunecyId)
-        self.callAPIGreviancesAll(url: grevianceAllUrl, keyword: "no", paguthi: self.selectedconstitunecyId, offset: "0", rowcount: "50", grievance_type: "A")
+        self.callAPIGreviancesAll(url: grevianceAllUrl, keyword: "no", paguthi: self.selectedconstitunecyId, offset: "0", rowcount: "50", grievance_type: self.statSelectdSeg)
     }
     
     func setEmpty(errorMessage: String) {
-         AlertController.shared.showAlert(targetVc: self, title: Globals.alertTitle, message: errorMessage, complition: {
-         })
-         self.greivancesCount.text =  String(format: "%@ %@", "0","Greivances")
-         self.tableView.isHidden = true
+         if greivanceNameArr.count == 0
+         {
+            AlertController.shared.showAlert(targetVc: self, title: Globals.alertTitle, message: errorMessage, complition: {
+            })
+            self.greivancesCount.text =  String(format: "%@ %@", "0","Greivances")
+            self.tableView.isHidden = true
+         }
+         else
+         {
+            AlertController.shared.showAlert(targetVc: self, title: Globals.alertTitle, message: errorMessage, complition: {
+            })
+            self.greivancesCount.text =  String(format: "%@ %@", String (GlobalVariables.shared.consGreivanceCount),"Greivances")
+         }
     }
     
     func startLoadingGriAll() {
-        //
+         self.view.activityStartAnimating()
     }
     
     func finishLoadingGriAll() {
-        //
+         self.view.activityStopAnimating()
     }
     
     func setGrieAll(GriAll: [GreivancesAllData]) {
         greivanceAllData = GriAll
+        for items in greivanceAllData{
+            let place = items.paguthi_name
+            let seekerType = items.seeker_info
+            let petitionNumber = items.petition_enquiry_no
+            let refNumber = items.reference_note
+            let greivanceName = items.grievance_name
+            let subcat = items.sub_category_name
+            let desc = items.description
+            let createdon = items.created_at
+            let updatedOn = items.updated_at
+            let status = items.status
+            let greivanceId = items.constituent_id
+            let type = items.grievance_type
+            let username = items.full_name
+            let date = items.grievance_date
+            
+            self.placeArr.append(place)
+            self.seekerTypeArr.append(seekerType)
+            self.petitionNumberArr.append(petitionNumber)
+            self.refNumberArr.append(refNumber)
+            self.greivanceNameArr.append(greivanceName)
+            self.subcatArr.append(subcat)
+            self.descArr.append(desc)
+            self.createdonArr.append(createdon)
+            self.updatedOnArr.append(updatedOn)
+            self.statusArr.append(status)
+            self.greivanceIdArr.append(greivanceId)
+            self.typeArr.append(type)
+            self.userNameArr.append(username)
+            self.dateArr.append(date)
+
+        }
         self.greivancesCount.text =  String(format: "%@ %@", String (GlobalVariables.shared.consGreivanceCount),"Greivances")
         self.tableView.isHidden = false
         self.tableView.reloadData()
@@ -233,29 +354,28 @@ extension GreivancesAll : PaguthiView , UISearchBarDelegate, GreivancesAllView ,
         
         self.performSegue(withIdentifier: "to_greivanceAllSearch", sender: searchBar.text!)
         self.searchBar.isActive = false
-
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return greivanceAllData.count
+        return greivanceNameArr.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "cell", for: indexPath) as! ConstituentGreivancesCell
-        let data = greivanceAllData[indexPath.row]
-        let type = data.grievance_type
+//        let data = greivanceAllData[indexPath.row]
+        let type = typeArr[indexPath.row]
         if (type == "P"){
-            cell.pettionNumber.text = "Petition Number - " +  " " + data.petition_enquiry_no
+            cell.pettionNumber.text = "Petition Number - " +  " " + petitionNumberArr[indexPath.row]
 
         }
         else{
-            cell.pettionNumber.text = "Enquiry Number - " +  " " + data.petition_enquiry_no
+            cell.pettionNumber.text = "Enquiry Number - " +  " " + petitionNumberArr[indexPath.row]
         }
-        cell.userName.text = data.full_name
-        cell.greivanceName.text = data.grievance_name
-        cell.subCategoeryName.text = data.sub_category_name
-        cell.status.text = data.status
-        let formatedDate = self.formattedDateFromString(dateString: data.grievance_date, withFormat: "dd-MM-YYYY")
+        cell.userName.text = userNameArr[indexPath.row]
+        cell.greivanceName.text = greivanceNameArr[indexPath.row]
+        cell.subCategoeryName.text = subcatArr[indexPath.row]
+        cell.status.text = statusArr[indexPath.row]
+        let formatedDate = self.formattedDateFromString(dateString: dateArr[indexPath.row], withFormat: "dd-MM-YYYY")
         cell.date.text = formatedDate
         
         if cell.status.text == "PROCESSING"{
@@ -272,32 +392,32 @@ extension GreivancesAll : PaguthiView , UISearchBarDelegate, GreivancesAllView ,
     }
     
    func tableView(_ tableView: UITableView, willDisplay cell: UITableViewCell, forRowAt indexPath: IndexPath) {
-       let totalRows = tableView.numberOfRows(inSection: indexPath.section)
-       if indexPath.row == (totalRows - 1)
+       if greivanceNameArr.count > 20
        {
-           if totalRows >= 50
-           {
-             print("came to last row")
-            self.callAPIGreviancesAll(url: grevianceAllUrl, keyword: "no", paguthi: self.selectedconstitunecyId, offset: String(totalRows), rowcount: "50", grievance_type: statSelectdSeg)
-           }
-
+            let lastElement = greivanceNameArr.count - 1
+            print (lastElement)
+            if indexPath.row == lastElement
+            {
+                 print("came to last row")
+                 self.callAPIGreviancesAll(url: grevianceAllUrl, keyword: "no", paguthi: self.selectedconstitunecyId, offset: String(lastElement), rowcount: "50", grievance_type: statSelectdSeg)
+            }
        }
    }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        let data = greivanceAllData[indexPath.row]
-        self._place = data.paguthi_name
-        self._seekerType = data.seeker_info
-        self._petitionNumber = data.petition_enquiry_no
-        self._refNumber = data.reference_note
-        self._greivanceName = data.grievance_name
-        self._subcat = data.sub_category_name
-        self._desc = data.description
-        self._createdon = data.created_at
-        self._updatedOn = data.updated_at
-        self._status = data.status
-        self.greivanceId = data.constituent_id
-        self.type = data.grievance_type
+//        let data = greivanceAllData[indexPath.row]
+        self._place = placeArr[indexPath.row]
+        self._seekerType = seekerTypeArr[indexPath.row]
+        self._petitionNumber = petitionNumberArr[indexPath.row]
+        self._refNumber = refNumberArr[indexPath.row]
+        self._greivanceName = greivanceNameArr[indexPath.row]
+        self._subcat = subcatArr[indexPath.row]
+        self._desc = descArr[indexPath.row]
+        self._createdon = createdonArr[indexPath.row]
+        self._updatedOn = updatedOnArr[indexPath.row]
+        self._status = statusArr[indexPath.row]
+        self.greivanceId = greivanceIdArr[indexPath.row]
+        self.type = typeArr[indexPath.row]
         self.performSegue(withIdentifier: "to_GreivancesAllDetail", sender: self)
     }
     
@@ -317,3 +437,4 @@ extension GreivancesAll : PaguthiView , UISearchBarDelegate, GreivancesAllView ,
         return nil
     }
 }
+

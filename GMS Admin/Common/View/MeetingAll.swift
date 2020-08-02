@@ -15,8 +15,15 @@ class MeetingAll: UIViewController {
     /*Get Meeting All List*/
     let presenter = MeetingAllPresenter(meetingAllService: MeetingAllService())
     var data = [MeetingAllData]()
-
     var searchBar = UISearchController()
+    
+    var fullNameArr = [String]()
+    var meetingDateArr = [String]()
+    var paguthiNameArr = [String]()
+    var meetingTitleArr = [String]()
+    var meetingStatusArr = [String]()
+    var createdByArr = [String]()
+    var meetingIdArr = [String]()
 
     @IBOutlet var baseLine: UILabel!
     @IBOutlet var meetingCount: UILabel!
@@ -37,6 +44,15 @@ class MeetingAll: UIViewController {
              })
              return
         }
+        /*Set Empty Array*/
+        self.fullNameArr.removeAll()
+        self.meetingDateArr.removeAll()
+        self.paguthiNameArr.removeAll()
+        self.meetingTitleArr.removeAll()
+        self.meetingStatusArr.removeAll()
+        self.createdByArr.removeAll()
+        self.meetingIdArr.removeAll()
+        //
         self.callAPIMeetingAll(url: meetingUrl, keyword: "no", constituency_id: GlobalVariables.shared.constituent_Id, offset: "0", rowcount: "50")
     }
     
@@ -92,15 +108,34 @@ class MeetingAll: UIViewController {
 extension MeetingAll : MeetingAllDataView, UISearchBarDelegate ,  UITableViewDelegate, UITableViewDataSource
 {
     func startLoading() {
-        //
+         self.view.activityStartAnimating()
     }
     
     func finishLoading() {
-        //
+         self.view.activityStopAnimating()
     }
     
     func setMeetingAll(meetingAll: [MeetingAllData]) {
         data = meetingAll
+        for items in data
+        {
+            let fullName = items.full_name
+            let meetingdate = items.meeting_date
+            let paguthiName = items.paguthi_name
+            let meetingTitle = items.meeting_title
+            let meetingstatus = items.meeting_status
+            let createdby = items.created_by
+            let meetingId = items.id
+            
+            self.fullNameArr.append(fullName)
+            self.meetingDateArr.append(meetingdate)
+            self.paguthiNameArr.append(paguthiName)
+            self.meetingTitleArr.append(meetingTitle)
+            self.meetingStatusArr.append(meetingstatus)
+            self.createdByArr.append(createdby)
+            self.meetingIdArr.append(meetingId)
+
+        }
         self.meetingCount.text = String(GlobalVariables.shared.meetingAllCount) + " Meetings"
         self.tableView.isHidden = false
         self.meetingCount.isHidden = false
@@ -109,9 +144,20 @@ extension MeetingAll : MeetingAllDataView, UISearchBarDelegate ,  UITableViewDel
     }
     
     func setEmpty(errorMessage: String) {
-        AlertController.shared.showAlert(targetVc: self, title: Globals.alertTitle, message: errorMessage, complition: {
-        })
-        self.tableView.isHidden = true
+        if meetingTitleArr.count == 0
+        {
+            AlertController.shared.showAlert(targetVc: self, title: Globals.alertTitle, message: errorMessage, complition: {
+            })
+            self.meetingCount.text = "0" + " Meetings"
+
+            self.tableView.isHidden = true
+        }
+        else{
+            AlertController.shared.showAlert(targetVc: self, title: Globals.alertTitle, message: errorMessage, complition: {
+            })
+            self.meetingCount.text = String(GlobalVariables.shared.meetingAllCount) + " Meetings"
+            self.tableView.isHidden = false
+        }
     }
     
     func searchBarSearchButtonClicked( _ searchBar: UISearchBar)
@@ -133,18 +179,19 @@ extension MeetingAll : MeetingAllDataView, UISearchBarDelegate ,  UITableViewDel
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-           return data.count
+           return meetingTitleArr.count
     }
        
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
            let cell = tableView.dequeueReusableCell(withIdentifier: "cell", for: indexPath) as! MeetingAllCell
-           let meetingData = data[indexPath.row]
-           cell.name.text = meetingData.full_name
-           cell.date.text = meetingData.meeting_date
-           cell.paguthi.text = meetingData.paguthi_name + "(Paguthi)"
-           cell.title.text = meetingData.meeting_title
-           cell.status.text = meetingData.meeting_status
-           cell.createdBy.text = meetingData.created_by
+//         let meetingData = data[indexPath.row]
+           cell.name.text = fullNameArr[indexPath.row]
+           let formatedDate = self.formattedDateFromString(dateString: meetingDateArr[indexPath.row], withFormat: "dd-MM-YYYY")
+           cell.date.text = formatedDate
+           cell.paguthi.text = paguthiNameArr[indexPath.row] + "(Paguthi)"
+           cell.title.text = meetingTitleArr[indexPath.row]
+           cell.status.text = meetingStatusArr[indexPath.row]
+           cell.createdBy.text = createdByArr[indexPath.row]
            return cell
     }
        
@@ -167,8 +214,23 @@ extension MeetingAll : MeetingAllDataView, UISearchBarDelegate ,  UITableViewDel
     }
        
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-          let meeting_id = data[indexPath.row]
-          self.performSegue(withIdentifier: "to_meetingallDetail", sender: meeting_id.id)
+          let meeting_id = meetingIdArr[indexPath.row]
+          self.performSegue(withIdentifier: "to_meetingallDetail", sender: meeting_id)
     }
     
+    func formattedDateFromString(dateString: String, withFormat format: String) -> String? {
+
+        let inputFormatter = DateFormatter()
+        inputFormatter.dateFormat = "yyyy-MM-dd"
+
+        if let date = inputFormatter.date(from: dateString) {
+
+            let outputFormatter = DateFormatter()
+          outputFormatter.dateFormat = format
+
+            return outputFormatter.string(from: date)
+        }
+
+        return nil
+    }
 }

@@ -29,6 +29,7 @@ class UserProfile: UIViewController, ProfileDetailsView, UIImagePickerController
     @IBOutlet var emailId: UITextField!
     @IBOutlet var genderSegment: UISegmentedControl!
     @IBOutlet var address: UITextView!
+    @IBOutlet var saveProfileOutlet: UIButton!
     override func viewDidLoad() {
         super.viewDidLoad()
 
@@ -41,7 +42,6 @@ class UserProfile: UIViewController, ProfileDetailsView, UIImagePickerController
         self.address.delegate = self
         self.addCustomizedBackBtn(title:"  Edit Profile")
         self.hideKeyboardWhenTappedAround()
-
     }
     
     func callAPI (){
@@ -73,19 +73,17 @@ class UserProfile: UIViewController, ProfileDetailsView, UIImagePickerController
          self.emailId.text = email_id
          let seg = gender
          let userRole = user_role
-         if userRole == "2"
-         {
-            AlertController.shared.showAlert(targetVc: self, title: Globals.alertTitle, message: "Sub Admin Cannot access", complition: {
-                self.navigationController?.popViewController(animated: true)
-            })
+         if userRole == "2"{
+            self.saveProfileOutlet.isHidden = true
          }
-         print(userRole)
+         else{
+            self.saveProfileOutlet.isHidden = false
+         }
          if(seg == "M"){
             genderSegment.selectedSegmentIndex = 0
             selectedSegmentValue = "M"
          }
-         else
-         {
+         else{
             genderSegment.selectedSegmentIndex = 1
             selectedSegmentValue = "F"
          }
@@ -137,7 +135,7 @@ class UserProfile: UIViewController, ProfileDetailsView, UIImagePickerController
         }
     }
         
-        //MARK: - Choose image from camera roll
+    //MARK: - Choose image from camera roll
         
     func openGallary(){
          imagePicker.sourceType = UIImagePickerController.SourceType.photoLibrary
@@ -159,47 +157,45 @@ class UserProfile: UIViewController, ProfileDetailsView, UIImagePickerController
          picker.dismiss(animated: true, completion: nil)
     }
     
-        func picUploadAPI ()
+    func picUploadAPI ()
+    {
+        let imgData = uploadedImage.jpegData(compressionQuality: 0.75)
+        if imgData == nil
         {
-            
-            let imgData = uploadedImage.jpegData(compressionQuality: 0.75)
+              //self.performSegue(withIdentifier: "back_selectPage", sender: self)
+        }
+        else
+        {
+            let functionName = "apiios/profilePictureUpload/"
+            let baseUrl = GlobalVariables.shared.CLIENTURL + functionName + GlobalVariables.shared.user_id
+            let url = URL(string: baseUrl)!
                
-            if imgData == nil
-            {
-                  //self.performSegue(withIdentifier: "back_selectPage", sender: self)
-            }
-            else
-            {
-                let functionName = "apiios/profilePictureUpload/"
-                let baseUrl = GlobalVariables.shared.CLIENTURL + functionName + GlobalVariables.shared.user_id
-                let url = URL(string: baseUrl)!
-                   
-                Alamofire.upload(multipartFormData: { multipartFormData in
-                    multipartFormData.append(imgData!, withName: "user_pic",fileName: "file.jpg", mimeType: "image/jpg")
-                },
-                 to:url)
-                { (result) in
-                    switch result {
-                    case .success(let upload, _, _):
-                           upload.uploadProgress(closure: { (progress) in
-                               print("Upload Progress: \(progress.fractionCompleted)")
-                           })
-                           upload.responseJSON { response in
-                            print(response.result.value as Any)
-                              //    ActivityIndicator().hideActivityIndicator(uiView: self.view)
-                            let JSON = response.result.value as? [String: Any]
-                            let msg = JSON?["msg"] as? String
-                            let status = JSON?["status"] as? String
-                            GlobalVariables.shared.user_Image = (JSON?["picture_url"] as? String)!
-                            print(msg!,status!,GlobalVariables.shared.user_Image)
-                            
-                        }
-                    case .failure(let encodingError):
-                        print(encodingError)
+            Alamofire.upload(multipartFormData: { multipartFormData in
+                multipartFormData.append(imgData!, withName: "user_pic",fileName: "file.jpg", mimeType: "image/jpg")
+            },
+             to:url)
+            { (result) in
+                switch result {
+                case .success(let upload, _, _):
+                       upload.uploadProgress(closure: { (progress) in
+                           print("Upload Progress: \(progress.fractionCompleted)")
+                       })
+                       upload.responseJSON { response in
+                        print(response.result.value as Any)
+                          //    ActivityIndicator().hideActivityIndicator(uiView: self.view)
+                        let JSON = response.result.value as? [String: Any]
+                        let msg = JSON?["msg"] as? String
+                        let status = JSON?["status"] as? String
+                        GlobalVariables.shared.user_Image = (JSON?["picture_url"] as? String)!
+                        print(msg!,status!,GlobalVariables.shared.user_Image)
+                        
                     }
-                 }
-               }
-           }
+                case .failure(let encodingError):
+                    print(encodingError)
+                }
+            }
+        }
+    }
     
     @IBAction func saveProfile(_ sender: Any)
     {
@@ -217,7 +213,6 @@ class UserProfile: UIViewController, ProfileDetailsView, UIImagePickerController
         {
             genderSegment.selectedSegmentIndex = 1
             selectedSegmentValue = "F"
-
         }
     }
     
@@ -236,7 +231,7 @@ class UserProfile: UIViewController, ProfileDetailsView, UIImagePickerController
         // Pass the selected object to the new view controller.
     }
     */
-
+    
 }
 
 extension UserProfile : ProfileUpdatesView, UITextFieldDelegate, UITextViewDelegate{

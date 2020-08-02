@@ -381,6 +381,7 @@ extension DashBoard : PaguthiView, UIPickerViewDelegate, UIPickerViewDataSource,
             }
             else{
                 self.performSegue(withIdentifier: "to_search", sender: searchText.text)
+                self.view.endEditing(true)
             }
         }
             return true

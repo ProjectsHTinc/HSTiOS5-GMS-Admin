@@ -22,7 +22,11 @@ class Constituent: UIViewController, PaguthiView {
     var constituencyID = [String]()
     var selectedconstitunecyId = String()
     
-    var loadMore = false
+    var fullnameArr = [String]()
+    var mobileNoArr = [String]()
+    var serialNoArr = [String]()
+    var profPicArr = [String]()
+    var idArr = [String]()
 
     /*Get Search List*/
     let presenter = ListConstituentPresenter(listConstituentservice: ListConstituentservice())
@@ -48,9 +52,22 @@ class Constituent: UIViewController, PaguthiView {
              })
              return
         }
+        
         self.constituentCount.isHidden = true
         self.bottomLine.isHidden = true
         self.callAPIPaguthi ()
+        /*remove array Values*/
+        self.fullnameArr.removeAll()
+        self.mobileNoArr.removeAll()
+        self.serialNoArr.removeAll()
+        self.profPicArr.removeAll()
+        self.idArr.removeAll()
+
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        /*Scroll Postion for TableView*/
+        //self.reloadAndScrollToTop()
     }
     
     func callAPIPaguthi ()
@@ -101,11 +118,25 @@ class Constituent: UIViewController, PaguthiView {
     }
     
     @objc func segmentedControlChangedValue(segmentedControl: HMSegmentedControl) {
+        /*remove array Values*/
+        self.fullnameArr.removeAll()
+        self.mobileNoArr.removeAll()
+        self.serialNoArr.removeAll()
+        self.profPicArr.removeAll()
+        self.profPicArr.removeAll()
+        self.idArr.removeAll()
+        self.reloadAndScrollToTop()
         print("Selected index \(segmentedControl.selectedSegmentIndex)")
         let selectedIndex = Int(segmentedControl.selectedSegmentIndex)
         let sel = self.constituencyID[selectedIndex]
         self.selectedconstitunecyId = String (sel)
         self.callAPISearch(constituency_id: self.selectedconstitunecyId,offset: "0",rowcount: "50")
+    }
+    
+    func reloadAndScrollToTop() {
+        tableView.reloadData()
+        tableView.layoutIfNeeded()
+        tableView.contentOffset = CGPoint(x: 0, y: -tableView.contentInset.top)
     }
     
     // MARK: - Navigation
@@ -139,20 +170,20 @@ extension Constituent: UISearchBarDelegate, UITableViewDelegate, UITableViewData
         }
              
         self.performSegue(withIdentifier: "to_search", sender: searchBar.text)
-        
+        self.searchBar.isActive = false        
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return listConstituent.count
+        return fullnameArr.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "cell", for: indexPath) as! SearchCell
-        let constituent = listConstituent[indexPath.row]
-        cell.username.text = constituent.full_name
-        cell.mobileNumber.text = constituent.mobile_no
-        cell.serialNumber.text = String(format: "%@ %@", "Serila number - ",constituent.serial_no)
-        cell.userImage.sd_setImage(with: URL(string: Globals.imageUrl + constituent.profile_pic), placeholderImage: UIImage(named: "placeholder.png"))
+//      let constituent = listConstituent[indexPath.row]
+        cell.username.text = fullnameArr[indexPath.row]
+        cell.mobileNumber.text = mobileNoArr[indexPath.row]
+        cell.serialNumber.text = String(format: "%@ %@", "Serila number - ",serialNoArr[indexPath.row])
+        cell.userImage.sd_setImage(with: URL(string: Globals.imageUrl + profPicArr[indexPath.row]), placeholderImage: UIImage(named: "placeholder.png"))
         return cell
     }
     
@@ -161,18 +192,22 @@ extension Constituent: UISearchBarDelegate, UITableViewDelegate, UITableViewData
     }
     
     func tableView(_ tableView: UITableView, willDisplay cell: UITableViewCell, forRowAt indexPath: IndexPath) {
-        let lastElement = listConstituent.count - 1
-        print (lastElement)
-        if indexPath.row == lastElement
+        if fullnameArr.count > 20
         {
+            let lastElement = fullnameArr.count - 1
             print (lastElement)
-            self.callAPISearch(constituency_id: self.selectedconstitunecyId,offset: String(lastElement),rowcount: "50")
+            if indexPath.row == lastElement
+            {
+                print (lastElement)
+                self.callAPISearch(constituency_id: self.selectedconstitunecyId,offset: String(lastElement),rowcount: "50")
+            }
         }
     }
         
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        let constituent = listConstituent[indexPath.row]
-        self.selectedconstitunecyId = constituent.id
+        let constituentID = idArr[indexPath.row]
+        print(constituentID)
+        self.selectedconstitunecyId = constituentID
         self.performSegue(withIdentifier: "to_constituentDetail", sender: self)
     }
     
@@ -185,11 +220,20 @@ extension Constituent: UISearchBarDelegate, UITableViewDelegate, UITableViewData
     }
     
     func setEmptyListConstituency(errorMessage: String) {
-         AlertController.shared.showAlert(targetVc: self, title: Globals.alertTitle, message: errorMessage, complition: {
-         })
+         if fullnameArr.count == 0
+         {
+            AlertController.shared.showAlert(targetVc: self, title: Globals.alertTitle, message: errorMessage, complition: {
+            })
+            self.constituentCount.text =   String(format: "%@ %@", "0","Constituent")
+            self.tableView.isHidden = true
+         }
+         else
+         {
+            self.tableView.isHidden = false
+         }
+
          print(GlobalVariables.shared.constituent_Count)
-         self.constituentCount.text =   String(format: "%@ %@", "0","Constituent")
-         tableView?.isHidden = true
+         //tableView?.isHidden = true
     }
     
 //    func setConstituency(constituencyname: [constituencyData]) {
@@ -221,10 +265,8 @@ extension Constituent: UISearchBarDelegate, UITableViewDelegate, UITableViewData
             self.constituencyName.append(constituentName)
             self.constituencyID.append(constituentId)
          }
-        
-        self.constituencyName.insert("ALL", at: 0)
-        self.constituencyID.insert("ALL", at: 0)
-
+         self.constituencyName.insert("ALL", at: 0)
+         self.constituencyID.insert("ALL", at: 0)
          self.setUpSegementControl()
          self.selectedconstitunecyId = String (self.constituencyID[0])
          print(self.selectedconstitunecyId)
@@ -239,12 +281,25 @@ extension Constituent: UISearchBarDelegate, UITableViewDelegate, UITableViewData
     
     func setConstituent(constituentname: [ListConstituencyData]) {
         listConstituent = constituentname
+        for items in listConstituent{
+            let name = items.full_name
+            let mob = items.mobile_no
+            let serialno = items.serial_no
+            let profpic = items.profile_pic
+            let id = items.id
+            
+            self.fullnameArr.append(name)
+            self.mobileNoArr.append(mob)
+            self.serialNoArr.append(serialno)
+            self.profPicArr.append(profpic)
+            self.idArr.append(id)
+
+        }
         print(listConstituent.count)
         self.constituentCount.text =   String(format: "%@ %@", String (GlobalVariables.shared.constituent_Count),"Constituent")
         self.constituentCount.isHidden = false
         self.bottomLine.isHidden = false
         tableView?.isHidden = false
-        loadMore = true
         self.tableView.reloadData()
     }
 }

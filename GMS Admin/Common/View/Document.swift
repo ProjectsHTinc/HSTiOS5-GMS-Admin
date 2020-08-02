@@ -21,8 +21,11 @@ class Document: UIViewController {
     
     var searchBar = UISearchController()
     let documentInteractionController = UIDocumentInteractionController()
-
     var selectedconstitunecyId = String()
+    
+    var filterdConsArr = [ConsDocumentData]()
+    var filterdGriArr = [GriDocumentData]()
+
 
     @IBOutlet var segmentControl: UISegmentedControl!
     @IBOutlet var tableView: UITableView!
@@ -55,6 +58,10 @@ class Document: UIViewController {
         // Set any properties (in this case, don't hide the nav bar and don't show the emoji keyboard option)
         searchBar.hidesNavigationBarDuringPresentation = false
         searchBar.searchBar.keyboardType = UIKeyboardType.asciiCapable
+        searchBar.searchResultsUpdater = self
+        searchBar.hidesNavigationBarDuringPresentation = false
+        searchBar.obscuresBackgroundDuringPresentation = false
+        searchBar.definesPresentationContext = true
 
         // Make this class the delegate and present the search
         self.searchBar.searchBar.delegate = self
@@ -108,8 +115,32 @@ class Document: UIViewController {
 
 }
 
-extension Document: UITableViewDelegate, UITableViewDataSource, UISearchBarDelegate , ConsDocumentView, GriDocumentView
+extension Document: UITableViewDelegate, UITableViewDataSource, UISearchBarDelegate, UISearchControllerDelegate, UISearchResultsUpdating , ConsDocumentView, GriDocumentView
 {
+    func updateSearchResults(for searchController: UISearchController) {
+         if (segmentControl.selectedSegmentIndex == 0)
+         {
+            let searchText = searchController.searchBar.text?.lowercased()
+            if searchText?.count != 0
+            {
+               filterdConsArr = ConData.filter({( model : ConsDocumentData) -> Bool in
+                return model.doc_name.lowercased().contains(searchText!.lowercased())||model.created_at.lowercased().contains(searchText!.lowercased())
+                })
+            }
+         }
+         else
+         {
+            let searchText = searchController.searchBar.text?.lowercased()
+            if searchText?.count != 0
+            {
+               filterdGriArr = griData.filter({( model : GriDocumentData) -> Bool in
+                   return model.doc_name.lowercased().contains(searchText!.lowercased())||model.created_at.lowercased().contains(searchText!.lowercased())
+                })
+            }
+         }
+         tableView.reloadData()
+    }
+    
     func startLoadingCons() {
         //
     }
@@ -120,6 +151,7 @@ extension Document: UITableViewDelegate, UITableViewDataSource, UISearchBarDeleg
     
     func setConsDoc(consDocument: [ConsDocumentData]) {
         ConData = consDocument
+        filterdConsArr = ConData
         self.tableView.isHidden = false
         self.tableView.reloadData()
 
@@ -141,6 +173,7 @@ extension Document: UITableViewDelegate, UITableViewDataSource, UISearchBarDeleg
     
     func setGriDoc(GriDocument: [GriDocumentData]) {
         griData = GriDocument
+        filterdGriArr = griData
         self.tableView.isHidden = false
         self.tableView.reloadData()
 
@@ -156,12 +189,23 @@ extension Document: UITableViewDelegate, UITableViewDataSource, UISearchBarDeleg
         
         if (segmentControl.selectedSegmentIndex == 0)
         {
-            return ConData.count
+            if searchBar.isActive && searchBar.searchBar.text != "" {
+                return filterdConsArr.count
+            }
+            else
+            {
+                return ConData.count
+            }
         }
         else
         {
-            return griData.count
+            if searchBar.isActive && searchBar.searchBar.text != "" {
+                return filterdGriArr.count
 
+            }
+            else{
+                return griData.count
+            }
         }
     }
     
@@ -170,15 +214,28 @@ extension Document: UITableViewDelegate, UITableViewDataSource, UISearchBarDeleg
         
         if (segmentControl.selectedSegmentIndex == 0)
         {
-            let data = ConData[indexPath.row]
-            cell.titleLabel.text = data.doc_name
-            cell.date.text = data.created_at
-            
+            if searchBar.isActive && searchBar.searchBar.text != "" {
+                let data = filterdConsArr[indexPath.row]
+                cell.titleLabel.text = data.doc_name
+                cell.date.text = data.created_at
+            }
+            else{
+                let data = ConData[indexPath.row]
+                cell.titleLabel.text = data.doc_name
+                cell.date.text = data.created_at
+            }
         }
         else{
-            let data = griData[indexPath.row]
-            cell.titleLabel.text = data.doc_name
-            cell.date.text = data.created_at
+            if searchBar.isActive && searchBar.searchBar.text != "" {
+                let data = filterdGriArr[indexPath.row]
+                cell.titleLabel.text = data.doc_name
+                cell.date.text = data.created_at
+            }
+            else{
+                let data = griData[indexPath.row]
+                cell.titleLabel.text = data.doc_name
+                cell.date.text = data.created_at
+            }
         }
         return cell
     }
@@ -190,33 +247,34 @@ extension Document: UITableViewDelegate, UITableViewDataSource, UISearchBarDeleg
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         if (segmentControl.selectedSegmentIndex == 0)
         {
-            let data = ConData[indexPath.row]
-            let url =  Globals.documentUrl + data.doc_file_name
-            self.storeAndShare(withURLString: url )
-
+            if searchBar.isActive && searchBar.searchBar.text != "" {
+                let data = filterdConsArr[indexPath.row]
+                let url =  Globals.documentUrl + data.doc_file_name
+                self.storeAndShare(withURLString: url )
+                self.searchBar.isActive = false
+            }
+            else{
+                let data = ConData[indexPath.row]
+                let url =  Globals.documentUrl + data.doc_file_name
+                self.storeAndShare(withURLString: url )
+            }
         }
         else
         {
-            let data = griData[indexPath.row]
-            let url =  Globals.documentUrl + data.doc_file_name
-            self.storeAndShare(withURLString: url )
+            if searchBar.isActive && searchBar.searchBar.text != "" {
+                let data = filterdGriArr[indexPath.row]
+                let url =  Globals.documentUrl + data.doc_file_name
+                self.storeAndShare(withURLString: url )
+                self.searchBar.isActive = false
+            }
+            else{
+                let data = griData[indexPath.row]
+                let url =  Globals.documentUrl + data.doc_file_name
+                self.storeAndShare(withURLString: url )
+            }
         }
     }
-    
-    func searchBarSearchButtonClicked( _ searchBar: UISearchBar)
-    {
-        guard Reachability.isConnectedToNetwork() == true else {
-              AlertController.shared.offlineAlert(targetVc: self, complition: {
-                //Custom action code
-             })
-             return
-        }
-             
-//        self.performSegue(withIdentifier: "to_search", sender: searchBar.text)
         
-    }
-    
-    
 }
 
 extension Document {

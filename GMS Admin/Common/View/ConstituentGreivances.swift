@@ -27,13 +27,13 @@ class ConstituentGreivances: UIViewController {
     var _status = String()
     var greivanceId = String()
     var type = String()
-
+    var filterdArr = [ConstituentGreivancesData]()
+    var searchBar = UISearchController()
 
     @IBOutlet var greivanceCount: UILabel!
     @IBOutlet var tableView: UITableView!
     override func viewDidLoad() {
         super.viewDidLoad()
-
         // Do any additional setup after loading the view.
         guard Reachability.isConnectedToNetwork() == true else {
               AlertController.shared.offlineAlert(targetVc: self, complition: {
@@ -43,8 +43,26 @@ class ConstituentGreivances: UIViewController {
         }
         self.tableView.backgroundColor = UIColor.white
         self.callAPI ()
+        /*Lefft Navigation Bar*/
         self.addCustomizedBackBtn(title:"  Grievances")
+        /*Right Navigation Bar*/
+        self.addrightButton(bg_ImageName:"ConstituentSearch")
+    }
+    
+    @objc public override func rightButtonClick()
+    {
+        searchBar = UISearchController(searchResultsController: nil)
+        // Set any properties (in this case, don't hide the nav bar and don't show the emoji keyboard option)
+        searchBar.hidesNavigationBarDuringPresentation = false
+        searchBar.searchBar.keyboardType = UIKeyboardType.asciiCapable
+        searchBar.searchResultsUpdater = self
+        searchBar.hidesNavigationBarDuringPresentation = false
+        searchBar.obscuresBackgroundDuringPresentation = false
+        searchBar.definesPresentationContext = true
 
+        // Make this class the delegate and present the search
+        self.searchBar.searchBar.delegate = self
+        present(searchBar, animated: true, completion: nil)
     }
     
     func callAPI ()
@@ -83,7 +101,18 @@ class ConstituentGreivances: UIViewController {
 
 }
 
-extension ConstituentGreivances : ConstituentGreivancesView, UITableViewDelegate, UITableViewDataSource {
+extension ConstituentGreivances : ConstituentGreivancesView, UITableViewDelegate, UITableViewDataSource, UISearchBarDelegate, UISearchControllerDelegate, UISearchResultsUpdating {
+    
+    func updateSearchResults(for searchController: UISearchController) {
+         let searchText = searchController.searchBar.text?.lowercased()
+         if searchText?.count != 0
+         {
+            filterdArr = PresenterData.filter({( model : ConstituentGreivancesData) -> Bool in
+                return model.grievance_name.lowercased().contains(searchText!.lowercased())||model.sub_category_name.lowercased().contains(searchText!.lowercased())||model.grievance_type.lowercased().contains(searchText!.lowercased())||model.status.lowercased().contains(searchText!.lowercased())||model.petition_enquiry_no.lowercased().contains(searchText!.lowercased())||model.grievance_date.lowercased().contains(searchText!.lowercased())
+             })
+         }
+         tableView.reloadData()
+    }
     
     func startLoadingGri() {
         //
@@ -95,6 +124,7 @@ extension ConstituentGreivances : ConstituentGreivancesView, UITableViewDelegate
     
     func setConsGrie(ConsGri: [ConstituentGreivancesData]) {
         PresenterData = ConsGri
+        filterdArr = PresenterData
         self.greivanceCount.text = String(GlobalVariables.shared.consGreivanceCount) + " " + "Greviances"
         self.tableView.isHidden = false
         self.tableView.reloadData()
@@ -108,33 +138,67 @@ extension ConstituentGreivances : ConstituentGreivancesView, UITableViewDelegate
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return PresenterData.count
+         if searchBar.isActive && searchBar.searchBar.text != "" {
+             return filterdArr.count
+         }
+         else{
+             return PresenterData.count
+        }
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "cell", for: indexPath) as! ConstituentGreivancesCell
-        let data = PresenterData[indexPath.row]
-        let type = data.grievance_type
-        if (type == "P")
+        if searchBar.isActive && searchBar.searchBar.text != ""
         {
-            cell.pettionNumber.text = "Petition Number - " +  " " + data.petition_enquiry_no
+            let data = filterdArr[indexPath.row]
+            let type = data.grievance_type
+            if (type == "P")
+            {
+                cell.pettionNumber.text = "Petition Number - " +  " " + data.petition_enquiry_no
+            }
+            else
+            {
+                cell.pettionNumber.text = "Enquiry Number - " +  " " + data.petition_enquiry_no
+            }
+    //      cell.greivanesType.text = data.grievance_type
+            cell.greivanceName.text = data.grievance_name
+            cell.subCategoeryName.text = data.sub_category_name
+            cell.status.text = data.status
+            let formatedDate = self.formattedDateFromString(dateString: data.grievance_date, withFormat: "dd-MM-YYYY")
+            cell.date.text = formatedDate
+            
+            if cell.status.text == "PROCESSING"{
+                cell.statusBgView.backgroundColor = UIColor(red: 253/255, green: 166/255, blue: 68/255, alpha: 1.0)
+            }
+            else{
+                cell.statusBgView.backgroundColor = UIColor(red: 112/255, green: 173/255, blue: 71/255, alpha: 1.0)
+            }
         }
         else
         {
-            cell.pettionNumber.text = "Enquiry Number - " +  " " + data.petition_enquiry_no
-        }
-//      cell.greivanesType.text = data.grievance_type
-        cell.greivanceName.text = data.grievance_name
-        cell.subCategoeryName.text = data.sub_category_name
-        cell.status.text = data.status
-        let formatedDate = self.formattedDateFromString(dateString: data.grievance_date, withFormat: "dd-MM-YYYY")
-        cell.date.text = formatedDate
-        
-        if cell.status.text == "PROCESSING"{
-            cell.statusBgView.backgroundColor = UIColor(red: 253/255, green: 166/255, blue: 68/255, alpha: 1.0)
-        }
-        else{
-            cell.statusBgView.backgroundColor = UIColor(red: 112/255, green: 173/255, blue: 71/255, alpha: 1.0)
+            let data = PresenterData[indexPath.row]
+            let type = data.grievance_type
+            if (type == "P")
+            {
+                cell.pettionNumber.text = "Petition Number - " +  " " + data.petition_enquiry_no
+            }
+            else
+            {
+                cell.pettionNumber.text = "Enquiry Number - " +  " " + data.petition_enquiry_no
+            }
+    //      cell.greivanesType.text = data.grievance_type
+            cell.greivanceName.text = data.grievance_name
+            cell.subCategoeryName.text = data.sub_category_name
+            cell.status.text = data.status
+            let formatedDate = self.formattedDateFromString(dateString: data.grievance_date, withFormat: "dd-MM-YYYY")
+            cell.date.text = formatedDate
+            
+            if cell.status.text == "PROCESSING"{
+                cell.statusBgView.backgroundColor = UIColor(red: 253/255, green: 166/255, blue: 68/255, alpha: 1.0)
+            }
+            else{
+                cell.statusBgView.backgroundColor = UIColor(red: 112/255, green: 173/255, blue: 71/255, alpha: 1.0)
+            }
         }
         return cell
     }

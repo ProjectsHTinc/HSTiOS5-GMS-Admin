@@ -587,6 +587,7 @@
                         <outlet property="genderSegment" destination="WSG-pL-uIP" id="aaa-9g-St5"/>
                         <outlet property="name" destination="0Ob-FG-QQU" id="gUt-Tk-wSL"/>
                         <outlet property="phone" destination="IIT-Ex-Jbs" id="sRc-fH-trR"/>
+                        <outlet property="saveProfileOutlet" destination="NTk-Ra-K26" id="Rha-7j-3Fr"/>
                         <outlet property="userImage" destination="CGI-yq-nZY" id="t2c-kw-nO3"/>
                     </connections>
                 </viewController>

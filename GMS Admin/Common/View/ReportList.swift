@@ -29,6 +29,16 @@ class ReportList: UIViewController {
     var fromdate = String()
     var todate = String()
     var keyword = String()
+    
+    var grievance_typeArr = [String]()
+    var petition_enquiry_noArr = [String]()
+    var mobile_noArr = [String]()
+    var grievance_nameArr = [String]()
+    var full_nameArr = [String]()
+    var created_byArr = [String]()
+    var statusArr = [String]()
+    var role_nameArr = [String]()
+    var grevDateArr = [String]()
 
     @IBOutlet var reportCount: UILabel!
     @IBOutlet var tableView: UITableView!
@@ -46,6 +56,16 @@ class ReportList: UIViewController {
         /*Right Navigation Bar*/
         self.addrightButton(bg_ImageName:"ConstituentSearch")
         self.keyword = "no"
+        /*Set Array's Empty*/
+        self.grievance_typeArr.removeAll()
+        self.petition_enquiry_noArr.removeAll()
+        self.mobile_noArr.removeAll()
+        self.full_nameArr.removeAll()
+        self.created_byArr.removeAll()
+        self.statusArr.removeAll()
+        self.role_nameArr.removeAll()
+        self.grevDateArr.removeAll()
+        //
         if (from == "status")
         {
             self.addCustomizedBackBtn(title:"  Status report")
@@ -98,6 +118,22 @@ class ReportList: UIViewController {
             presenter.getReport(url: url, From: from, from_date: from_date, to_date: to_date, status: status, paguthi: paguthi, offset: offset, rowcount: rowCount, category: category, sub_category: sub_category, keyword: keyword)
         }
     }
+    
+    func formattedDateFromString(dateString: String, withFormat format: String) -> String? {
+
+        let inputFormatter = DateFormatter()
+        inputFormatter.dateFormat = "yyyy-MM-dd"
+
+        if let date = inputFormatter.date(from: dateString) {
+
+            let outputFormatter = DateFormatter()
+          outputFormatter.dateFormat = format
+
+            return outputFormatter.string(from: date)
+        }
+
+        return nil
+    }
 
     
     // MARK: - Navigation
@@ -149,66 +185,103 @@ extension ReportList : ReportView, UITableViewDelegate, UITableViewDataSource, U
     
     func setReport(report: [ReportData]) {
         reportData = report
+        for items in reportData
+        {
+            let greType = items.grievance_type
+            let petNo = items.petition_enquiry_no
+            let mob = items.mobile_no
+            let grevName = items.grievance_name
+            let fullName = items.full_name
+            let createdby = items.created_by
+            let status = items.status
+            let role = items.role_name
+            let grevDate = items.grievance_date
+            
+            self.grievance_typeArr.append(greType!)
+            self.petition_enquiry_noArr.append(petNo)
+            self.mobile_noArr.append(mob)
+            self.grievance_nameArr.append(grevName)
+            self.full_nameArr.append(fullName)
+            self.created_byArr.append(createdby)
+            self.statusArr.append(status)
+            self.role_nameArr.append(role)
+            self.grevDateArr.append(grevDate)
+        }
         self.reportCount.text = String(format: "%@ %@", String (GlobalVariables.shared.result_count),"Records")
         self.tableView.isHidden = false
         self.tableView.reloadData()
     }
     
     func setEmpty(errorMessage: String) {
-        AlertController.shared.showAlert(targetVc: self, title: Globals.alertTitle, message: errorMessage, complition: {
-        })
-        self.reportCount.text = String(format: "%@ %@","0","Records")
-        self.tableView.isHidden = true
+        if grievance_nameArr.count == 0{
+            AlertController.shared.showAlert(targetVc: self, title: Globals.alertTitle, message: errorMessage, complition: {
+            })
+            self.reportCount.text = String(format: "%@ %@","0","Records")
+            self.tableView.isHidden = true
+        }
+        else{
+            AlertController.shared.showAlert(targetVc: self, title: Globals.alertTitle, message: errorMessage, complition: {
+            })
+            self.reportCount.text = String(format: "%@ %@",String (GlobalVariables.shared.result_count),"Records")
+            self.tableView.isHidden = false
+        }
     }
     
-        func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-            return reportData.count
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        return grievance_nameArr.count
+    }
+    
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        let cell = tableView.dequeueReusableCell(withIdentifier: "cell", for: indexPath) as! ReportListCell
+//          let data = reportData[indexPath.row]
+        let type = grievance_typeArr[indexPath.row]
+        if type  == "P"{
+            cell.pettionNumber.text = "Petition Number - " +  " " + petition_enquiry_noArr[indexPath.row]
         }
-        
-        func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-            let cell = tableView.dequeueReusableCell(withIdentifier: "cell", for: indexPath) as! ReportListCell
-            let data = reportData[indexPath.row]
-            let type = data.grievance_type
-            if type  == "P"{
-                cell.pettionNumber.text = "Petition Number - " +  " " + data.petition_enquiry_no
-            }
-            else{
-                cell.pettionNumber.text = "Enquiry Number - " +  " " + data.petition_enquiry_no
-            }
-            cell.mobile.text = data.mobile_no
-            cell.docName.text = data.grievance_name
-            cell.userName.text = data.full_name
-            cell.subCategoeryName.text = data.created_by + "(\(data.role_name))"
-            cell.status.text = data.status
-            cell.createdby.text = data.grievance_date
-            
-            if cell.status.text == "PROCESSING"{
-                cell.status.textColor = UIColor(red: 253/255, green: 166/255, blue: 68/255, alpha: 1.0)
-            }
-            else{
-                cell.status.textColor = UIColor(red: 112/255, green: 173/255, blue: 71/255, alpha: 1.0)
-            }
-            return cell
+        else{
+            cell.pettionNumber.text = "Enquiry Number - " +  " " + petition_enquiry_noArr[indexPath.row]
         }
+        cell.mobile.text = mobile_noArr[indexPath.row]
+        cell.docName.text = grievance_nameArr[indexPath.row]
+        cell.userName.text = full_nameArr[indexPath.row]
+        cell.subCategoeryName.text = "Created by" + " " + created_byArr[indexPath.row] + "(\(role_nameArr[indexPath.row]))"
+        cell.status.text = statusArr[indexPath.row]
+        let formatedDate = self.formattedDateFromString(dateString: grevDateArr[indexPath.row], withFormat: "dd-MM-YYYY")
+        cell.createdby.text = formatedDate
         
-        func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-            return 210
+        if cell.status.text == "PROCESSING"{
+            cell.status.textColor = UIColor(red: 253/255, green: 166/255, blue: 68/255, alpha: 1.0)
         }
-        
-       func tableView(_ tableView: UITableView, willDisplay cell: UITableViewCell, forRowAt indexPath: IndexPath) {
-           let totalRows = tableView.numberOfRows(inSection: indexPath.section)
-           if indexPath.row == (totalRows - 1)
-           {
-               if totalRows >= 50
-               {
-                print("came to last row")
-                if (from == "status"){
-                    self.callAPI(url: reportStatus, From: from, from_date: fromdate, to_date: todate, status: status, paguthi: paguthi,offset:String(totalRows),rowCount:"50",category: category, sub_category: sub_category, keyword: keyword)
+        else{
+            cell.status.textColor = UIColor(red: 112/255, green: 173/255, blue: 71/255, alpha: 1.0)
+        }
+        return cell
+    }
+    
+    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+        return 210
+    }
+    
+   func tableView(_ tableView: UITableView, willDisplay cell: UITableViewCell, forRowAt indexPath: IndexPath) {
+       if grievance_nameArr.count > 20
+       {
+            let lastElement = grievance_nameArr.count - 1
+            if indexPath.row == lastElement
+            {
+                if (from == "status")
+                {
+                    self.callAPI(url: reportStatus, From: from, from_date: fromdate, to_date: todate, status: status, paguthi: paguthi,offset:String(lastElement),rowCount:"50",category: category, sub_category: sub_category, keyword: keyword)
                 }
-                else{
-                    
+                else if (from == "categoery"){
+                    self.callAPI(url: reportCategoery, From: from, from_date: fromdate, to_date: todate, status: status, paguthi: paguthi,offset:String(lastElement),rowCount:"50",category: category, sub_category: sub_category, keyword: keyword)
                 }
-               }
-           }
+                else if (from == "subCate"){
+                    self.callAPI(url: reportSubCategoery, From: from, from_date: fromdate, to_date: todate, status: status, paguthi: paguthi,offset:String(lastElement),rowCount:"50",category: category, sub_category: sub_category, keyword: keyword)
+                }
+                else if (from == "location"){
+                    self.callAPI(url: reportLocation, From: from, from_date: fromdate, to_date: todate, status: status, paguthi: paguthi,offset:String(lastElement),rowCount:"50",category: category, sub_category: sub_category, keyword: keyword)
+                }
+            }
        }
+   }
 }

@@ -34,7 +34,7 @@ class Profile: UIViewController {
         self.navigationItem.title = "Profile"
         if From == "GreiAll"
         {
-            profiledata = UserDefaults.standard.getConsProfileInfo(GreivancesAllData.self, forKey: UserDefaultsKey.ConsProfilekey.rawValue)
+            //profiledata = UserDefaults.standard.getConsProfileInfo(GreivancesAllData.self, forKey: UserDefaultsKey.ConsProfilekey.rawValue)
         }
         else
         {
@@ -66,8 +66,8 @@ class Profile: UIViewController {
             segmentControl.setTitle("Constituency", forSegmentAt: 1)
             segmentControl.setTitle("Interaction", forSegmentAt: 2)
             segmentControl.selectedSegmentIndex = 0
-            segmentControl.backgroundColor = .white
-            segmentControl.tintColor = .white
+            segmentControl.backgroundColor = UIColor.white
+            segmentControl.tintColor = UIColor.white
             segmentControl.setTitleTextAttributes([
                 NSAttributedString.Key.font : UIFont(name: "Roboto-Regular", size: 13) as Any,
                 NSAttributedString.Key.foregroundColor: UIColor.black
@@ -84,8 +84,8 @@ class Profile: UIViewController {
             segmentControl.setTitle("Constituency", forSegmentAt: 1)
             segmentControl.removeSegment(at: 2, animated: false)
             segmentControl.selectedSegmentIndex = 0
-            segmentControl.backgroundColor = .white
-            segmentControl.tintColor = .white
+            segmentControl.backgroundColor = UIColor.white
+            segmentControl.tintColor = UIColor.white
             segmentControl.setTitleTextAttributes([
                 NSAttributedString.Key.font : UIFont(name: "Roboto-Regular", size: 13) as Any,
                 NSAttributedString.Key.foregroundColor: UIColor.black
@@ -103,9 +103,9 @@ class Profile: UIViewController {
     {
         if From == "GreiAll"
         {
-            self.userImageView.sd_setImage(with: URL(string: ""), placeholderImage: UIImage(named: "placeholder.png"))
-            self.userName.text = profiledata[0].full_name
-            self.userNumber.text = profiledata[0].paguthi_name
+//            self.userImageView.sd_setImage(with: URL(string: ""), placeholderImage: UIImage(named: "placeholder.png"))
+//            self.userName.text = profiledata[0].full_name
+//            self.userNumber.text = profiledata[0].paguthi_name
         }
         else
         {

@@ -19,6 +19,9 @@ class Meeting: UIViewController {
     var meeting_Date = String()
     var meeting_Status = String()
     var From = String()
+    
+    var filterdArr = [MeetingData]()
+    var searchBar = UISearchController()
 
     @IBOutlet var tableView: UITableView!
     override func viewDidLoad() {
@@ -32,6 +35,7 @@ class Meeting: UIViewController {
         
         self.view.isHidden = false
         if From == "Cd"{
+            self.addCustomizedBackBtn(title:"  Meeting")
         }
         else{
             /*Set Side menu*/
@@ -39,6 +43,9 @@ class Meeting: UIViewController {
             self.title = "Meeting"
         }
         //self.addCustomizedBackBtn(title:"  Meeting")
+        /*Right Navigation Bar*/
+        self.addrightButton(bg_ImageName:"ConstituentSearch")
+        self.searchBar.delegate = self
         self.tableView?.backgroundColor = .white
         /*Call API*/
         self.callAPI(offset: "0", rowcount: "50")
@@ -47,6 +54,22 @@ class Meeting: UIViewController {
     @objc public override func sideMenuButtonClick()
     {
         self.performSegue(withIdentifier: "to_sideMenu", sender: self)
+    }
+    
+    @objc public override func rightButtonClick()
+    {
+        searchBar = UISearchController(searchResultsController: nil)
+        // Set any properties (in this case, don't hide the nav bar and don't show the emoji keyboard option)
+        searchBar.hidesNavigationBarDuringPresentation = false
+        searchBar.searchBar.keyboardType = UIKeyboardType.asciiCapable
+        searchBar.searchResultsUpdater = self
+        searchBar.hidesNavigationBarDuringPresentation = false
+        searchBar.obscuresBackgroundDuringPresentation = false
+        searchBar.definesPresentationContext = true
+
+        // Make this class the delegate and present the search
+        self.searchBar.searchBar.delegate = self
+        present(searchBar, animated: true, completion: nil)
     }
     
     func checkInterConnection () -> Bool
@@ -88,38 +111,81 @@ class Meeting: UIViewController {
 
 }
 
-extension Meeting: UITableViewDelegate,UITableViewDataSource
+extension Meeting: UITableViewDelegate,UITableViewDataSource, UISearchBarDelegate, UISearchControllerDelegate, UISearchResultsUpdating
 {
+    func updateSearchResults(for searchController: UISearchController) {
+         let searchText = searchController.searchBar.text?.lowercased()
+         if searchText?.count != 0
+         {
+            filterdArr = meetingeData.filter({( model : MeetingData) -> Bool in
+                return model.meeting_title.lowercased().contains(searchText!.lowercased())||model.meeting_date.lowercased().contains(searchText!.lowercased())
+             })
+         }
+         tableView.reloadData()
+    }
+        
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return meetingeData.count
+        if searchBar.isActive && searchBar.searchBar.text != "" {
+            return filterdArr.count
+        }
+        else{
+            return meetingeData.count
+        }
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         
         let cell = tableView.dequeueReusableCell(withIdentifier: "cell", for: indexPath) as! MeetingCell
-        let data = meetingeData[indexPath.row]
-        cell.meetingTitle.text = data.meeting_title
-        let formatedDate = self.formattedDateFromString(dateString: data.meeting_date, withFormat: "dd-MM-YYYY")
-        cell.meetingdate.text = formatedDate
-        cell.meetingStatus.text = data.meeting_status
-        
-        if cell.meetingStatus.text == "REQUESTED" || cell.meetingStatus.text == "PROCESSING"
+        if searchBar.isActive && searchBar.searchBar.text != ""
         {
-            cell.meetingTitle.textColor = UIColor(red: 0/255, green: 0/255, blue: 0/255, alpha: 1.0)
-            cell.meetingdate.textColor = UIColor(red: 0/255, green: 0/255, blue: 0/255, alpha: 1.0)
-            cell.titleImageGroup.image = UIImage(named: "meetingGroupIcon")
-            cell.calenderImage.image = UIImage(named: "meetingDate")
-            cell.sidedBg.backgroundColor = UIColor(red: 253.0/255, green: 166.0/255, blue: 68.0/255, alpha: 1.0)
+            let data = filterdArr[indexPath.row]
+            cell.meetingTitle.text = data.meeting_title
+            let formatedDate = self.formattedDateFromString(dateString: data.meeting_date, withFormat: "dd-MM-YYYY")
+            cell.meetingdate.text = formatedDate
+            cell.meetingStatus.text = data.meeting_status
+            
+            if cell.meetingStatus.text == "REQUESTED" || cell.meetingStatus.text == "PROCESSING"
+            {
+                cell.meetingTitle.textColor = UIColor(red: 0/255, green: 0/255, blue: 0/255, alpha: 1.0)
+                cell.meetingdate.textColor = UIColor(red: 0/255, green: 0/255, blue: 0/255, alpha: 1.0)
+                cell.titleImageGroup.image = UIImage(named: "meetingGroupIcon")
+                cell.calenderImage.image = UIImage(named: "meetingDate")
+                cell.sidedBg.backgroundColor = UIColor(red: 253.0/255, green: 166.0/255, blue: 68.0/255, alpha: 1.0)
+            }
+            else
+            {
+                cell.meetingTitle.textColor = UIColor(red: 0/255, green: 0/255, blue: 0/255, alpha: 0.6)
+                cell.meetingdate.textColor = UIColor(red: 0/255, green: 0/255, blue: 0/255, alpha: 0.6)
+                cell.titleImageGroup.image = UIImage(named: "meetingCompleted")
+                cell.calenderImage.image = UIImage(named: "meetingCompletedDate")
+                cell.sidedBg.backgroundColor =  UIColor(red: 112.0/255, green: 173.0/255, blue: 71.0/255, alpha: 0.6)
+            }
         }
         else
         {
-            cell.meetingTitle.textColor = UIColor(red: 0/255, green: 0/255, blue: 0/255, alpha: 0.6)
-            cell.meetingdate.textColor = UIColor(red: 0/255, green: 0/255, blue: 0/255, alpha: 0.6)
-            cell.titleImageGroup.image = UIImage(named: "meetingCompleted")
-            cell.calenderImage.image = UIImage(named: "meetingCompletedDate")
-            cell.sidedBg.backgroundColor =  UIColor(red: 112.0/255, green: 173.0/255, blue: 71.0/255, alpha: 0.6)
+            let data = meetingeData[indexPath.row]
+            cell.meetingTitle.text = data.meeting_title
+            let formatedDate = self.formattedDateFromString(dateString: data.meeting_date, withFormat: "dd-MM-YYYY")
+            cell.meetingdate.text = formatedDate
+            cell.meetingStatus.text = data.meeting_status
+            
+            if cell.meetingStatus.text == "REQUESTED" || cell.meetingStatus.text == "PROCESSING"
+            {
+                cell.meetingTitle.textColor = UIColor(red: 0/255, green: 0/255, blue: 0/255, alpha: 1.0)
+                cell.meetingdate.textColor = UIColor(red: 0/255, green: 0/255, blue: 0/255, alpha: 1.0)
+                cell.titleImageGroup.image = UIImage(named: "meetingGroupIcon")
+                cell.calenderImage.image = UIImage(named: "meetingDate")
+                cell.sidedBg.backgroundColor = UIColor(red: 253.0/255, green: 166.0/255, blue: 68.0/255, alpha: 1.0)
+            }
+            else
+            {
+                cell.meetingTitle.textColor = UIColor(red: 0/255, green: 0/255, blue: 0/255, alpha: 0.6)
+                cell.meetingdate.textColor = UIColor(red: 0/255, green: 0/255, blue: 0/255, alpha: 0.6)
+                cell.titleImageGroup.image = UIImage(named: "meetingCompleted")
+                cell.calenderImage.image = UIImage(named: "meetingCompletedDate")
+                cell.sidedBg.backgroundColor =  UIColor(red: 112.0/255, green: 173.0/255, blue: 71.0/255, alpha: 0.6)
+            }
         }
-
         return cell
     }
     
@@ -128,23 +194,36 @@ extension Meeting: UITableViewDelegate,UITableViewDataSource
     }
     
     func tableView(_ tableView: UITableView, willDisplay cell: UITableViewCell, forRowAt indexPath: IndexPath) {
-        let totalRows = tableView.numberOfRows(inSection: indexPath.section)
-        if indexPath.row == (totalRows - 1)
+        if meetingeData.count > 20
         {
-            if totalRows >= 50
+            let lastElement = meetingeData.count - 1
+            if indexPath.row == lastElement
             {
                 print("came to last row")
-                self.callAPI(offset: String(totalRows), rowcount: "50")
+                self.callAPI(offset: String(lastElement), rowcount: "50")
             }
         }
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        let data = meetingeData[indexPath.row]
-        self.meeting_Title = data.meeting_title
-        self.meeting_Discrption = data.meeting_detail
-        self.meeting_Date = data.meeting_date
-        self.meeting_Status = data.meeting_status
+        if searchBar.isActive && searchBar.searchBar.text != ""
+        {
+            self.searchBar.isActive = false
+            let data = filterdArr[indexPath.row]
+            self.meeting_Title = data.meeting_title
+            self.meeting_Discrption = data.meeting_detail
+            self.meeting_Date = data.meeting_date
+            self.meeting_Status = data.meeting_status
+        }
+        else
+        {
+            let data = meetingeData[indexPath.row]
+            self.meeting_Title = data.meeting_title
+            self.meeting_Discrption = data.meeting_detail
+            self.meeting_Date = data.meeting_date
+            self.meeting_Status = data.meeting_status
+        }
+
         self.performSegue(withIdentifier: "to_MeetingDetails", sender: self)
     }
     
@@ -168,24 +247,33 @@ extension Meeting: UITableViewDelegate,UITableViewDataSource
 extension Meeting: MeetingView
 {
     func startLoading() {
-         
         self.view.activityStartAnimating()
     }
     
     func finishLoading() {
-        
         self.view.activityStopAnimating()
     }
     
     func setMeeting(meeting: [MeetingData]) {
          meetingeData = meeting
+         filterdArr = meetingeData
          self.tableView?.reloadData()
     }
     
     func setEmpty(errorMessage: String) {
-          AlertController.shared.showAlert(targetVc: self, title: Globals.alertTitle, message: errorMessage, complition: {
-          })
-         self.tableView.isHidden = true
+         
+        if meetingeData.count == 0
+        {
+             AlertController.shared.showAlert(targetVc: self, title: Globals.alertTitle, message: errorMessage, complition: {
+             })
+             self.tableView.isHidden = true
+        }
+        else{
+             AlertController.shared.showAlert(targetVc: self, title: Globals.alertTitle, message: errorMessage, complition: {
+             })
+             self.tableView.isHidden = false
+        }
+
     }
     
 }

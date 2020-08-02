@@ -34,7 +34,6 @@ class ProfileDetails: UITableViewController {
         // self.navigationItem.rightBarButtonItem = self.editButtonItem
         self.tableView.backgroundColor = .white
         consprofiledata = UserDefaults.standard.getConsProfileInfo(ConstituentDetailData.self, forKey: UserDefaultsKey.ConsProfilekey.rawValue)
-        
         self.setAllValues()
     }
     

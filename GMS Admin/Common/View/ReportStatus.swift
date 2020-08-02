@@ -42,6 +42,10 @@ class ReportStatus: UIViewController {
     
     var selectedFromDate = Date()
     var selectedToDate = Date()
+    var textfieldName = String()
+    
+    var fromDateFormatted = String()
+    var toDateFormatted = String()
 
     @IBOutlet var pageTitle: UILabel!
     @IBOutlet var statusHeight: NSLayoutConstraint!
@@ -64,6 +68,7 @@ class ReportStatus: UIViewController {
             self.addCustomizedBackBtn(title:"  Status report")
             self.reportImageView.image = UIImage(named: "ReportStatus")
             self.statusArr = ["ALL","REQUEST","COMPLETED"]
+            self.textfieldName = "Status"
         }
         else if (from == "categoery"){
             self.pageTitle.text = "Category"
@@ -74,6 +79,7 @@ class ReportStatus: UIViewController {
             //self.Cate = ["ALL","1"]
             self.downArrowPaguthi.isHidden = true
             self.paguthiHeight.constant = 0
+            self.textfieldName = "Categoery"
 
         }
         else if (from == "subCate"){
@@ -85,6 +91,8 @@ class ReportStatus: UIViewController {
             //self.subCat = ["ALL","1"]
             self.downArrowPaguthi.isHidden = true
             self.paguthiHeight.constant = 0
+            self.textfieldName = "Sub Categoery"
+
         }
         else if (from == "location"){
             self.pageTitle.text = "Location"
@@ -94,6 +102,8 @@ class ReportStatus: UIViewController {
             NSAttributedString(string: "Select Location", attributes: [NSAttributedString.Key.foregroundColor: UIColor(red: 188 / 255, green: 188 / 255, blue: 188 / 255, alpha: 1.0)])
             self.downArrowPaguthi.isHidden = true
             self.paguthiHeight.constant = 0
+            self.textfieldName = "Location"
+
         }
         else if (from == "meeting"){
             self.pageTitle.text = "Meeting"
@@ -103,6 +113,8 @@ class ReportStatus: UIViewController {
             self.downArrowPaguthi.isHidden = true
             self.statusHeight.constant = 0
             self.paguthiHeight.constant = 0
+            self.textfieldName = "Meeting"
+
         }
         else if (from == "staff"){
             self.pageTitle.text = "Staff"
@@ -112,6 +124,8 @@ class ReportStatus: UIViewController {
             self.downArrowPaguthi.isHidden = true
             self.statusHeight.constant = 0
             self.paguthiHeight.constant = 0
+            self.textfieldName = "Staff"
+
         }
         /*SetUp DatePicker*/
         self.showDatePicker()
@@ -159,22 +173,38 @@ class ReportStatus: UIViewController {
        datePicker.backgroundColor = UIColor.white
        datePicker.setValue(UIColor.black, forKeyPath: "textColor")
 
-      //ToolBar
-      let toolbar = UIToolbar();
-      toolbar.sizeToFit()
-      toolbar.backgroundColor = UIColor.white
-      toolbar.tintColor = UIColor(red: 45/255.0, green: 148/255.0, blue: 235/255.0, alpha: 1.0)
-      let doneButton = UIBarButtonItem(title: "Done", style: .plain, target: self, action: #selector(donedatePicker));
-      let spaceButton = UIBarButtonItem(barButtonSystemItem: UIBarButtonItem.SystemItem.flexibleSpace, target: nil, action: nil)
-      let cancelButton = UIBarButtonItem(title: "Cancel", style: .plain, target: self, action: #selector(cancelDatePicker));
-     toolbar.setItems([cancelButton,spaceButton,doneButton], animated: false)
+       //ToolBar
+       let toolbar = UIToolbar();
+       toolbar.sizeToFit()
+       toolbar.backgroundColor = UIColor.white
+       toolbar.tintColor = UIColor(red: 45/255.0, green: 148/255.0, blue: 235/255.0, alpha: 1.0)
+       let doneButton = UIBarButtonItem(title: "Done", style: .plain, target: self, action: #selector(donedatePicker));
+       let spaceButton = UIBarButtonItem(barButtonSystemItem: UIBarButtonItem.SystemItem.flexibleSpace, target: nil, action: nil)
+       let cancelButton = UIBarButtonItem(title: "Cancel", style: .plain, target: self, action: #selector(cancelDatePicker));
+       toolbar.setItems([cancelButton,spaceButton,doneButton], animated: false)
 
-     fromDate.inputAccessoryView = toolbar
-     fromDate.inputView = datePicker
+       fromDate.inputAccessoryView = toolbar
+       fromDate.inputView = datePicker
         
-     toDate.inputAccessoryView = toolbar
-     toDate.inputView = datePicker
+       toDate.inputAccessoryView = toolbar
+       toDate.inputView = datePicker
 
+    }
+    
+    func formattedDateFromString(dateString: String, withFormat format: String) -> String? {
+
+        let inputFormatter = DateFormatter()
+        inputFormatter.dateFormat = "yyyy-MM-dd"
+
+        if let date = inputFormatter.date(from: dateString) {
+
+            let outputFormatter = DateFormatter()
+          outputFormatter.dateFormat = format
+
+            return outputFormatter.string(from: date)
+        }
+
+        return nil
     }
     
      @objc func donedatePicker(){
@@ -182,16 +212,20 @@ class ReportStatus: UIViewController {
         {
             let formatter = DateFormatter()
             formatter.dateFormat = "yyyy-MM-dd"
-            fromDate.text = formatter.string(from: datePicker.date)
+            fromDateFormatted = formatter.string(from: datePicker.date)
             selectedFromDate = datePicker.date
+            let formatted = self.formattedDateFromString(dateString: fromDateFormatted, withFormat: "dd-MM-YYYY")
+            fromDate.text = formatted
             self.view.endEditing(true)
         }
         else
         {
             let formatter = DateFormatter()
             formatter.dateFormat = "yyyy-MM-dd"
-            toDate.text = formatter.string(from: datePicker.date)
+            toDateFormatted = formatter.string(from: datePicker.date)
             selectedToDate = datePicker.date
+            let formatted = self.formattedDateFromString(dateString: toDateFormatted, withFormat: "dd-MM-YYYY")
+            toDate.text = formatted
             self.view.endEditing(true)
         }
 
@@ -205,7 +239,7 @@ class ReportStatus: UIViewController {
          pickerView.dataSource = self
          pickerView.delegate = self
          pickerView.backgroundColor = UIColor.white
-         pickerView.setValue(UIColor.darkGray, forKeyPath: "textColor")
+         pickerView.setValue(UIColor.black, forKeyPath: "textColor")
          status.inputView = pickerView
          paguthi.inputView = pickerView
          let toolBar = UIToolbar()
@@ -214,7 +248,7 @@ class ReportStatus: UIViewController {
          let spaceButton = UIBarButtonItem(barButtonSystemItem: UIBarButtonItem.SystemItem.flexibleSpace, target: nil, action: nil)
          let cancelButton = UIBarButtonItem(title: "Cancel", style: .plain, target: self, action: #selector(self.cancel))
 
-         toolBar.setItems([doneButton,spaceButton,cancelButton], animated: true)
+         toolBar.setItems([cancelButton,spaceButton,doneButton], animated: true)
          toolBar.isUserInteractionEnabled = true
          toolBar.backgroundColor = UIColor.white
          toolBar.tintColor = UIColor(red: 45/255.0, green: 148/255.0, blue: 235/255.0, alpha: 1.0)
@@ -284,7 +318,6 @@ class ReportStatus: UIViewController {
     func CheckValuesAreEmpty () -> Bool{
         
         let greater = selectedFromDate.timeIntervalSince1970 < selectedToDate.timeIntervalSince1970
-        
         if (from == "status")
         {
             guard Reachability.isConnectedToNetwork() == true else{
@@ -295,35 +328,176 @@ class ReportStatus: UIViewController {
             }
             
             guard self.fromDate.text?.count != 0  else {
-                AlertController.shared.showAlert(targetVc: self, title: Globals.alertTitle, message: "", complition: {
+                AlertController.shared.showAlert(targetVc: self, title: Globals.alertTitle, message: "From Date is Empty", complition: {
                     
                   })
                  return false
              }
             
             guard self.toDate.text?.count != 0  else {
-                  AlertController.shared.showAlert(targetVc: self, title: Globals.alertTitle, message: "", complition: {
+                  AlertController.shared.showAlert(targetVc: self, title: Globals.alertTitle, message: "To Date is Empty", complition: {
                       
                     })
                  return false
              }
             
             guard greater == true  else {
-                  AlertController.shared.showAlert(targetVc: self, title: Globals.alertTitle, message: "From date", complition: {
+                  AlertController.shared.showAlert(targetVc: self, title: Globals.alertTitle, message: "To date cannot be before start date", complition: {
                       
                     })
                  return false
              }
             
             guard self.status.text?.count != 0  else {
-                  AlertController.shared.showAlert(targetVc: self, title: Globals.alertTitle, message: "", complition: {
+                  AlertController.shared.showAlert(targetVc: self, title: Globals.alertTitle, message: textfieldName + " " + "is Empty", complition: {
                       
                     })
                  return false
              }
             
             guard self.paguthi.text?.count != 0  else {
-                 AlertController.shared.showAlert(targetVc: self, title: Globals.alertTitle, message: "", complition: {
+                 AlertController.shared.showAlert(targetVc: self, title: Globals.alertTitle, message: "Paguthi is Empty", complition: {
+                      
+                    })
+                 return false
+             }
+        }
+        else if (from == "categoery")
+        {
+            guard Reachability.isConnectedToNetwork() == true else{
+                  AlertController.shared.offlineAlert(targetVc: self, complition: {
+                    //Custom action code
+                 })
+                 return false
+            }
+            
+            guard self.fromDate.text?.count != 0  else {
+                AlertController.shared.showAlert(targetVc: self, title: Globals.alertTitle, message: "From Date is Empty", complition: {
+                    
+                  })
+                 return false
+             }
+            
+            guard self.toDate.text?.count != 0  else {
+                  AlertController.shared.showAlert(targetVc: self, title: Globals.alertTitle, message: "To Date is Empty", complition: {
+                      
+                    })
+                 return false
+             }
+            
+            guard greater == true  else {
+                  AlertController.shared.showAlert(targetVc: self, title: Globals.alertTitle, message: "To date cannot be before start date", complition: {
+                      
+                    })
+                 return false
+             }
+            
+            guard self.status.text?.count != 0  else {
+                  AlertController.shared.showAlert(targetVc: self, title: Globals.alertTitle, message: textfieldName + " " + "is Empty", complition: {
+                      
+                    })
+                 return false
+             }
+        }
+        else if (from == "subCate")
+        {
+            guard Reachability.isConnectedToNetwork() == true else{
+                  AlertController.shared.offlineAlert(targetVc: self, complition: {
+                    //Custom action code
+                 })
+                 return false
+            }
+            
+            guard self.fromDate.text?.count != 0  else {
+                AlertController.shared.showAlert(targetVc: self, title: Globals.alertTitle, message: "From Date is Empty", complition: {
+                    
+                  })
+                 return false
+             }
+            
+            guard self.toDate.text?.count != 0  else {
+                  AlertController.shared.showAlert(targetVc: self, title: Globals.alertTitle, message: "To Date is Empty", complition: {
+                      
+                    })
+                 return false
+             }
+            
+            guard greater == true  else {
+                  AlertController.shared.showAlert(targetVc: self, title: Globals.alertTitle, message: "To date cannot be before start date", complition: {
+                      
+                    })
+                 return false
+             }
+            
+            guard self.status.text?.count != 0  else {
+                  AlertController.shared.showAlert(targetVc: self, title: Globals.alertTitle, message: textfieldName + " " + "is Empty", complition: {
+                      
+                    })
+                 return false
+             }
+        }
+        else if (from == "location")
+        {
+            guard Reachability.isConnectedToNetwork() == true else{
+                  AlertController.shared.offlineAlert(targetVc: self, complition: {
+                    //Custom action code
+                 })
+                 return false
+            }
+            
+            guard self.fromDate.text?.count != 0  else {
+                AlertController.shared.showAlert(targetVc: self, title: Globals.alertTitle, message: "From Date is Empty", complition: {
+                    
+                  })
+                 return false
+             }
+            
+            guard self.toDate.text?.count != 0  else {
+                  AlertController.shared.showAlert(targetVc: self, title: Globals.alertTitle, message: "To Date is Empty", complition: {
+                      
+                    })
+                 return false
+             }
+            
+            guard greater == true  else {
+                  AlertController.shared.showAlert(targetVc: self, title: Globals.alertTitle, message: "To date cannot be before start date", complition: {
+                      
+                    })
+                 return false
+             }
+            
+            guard self.status.text?.count != 0  else {
+                  AlertController.shared.showAlert(targetVc: self, title: Globals.alertTitle, message: textfieldName + " " + "is Empty", complition: {
+                      
+                    })
+                 return false
+             }
+        }
+        else if (from == "meeting")
+        {
+            guard Reachability.isConnectedToNetwork() == true else{
+                  AlertController.shared.offlineAlert(targetVc: self, complition: {
+                    //Custom action code
+                 })
+                 return false
+            }
+            
+            guard self.fromDate.text?.count != 0  else {
+                AlertController.shared.showAlert(targetVc: self, title: Globals.alertTitle, message: "From Date is Empty", complition: {
+                    
+                  })
+                 return false
+             }
+            
+            guard self.toDate.text?.count != 0  else {
+                  AlertController.shared.showAlert(targetVc: self, title: Globals.alertTitle, message: "To Date is Empty", complition: {
+                      
+                    })
+                 return false
+             }
+            
+            guard greater == true  else {
+                  AlertController.shared.showAlert(targetVc: self, title: Globals.alertTitle, message: "To date cannot be before start date", complition: {
                       
                     })
                  return false
@@ -331,12 +505,40 @@ class ReportStatus: UIViewController {
         }
         else
         {
+            guard Reachability.isConnectedToNetwork() == true else{
+                  AlertController.shared.offlineAlert(targetVc: self, complition: {
+                    //Custom action code
+                 })
+                 return false
+            }
             
+            guard self.fromDate.text?.count != 0  else {
+                AlertController.shared.showAlert(targetVc: self, title: Globals.alertTitle, message: "From Date is Empty", complition: {
+                    
+                  })
+                 return false
+             }
+            
+            guard self.toDate.text?.count != 0  else {
+                  AlertController.shared.showAlert(targetVc: self, title: Globals.alertTitle, message: "To Date is Empty", complition: {
+                      
+                    })
+                 return false
+             }
+            
+            guard greater == true  else {
+                  AlertController.shared.showAlert(targetVc: self, title: Globals.alertTitle, message: "To date cannot be before start date", complition: {
+                      
+                    })
+                 return false
+             }
         }
+        
         
           return true
     }
     
+        
 
     // MARK: - Navigation
 
@@ -349,21 +551,21 @@ class ReportStatus: UIViewController {
             let vc = segue.destination as! ReportList
             vc.from = sender as! String
             vc.paguthi = self.selectedPaguthuID
-            vc.fromdate = self.fromDate.text!
-            vc.todate = self.toDate.text!
+            vc.fromdate = fromDateFormatted
+            vc.todate = toDateFormatted
             vc.status = self.status.text!
             vc.category = self.status.text!
             vc.sub_category = self.status.text!
         }
         else if (segue.identifier == "to_reportMeeting"){
             let vc = segue.destination as! ReportMeeting
-            vc.fromdate = self.fromDate.text!
-            vc.todate = self.toDate.text!
+            vc.fromdate = fromDateFormatted
+            vc.todate = toDateFormatted
         }
         else if (segue.identifier == "to_reportStaff"){
             let vc = segue.destination as! ReportStaff
-            vc.fromdate = self.fromDate.text!
-            vc.todate = self.toDate.text!
+            vc.fromdate = fromDateFormatted
+            vc.todate = toDateFormatted
         }
     }
     
@@ -393,14 +595,14 @@ extension ReportStatus : UIPickerViewDelegate, UIPickerViewDataSource, PaguthiVi
                 return self.paguthiName.count
             }
         }
-        else if self.paguthi.isFirstResponder
+        else
         {
             return self.paguthiName.count
         }
-        else
-        {
-            return self.Cate.count
-        }
+//        else
+//        {
+//            return 0
+//        }
     }
 
     func pickerView(_ pickerView: UIPickerView, titleForRow row: Int, forComponent component: Int) -> String? {
@@ -420,13 +622,13 @@ extension ReportStatus : UIPickerViewDelegate, UIPickerViewDataSource, PaguthiVi
                 return self.paguthiName[row]
             }
         }
-        else if self.paguthi.isFirstResponder
+        else
         {
             return self.paguthiName[row] // dropdo
         }
-        else{
-            return self.Cate[row] // dropdown item
-        }
+//        else{
+//            return self.Cate[row] // dropdown item
+//        }
     }
 
     func pickerView(_ pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {

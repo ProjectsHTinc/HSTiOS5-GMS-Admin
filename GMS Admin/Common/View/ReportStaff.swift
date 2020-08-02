@@ -8,14 +8,15 @@
 
 import UIKit
 
-class ReportStaff: UIViewController, ReportStaffView ,UITableViewDelegate, UITableViewDataSource {
-
+class ReportStaff: UIViewController, ReportStaffView ,UITableViewDelegate, UITableViewDataSource, UISearchBarDelegate, UISearchControllerDelegate, UISearchResultsUpdating {
     /*Get Report Staff List*/
     let presenter = ReportStaffPresenter(reportStaffService: ReportStaffService())
     var reportData = [ReportStaffData]()
+    var filterdArr = [ReportStaffData]()
     
     var fromdate = String()
     var todate = String()
+    var searchBar = UISearchController()
     
     @IBOutlet var reportCount: UILabel!
     @IBOutlet var tableView: UITableView!
@@ -31,7 +32,25 @@ class ReportStaff: UIViewController, ReportStaffView ,UITableViewDelegate, UITab
              return
         }
         self.addCustomizedBackBtn(title:"  Staff report")
+        /*Right Navigation Bar*/
+        self.addrightButton(bg_ImageName:"ConstituentSearch")
         self.callAPI()
+    }
+    
+    @objc public override func rightButtonClick()
+    {
+        searchBar = UISearchController(searchResultsController: nil)
+        // Set any properties (in this case, don't hide the nav bar and don't show the emoji keyboard option)
+        searchBar.hidesNavigationBarDuringPresentation = false
+        searchBar.searchBar.keyboardType = UIKeyboardType.asciiCapable
+        searchBar.searchResultsUpdater = self
+        searchBar.hidesNavigationBarDuringPresentation = false
+        searchBar.obscuresBackgroundDuringPresentation = false
+        searchBar.definesPresentationContext = true
+
+        // Make this class the delegate and present the search
+        self.searchBar.searchBar.delegate = self
+        present(searchBar, animated: true, completion: nil)
     }
     
     func callAPI ()
@@ -50,6 +69,7 @@ class ReportStaff: UIViewController, ReportStaffView ,UITableViewDelegate, UITab
     
     func setReportStaff(reportstaff: [ReportStaffData]) {
         reportData = reportstaff
+        filterdArr = reportData
         self.reportCount.text = String(GlobalVariables.shared.meetingAllCount) + " Staff"
         self.tableView.isHidden = false
         self.tableView.reloadData()
@@ -63,16 +83,30 @@ class ReportStaff: UIViewController, ReportStaffView ,UITableViewDelegate, UITab
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return reportData.count
+        if searchBar.isActive && searchBar.searchBar.text != "" {
+            return filterdArr.count
+        }
+        else{
+            return reportData.count
+        }
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "cell", for: indexPath) as! ReportStaffCell
-        let data = reportData[indexPath.row]
-        cell.userName.text = data.full_name
-        cell.total.text = data.total
-        cell.active.text = data.active
-        cell.inactive.text = data.inactive
+        if searchBar.isActive && searchBar.searchBar.text != "" {
+            let data = filterdArr[indexPath.row]
+            cell.userName.text = data.full_name
+            cell.total.text = data.total
+            cell.active.text = data.active
+            cell.inactive.text = data.inactive
+        }
+        else{
+            let data = reportData[indexPath.row]
+            cell.userName.text = data.full_name
+            cell.total.text = data.total
+            cell.active.text = data.active
+            cell.inactive.text = data.inactive
+        }
         return cell
     }
     
@@ -80,6 +114,17 @@ class ReportStaff: UIViewController, ReportStaffView ,UITableViewDelegate, UITab
            return 136
     }
     
+    func updateSearchResults(for searchController: UISearchController) {
+        let searchText = searchController.searchBar.text?.lowercased()
+        if searchText?.count != 0
+        {
+           filterdArr = reportData.filter({( model : ReportStaffData) -> Bool in
+            return model.full_name!.lowercased().contains(searchText!.lowercased())||model.total!.lowercased().contains(searchText!.lowercased())
+                || model.active!.lowercased().contains(searchText!.lowercased())||model.inactive!.lowercased().contains(searchText!.lowercased())
+            })
+        }
+        tableView.reloadData()
+    }
     
 
     /*
