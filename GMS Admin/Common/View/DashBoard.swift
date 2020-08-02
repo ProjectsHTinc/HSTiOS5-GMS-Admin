@@ -34,7 +34,7 @@ class DashBoard: UIViewController, ChartViewDelegate {
     var dispMonth = [String]()
     var new_grev = [Double]()
     var repeeated_grev = [Double]()
-    var total = [String]()
+    var total = [Double]()
     var grivenacegraph = [Double]()
     var meeting_request = [Double]()
     var month_year = [String]()
@@ -149,9 +149,11 @@ class DashBoard: UIViewController, ChartViewDelegate {
                             self.dispMonth.removeAll()
                             self.new_grev.removeAll()
                             self.repeeated_grev.removeAll()
-                            self.grivenacegraph.removeAll()
+                            self.repeeated_grev.removeAll()
+                            self.total.removeAll()
                             self.meeting_request.removeAll()
                             self.month_year.removeAll()
+                            self.grivenacegraph.removeAll()
                             /*Bar Chart*/
                             let footFall = json["footfall_graph"]
                             for i in 0..<(footFall.count)
@@ -160,12 +162,13 @@ class DashBoard: UIViewController, ChartViewDelegate {
                                 let dispMonth = dict["disp_month"].string
                                 let newGrev = dict["new_grev"].double
                                 let repeatedGrev = dict["repeated_grev"].double
-                                //let _total = dict["total"].string
-
+                                let _total = dict["total"].string
+                                let conv = (_total! as NSString).doubleValue
+                                
                                 self.dispMonth.append(dispMonth!)
                                 self.new_grev.append(newGrev!)
                                 self.repeeated_grev.append(repeatedGrev!)
-                                //self.total.append(_total!)
+                                self.total.append(conv)
                             }
                             self.setupView()
                             /*Pie Chart*/
@@ -245,14 +248,15 @@ class DashBoard: UIViewController, ChartViewDelegate {
         barchart.noDataTextColor = UIColor.darkGray
         barchart.chartDescription?.textColor = UIColor.clear
         
-        setChart(dispMonth: self.dispMonth, newgrev: self.new_grev, repetedgrev: self.repeeated_grev)
+        setChart(dispMonth: self.dispMonth, newgrev: self.new_grev, repetedgrev: self.repeeated_grev, totalgrev: self.total)
     }
-    func setChart(dispMonth: [String], newgrev: [Double], repetedgrev: [Double]) {
+    func setChart(dispMonth: [String], newgrev: [Double], repetedgrev: [Double], totalgrev: [Double]) {
         
         barchart.noDataText = "You need to provide data"
         var dataEntries: [BarChartDataEntry] = []
         var dataEntries1: [BarChartDataEntry] = []
-        
+        var dataEntries2: [BarChartDataEntry] = []
+
         for i in 0..<self.dispMonth.count {
             
             let dataEntry = BarChartDataEntry(x: Double(i) , y: Double(self.repeeated_grev[i]))
@@ -261,14 +265,19 @@ class DashBoard: UIViewController, ChartViewDelegate {
             let dataEntry1 = BarChartDataEntry(x: Double(i) , y: Double(self.new_grev[i]))
             dataEntries1.append(dataEntry1)
             
+            let dataEntry2 = BarChartDataEntry(x: Double(i) , y: Double(self.total[i]))
+            dataEntries2.append(dataEntry2)
+            
         }
         
-        let chartDataSet = BarChartDataSet(entries: dataEntries, label: "Greivances")
+        let chartDataSet = BarChartDataSet(entries: dataEntries, label: "Repeated Greivances")
         let chartDataSet1 = BarChartDataSet(entries: dataEntries1, label: "New Greivances")
-        
-        let dataSets: [BarChartDataSet] = [chartDataSet,chartDataSet1]
-        chartDataSet.colors = [UIColor(red: 207/255, green: 255/255, blue: 216/255, alpha: 1.0)]
-        chartDataSet1.colors = [UIColor(red: 219/255, green: 201/255, blue: 255/255, alpha: 1.0)]
+        let chartDataSet2 = BarChartDataSet(entries: dataEntries2, label: "Total Greivances")
+
+        let dataSets: [BarChartDataSet] = [chartDataSet,chartDataSet1,chartDataSet2]
+        chartDataSet.colors = [UIColor(red: 219/255, green: 201/255, blue: 255/255, alpha: 1.0)]
+        chartDataSet1.colors = [UIColor(red: 207/255, green: 255/255, blue: 216/255, alpha: 1.0)]
+        chartDataSet2.colors = [UIColor(red: (33/255), green: (132/255), blue: (217/255), alpha: 1.0)]
         let chartData = BarChartData(dataSets: dataSets)
         
         let groupSpace = 0.4

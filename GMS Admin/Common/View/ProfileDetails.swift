@@ -37,6 +37,7 @@ class ProfileDetails: UITableViewController {
         self.setAllValues()
     }
     
+    
     func setAllValues ()
     {
         self.fatherName.text = consprofiledata[0].full_name
