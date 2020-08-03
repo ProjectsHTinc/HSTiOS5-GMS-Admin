@@ -31,7 +31,9 @@ class GreivanceAllSearch: UIViewController, GreivancesAllView,  UITableViewDeleg
     var _updatedOn = String()
     var _status = String()
     var greivanceId = String()
-    
+    var id = String()
+    var type = String()
+
     var placeArr = [String]()
     var seekerTypeArr = [String]()
     var petitionNumberArr = [String]()
@@ -46,6 +48,7 @@ class GreivanceAllSearch: UIViewController, GreivancesAllView,  UITableViewDeleg
     var typeArr = [String]()
     var userNameArr = [String]()
     var dateArr = [String]()
+    var idArr = [String]()
 
     @IBOutlet var tableView: UITableView!
     @IBOutlet var greivancesCount: UILabel!
@@ -77,6 +80,7 @@ class GreivanceAllSearch: UIViewController, GreivancesAllView,  UITableViewDeleg
         self.typeArr.removeAll()
         self.userNameArr.removeAll()
         self.dateArr.removeAll()
+        self.idArr.removeAll()
         //
         
         self.callAPIGreviancesAll(url: grevianceAllSearchUrl, keyword: keyword, paguthi: selectedconstitunecyId, offset: "0", rowcount: "50", grievance_type: statSelectdSeg)
@@ -113,6 +117,7 @@ class GreivanceAllSearch: UIViewController, GreivancesAllView,  UITableViewDeleg
              let type = items.grievance_type
              let username = items.full_name
              let date = items.grievance_date
+             let id = items.constituent_id
              
              self.placeArr.append(place)
              self.seekerTypeArr.append(seekerType)
@@ -128,6 +133,7 @@ class GreivanceAllSearch: UIViewController, GreivancesAllView,  UITableViewDeleg
              self.typeArr.append(type)
              self.userNameArr.append(username)
              self.dateArr.append(date)
+             self.idArr.append(id)
 
          }
          self.greivancesCount.text =  String(format: "%@ %@", String (GlobalVariables.shared.consGreivanceCount),"Greivances")
@@ -200,18 +206,20 @@ class GreivanceAllSearch: UIViewController, GreivancesAllView,  UITableViewDeleg
     }
 
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        let data = greivanceAllData[indexPath.row]
-        self._place = data.paguthi_name
-        self._seekerType = data.seeker_info
-        self._petitionNumber = data.petition_enquiry_no
-        self._refNumber = data.reference_note
-        self._greivanceName = data.grievance_name
-        self._subcat = data.sub_category_name
-        self._desc = data.description
-        self._createdon = data.created_at
-        self._updatedOn = data.updated_at
-        self._status = data.status
-        self.greivanceId = data.id
+//        let data = greivanceAllData[indexPath.row]
+        self._place = placeArr[indexPath.row]
+        self._seekerType = seekerTypeArr[indexPath.row]
+        self._petitionNumber = petitionNumberArr[indexPath.row]
+        self._refNumber = refNumberArr[indexPath.row]
+        self._greivanceName = greivanceNameArr[indexPath.row]
+        self._subcat = subcatArr[indexPath.row]
+        self._desc = descArr[indexPath.row]
+        self._createdon = createdonArr[indexPath.row]
+        self._updatedOn = updatedOnArr[indexPath.row]
+        self._status = statusArr[indexPath.row]
+        self.greivanceId = greivanceIdArr[indexPath.row]
+        self.type = typeArr[indexPath.row]
+        self.id = idArr[indexPath.row]
         self.performSegue(withIdentifier: "to_GreivancesAllDetail", sender: self)
     }
     
@@ -252,6 +260,8 @@ class GreivanceAllSearch: UIViewController, GreivancesAllView,  UITableViewDeleg
             vc._updatedOn = _updatedOn
             vc._status = _status
             vc.greivanceId = greivanceId
+            vc.type = self.type
+            vc.id = self.id
         }
     }
     

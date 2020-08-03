@@ -22,6 +22,7 @@ class GreivancesAllDetail: UIViewController {
     var _status = String()
     var greivanceId = String()
     var type = String()
+    var id = String()
 
     @IBOutlet var place: UILabel!
     @IBOutlet var seekerType: UILabel!
@@ -53,7 +54,7 @@ class GreivancesAllDetail: UIViewController {
         self.createdon.text = formatedCreated
         self.updatedOn.text = formatedUpdatedOn
         self.status.text = _status
-        GlobalVariables.shared.constituent_Id = greivanceId
+//        GlobalVariables.shared.constituent_Id = greivanceId
         
         if (type == "P")
         {
@@ -99,6 +100,7 @@ class GreivancesAllDetail: UIViewController {
     }
     
     @IBAction func viewProfile(_ sender: Any) {
+        GlobalVariables.shared.profGrivance = "GreiAll"
         self.performSegue(withIdentifier: "to_profilePage", sender: self)
     }
     
@@ -115,6 +117,7 @@ class GreivancesAllDetail: UIViewController {
         else if (segue.identifier == "to_profilePage"){
             let vc = segue.destination as! Profile
             vc.From = "GreiAll"
+            vc.id = self.id
         }
     }
     

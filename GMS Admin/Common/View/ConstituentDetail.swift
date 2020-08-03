@@ -81,6 +81,7 @@ class ConstituentDetail: UIViewController {
     }
     
     @IBAction func profile(_ sender: Any) {
+        GlobalVariables.shared.profGrivance = "ConsAll"
         self.performSegue(withIdentifier: "to_ConsProfile", sender: self)
     }
     

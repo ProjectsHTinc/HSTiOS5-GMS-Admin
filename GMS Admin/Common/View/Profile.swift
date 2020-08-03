@@ -12,10 +12,15 @@ import SDWebImage
 class Profile: UIViewController {
     
     var consprofiledata = [ConstituentDetailData]()
-    var profiledata = [GreivancesAllData]()
+//    var profiledata = [GreivancesAllData]()
+    /*Get ConsDetail Data */
+    let presenter = ConstituentDetailPresenter(constituentDetailService: ConstituentDetailService())
+    var constituentdetail = [ConstituentDetailData]()
 
     var container: Container!
     var From = String()
+    var id = String()
+
 
     @IBOutlet var userImageView: UIImageView!
     @IBOutlet var userName: UILabel!
@@ -32,17 +37,23 @@ class Profile: UIViewController {
         }
         self.view.isHidden = false
         self.navigationItem.title = "Profile"
-        if From == "GreiAll"
+        if GlobalVariables.shared.profGrivance == "GreiAll"
         {
-            //profiledata = UserDefaults.standard.getConsProfileInfo(GreivancesAllData.self, forKey: UserDefaultsKey.ConsProfilekey.rawValue)
+            self.callAPIConstituentDetail()
         }
         else
         {
             consprofiledata = UserDefaults.standard.getConsProfileInfo(ConstituentDetailData.self, forKey: UserDefaultsKey.ConsProfilekey.rawValue)
+            self.setAllValues()
         }
-        self.setAllValues()
         self.setUpControl ()
-
+    }
+    
+    func callAPIConstituentDetail ()
+    {
+        print(id)
+        presenter.attachView(view: self)
+        presenter.getConstituentDetailData(constituent_id: id)
     }
     
     func checkInterConnection () -> Bool
@@ -60,7 +71,7 @@ class Profile: UIViewController {
     
     func setUpControl ()
     {
-        if From == "GreiAll"
+        if GlobalVariables.shared.profGrivance == "GreiAll"
         {
             segmentControl.setTitle("Profile", forSegmentAt: 0)
             segmentControl.setTitle("Constituency", forSegmentAt: 1)
@@ -101,11 +112,11 @@ class Profile: UIViewController {
     
     func setAllValues ()
     {
-        if From == "GreiAll"
+        if GlobalVariables.shared.profGrivance == "GreiAll"
         {
-//            self.userImageView.sd_setImage(with: URL(string: ""), placeholderImage: UIImage(named: "placeholder.png"))
-//            self.userName.text = profiledata[0].full_name
-//            self.userNumber.text = profiledata[0].paguthi_name
+            self.userImageView.sd_setImage(with: URL(string: Globals.imageUrl + consprofiledata[0].profile_pic), placeholderImage: UIImage(named: "placeholder.png"))
+            self.userName.text = consprofiledata[0].full_name
+            self.userNumber.text = consprofiledata[0].paguthi_name
         }
         else
         {
@@ -128,6 +139,8 @@ class Profile: UIViewController {
         }
         else
         {
+            let vc = InterAction()
+            vc.selectedconstitunecyId = self.id
             container!.segueIdentifierReceivedFromParent("interaction")
         }
     }
@@ -152,4 +165,24 @@ class Profile: UIViewController {
     }
 }
 
- 
+
+extension Profile: ConstituentDetailView{
+    func startLoading() {
+        //
+    }
+    
+    func finishLoading() {
+        //
+    }
+    
+    func setConstituentDetailData(constituentDetail: [ConstituentDetailData]) {
+         consprofiledata = constituentDetail
+         self.setAllValues()
+    }
+    
+    func setEmpty(errorMessage: String) {
+        //
+    }
+    
+    
+}

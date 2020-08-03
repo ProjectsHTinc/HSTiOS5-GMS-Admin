@@ -11,6 +11,7 @@ import UIKit
 class ProfileDetails: UITableViewController {
     
     var consprofiledata = [ConstituentDetailData]()
+    var from = String()
 
     @IBOutlet var fatherName: UITextField!
     @IBOutlet var guardianName: UITextField!
@@ -33,8 +34,16 @@ class ProfileDetails: UITableViewController {
         // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
         // self.navigationItem.rightBarButtonItem = self.editButtonItem
         self.tableView.backgroundColor = .white
-        consprofiledata = UserDefaults.standard.getConsProfileInfo(ConstituentDetailData.self, forKey: UserDefaultsKey.ConsProfilekey.rawValue)
-        self.setAllValues()
+//        if GlobalVariables.shared.profGrivance == "GreiAll"
+//        {
+//            
+//        }
+//        else
+//        {
+            consprofiledata = UserDefaults.standard.getConsProfileInfo(ConstituentDetailData.self, forKey: UserDefaultsKey.ConsProfilekey.rawValue)
+            self.setAllValues()
+//        }
+
     }
     
     

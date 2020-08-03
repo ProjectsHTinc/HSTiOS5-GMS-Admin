@@ -41,6 +41,7 @@ class GreivancesAll: UIViewController {
     var _status = String()
     var greivanceId = String()
     var type = String()
+    var id = String()
 
     var placeArr = [String]()
     var seekerTypeArr = [String]()
@@ -56,6 +57,7 @@ class GreivancesAll: UIViewController {
     var typeArr = [String]()
     var userNameArr = [String]()
     var dateArr = [String]()
+    var idArr = [String]()
 
     @IBOutlet var tableView: UITableView!
     @IBOutlet var greivancesCount: UILabel!
@@ -92,6 +94,7 @@ class GreivancesAll: UIViewController {
         self.typeArr.removeAll()
         self.userNameArr.removeAll()
         self.dateArr.removeAll()
+        self.idArr.removeAll()
         //
         self.statSelectdSeg = "A"
         self.callAPIPaguthi ()
@@ -174,6 +177,7 @@ class GreivancesAll: UIViewController {
         self.typeArr.removeAll()
         self.userNameArr.removeAll()
         self.dateArr.removeAll()
+        self.idArr.removeAll()
         self.reloadAndScrollToTop()
         print("Selected index \(segmentedControl.selectedSegmentIndex)")
         let selectedIndex = Int(segmentedControl.selectedSegmentIndex)
@@ -197,6 +201,7 @@ class GreivancesAll: UIViewController {
         self.typeArr.removeAll()
         self.userNameArr.removeAll()
         self.dateArr.removeAll()
+        self.idArr.removeAll()
         self.reloadAndScrollToTop()
         
         if (statSegContrl.selectedSegmentIndex == 0)
@@ -246,6 +251,7 @@ class GreivancesAll: UIViewController {
             vc._status = _status
             vc.greivanceId = greivanceId
             vc.type = self.type
+            vc.id = self.id
 
         }
     }
@@ -321,6 +327,7 @@ extension GreivancesAll : PaguthiView , UISearchBarDelegate, GreivancesAllView ,
             let type = items.grievance_type
             let username = items.full_name
             let date = items.grievance_date
+            let id = items.constituent_id
             
             self.placeArr.append(place)
             self.seekerTypeArr.append(seekerType)
@@ -336,7 +343,7 @@ extension GreivancesAll : PaguthiView , UISearchBarDelegate, GreivancesAllView ,
             self.typeArr.append(type)
             self.userNameArr.append(username)
             self.dateArr.append(date)
-
+            self.idArr.append(id)
         }
         self.greivancesCount.text =  String(format: "%@ %@", String (GlobalVariables.shared.consGreivanceCount),"Greivances")
         self.tableView.isHidden = false
@@ -405,7 +412,7 @@ extension GreivancesAll : PaguthiView , UISearchBarDelegate, GreivancesAllView ,
    }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-//        let data = greivanceAllData[indexPath.row]
+//      let data = greivanceAllData[indexPath.row]
         self._place = placeArr[indexPath.row]
         self._seekerType = seekerTypeArr[indexPath.row]
         self._petitionNumber = petitionNumberArr[indexPath.row]
@@ -418,6 +425,7 @@ extension GreivancesAll : PaguthiView , UISearchBarDelegate, GreivancesAllView ,
         self._status = statusArr[indexPath.row]
         self.greivanceId = greivanceIdArr[indexPath.row]
         self.type = typeArr[indexPath.row]
+        self.id = idArr[indexPath.row]
         self.performSegue(withIdentifier: "to_GreivancesAllDetail", sender: self)
     }
     
