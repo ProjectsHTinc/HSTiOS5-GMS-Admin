@@ -55,54 +55,6 @@
       <BreakpointProxy
          BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
          <BreakpointContent
-            uuid = "DEC8BD71-01BB-495D-BA41-084F618B2A87"
-            shouldBeEnabled = "Yes"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "GMS Admin/Common/View/MeetingAllDetail.swift"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "144"
-            endingLineNumber = "144"
-            landmarkName = "setMeetingUpdate(msg:status:)"
-            landmarkType = "7">
-            <Locations>
-               <Location
-                  uuid = "DEC8BD71-01BB-495D-BA41-084F618B2A87 - 1e2e1196ddc73a2c"
-                  shouldBeEnabled = "Yes"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "GMS_Admin.MeetingAllDetail.setMeetingUpdate(msg: Swift.String, status: Swift.String) -&gt; ()"
-                  moduleName = "GMS Admin"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/happysanztech/Documents/HSTiOS5/GMS%20Admin/GMS%20Admin/Common/View/MeetingAllDetail.swift"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "144"
-                  endingLineNumber = "144"
-                  offsetFromSymbolStart = "248">
-               </Location>
-               <Location
-                  uuid = "DEC8BD71-01BB-495D-BA41-084F618B2A87 - f5d4b8bed0f1d7cd"
-                  shouldBeEnabled = "Yes"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "closure #1 () -&gt; () in GMS_Admin.MeetingAllDetail.setMeetingUpdate(msg: Swift.String, status: Swift.String) -&gt; ()"
-                  moduleName = "GMS Admin"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/happysanztech/Documents/HSTiOS5/GMS%20Admin/GMS%20Admin/Common/View/MeetingAllDetail.swift"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "145"
-                  endingLineNumber = "145"
-                  offsetFromSymbolStart = "48">
-               </Location>
-            </Locations>
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
             uuid = "562B83E0-FC47-4B5E-BB8D-3F11744C9573"
             shouldBeEnabled = "Yes"
             ignoreCount = "0"
@@ -206,8 +158,8 @@
             filePath = "GMS Admin/Common/View/ChangePassword.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "234"
-            endingLineNumber = "234"
+            startingLineNumber = "253"
+            endingLineNumber = "253"
             landmarkName = "setChangePassword(msg:status:)"
             landmarkType = "7">
          </BreakpointContent>
@@ -231,22 +183,6 @@
       <BreakpointProxy
          BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
          <BreakpointContent
-            uuid = "E3F5AC67-E620-487E-B018-3B5F62AB9CEA"
-            shouldBeEnabled = "Yes"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "GMS Admin/Common/View/Profile.swift"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "40"
-            endingLineNumber = "40"
-            landmarkName = "viewDidLoad()"
-            landmarkType = "7">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
             uuid = "EC399FFF-9CDF-498B-B541-2EAA55AC44E5"
             shouldBeEnabled = "Yes"
             ignoreCount = "0"
@@ -263,48 +199,16 @@
       <BreakpointProxy
          BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
          <BreakpointContent
-            uuid = "1159402F-C7F9-4EF2-A297-5846D7EC7D9D"
+            uuid = "0E34D818-6143-4F3E-BC3B-C91BE97F86A6"
             shouldBeEnabled = "Yes"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
-            filePath = "GMS Admin/Common/View/Profile.swift"
+            filePath = "GMS Admin/Common/View/Document.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "55"
-            endingLineNumber = "55"
-            landmarkName = "callAPIConstituentDetail()"
-            landmarkType = "7">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            uuid = "AA648B01-69B1-475F-B36B-6A0CAC7393B3"
-            shouldBeEnabled = "Yes"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "GMS Admin/Common/View/Profile.swift"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "115"
-            endingLineNumber = "115"
-            landmarkName = "setAllValues()"
-            landmarkType = "7">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            uuid = "6BB8B244-4305-4C25-9A3C-561BF9354018"
-            shouldBeEnabled = "Yes"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "GMS Admin/Common/Presenter/ConstituentDetailPresenter.swift"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "64"
-            endingLineNumber = "64"
-            landmarkName = "getConstituentDetailData(constituent_id:)"
+            startingLineNumber = "37"
+            endingLineNumber = "37"
+            landmarkName = "viewDidLoad()"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>

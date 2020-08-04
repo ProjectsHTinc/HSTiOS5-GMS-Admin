@@ -133,7 +133,7 @@ extension ConstituentGreivances : ConstituentGreivancesView, UITableViewDelegate
     func setEmpty(errorMessage: String) {
         AlertController.shared.showAlert(targetVc: self, title: Globals.alertTitle, message: errorMessage, complition: {
         })
-        self.greivanceCount.text = String(GlobalVariables.shared.consGreivanceCount) + " " + "Greviances"
+        self.greivanceCount.text = "0" + " Greviances"
         self.tableView.isHidden = true
     }
     

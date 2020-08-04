@@ -35,6 +35,7 @@ class Document: UIViewController {
         // Do any additional setup after loading the view.
         /*SetUp Segment Control*/
         self.setUpSegmentControl()
+        self.segmentControl.isHidden = true
         /*Right Navigation Bar*/
         self.addrightButton(bg_ImageName:"ConstituentSearch")
         self.tableView.backgroundColor = UIColor.white
@@ -153,6 +154,7 @@ extension Document: UITableViewDelegate, UITableViewDataSource, UISearchBarDeleg
         ConData = consDocument
         filterdConsArr = ConData
         self.tableView.isHidden = false
+        self.segmentControl.isHidden = false
         self.tableView.reloadData()
 
     }
@@ -175,6 +177,7 @@ extension Document: UITableViewDelegate, UITableViewDataSource, UISearchBarDeleg
         griData = GriDocument
         filterdGriArr = griData
         self.tableView.isHidden = false
+        self.segmentControl.isHidden = false
         self.tableView.reloadData()
 
     }

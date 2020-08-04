@@ -36,6 +36,7 @@ class Staff: UIViewController {
         }
         /*Right Navigation Bar*/
         self.addrightButton(bg_ImageName:"ConstituentSearch")
+        tableView.tableFooterView = UIView()
         self.callAPIStaff ()
     }
     

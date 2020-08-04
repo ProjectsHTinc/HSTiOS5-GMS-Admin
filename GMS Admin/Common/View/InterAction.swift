@@ -26,6 +26,7 @@ class InterAction: UIViewController {
              })
              return
         }
+        tableView.tableFooterView = UIView()
         self.tableView.backgroundColor = UIColor.white
         self.callAPI()
     }

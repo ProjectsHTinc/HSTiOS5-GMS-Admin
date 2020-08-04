@@ -37,7 +37,7 @@ class ConstituentDetail: UIViewController {
         self.navigationController?.navigationBar.shadowImage = UIImage()
         self.navigationController?.navigationBar.layoutIfNeeded()
         /*Set Gradient View*/
-        self.setGradientBackGroundView()
+        //self.setGradientBackGroundView()
         guard Reachability.isConnectedToNetwork() == true else {
               AlertController.shared.offlineAlert(targetVc: self, complition: {
                 //Custom action code
@@ -47,10 +47,15 @@ class ConstituentDetail: UIViewController {
         self.callAPIConstituentDetail()
     }
     
+    override func viewDidLayoutSubviews(){
+        gradientView.addGradient(colors: [UIColor(red: 45.0 / 255.0, green: 148.0 / 255.0, blue: 235.0 / 255.0, alpha: 1.0), UIColor(red: 23.0 / 255.0, green: 74.0 / 255.0, blue: 118.0 / 255.0, alpha: 1.0)], locations: [0.1, 1.0])
+
+    }
+    
     func setGradientBackGroundView (){
         gradientView.backgroundColor = UIColor.white
         let backgroundLayer = colors.gl
-        backgroundLayer!.frame = gradientView.frame
+        backgroundLayer!.frame = gradientView.bounds
         gradientView.layer.insertSublayer(backgroundLayer!, at: 0)
     }
     

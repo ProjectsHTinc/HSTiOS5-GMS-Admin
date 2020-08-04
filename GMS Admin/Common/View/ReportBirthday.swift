@@ -89,7 +89,7 @@ class ReportBirthday: UIViewController {
            let spaceButton = UIBarButtonItem(barButtonSystemItem: UIBarButtonItem.SystemItem.flexibleSpace, target: nil, action: nil)
            let cancelButton = UIBarButtonItem(title: "Cancel", style: .plain, target: self, action: #selector(self.cancel))
 
-           toolBar.setItems([doneButton,spaceButton,cancelButton], animated: true)
+           toolBar.setItems([cancelButton,spaceButton,doneButton], animated: true)
            toolBar.isUserInteractionEnabled = true
            toolBar.backgroundColor = UIColor.white
            toolBar.tintColor = UIColor(red: 45/255.0, green: 148/255.0, blue: 235/255.0, alpha: 1.0)

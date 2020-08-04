@@ -176,24 +176,43 @@ extension ChangePassword : ChangePasswordView, UITextFieldDelegate{
         // Try to find next responder
         if self.currentPassword.isFirstResponder
         {
-            let cp = self.self.currentPassword.text
-            self.currentPassword.text = cp?.uppercased()
             self.newPassword.becomeFirstResponder()
         }
         else if self.newPassword.isFirstResponder
         {
-            let cp = self.self.newPassword.text
-            self.newPassword.text = cp?.uppercased()
             self.confirmPassword.becomeFirstResponder()
         }
         else if self.confirmPassword.isFirstResponder
         {
-            let cp = self.self.confirmPassword.text
-            self.confirmPassword.text = cp?.uppercased()
             self.confirmPassword.resignFirstResponder()
         }
         return true
      }
+    
+    func textFieldShouldEndEditing(_ textField: UITextField) -> Bool {
+        
+         if self.currentPassword.isFirstResponder
+         {
+             let cp = self.self.currentPassword.text
+             self.currentPassword.text = cp?.uppercased()
+ //            self.newPassword.becomeFirstResponder()
+         }
+         else if self.newPassword.isFirstResponder
+         {
+             let cp = self.self.newPassword.text
+             self.newPassword.text = cp?.uppercased()
+ //            self.confirmPassword.becomeFirstResponder()
+         }
+         else if self.confirmPassword.isFirstResponder
+         {
+             let cp = self.self.confirmPassword.text
+             self.confirmPassword.text = cp?.uppercased()
+ //            self.confirmPassword.resignFirstResponder()
+         }
+        
+        return true
+    }
+        
     
     func textField(_ textField: UITextField, shouldChangeCharactersIn range: NSRange, replacementString string: String) -> Bool
     {
