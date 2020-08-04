@@ -111,6 +111,10 @@ class ReportBirthday: UIViewController {
     }
     
     @objc func action() {
+          self.userNameArr.removeAll()
+          self.dobArr.removeAll()
+          self.mobileArr.removeAll()
+          self.wishStatusArr.removeAll()
           let row = self.pickerView.selectedRow(inComponent: 0)
           self.pickerView.selectRow(row, inComponent: 0, animated: false)
           if self.month.isFirstResponder{

@@ -44,14 +44,14 @@
             <objects>
                 <viewController modalPresentationStyle="fullScreen" id="zPl-eZ-YtZ" customClass="DashBoard" customModule="GMS_Admin" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="K4N-5q-bHZ">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="776"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" translatesAutoresizingMaskIntoConstraints="NO" id="gDk-wM-NJ1">
-                                <rect key="frame" x="0.0" y="0.0" width="375" height="623"/>
+                                <rect key="frame" x="0.0" y="0.0" width="375" height="934"/>
                                 <subviews>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="lDS-BZ-Yza">
-                                        <rect key="frame" x="0.0" y="-1" width="375" height="781"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="375" height="914"/>
                                         <subviews>
                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="IGF-7p-rAG">
                                                 <rect key="frame" x="0.0" y="0.0" width="375" height="72"/>
@@ -447,8 +447,9 @@
                                             <constraint firstItem="4wr-yH-PpY" firstAttribute="centerX" secondItem="lDS-BZ-Yza" secondAttribute="centerX" id="4hW-lc-fRq"/>
                                             <constraint firstItem="IGF-7p-rAG" firstAttribute="centerX" secondItem="lDS-BZ-Yza" secondAttribute="centerX" id="778-c8-3lU"/>
                                             <constraint firstItem="DDV-Nn-BNU" firstAttribute="centerX" secondItem="lDS-BZ-Yza" secondAttribute="centerX" id="9rD-6j-JrB"/>
-                                            <constraint firstItem="DDV-Nn-BNU" firstAttribute="top" secondItem="4wr-yH-PpY" secondAttribute="bottom" constant="38" id="M2C-07-6cF"/>
+                                            <constraint firstItem="DDV-Nn-BNU" firstAttribute="top" secondItem="4wr-yH-PpY" secondAttribute="bottom" constant="38" id="Sgq-eJ-ttU"/>
                                             <constraint firstItem="IGF-7p-rAG" firstAttribute="top" secondItem="lDS-BZ-Yza" secondAttribute="top" id="Ufa-rc-vj7"/>
+                                            <constraint firstAttribute="bottom" secondItem="DDV-Nn-BNU" secondAttribute="bottom" constant="158" id="X8e-qo-v5y"/>
                                             <constraint firstAttribute="trailing" secondItem="IGF-7p-rAG" secondAttribute="trailing" id="fPh-AU-mSX"/>
                                             <constraint firstItem="IGF-7p-rAG" firstAttribute="leading" secondItem="lDS-BZ-Yza" secondAttribute="leading" id="g6J-W2-gb6"/>
                                             <constraint firstItem="GP3-1o-y7d" firstAttribute="top" secondItem="wTX-bE-nMj" secondAttribute="bottom" constant="17" id="gvV-ZF-DX5"/>
@@ -464,11 +465,11 @@
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <constraints>
                                     <constraint firstItem="lDS-BZ-Yza" firstAttribute="width" secondItem="gDk-wM-NJ1" secondAttribute="width" id="5Ow-MT-5Lv"/>
-                                    <constraint firstItem="lDS-BZ-Yza" firstAttribute="height" secondItem="gDk-wM-NJ1" secondAttribute="height" priority="250" constant="158" id="9tU-f4-tvf"/>
+                                    <constraint firstItem="lDS-BZ-Yza" firstAttribute="height" secondItem="gDk-wM-NJ1" secondAttribute="height" priority="250" id="9tU-f4-tvf"/>
                                     <constraint firstAttribute="trailing" secondItem="lDS-BZ-Yza" secondAttribute="trailing" id="ZQu-Fz-0Yj"/>
-                                    <constraint firstAttribute="bottom" secondItem="lDS-BZ-Yza" secondAttribute="bottom" constant="-157" id="hSe-lG-xDv"/>
+                                    <constraint firstAttribute="bottom" secondItem="lDS-BZ-Yza" secondAttribute="bottom" id="hSe-lG-xDv"/>
                                     <constraint firstItem="lDS-BZ-Yza" firstAttribute="leading" secondItem="gDk-wM-NJ1" secondAttribute="leading" id="yd0-BJ-Q9E"/>
-                                    <constraint firstItem="lDS-BZ-Yza" firstAttribute="top" secondItem="gDk-wM-NJ1" secondAttribute="top" constant="-1" id="ynH-sc-v8b"/>
+                                    <constraint firstItem="lDS-BZ-Yza" firstAttribute="top" secondItem="gDk-wM-NJ1" secondAttribute="top" id="ynH-sc-v8b"/>
                                 </constraints>
                                 <viewLayoutGuide key="contentLayoutGuide" id="YqG-mA-WKk"/>
                                 <viewLayoutGuide key="frameLayoutGuide" id="3zD-6l-2sR"/>
@@ -479,7 +480,7 @@
                             <constraint firstItem="gDk-wM-NJ1" firstAttribute="leading" secondItem="nru-dx-SZ1" secondAttribute="leading" id="5wK-W4-rLx"/>
                             <constraint firstItem="gDk-wM-NJ1" firstAttribute="top" secondItem="nru-dx-SZ1" secondAttribute="top" id="a3G-iR-Zut"/>
                             <constraint firstItem="gDk-wM-NJ1" firstAttribute="trailing" secondItem="nru-dx-SZ1" secondAttribute="trailing" id="p2p-a7-0zI"/>
-                            <constraint firstItem="gDk-wM-NJ1" firstAttribute="bottom" secondItem="nru-dx-SZ1" secondAttribute="bottom" id="sKy-sy-8bA"/>
+                            <constraint firstItem="gDk-wM-NJ1" firstAttribute="bottom" secondItem="nru-dx-SZ1" secondAttribute="bottom" constant="158" id="sKy-sy-8bA"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="nru-dx-SZ1"/>
                     </view>
@@ -491,6 +492,7 @@
                             </connections>
                         </barButtonItem>
                     </navigationItem>
+                    <size key="freeformSize" width="375" height="820"/>
                     <connections>
                         <outlet property="area" destination="5y2-NE-ZQd" id="ACD-s0-c4B"/>
                         <outlet property="barchart" destination="4wr-yH-PpY" id="hBl-Fc-JDS"/>
@@ -511,14 +513,14 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="13C-nB-OLw" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-96.799999999999997" y="193.85307346326837"/>
+            <point key="canvasLocation" x="-52" y="54"/>
         </scene>
         <!--Search-->
         <scene sceneID="giN-8v-dsf">
             <objects>
                 <viewController storyboardIdentifier="search" id="2h7-aY-0GI" customClass="Search" customModule="GMS_Admin" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="YPK-2r-58H">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="623"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="none" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="DiB-h7-JNV">
@@ -654,7 +656,7 @@
             <objects>
                 <viewController storyboardIdentifier="moreGraph" id="hN6-kX-3vQ" customClass="MoreGraph" customModule="GMS_Admin" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="z8g-2d-6qS">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="623"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Nfz-5T-dNU">
@@ -800,7 +802,7 @@
             <objects>
                 <tableViewController storyboardIdentifier="menu" modalPresentationStyle="fullScreen" id="cyo-OE-Q8t" customClass="Menu" customModule="GMS_Admin" customModuleProvider="target" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="static" style="plain" separatorStyle="none" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" id="d4t-3F-dcV">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="623"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <color key="tintColor" name="AppBaseColor"/>
@@ -1225,7 +1227,7 @@
             <objects>
                 <viewController storyboardIdentifier="widgets" modalPresentationStyle="fullScreen" id="AnJ-lf-egR" customClass="Widgets" customModule="GMS_Admin" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="neQ-S0-gLi">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="647"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="GJx-2j-akA">
@@ -1441,7 +1443,7 @@
             <objects>
                 <viewController storyboardIdentifier="1idgetInterAction" modalPresentationStyle="fullScreen" id="jMd-xh-J8M" customClass="WidgetInterAction" customModule="GMS_Admin" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="D2L-Zl-4Ry">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="647"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="GNG-Oo-zfC">
@@ -1461,7 +1463,7 @@
                                                     <action selector="close:" destination="jMd-xh-J8M" eventType="touchUpInside" id="f7l-92-9w3"/>
                                                 </connections>
                                             </button>
-                                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Ci" translatesAutoresizingMaskIntoConstraints="NO" id="p0D-8P-JiS">
+                                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="widget_icons-4" translatesAutoresizingMaskIntoConstraints="NO" id="p0D-8P-JiS">
                                                 <rect key="frame" x="111" y="46" width="66" height="48"/>
                                                 <constraints>
                                                     <constraint firstAttribute="height" constant="48" id="9lh-f4-Wrk"/>
@@ -1673,6 +1675,7 @@
         <image name="downArrow" width="12" height="7"/>
         <image name="searchIcon" width="17" height="17"/>
         <image name="sideMenu" width="16" height="12.5"/>
+        <image name="widget_icons-4" width="67" height="48"/>
         <namedColor name="AppBaseColor">
             <color red="0.17647058823529413" green="0.58039215686274515" blue="0.92156862745098034" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </namedColor>

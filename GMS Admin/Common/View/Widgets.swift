@@ -71,7 +71,7 @@ class Widgets: UIViewController {
     
     func SetDataCM (member_count: Int, male_count: Int, female_count: Int, voterid_count: Int, aadhaar_count: Int)
     {
-        self.widgetImageView.image = UIImage(named: "Cm.png")
+        self.widgetImageView.image = UIImage(named: "widget_icons-1.png")
         self.titleLabel.text = String (format: "%@ %@", "Constituent Members - " ,GlobalVariables.shared.constituent_MemberCount)
         self.label1.text = "Total Male"
         self.label2.text = "Total Female"
@@ -86,7 +86,7 @@ class Widgets: UIViewController {
     
     func SetDataTM (meeting_count: Int, requested_count: Int, completed_count: Int)
     {
-        self.widgetImageView.image = UIImage(named: "Tm.png")
+        self.widgetImageView.image = UIImage(named: "widget_icons-2.png")
         self.titleLabel.text = String (format: "%@ %@", "Total Meetings - ",GlobalVariables.shared.totalMeetingsCount)
         self.label1.text = "Meeting Requested"
         self.label2.text = "Meeting Completed"
@@ -101,7 +101,7 @@ class Widgets: UIViewController {
     
     func SetDataTG (grievance_count: Int, enquiry_count: Int, petition_count: Int, processing_count: Int, completed_count: Int)
     {
-        self.widgetImageView.image = UIImage(named: "Tg.png")
+        self.widgetImageView.image = UIImage(named: "widget_icons-3.png")
         self.titleLabel.text = String (format: "%@ %@", "Total Meetings - ",GlobalVariables.shared.totalGrievancesCount)
         self.label1.text = "No. of Enquiry"
         self.label2.text = "No. of Petition"
