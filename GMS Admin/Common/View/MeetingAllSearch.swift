@@ -151,15 +151,15 @@ extension MeetingAllSearch : MeetingAllDataView, UITableViewDelegate, UITableVie
     }
    
     func tableView(_ tableView: UITableView, willDisplay cell: UITableViewCell, forRowAt indexPath: IndexPath) {
-       let totalRows = tableView.numberOfRows(inSection: indexPath.section)
-       if indexPath.row == (totalRows - 1)
+       if fullNameArr.count > 20
        {
-           if totalRows >= 50
+          let lastElement = fullNameArr.count - 1
+           if indexPath.row == lastElement
            {
-             print("came to last row")
-            self.callAPIMeetingSearch(url: meetingSearchUrl, keyword: keyword, constituency_id: GlobalVariables.shared.constituent_Id, offset: String(totalRows), rowcount: "50")
+                print("came to last row")
+                let lE = lastElement + 1
+                self.callAPIMeetingSearch(url: meetingSearchUrl, keyword: "no", constituency_id: GlobalVariables.shared.constituent_Id, offset: String(lE), rowcount: "50")
            }
-
        }
     }
    

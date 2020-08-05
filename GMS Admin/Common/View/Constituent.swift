@@ -9,6 +9,8 @@
 import UIKit
 import SideMenu
 
+let constituentcyList = "apiios/listConstituentnew"
+
 class Constituent: UIViewController, PaguthiView {
 
     var searchBar = UISearchController()
@@ -21,7 +23,8 @@ class Constituent: UIViewController, PaguthiView {
     var constituencyName = [String]()
     var constituencyID = [String]()
     var selectedconstitunecyId = String()
-    
+    var selectedconstitunecyDetailId = String()
+
     var fullnameArr = [String]()
     var mobileNoArr = [String]()
     var serialNoArr = [String]()
@@ -40,6 +43,7 @@ class Constituent: UIViewController, PaguthiView {
         super.viewDidLoad()
 
         // Do any additional setup after loading the view.
+        setupSideMenu()
         self.title = "Constituent"
         /*Set Side menu*/
         self.sideMenuButton()
@@ -65,6 +69,18 @@ class Constituent: UIViewController, PaguthiView {
 
     }
     
+    private func setupSideMenu() {
+        // Define the menus
+        SideMenuManager.default.leftMenuNavigationController = storyboard?.instantiateViewController(withIdentifier: "LeftMenuNavigationController") as? SideMenuNavigationController
+        
+        //SideMenuPresentationStyle.menuSlideIn
+        
+        // Enable gestures. The left and/or right menus must be set up above for these to work.
+        // Note that these continue to work on the Navigation Controller independent of the View Controller it displays!
+        SideMenuManager.default.addPanGestureToPresent(toView: navigationController!.navigationBar)
+        SideMenuManager.default.addScreenEdgePanGesturesToPresent(toView: view)
+    }
+    
     override func viewWillAppear(_ animated: Bool) {
         /*Scroll Postion for TableView*/
         //self.reloadAndScrollToTop()
@@ -77,10 +93,10 @@ class Constituent: UIViewController, PaguthiView {
         Paguthipresenter.getPaguthi(constituency_id: GlobalVariables.shared.constituent_Id)
     }
     
-    func callAPISearch (constituency_id:String, offset: String, rowcount:String)
+    func callAPISearch (url:String,constituency_id:String, offset: String, rowcount:String)
     {
         presenter.attachView(view: self)
-        presenter.getconstituencyList(paguthi: constituency_id, offset: offset, rowcount: rowcount)
+        presenter.getconstituencyList(url:url, Keyword: "no",paguthi: constituency_id, offset: offset, rowcount: rowcount)
     }
     
     @objc public override func sideMenuButtonClick()
@@ -123,14 +139,13 @@ class Constituent: UIViewController, PaguthiView {
         self.mobileNoArr.removeAll()
         self.serialNoArr.removeAll()
         self.profPicArr.removeAll()
-        self.profPicArr.removeAll()
         self.idArr.removeAll()
         self.reloadAndScrollToTop()
         print("Selected index \(segmentedControl.selectedSegmentIndex)")
         let selectedIndex = Int(segmentedControl.selectedSegmentIndex)
         let sel = self.constituencyID[selectedIndex]
         self.selectedconstitunecyId = String (sel)
-        self.callAPISearch(constituency_id: self.selectedconstitunecyId,offset: "0",rowcount: "50")
+        self.callAPISearch(url: constituentcyList, constituency_id: self.selectedconstitunecyId,offset: "0",rowcount: "50")
     }
     
     func reloadAndScrollToTop() {
@@ -148,10 +163,13 @@ class Constituent: UIViewController, PaguthiView {
         {
             let vc = segue.destination as! Search
             vc.keyWord = sender as! String
+            vc.from = "Cl"
+            vc.selectedconstitunecyId = self.selectedconstitunecyId
+
         }
         else if (segue.identifier == "to_constituentDetail"){
             let vc = segue.destination as! ConstituentDetail
-            vc.selectedconstitunecyId = self.selectedconstitunecyId
+            vc.selectedconstitunecyId = self.selectedconstitunecyDetailId
             
         }
     }
@@ -198,8 +216,9 @@ extension Constituent: UISearchBarDelegate, UITableViewDelegate, UITableViewData
             print (lastElement)
             if indexPath.row == lastElement
             {
-                print (lastElement)
-                self.callAPISearch(constituency_id: self.selectedconstitunecyId,offset: String(lastElement),rowcount: "50")
+                let lE = lastElement + 1
+                print(self.selectedconstitunecyId)
+                self.callAPISearch(url: constituentcyList, constituency_id: self.selectedconstitunecyId,offset: String(lE),rowcount: "50")
             }
         }
     }
@@ -207,7 +226,7 @@ extension Constituent: UISearchBarDelegate, UITableViewDelegate, UITableViewData
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         let constituentID = idArr[indexPath.row]
         print(constituentID)
-        self.selectedconstitunecyId = constituentID
+        self.selectedconstitunecyDetailId = constituentID
         self.performSegue(withIdentifier: "to_constituentDetail", sender: self)
     }
     
@@ -254,7 +273,6 @@ extension Constituent: UISearchBarDelegate, UITableViewDelegate, UITableViewData
 //    }
     
     func setPaguthi(paguthi: [PaguthiData]) {
-        
          paguthiData = paguthi
          self.constituencyName.removeAll()
          self.constituencyID.removeAll()
@@ -270,8 +288,7 @@ extension Constituent: UISearchBarDelegate, UITableViewDelegate, UITableViewData
          self.setUpSegementControl()
          self.selectedconstitunecyId = String (self.constituencyID[0])
          print(self.selectedconstitunecyId)
-         self.callAPISearch(constituency_id: self.selectedconstitunecyId, offset:"0", rowcount: "50")
-        
+         self.callAPISearch(url: constituentcyList, constituency_id: self.selectedconstitunecyId, offset:"0", rowcount: "50")
     }
     
     func setEmpty(errorMessage: String) {
@@ -295,7 +312,6 @@ extension Constituent: UISearchBarDelegate, UITableViewDelegate, UITableViewData
             self.idArr.append(id)
 
         }
-        print(listConstituent.count)
         self.constituentCount.text =   String(format: "%@ %@", String (GlobalVariables.shared.constituent_Count),"Constituent")
         self.constituentCount.isHidden = false
         self.bottomLine.isHidden = false

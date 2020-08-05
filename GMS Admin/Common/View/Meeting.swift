@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import SideMenu
 
 class Meeting: UIViewController {
     
@@ -29,6 +30,7 @@ class Meeting: UIViewController {
 
         // Do any additional setup after loading the view.
         /*Check Internet Connection*/
+        setupSideMenu()
         guard checkInterConnection () else {
             return
         }
@@ -49,6 +51,18 @@ class Meeting: UIViewController {
         self.tableView?.backgroundColor = .white
         /*Call API*/
         self.callAPI(offset: "0", rowcount: "50")
+    }
+    
+    private func setupSideMenu() {
+        // Define the menus
+        SideMenuManager.default.leftMenuNavigationController = storyboard?.instantiateViewController(withIdentifier: "LeftMenuNavigationController") as? SideMenuNavigationController
+        
+        //SideMenuPresentationStyle.menuSlideIn
+        
+        // Enable gestures. The left and/or right menus must be set up above for these to work.
+        // Note that these continue to work on the Navigation Controller independent of the View Controller it displays!
+        SideMenuManager.default.addPanGestureToPresent(toView: navigationController!.navigationBar)
+        SideMenuManager.default.addScreenEdgePanGesturesToPresent(toView: view)
     }
     
     @objc public override func sideMenuButtonClick()

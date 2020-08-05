@@ -9,15 +9,26 @@
 import UIKit
 import SDWebImage
 
+let constituentcySearchList = "apiios/listConstituentsearch"
+
 class Search: UIViewController {
     
     var keyWord = String()
     @IBOutlet var tableView: UITableView!
+    @IBOutlet var ConsCount: UILabel!
+    @IBOutlet var baseView: UILabel!
+    @IBOutlet var ConsHeight: NSLayoutConstraint!
+    @IBOutlet var baseViewHeight: NSLayoutConstraint!
+    
+    /*Get Search List*/
+    let presenterCons = ListConstituentPresenter(listConstituentservice: ListConstituentservice())
+    var listConstituent = [ListConstituencyData]()
     
     /*Get Search List*/
     let presenter = SearchPresenter(searchService: SearchService())
     var searchResult = [searchData]()
     var selectedconstitunecyId = String()
+    var from = String()
 
     var fullnameArr = [String]()
     var mobileNoArr = [String]()
@@ -36,13 +47,32 @@ class Search: UIViewController {
              })
              return
         }
-        self.callAPISearch(offset: "0", rowCount: "50")
+        if from == "Cl"
+        {
+            self.ConsCount.isHidden = false
+            self.baseView.isHidden = false
+            self.callAPISearchCons(url: constituentcySearchList, constituency_id: selectedconstitunecyId, offset: "0", rowcount: "50", Keyword: keyWord)
+        }
+        else
+        {
+            self.ConsCount.isHidden = true
+            self.baseView.isHidden = true
+            self.ConsHeight.constant = 0
+            self.baseViewHeight.constant = 0
+            self.callAPISearch(offset: "0", rowCount: "50")
+        }
         self.addCustomizedBackBtn(title:"  Search Result")
         /*remove array Values*/
         self.fullnameArr.removeAll()
         self.mobileNoArr.removeAll()
         self.serialNoArr.removeAll()
         self.profPicArr.removeAll()
+    }
+    
+    func callAPISearchCons (url:String,constituency_id:String, offset: String, rowcount:String, Keyword:String)
+    {
+        presenterCons.attachView(view: self)
+        presenterCons.getconstituencyList(url:url, Keyword: Keyword, paguthi: constituency_id, offset: offset, rowcount: rowcount)
     }
     
     func callAPISearch (offset: String, rowCount: String)
@@ -53,7 +83,6 @@ class Search: UIViewController {
     
     
     // MARK: - Navigation
-
     // In a storyboard-based application, you will often want to do a little preparation before navigation
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         // Get the new view controller using segue.destination.
@@ -76,6 +105,7 @@ extension Search : UITableViewDelegate, UITableViewDataSource
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
          let cell = tableView.dequeueReusableCell(withIdentifier: "cell", for: indexPath) as! SearchCell
 //         let search = searchResult[indexPath.row]
+//         cell.mobile.image = UIImage(named: "Consmobile.png")
          cell.username.text = fullnameArr[indexPath.row]
          cell.mobileNumber.text = mobileNoArr[indexPath.row]
          cell.serialNumber.text = String(format: "%@ %@", "Serila number - ",serialNoArr[indexPath.row])
@@ -88,15 +118,33 @@ extension Search : UITableViewDelegate, UITableViewDataSource
     }
     
     func tableView(_ tableView: UITableView, willDisplay cell: UITableViewCell, forRowAt indexPath: IndexPath) {
-         if fullnameArr.count > 20
-         {
-            let lastElement = fullnameArr.count - 1
-            if indexPath.row == lastElement
+         
+        if from == "Cl"
+        {
+            if fullnameArr.count > 20
             {
-               print("came to last row")
-               self.callAPISearch(offset: String (lastElement), rowCount: "50")
+                let lastElement = fullnameArr.count - 1
+                print (lastElement)
+                if indexPath.row == lastElement
+                {
+                    let lE = lastElement + 1
+                    print(self.selectedconstitunecyId)
+                    self.callAPISearchCons(url: constituentcySearchList, constituency_id: self.selectedconstitunecyId,offset: String(lE),rowcount: "50", Keyword: keyWord)
+                }
             }
-         }
+        }
+        else
+        {
+            if fullnameArr.count > 20
+            {
+               let lastElement = fullnameArr.count - 1
+               if indexPath.row == lastElement
+               {
+                  print("came to last row")
+                  self.callAPISearch(offset: String (lastElement), rowCount: "50")
+               }
+            }
+        }
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
@@ -106,8 +154,36 @@ extension Search : UITableViewDelegate, UITableViewDataSource
     }
 }
 
-extension Search : SearchView
+extension Search : SearchView , ListConstituencyView
 {
+    func setConstituent(constituentname: [ListConstituencyData]) {
+        listConstituent = constituentname
+        for items in listConstituent{
+            let name = items.full_name
+            let mob = items.mobile_no
+            let serialno = items.serial_no
+            let profpic = items.profile_pic
+            let id = items.id
+            
+            self.fullnameArr.append(name)
+            self.mobileNoArr.append(mob)
+            self.serialNoArr.append(serialno)
+            self.profPicArr.append(profpic)
+            self.idArr.append(id)
+
+        }
+        self.ConsCount.text = String(format: "%@ %@", String (GlobalVariables.shared.constituent_Count),"Constituent")
+        tableView?.isHidden = false
+        self.tableView.reloadData()
+    }
+    
+    func setEmptyListConstituency(errorMessage: String) {
+         AlertController.shared.showAlert(targetVc: self, title: Globals.alertTitle, message: errorMessage, complition: {
+         })
+         self.ConsCount.text = String(format: "%@ %@", "0","Constituent")
+         self.tableView.isHidden = true
+    }
+    
     func startLoading() {
         self.view.activityStartAnimating()
     }

@@ -65,14 +65,14 @@ class ReportStatus: UIViewController {
         self.pickerView.selectRow(0, inComponent: 0, animated: false)
         if (from == "status"){
             self.pageTitle.text = "Status"
-            self.addCustomizedBackBtn(title:"  Status report")
+            self.addCustomizedBackBtn(title:"  Status Report")
             self.reportImageView.image = UIImage(named: "ReportStatus")
             self.statusArr = ["ALL","REQUEST","COMPLETED"]
             self.textfieldName = "Status"
         }
         else if (from == "categoery"){
             self.pageTitle.text = "Category"
-            self.addCustomizedBackBtn(title:"  Category report")
+            self.addCustomizedBackBtn(title:"  Category Report")
             self.reportImageView.image = UIImage(named: "ReportCategoery")
             status.attributedPlaceholder =
             NSAttributedString(string: "Select Categoery", attributes: [NSAttributedString.Key.foregroundColor: UIColor(red: 188 / 255, green: 188 / 255, blue: 188 / 255, alpha: 1.0)])
@@ -84,7 +84,7 @@ class ReportStatus: UIViewController {
         }
         else if (from == "subCate"){
             self.pageTitle.text = "Sub category"
-            self.addCustomizedBackBtn(title:"  Sub category report")
+            self.addCustomizedBackBtn(title:"  Sub category Report")
             self.reportImageView.image = UIImage(named:"ReportSubcat")
             status.attributedPlaceholder =
             NSAttributedString(string: "  Select Sub Categoery", attributes: [NSAttributedString.Key.foregroundColor: UIColor(red: 188 / 255, green: 188 / 255, blue: 188 / 255, alpha: 1.0)])
@@ -96,7 +96,7 @@ class ReportStatus: UIViewController {
         }
         else if (from == "location"){
             self.pageTitle.text = "Location"
-            self.addCustomizedBackBtn(title:"  Location report")
+            self.addCustomizedBackBtn(title:"  Location Report")
             self.reportImageView.image = UIImage(named: "ReportLocation")
             status.attributedPlaceholder =
             NSAttributedString(string: "Select Location", attributes: [NSAttributedString.Key.foregroundColor: UIColor(red: 188 / 255, green: 188 / 255, blue: 188 / 255, alpha: 1.0)])
@@ -107,7 +107,7 @@ class ReportStatus: UIViewController {
         }
         else if (from == "meeting"){
             self.pageTitle.text = "Meeting"
-            self.addCustomizedBackBtn(title:"  Meeting report")
+            self.addCustomizedBackBtn(title:"  Meeting Report")
             self.reportImageView.image = UIImage(named: "ReportMeeting")
             self.downArrowStatus.isHidden = true
             self.downArrowPaguthi.isHidden = true
@@ -118,7 +118,7 @@ class ReportStatus: UIViewController {
         }
         else if (from == "staff"){
             self.pageTitle.text = "Staff"
-            self.addCustomizedBackBtn(title:"  Staff report")
+            self.addCustomizedBackBtn(title:"  Staff Report")
             self.reportImageView.image = UIImage(named: "ReportStaff")
             self.downArrowStatus.isHidden = true
             self.downArrowPaguthi.isHidden = true
@@ -631,33 +631,33 @@ extension ReportStatus : UIPickerViewDelegate, UIPickerViewDataSource, PaguthiVi
 //        }
     }
 
-    func pickerView(_ pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
-         if self.status.isFirstResponder{
-            if (from == "status"){
-                status.text = self.statusArr[row] // selected item
-            }
-            else if (from == "categoery") {
-                status.text = self.categoeryName[row] // selected item
-                self.selectedPaguthuID = self.catgoeryId[row]
-                print(self.selectedPaguthuID)
-            }
-            else if (from == "subCate")
-            {
-                status.text = self.subCategoeryName[row] // selected item
-                self.selectedPaguthuID = self.subCatgoeryId[row]
-                print(self.selectedPaguthuID)
-            }
-            else
-            {
-                self.status.text = self.paguthiName[row]
-                self.selectedPaguthuID = self.paguthiId[row]
-            }
-         }
-         else if self.paguthi.isFirstResponder{
-            self.paguthi.text = self.paguthiName[row]
-            self.selectedPaguthuID = self.paguthiId[row]
-         }
-    }
+//    func pickerView(_ pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
+//         if self.status.isFirstResponder{
+//            if (from == "status"){
+//                status.text = self.statusArr[row] // selected item
+//            }
+//            else if (from == "categoery") {
+//                status.text = self.categoeryName[row] // selected item
+//                self.selectedPaguthuID = self.catgoeryId[row]
+//                print(self.selectedPaguthuID)
+//            }
+//            else if (from == "subCate")
+//            {
+//                status.text = self.subCategoeryName[row] // selected item
+//                self.selectedPaguthuID = self.subCatgoeryId[row]
+//                print(self.selectedPaguthuID)
+//            }
+//            else
+//            {
+//                self.status.text = self.paguthiName[row]
+//                self.selectedPaguthuID = self.paguthiId[row]
+//            }
+//         }
+//         else if self.paguthi.isFirstResponder{
+//            self.paguthi.text = self.paguthiName[row]
+//            self.selectedPaguthuID = self.paguthiId[row]
+//         }
+//    }
     
     /*Presenter Delegate*/
     func startLoading(){

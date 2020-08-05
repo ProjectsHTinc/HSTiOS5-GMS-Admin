@@ -23,7 +23,7 @@ class MoreGraph: UIViewController, ChartViewDelegate {
 
         // Do any additional setup after loading the view.
         /*Set Values for PieChart*/
-        self.grievanceName = ["Enquiry","Processing","Completed"]
+        self.grievanceName = ["Completed","Processing","Enquiry"]
         /*Pie Chart*/
         self.SetPieChart()
         /*Line Chart*/
@@ -46,8 +46,8 @@ class MoreGraph: UIViewController, ChartViewDelegate {
           // 2. Set ChartDataSet
           let pieChartDataSet = PieChartDataSet(entries: dataEntries, label: nil)
           var colors: [UIColor] = []
-          let redcolor = UIColor(red: (33/255), green: (132/255), blue: (217/255), alpha: 1.0)
-          let greencolor = UIColor(red: (219/255), green: (201/255), blue: (255/255),alpha: 1.0)
+          let redcolor = UIColor(red:(219/255), green: (201/255), blue: (255/255),alpha: 1.0)
+          let greencolor = UIColor(red: (33/255), green: (132/255), blue: (217/255), alpha: 1.0)
           let orangecolor = UIColor(red: (207/255), green: (255/255), blue: (216/255), alpha: 1.0)
           colors.append(redcolor)
           colors.append(orangecolor)

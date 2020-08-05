@@ -13,6 +13,7 @@ class SearchCell: UITableViewCell {
     @IBOutlet var username: UILabel!
     @IBOutlet var mobileNumber: UILabel!
     @IBOutlet var serialNumber: UILabel!
+    @IBOutlet var mobile: UIImageView!
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code

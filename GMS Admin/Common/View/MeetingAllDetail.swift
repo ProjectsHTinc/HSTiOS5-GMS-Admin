@@ -66,9 +66,7 @@ class MeetingAllDetail: UIViewController ,MeetingAllDetailView, UIPickerViewDele
 
            toolBar.setItems([cancelButton,spaceButton,doneButton], animated: true)
            toolBar.isUserInteractionEnabled = true
-           toolBar.barTintColor = UIColor(red: 250/255.0, green: 250/255.0, blue: 248/255.0, alpha: 1.0)
            toolBar.tintColor = UIColor(red: 45/255.0, green: 148/255.0, blue: 235/255.0, alpha: 1.0)
-           toolBar.isUserInteractionEnabled = true
            toolBar.isTranslucent = true
            status.inputAccessoryView = toolBar
         
@@ -127,7 +125,8 @@ class MeetingAllDetail: UIViewController ,MeetingAllDetailView, UIPickerViewDele
     func setMeetingDetail(meetingdetail: [MeetingAllDetailData]) {
         data = meetingdetail
         self.name.text = data[0].full_name
-        self.date.text = data[0].meeting_date
+        let formatedDate = self.formattedDateFromString(dateString: data[0].meeting_date, withFormat: "dd-MM-YYYY")
+        self.date.text = formatedDate
         self.place.text = data[0].paguthi_name + "(Paguthi)"
         self.meetingTitle.text = data[0].meeting_title
         self.detail.text = data[0].meeting_detail
@@ -154,6 +153,22 @@ class MeetingAllDetail: UIViewController ,MeetingAllDetailView, UIPickerViewDele
     
     @IBAction func update(_ sender: Any) {
         
+    }
+    
+    func formattedDateFromString(dateString: String, withFormat format: String) -> String? {
+
+        let inputFormatter = DateFormatter()
+        inputFormatter.dateFormat = "yyyy-MM-dd"
+
+        if let date = inputFormatter.date(from: dateString) {
+
+            let outputFormatter = DateFormatter()
+          outputFormatter.dateFormat = format
+
+            return outputFormatter.string(from: date)
+        }
+
+        return nil
     }
     
     /*

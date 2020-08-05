@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import SideMenu
 
 class Staff: UIViewController {
     
@@ -23,6 +24,7 @@ class Staff: UIViewController {
         super.viewDidLoad()
 
         // Do any additional setup after loading the view.
+        setupSideMenu()
         self.title = "Staff"
         /*Set Side menu*/
         self.sideMenuButton()
@@ -38,6 +40,18 @@ class Staff: UIViewController {
         self.addrightButton(bg_ImageName:"ConstituentSearch")
         tableView.tableFooterView = UIView()
         self.callAPIStaff ()
+    }
+    
+    private func setupSideMenu() {
+        // Define the menus
+        SideMenuManager.default.leftMenuNavigationController = storyboard?.instantiateViewController(withIdentifier: "LeftMenuNavigationController") as? SideMenuNavigationController
+        
+        //SideMenuPresentationStyle.menuSlideIn
+        
+        // Enable gestures. The left and/or right menus must be set up above for these to work.
+        // Note that these continue to work on the Navigation Controller independent of the View Controller it displays!
+        SideMenuManager.default.addPanGestureToPresent(toView: navigationController!.navigationBar)
+        SideMenuManager.default.addScreenEdgePanGesturesToPresent(toView: view)
     }
     
     @objc public override func rightButtonClick()

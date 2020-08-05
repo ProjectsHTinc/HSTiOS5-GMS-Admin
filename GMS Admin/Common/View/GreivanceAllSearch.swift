@@ -200,7 +200,8 @@ class GreivanceAllSearch: UIViewController, GreivancesAllView,  UITableViewDeleg
             if indexPath.row == lastElement
             {
                  print("came to last row")
-                 self.callAPIGreviancesAll(url: grevianceAllUrl, keyword: "no", paguthi: self.selectedconstitunecyId, offset: String(lastElement), rowcount: "50", grievance_type: statSelectdSeg)
+                 let lE = lastElement + 1
+                 self.callAPIGreviancesAll(url: grevianceAllUrl, keyword: "no", paguthi: self.selectedconstitunecyId, offset: String(lE), rowcount: "50", grievance_type: statSelectdSeg)
             }
        }
     }

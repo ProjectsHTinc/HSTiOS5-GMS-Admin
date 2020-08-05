@@ -31,7 +31,7 @@ class ReportStaff: UIViewController, ReportStaffView ,UITableViewDelegate, UITab
              })
              return
         }
-        self.addCustomizedBackBtn(title:"  Staff report")
+        self.addCustomizedBackBtn(title:"  Staff Report")
         /*Right Navigation Bar*/
         self.addrightButton(bg_ImageName:"ConstituentSearch")
         self.callAPI()

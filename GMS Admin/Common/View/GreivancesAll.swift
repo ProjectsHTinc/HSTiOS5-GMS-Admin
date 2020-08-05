@@ -7,9 +7,9 @@
 //
 
 import UIKit
+import SideMenu
 
 let grevianceAllUrl = "apiios/listGrievancenew"
-
 
 class GreivancesAll: UIViewController {
     
@@ -67,6 +67,7 @@ class GreivancesAll: UIViewController {
         super.viewDidLoad()
 
         // Do any additional setup after loading the view.
+        setupSideMenu()
         self.title = "Grievances"
         /*Set Side menu*/
         self.sideMenuButton()
@@ -98,6 +99,18 @@ class GreivancesAll: UIViewController {
         //
         self.statSelectdSeg = "A"
         self.callAPIPaguthi ()
+    }
+    
+    private func setupSideMenu() {
+        // Define the menus
+        SideMenuManager.default.leftMenuNavigationController = storyboard?.instantiateViewController(withIdentifier: "LeftMenuNavigationController") as? SideMenuNavigationController
+        
+        //SideMenuPresentationStyle.menuSlideIn
+        
+        // Enable gestures. The left and/or right menus must be set up above for these to work.
+        // Note that these continue to work on the Navigation Controller independent of the View Controller it displays!
+        SideMenuManager.default.addPanGestureToPresent(toView: navigationController!.navigationBar)
+        SideMenuManager.default.addScreenEdgePanGesturesToPresent(toView: view)
     }
     
     func callAPIPaguthi ()
@@ -406,7 +419,8 @@ extension GreivancesAll : PaguthiView , UISearchBarDelegate, GreivancesAllView ,
             if indexPath.row == lastElement
             {
                  print("came to last row")
-                 self.callAPIGreviancesAll(url: grevianceAllUrl, keyword: "no", paguthi: self.selectedconstitunecyId, offset: String(lastElement), rowcount: "50", grievance_type: statSelectdSeg)
+                 let lE = lastElement + 1
+                 self.callAPIGreviancesAll(url: grevianceAllUrl, keyword: "no", paguthi: self.selectedconstitunecyId, offset: String(lE), rowcount: "50", grievance_type: statSelectdSeg)
             }
        }
    }

@@ -99,7 +99,7 @@ extension ReportBirthDaySearch : ReportBirthdayView, UITableViewDelegate, UITabl
            else{
             cell.status.textColor = UIColor(red: 106/255.0, green: 168/255.0, blue: 79/255.0, alpha: 1.0)
            }
-           if cell.status.text == "NotSend"{
+           if cell.status.text == "Notsend"{
               cell.status.textColor = UIColor(red: 204/255.0, green: 0/255.0, blue: 0/255.0, alpha: 1.0)
            }
            else{
@@ -109,13 +109,13 @@ extension ReportBirthDaySearch : ReportBirthdayView, UITableViewDelegate, UITabl
     }
     
     func tableView(_ tableView: UITableView, willDisplay cell: UITableViewCell, forRowAt indexPath: IndexPath) {
-        let totalRows = tableView.numberOfRows(inSection: indexPath.section)
-        if indexPath.row == (totalRows - 1)
-        {
-            if totalRows >= 50
+        if userNameArr.count > 20{
+            let lastElement = userNameArr.count - 1
+            if indexPath.row == lastElement
             {
-                print("came to last row")
-                self.callAPI(url: reportBirthdaySearchUrl, select_month:self.month, keyword: self.keyword, offset: String(totalRows), rowcount: "50")
+                    print("came to last row")
+                    let lE = lastElement + 1
+                    self.callAPI(url: reportBirthdaySearchUrl, select_month:self.month, keyword: self.keyword, offset: String(lE), rowcount: "50")
             }
         }
     }
@@ -141,12 +141,12 @@ extension ReportBirthDaySearch : ReportBirthdayView, UITableViewDelegate, UITabl
             let mobile = items.mobile_no
             let status = items.birth_wish_status
             
-            self.userNameArr.append(fullname!)
+            self.userNameArr.append(fullname!.capitalized)
             self.dobArr.append(db!)
             self.mobileArr.append(mobile!)
-            self.wishStatusArr.append(status!)
+            self.wishStatusArr.append(status!.capitalized)
         }
-        self.reportCount.text = String(format: "%@ %@", String (GlobalVariables.shared.result_count),"Records")
+        self.reportCount.text = String(format: "%@ %@", String (GlobalVariables.shared.meetingAllCount),"Records")
         self.tableView.isHidden = false
         self.tableView.reloadData()
     }

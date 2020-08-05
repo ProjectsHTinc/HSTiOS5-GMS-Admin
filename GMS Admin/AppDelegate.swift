@@ -14,6 +14,7 @@ import IQKeyboardManagerSwift
 class AppDelegate: UIResponder, UIApplicationDelegate {
 
     var window: UIWindow?
+    var navigationController = UINavigationController()
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
         // Override point for customization after application launch.
@@ -23,10 +24,9 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         IQKeyboardManager.shared.toolbarDoneBarButtonItemText = "Close"
         IQKeyboardManager.shared.enableAutoToolbar = false
         application.registerForRemoteNotifications()
-    
         return true
     }
-
+    
     // MARK: UISceneSession Lifecycle
 
     @available(iOS 13.0, *)
@@ -46,8 +46,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     func application( _ application: UIApplication,didRegisterForRemoteNotificationsWithDeviceToken deviceToken: Data)
     {
         let tokenParts = deviceToken.map { data in String(format: "%02.2hhx", data) }
-        //GlobalVariables.shared.Devicetoken = tokenParts.joined()
-        //print("Device Token: \(String(describing: GlobalVariables.shared.Devicetoken))")
+        GlobalVariables.shared.Devicetoken = tokenParts.joined()
+        print("Device Token: \(String(describing: GlobalVariables.shared.Devicetoken))")
     }
 
 }

@@ -46,8 +46,8 @@ class ConstituentGreivancesDetail: UIViewController {
         self.greivanceName.text = _greivanceName
         self.subcat.text = _subcat
         self.desc.text = _desc
-        let formatedCreated = self.formattedDateFromString(dateString: _createdon, withFormat: "dd-MM-YYYY HH:mm:ss")
-        let formatedUpdatedOn = self.formattedDateFromString(dateString: _updatedOn, withFormat: "dd-MM-YYYY HH:mm:ss")
+        let formatedCreated = self.formattedDateFromString(dateString: _createdon, withFormat: "dd-MM-YYYY")
+        let formatedUpdatedOn = self.formattedDateFromString(dateString: _updatedOn, withFormat: "dd-MM-YYYY")
         self.createdon.text = formatedCreated
         self.updatedOn.text = formatedUpdatedOn
         self.status.text = _status

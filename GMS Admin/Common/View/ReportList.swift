@@ -68,19 +68,19 @@ class ReportList: UIViewController {
         //
         if (from == "status")
         {
-            self.addCustomizedBackBtn(title:"  Status report")
+            self.addCustomizedBackBtn(title:"  Status Report")
             self.callAPI(url: reportStatus, From: from, from_date: fromdate, to_date: todate, status: status, paguthi: paguthi,offset:"0",rowCount:"50",category: category, sub_category: sub_category, keyword: keyword)
         }
         else if (from == "categoery"){
-            self.addCustomizedBackBtn(title:"  Category report")
+            self.addCustomizedBackBtn(title:"  Category Report")
             self.callAPI(url: reportCategoery, From: from, from_date: fromdate, to_date: todate, status: status, paguthi: paguthi,offset:"0",rowCount:"50",category: category, sub_category: sub_category, keyword: keyword)
         }
         else if (from == "subCate"){
-            self.addCustomizedBackBtn(title:"  Sub category report")
+            self.addCustomizedBackBtn(title:"  Sub category Report")
             self.callAPI(url: reportSubCategoery, From: from, from_date: fromdate, to_date: todate, status: status, paguthi: paguthi,offset:"0",rowCount:"50",category: category, sub_category: sub_category, keyword: keyword)
         }
         else if (from == "location"){
-            self.addCustomizedBackBtn(title:"  Location report")
+            self.addCustomizedBackBtn(title:"  Location Report")
             self.callAPI(url: reportLocation, From: from, from_date: fromdate, to_date: todate, status: status, paguthi: paguthi,offset:"0",rowCount:"50",category: category, sub_category: sub_category, keyword: keyword)
         }
 
@@ -268,18 +268,19 @@ extension ReportList : ReportView, UITableViewDelegate, UITableViewDataSource, U
             let lastElement = grievance_nameArr.count - 1
             if indexPath.row == lastElement
             {
+                let lE = lastElement + 1
                 if (from == "status")
                 {
-                    self.callAPI(url: reportStatus, From: from, from_date: fromdate, to_date: todate, status: status, paguthi: paguthi,offset:String(lastElement),rowCount:"50",category: category, sub_category: sub_category, keyword: keyword)
+                    self.callAPI(url: reportStatus, From: from, from_date: fromdate, to_date: todate, status: status, paguthi: paguthi,offset:String(lE),rowCount:"50",category: category, sub_category: sub_category, keyword: keyword)
                 }
                 else if (from == "categoery"){
-                    self.callAPI(url: reportCategoery, From: from, from_date: fromdate, to_date: todate, status: status, paguthi: paguthi,offset:String(lastElement),rowCount:"50",category: category, sub_category: sub_category, keyword: keyword)
+                    self.callAPI(url: reportCategoery, From: from, from_date: fromdate, to_date: todate, status: status, paguthi: paguthi,offset:String(lE),rowCount:"50",category: category, sub_category: sub_category, keyword: keyword)
                 }
                 else if (from == "subCate"){
-                    self.callAPI(url: reportSubCategoery, From: from, from_date: fromdate, to_date: todate, status: status, paguthi: paguthi,offset:String(lastElement),rowCount:"50",category: category, sub_category: sub_category, keyword: keyword)
+                    self.callAPI(url: reportSubCategoery, From: from, from_date: fromdate, to_date: todate, status: status, paguthi: paguthi,offset:String(lE),rowCount:"50",category: category, sub_category: sub_category, keyword: keyword)
                 }
                 else if (from == "location"){
-                    self.callAPI(url: reportLocation, From: from, from_date: fromdate, to_date: todate, status: status, paguthi: paguthi,offset:String(lastElement),rowCount:"50",category: category, sub_category: sub_category, keyword: keyword)
+                    self.callAPI(url: reportLocation, From: from, from_date: fromdate, to_date: todate, status: status, paguthi: paguthi,offset:String(lE),rowCount:"50",category: category, sub_category: sub_category, keyword: keyword)
                 }
             }
        }

@@ -30,6 +30,7 @@ class UserProfile: UIViewController, ProfileDetailsView, UIImagePickerController
     @IBOutlet var genderSegment: UISegmentedControl!
     @IBOutlet var address: UITextView!
     @IBOutlet var saveProfileOutlet: UIButton!
+    @IBOutlet var userImageOutlet: UIButton!
     override func viewDidLoad() {
         super.viewDidLoad()
 
@@ -73,11 +74,25 @@ class UserProfile: UIViewController, ProfileDetailsView, UIImagePickerController
          self.emailId.text = email_id
          let seg = gender
          let userRole = user_role
-         if userRole == "2"{
+         if userRole == "1"{
             self.saveProfileOutlet.isHidden = true
+            self.name.isEnabled = false
+            self.phone.isEnabled = false
+            self.emailId.isEnabled = false
+            self.saveProfileOutlet.isEnabled = false
+            self.address.isEditable = false
+            self.genderSegment.isEnabled = false
+            self.userImageOutlet.isEnabled = false
          }
          else{
             self.saveProfileOutlet.isHidden = false
+            self.name.isEnabled = true
+            self.phone.isEnabled = true
+            self.emailId.isEnabled = true
+            self.saveProfileOutlet.isEnabled = true
+            self.address.isEditable = true
+            self.genderSegment.isEnabled = true
+            self.userImageOutlet.isEnabled = true
          }
          if(seg == "M"){
             genderSegment.selectedSegmentIndex = 0

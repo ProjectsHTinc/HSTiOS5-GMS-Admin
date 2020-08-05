@@ -59,14 +59,13 @@ class PlantDonation: UIViewController, PlantDonationView {
          plantData = plant
          self.plantName.text = plantData[0].name_of_plant
          self.plantNumber.text = plantData[0].no_of_plant
-         let formated = self.formattedDateFromString(dateString: plantData[0].created_at, withFormat: "dd-MM-YYYY HH:mm:ss")
+         let formated = self.formattedDateFromString(dateString: plantData[0].created_at, withFormat: "dd-MM-YYYY")
          self.recivedDate.text = formated
     }
     
     func setEmpty(errorMessage: String) {
          AlertController.shared.showAlert(targetVc: self, title: Globals.alertTitle, message: errorMessage, complition: {
          })
-         
          self.plantName.text = "-"
          self.plantNumber.text = "-"
          self.recivedDate.text = "-"

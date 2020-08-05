@@ -201,7 +201,8 @@ extension ReportMeeting : ReportMeetingView ,UITableViewDelegate, UITableViewDat
               let lastElement = meetingTitleArr.count - 1
               if indexPath.row == lastElement
               {
-                self.callAPI(url: reportMeetingUrl,from_date: fromdate, to_date: todate, offset:String(lastElement),rowCount:"50", keyword: keyword)
+                let lE = lastElement + 1
+                self.callAPI(url: reportMeetingUrl,from_date: fromdate, to_date: todate, offset:String(lE),rowCount:"50", keyword: keyword)
 
               }
            }

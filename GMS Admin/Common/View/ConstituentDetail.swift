@@ -14,9 +14,7 @@ class ConstituentDetail: UIViewController {
     /*Get login Data */
     let presenter = ConstituentDetailPresenter(constituentDetailService: ConstituentDetailService())
     var constituentdetail = [ConstituentDetailData]()
-
     var selectedconstitunecyId = String()
-
     let colors = GradientBackgroundView()
 
     @IBOutlet var constituentImage: UIImageView!
@@ -61,6 +59,7 @@ class ConstituentDetail: UIViewController {
     
     func callAPIConstituentDetail ()
     {
+        print(selectedconstitunecyId)
         presenter.attachView(view: self)
         presenter.getConstituentDetailData(constituent_id: selectedconstitunecyId)
     }
@@ -131,8 +130,8 @@ extension ConstituentDetail: ConstituentDetailView{
          self.name.text = constituentdetail[0].full_name
          self.mobileNumber.text = constituentdetail[0].mobile_no
          self.location.text = constituentdetail[0].address
-         self.wardNumber.text = constituentdetail[0].ward_id
-         self.serialNumber.text = constituentdetail[0].id
+         self.wardNumber.text = constituentdetail[0].ward_name
+         self.serialNumber.text = constituentdetail[0].serial_no
          self.voterID.text = constituentdetail[0].voter_id_no
          self.adharNumber.text = constituentdetail[0].aadhaar_no
          self.constituentImage.sd_setImage(with: URL(string: Globals.imageUrl + constituentdetail[0].profile_pic), placeholderImage: UIImage(named: "placeholder.png"))

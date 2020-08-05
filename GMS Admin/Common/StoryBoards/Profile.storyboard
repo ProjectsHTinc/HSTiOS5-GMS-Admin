@@ -589,6 +589,7 @@
                         <outlet property="phone" destination="IIT-Ex-Jbs" id="sRc-fH-trR"/>
                         <outlet property="saveProfileOutlet" destination="NTk-Ra-K26" id="Rha-7j-3Fr"/>
                         <outlet property="userImage" destination="CGI-yq-nZY" id="t2c-kw-nO3"/>
+                        <outlet property="userImageOutlet" destination="X61-c9-Qwq" id="hdQ-7v-1D4"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Yab-gN-qMY" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
@@ -917,6 +918,28 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="1bj-mJ-Am8" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="295" y="-241"/>
+        </scene>
+        <!--Side Menu Navigation Controller-->
+        <scene sceneID="kTf-0D-On7">
+            <objects>
+                <navigationController storyboardIdentifier="LeftMenuNavigationController" modalPresentationStyle="fullScreen" id="L3X-g0-Yav" customClass="SideMenuNavigationController" customModule="SideMenu" sceneMemberID="viewController">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" translucent="NO" id="L2D-LA-MPV">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                        <color key="backgroundColor" name="AppBaseColor"/>
+                        <color key="tintColor" name="AppBaseColor"/>
+                        <color key="barTintColor" name="AppBaseColor"/>
+                        <textAttributes key="titleTextAttributes">
+                            <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        </textAttributes>
+                    </navigationBar>
+                    <userDefinedRuntimeAttributes>
+                        <userDefinedRuntimeAttribute type="boolean" keyPath="leftSide" value="YES"/>
+                    </userDefinedRuntimeAttributes>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="ZyT-F2-gvK" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1559" y="847"/>
         </scene>
     </scenes>
     <resources>

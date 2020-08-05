@@ -36,12 +36,17 @@ class GreivancesAllDetail: UIViewController {
     @IBOutlet var status: UILabel!
     @IBOutlet var statusBgView: UIView!
     @IBOutlet var petitionTitleLabel: UILabel!
-
+    @IBOutlet var descripitionTitleLabel: UILabel!
+    @IBOutlet var descripitionBaseLabel: UILabel!
+    @IBOutlet var descripitionTitleHeight: NSLayoutConstraint!
+    @IBOutlet var descHeight: UILabel!
+    @IBOutlet var descripitionBaseHeight: NSLayoutConstraint!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 
         // Do any additional setup after loading the view.
-        self.addCustomizedBackBtn(title:"  Grievance detail")
+        self.addCustomizedBackBtn(title:"  Grievance Details")
         self.place.text = _place
         self.seekerType.text = _seekerType
         self.petitionNumber.text = _petitionNumber
@@ -49,8 +54,8 @@ class GreivancesAllDetail: UIViewController {
         self.greivanceName.text = _greivanceName
         self.subcat.text = _subcat
         self.desc.text = _desc
-        let formatedCreated = self.formattedDateFromString(dateString: _createdon, withFormat: "dd-MM-YYYY HH:mm:ss")
-        let formatedUpdatedOn = self.formattedDateFromString(dateString: _updatedOn, withFormat: "dd-MM-YYYY HH:mm:ss")
+        let formatedCreated = self.formattedDateFromString(dateString: _createdon, withFormat: "dd-MM-YYYY")
+        let formatedUpdatedOn = self.formattedDateFromString(dateString: _updatedOn, withFormat: "dd-MM-YYYY")
         self.createdon.text = formatedCreated
         self.updatedOn.text = formatedUpdatedOn
         self.status.text = _status
@@ -59,10 +64,16 @@ class GreivancesAllDetail: UIViewController {
         if (type == "P")
         {
             self.petitionTitleLabel.text = "Petition Number"
+            self.descripitionTitleLabel.isHidden = false
+            self.descripitionBaseLabel.isHidden = false
         }
         else
         {
             self.petitionTitleLabel.text = "Enquiry Number"
+            self.descripitionTitleLabel.isHidden = true
+            self.descripitionBaseLabel.isHidden = true
+            self.descripitionBaseHeight.constant = 0
+            self.descripitionTitleHeight.constant = 0
         }
         
         if (self.status.text == "PROCESSING")

@@ -180,7 +180,7 @@ class ReportBirthday: UIViewController {
         {
             let vc = segue.destination as! ReportBirthDaySearch
             vc.keyword = sender as! String
-            vc.month = self.month.text!
+            vc.month = self.selectedMonthID
         }
     }
     
@@ -212,10 +212,10 @@ extension ReportBirthday : ReportBirthdayView, UITableViewDelegate, UITableViewD
             let mobile = items.mobile_no
             let status = items.birth_wish_status
             
-            self.userNameArr.append(fullname!)
+            self.userNameArr.append(fullname!.capitalized)
             self.dobArr.append(db!)
             self.mobileArr.append(mobile!)
-            self.wishStatusArr.append(status!)
+            self.wishStatusArr.append(status!.capitalized)
         }
         self.tableView.isHidden = false
         self.reportCount.isHidden = false
@@ -270,7 +270,8 @@ extension ReportBirthday : ReportBirthdayView, UITableViewDelegate, UITableViewD
             if indexPath.row == lastElement
             {
                  print("came to last row")
-                    self.callAPI(url: reportBirthdayUrl, select_month: self.selectedMonthID, keyword: self.keyword, offset: String(lastElement), rowcount: "50")
+                 let lE = lastElement + 1
+                 self.callAPI(url: reportBirthdayUrl, select_month: self.selectedMonthID, keyword: self.keyword, offset: String(lE), rowcount: "50")
             }
         }
     }
@@ -292,7 +293,17 @@ extension ReportBirthday : ReportBirthdayView, UITableViewDelegate, UITableViewD
         
     }
 
-    func pickerView(_ pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
-        self.month.text = self.monthArr[row]
+//    func pickerView(_ pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
+//        self.month.text = self.monthArr[row]
+//    }
+}
+
+extension String {
+    func capitalizingFirstLetter() -> String {
+        return prefix(1).capitalized + dropFirst()
+    }
+
+    mutating func capitalizeFirstLetter() {
+        self = self.capitalizingFirstLetter()
     }
 }

@@ -9,9 +9,11 @@
 import UIKit
 import SDWebImage
 
+@available(iOS 13.0, *)
 class Menu: UITableViewController {
     
     var ConstituentisClicked = false
+    var window: UIWindow?
 
     @IBOutlet var userLocation: UILabel!
     @IBOutlet var userName: UILabel!
@@ -103,6 +105,7 @@ class Menu: UITableViewController {
         }
     }
     
+    @available(iOS 13.0, *)
     func clearAll ()
     {
         GlobalVariables.shared.selectedConstituencyName = ""
@@ -129,6 +132,7 @@ class Menu: UITableViewController {
         GlobalVariables.shared.constituentInteractionCount = ""
         UserDefaults.standard.clearUserData()
         self.performSegue(withIdentifier: "logOut", sender: self)
+
 
     }
 

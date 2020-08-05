@@ -43,6 +43,22 @@ class ConstituentGreivancesMessage: UIViewController {
         Presenter.attachView(view: self)
         Presenter.getConsGrieMessage(grievance_id: greivanceId)
     }
+    
+    func formattedDateFromString(dateString: String, withFormat format: String) -> String? {
+
+        let inputFormatter = DateFormatter()
+        inputFormatter.dateFormat = "yyyy-MM-dd HH:mm:ss"
+
+        if let date = inputFormatter.date(from: dateString) {
+
+            let outputFormatter = DateFormatter()
+          outputFormatter.dateFormat = format
+
+            return outputFormatter.string(from: date)
+        }
+
+        return nil
+    }
 
     /*
     // MARK: - Navigation
@@ -87,7 +103,8 @@ extension ConstituentGreivancesMessage : ConstituentGreivancesMessageView, UITab
         let data = PresenterData[indexPath.row]
         cell.message.text = data.sms_text
         cell.sentBy.text = data.created_by
-        cell.date.text = data.created_at
+        let formatedDate = self.formattedDateFromString(dateString: data.created_at, withFormat: "dd-MMM-YYYY HH:mm:ss")
+        cell.date.text = formatedDate
         return cell
     }
     

@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import SideMenu
 
 let meetingUrl = "apiios/meetingRequestnew"
 
@@ -32,6 +33,7 @@ class MeetingAll: UIViewController {
         super.viewDidLoad()
 
         // Do any additional setup after loading the view.
+        setupSideMenu()
         self.title = "Meeting"
         /*Set Side menu*/
         self.sideMenuButton()
@@ -54,6 +56,18 @@ class MeetingAll: UIViewController {
         self.meetingIdArr.removeAll()
         //
         self.callAPIMeetingAll(url: meetingUrl, keyword: "no", constituency_id: GlobalVariables.shared.constituent_Id, offset: "0", rowcount: "50")
+    }
+    
+    private func setupSideMenu() {
+        // Define the menus
+        SideMenuManager.default.leftMenuNavigationController = storyboard?.instantiateViewController(withIdentifier: "LeftMenuNavigationController") as? SideMenuNavigationController
+        
+        //SideMenuPresentationStyle.menuSlideIn
+        
+        // Enable gestures. The left and/or right menus must be set up above for these to work.
+        // Note that these continue to work on the Navigation Controller independent of the View Controller it displays!
+        SideMenuManager.default.addPanGestureToPresent(toView: navigationController!.navigationBar)
+        SideMenuManager.default.addScreenEdgePanGesturesToPresent(toView: view)
     }
     
     func callAPIMeetingAll (url:String, keyword: String,constituency_id:String, offset: String, rowcount:String)
@@ -200,16 +214,15 @@ extension MeetingAll : MeetingAllDataView, UISearchBarDelegate ,  UITableViewDel
     }
        
     func tableView(_ tableView: UITableView, willDisplay cell: UITableViewCell, forRowAt indexPath: IndexPath) {
-           let totalRows = tableView.numberOfRows(inSection: indexPath.section)
-           if indexPath.row == (totalRows - 1)
+           if fullNameArr.count > 20
            {
-               if totalRows >= 50
+              let lastElement = fullNameArr.count - 1
+               if indexPath.row == lastElement
                {
-                 print("came to last row")
-                self.callAPIMeetingAll(url: "apiios/meetingRequestnew", keyword: "no", constituency_id: GlobalVariables.shared.constituent_Id, offset: String(totalRows), rowcount: "50")
-
+                    print("came to last row")
+                    let lE = lastElement + 1
+                    self.callAPIMeetingAll(url: meetingUrl, keyword: "no", constituency_id: GlobalVariables.shared.constituent_Id, offset: String(lE), rowcount: "50")
                }
-    
            }
     }
        

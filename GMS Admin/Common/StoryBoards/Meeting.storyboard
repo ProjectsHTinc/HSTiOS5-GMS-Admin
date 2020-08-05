@@ -727,6 +727,28 @@
             </objects>
             <point key="canvasLocation" x="1469.5999999999999" y="145.27736131934034"/>
         </scene>
+        <!--Side Menu Navigation Controller-->
+        <scene sceneID="Eu0-Xs-T1Y">
+            <objects>
+                <navigationController storyboardIdentifier="LeftMenuNavigationController" modalPresentationStyle="fullScreen" id="oAY-nZ-Cqg" customClass="SideMenuNavigationController" customModule="SideMenu" sceneMemberID="viewController">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" translucent="NO" id="2RZ-Ys-Slg">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                        <color key="backgroundColor" name="AppBaseColor"/>
+                        <color key="tintColor" name="AppBaseColor"/>
+                        <color key="barTintColor" name="AppBaseColor"/>
+                        <textAttributes key="titleTextAttributes">
+                            <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        </textAttributes>
+                    </navigationBar>
+                    <userDefinedRuntimeAttributes>
+                        <userDefinedRuntimeAttribute type="boolean" keyPath="leftSide" value="YES"/>
+                    </userDefinedRuntimeAttributes>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="agY-l3-9pt" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-68" y="887"/>
+        </scene>
     </scenes>
     <inferredMetricsTieBreakers>
         <segue reference="gTz-TK-ngF"/>

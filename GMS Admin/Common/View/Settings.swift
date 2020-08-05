@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import SideMenu
 
 class Settings: UIViewController {
 
@@ -14,9 +15,22 @@ class Settings: UIViewController {
         super.viewDidLoad()
 
         // Do any additional setup after loading the view.
+        setupSideMenu()
         self.title = "Settings"
         self.sideMenuButton()
 
+    }
+    
+    private func setupSideMenu() {
+        // Define the menus
+        SideMenuManager.default.leftMenuNavigationController = storyboard?.instantiateViewController(withIdentifier: "LeftMenuNavigationController") as? SideMenuNavigationController
+        
+        //SideMenuPresentationStyle.menuSlideIn
+        
+        // Enable gestures. The left and/or right menus must be set up above for these to work.
+        // Note that these continue to work on the Navigation Controller independent of the View Controller it displays!
+        SideMenuManager.default.addPanGestureToPresent(toView: navigationController!.navigationBar)
+        SideMenuManager.default.addScreenEdgePanGesturesToPresent(toView: view)
     }
     
     @objc public override func sideMenuButtonClick()

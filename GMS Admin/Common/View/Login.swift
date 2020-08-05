@@ -61,8 +61,8 @@ class Login: UIViewController  {
             savingsInformationViewController.strSaveText = self.constituency.text! as NSString
             savingsInformationViewController.modalPresentationStyle = .popover
         if let popoverController = savingsInformationViewController.popoverPresentationController {
-                popoverController.sourceView = sender
-                popoverController.sourceRect = sender.bounds
+            popoverController.sourceView = self.view
+                popoverController.sourceRect = view.frame
                 popoverController.permittedArrowDirections = .any
                 popoverController.delegate = self
             }
@@ -179,7 +179,7 @@ extension Login : UIPopoverPresentationControllerDelegate, ConstituencyListDeleg
 
       // MARK: - UIPopoverPresentationControllerDelegate
       func adaptivePresentationStyleForPresentationController(controller: UIPresentationController!) -> UIModalPresentationStyle {
-        return .fullScreen
+        return .none
       }
 
     private func presentationController(controller: UIPresentationController!, viewControllerForAdaptivePresentationStyle style: UIModalPresentationStyle) -> UIViewController! {

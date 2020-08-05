@@ -292,7 +292,7 @@ class APIManager: NSObject {
     //MARK: GET FORGOT PASSWORD RESPONSE
     func callAPIFp(user_name:String, onSuccess successCallback: ((_ fp: ForgotPasswordModel) -> Void)?,onFailure failureCallback: ((_ errorMessage: String) -> Void)?) {
         // Build URL
-        let url = GlobalVariables.shared.CLIENTURL + Endpoint.forgotPasswordUrl.rawValue
+        let url = MAIN_URL + Endpoint.forgotPasswordUrl.rawValue
         // Set Parameters
         let parameters: Parameters =  ["user_name": user_name]
         // call API
@@ -680,11 +680,18 @@ class APIManager: NSObject {
     }
     
     //MARK: GET LIST CONSTITUENT RESPONSE
-    func callAPIConstituentList(paguthi:String, offset:String, rowcount:String, onSuccess successCallback: ((_ listConstiuentModel: [ListConstiuentModel]) -> Void)?,onFailure failureCallback: ((_ errorMessage: String) -> Void)?) {
+    func callAPIConstituentList(url:String,Keyword:String,paguthi:String, offset:String, rowcount:String, onSuccess successCallback: ((_ listConstiuentModel: [ListConstiuentModel]) -> Void)?,onFailure failureCallback: ((_ errorMessage: String) -> Void)?) {
         // Build URL
-        let url = GlobalVariables.shared.CLIENTURL + Endpoint.listConstituentUrl.rawValue
+        let url = GlobalVariables.shared.CLIENTURL + url
+        let parameters: Parameters
         // Set Parameters
-        let parameters: Parameters =  ["paguthi": paguthi, "offset": offset, "rowcount": rowcount]
+        if Keyword == "no"{
+            parameters =  ["paguthi": paguthi, "offset": offset, "rowcount": rowcount]
+        }
+        else
+        {
+            parameters =  ["paguthi": paguthi, "offset": offset, "rowcount": rowcount,"keyword":Keyword]
+        }
         // call API
         self.createRequestConstituentList(url, method: .post, headers: nil, parameters: parameters as? [String : String], onSuccess: {(responseObject: JSON) -> Void in
         // Create dictionary
@@ -1863,7 +1870,7 @@ class APIManager: NSObject {
             
          GlobalVariables.shared.meetingAllCount = responseObject["result_count"].int!
 
-          if let responseDict = responseObject["meetings_report"].arrayObject
+          if let responseDict = responseObject["report_list"].arrayObject
           {
                 let meetingAllModel = responseDict as! [[String:AnyObject]]
                 // Create object

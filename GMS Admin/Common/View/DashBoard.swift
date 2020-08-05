@@ -10,6 +10,7 @@ import UIKit
 import Alamofire
 import SwiftyJSON
 import Charts
+import SideMenu
 
 class DashBoard: UIViewController, ChartViewDelegate {
 
@@ -46,6 +47,7 @@ class DashBoard: UIViewController, ChartViewDelegate {
 
         // Do any additional setup after loading the view.
         /*Removeing NavigationBar Bottom Line*/
+        setupSideMenu()
         self.navigationController?.navigationBar.setBackgroundImage(UIImage(), for:.default)
         self.navigationController?.navigationBar.shadowImage = UIImage()
         self.navigationController?.navigationBar.layoutIfNeeded()
@@ -54,7 +56,7 @@ class DashBoard: UIViewController, ChartViewDelegate {
         self.area.delegate = self
         /*Set PlaceHolder textColor*/
         area.attributedPlaceholder =
-        NSAttributedString(string: "Select Area", attributes: [NSAttributedString.Key.foregroundColor: UIColor(red: 188 / 255, green: 188 / 255, blue: 188 / 255, alpha: 1.0)])
+        NSAttributedString(string: "Select Paguthi", attributes: [NSAttributedString.Key.foregroundColor: UIColor(red: 188 / 255, green: 188 / 255, blue: 188 / 255, alpha: 1.0)])
         //areaView.dropShadow()
         guard Reachability.isConnectedToNetwork() == true else {
               AlertController.shared.offlineAlert(targetVc: self, complition: {
@@ -70,12 +72,23 @@ class DashBoard: UIViewController, ChartViewDelegate {
         /*Tap anywhere to hide keypad*/
         self.hideKeyboardWhenTappedAround()
     }
-    
 
     func callAPIPaguthi ()
     {
         presenter.attachView(view: self)
         presenter.getPaguthi(constituency_id: GlobalVariables.shared.constituent_Id)
+    }
+    
+    private func setupSideMenu() {
+        // Define the menus
+        SideMenuManager.default.leftMenuNavigationController = storyboard?.instantiateViewController(withIdentifier: "LeftMenuNavigationController") as? SideMenuNavigationController
+        
+        //SideMenuPresentationStyle.menuSlideIn
+        
+        // Enable gestures. The left and/or right menus must be set up above for these to work.
+        // Note that these continue to work on the Navigation Controller independent of the View Controller it displays!
+        SideMenuManager.default.addPanGestureToPresent(toView: navigationController!.navigationBar)
+        SideMenuManager.default.addScreenEdgePanGesturesToPresent(toView: view)
     }
     
     func createPickerView() {
@@ -149,11 +162,10 @@ class DashBoard: UIViewController, ChartViewDelegate {
                             self.dispMonth.removeAll()
                             self.new_grev.removeAll()
                             self.repeeated_grev.removeAll()
-                            self.repeeated_grev.removeAll()
                             self.total.removeAll()
+                            self.grivenacegraph.removeAll()
                             self.meeting_request.removeAll()
                             self.month_year.removeAll()
-                            self.grivenacegraph.removeAll()
                             /*Bar Chart*/
                             let footFall = json["footfall_graph"]
                             for i in 0..<(footFall.count)
@@ -372,6 +384,8 @@ class DashBoard: UIViewController, ChartViewDelegate {
         else if (segue.identifier == "to_search"){
             let vc = segue.destination as! Search
             vc.keyWord = sender as! String
+            vc.from = "dh"
+
         }
     }
     
