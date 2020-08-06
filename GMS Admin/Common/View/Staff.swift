@@ -148,13 +148,13 @@ extension Staff : StaffView, UITableViewDelegate, UITableViewDataSource, UISearc
         let cell = tableView.dequeueReusableCell(withIdentifier: "cell", for: indexPath) as! StaffCell
         if searchBar.isActive && searchBar.searchBar.text != "" {
             let staff = filterdArr[indexPath.row]
-            cell.name.text = staff.full_name
-            cell.mail.text = staff.email_id
-            cell.location.text = staff.paguthi_name
-            cell.status.text = staff.status
+            cell.name.text = staff.full_name.capitalized
+            cell.mail.text = staff.email_id.capitalized
+            cell.location.text = staff.paguthi_name.capitalized
+            cell.status.text = staff.status.capitalized
             cell.profPic.sd_setImage(with: URL(string: Globals.userImgUrl + staff.profile_pic), placeholderImage: UIImage(named: "placeholder.png"))
 
-            if cell.status.text == "ACTIVE"{
+            if cell.status.text == "Active"{
                 cell.status.textColor = UIColor(red: 106/255, green: 168/255, blue: 79/255, alpha: 1.0)
                 cell.statusView.backgroundColor = UIColor(red: 106/255, green: 168/255, blue: 79/255, alpha: 1.0)
             }
@@ -165,13 +165,13 @@ extension Staff : StaffView, UITableViewDelegate, UITableViewDataSource, UISearc
         }
         else{
             let staff = data[indexPath.row]
-            cell.name.text = staff.full_name
-            cell.mail.text = staff.email_id
-            cell.location.text = staff.paguthi_name
-            cell.status.text = staff.status
+            cell.name.text = staff.full_name.capitalized
+            cell.mail.text = staff.email_id.capitalized
+            cell.location.text = staff.paguthi_name.capitalized
+            cell.status.text = staff.status.capitalized
             cell.profPic.sd_setImage(with: URL(string: Globals.userImgUrl + staff.profile_pic), placeholderImage: UIImage(named: "placeholder.png"))
 
-            if cell.status.text == "ACTIVE"{
+            if cell.status.text == "Active"{
                 cell.status.textColor = UIColor(red: 106/255, green: 168/255, blue: 79/255, alpha: 1.0)
                 cell.statusView.backgroundColor = UIColor(red: 106/255, green: 168/255, blue: 79/255, alpha: 1.0)
             }

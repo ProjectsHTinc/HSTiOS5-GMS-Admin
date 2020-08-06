@@ -305,7 +305,7 @@ extension Constituent: UISearchBarDelegate, UITableViewDelegate, UITableViewData
             let profpic = items.profile_pic
             let id = items.id
             
-            self.fullnameArr.append(name)
+            self.fullnameArr.append(name.capitalized)
             self.mobileNoArr.append(mob)
             self.serialNoArr.append(serialno)
             self.profPicArr.append(profpic)

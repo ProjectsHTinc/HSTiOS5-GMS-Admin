@@ -59,7 +59,7 @@ extension InterAction: InteractionView , UITableViewDelegate, UITableViewDataSou
         
         let cell = tableView.dequeueReusableCell(withIdentifier: "cell", for: indexPath) as! InteractionCell
         let data = interactionData[indexPath.row]
-        cell.question.text = data.interaction_text
+        cell.question.text = data.interaction_text.capitalized
         let status = data.status
         if (status == "Yes"){
             cell.yesLabel.text = "Yes"

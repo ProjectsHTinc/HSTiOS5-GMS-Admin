@@ -36,18 +36,18 @@ class ConstituencyInfo: UITableViewController {
     func setAllValues ()
     {
         if GlobalVariables.shared.profGrivance == "GreiAll"{
-            self.paguthi.text = consprofiledata[0].paguthi_name
-            self.ward.text = consprofiledata[0].ward_name
-            self.booth.text = consprofiledata[0].booth_name
-            self.boothAddress.text = consprofiledata[0].booth_address
+            self.paguthi.text = consprofiledata[0].paguthi_name.capitalized
+            self.ward.text = consprofiledata[0].ward_name.capitalized
+            self.booth.text = consprofiledata[0].booth_name.capitalized
+            self.boothAddress.text = consprofiledata[0].booth_address.capitalized
             self.serialNumber.text = consprofiledata[0].serial_no
         }
         else
         {
-            self.paguthi.text = consprofiledata[0].paguthi_name
-            self.ward.text = consprofiledata[0].ward_name
-            self.booth.text = consprofiledata[0].booth_name
-            self.boothAddress.text = consprofiledata[0].booth_address
+            self.paguthi.text = consprofiledata[0].paguthi_name.capitalized
+            self.ward.text = consprofiledata[0].ward_name.capitalized
+            self.booth.text = consprofiledata[0].booth_name.capitalized
+            self.boothAddress.text = consprofiledata[0].booth_address.capitalized
             self.serialNumber.text = consprofiledata[0].serial_no
         }
 

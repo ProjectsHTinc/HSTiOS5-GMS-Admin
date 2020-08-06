@@ -67,7 +67,7 @@ class ReportStatus: UIViewController {
             self.pageTitle.text = "Status"
             self.addCustomizedBackBtn(title:"  Status Report")
             self.reportImageView.image = UIImage(named: "ReportStatus")
-            self.statusArr = ["ALL","PROCESSING","COMPLETED"]
+            self.statusArr = ["ALL","Processing","Completed"]
             self.textfieldName = "Status"
         }
         else if (from == "categoery"){
@@ -676,7 +676,7 @@ extension ReportStatus : UIPickerViewDelegate, UIPickerViewDataSource, PaguthiVi
          {
             let paguthi = items.paguthi_name
             let id = items.id
-            self.paguthiName.append(paguthi)
+            self.paguthiName.append(paguthi.capitalized)
             self.paguthiId.append(id)
 //            pickerView.reloadAllComponents()
          }
@@ -697,7 +697,7 @@ extension ReportStatus : UIPickerViewDelegate, UIPickerViewDataSource, PaguthiVi
         {
             let cate = items.grievance_name
             let id = items.id
-            self.categoeryName.append(cate)
+            self.categoeryName.append(cate.capitalized)
             self.catgoeryId.append(id)
 //            pickerView.reloadAllComponents()
         }
@@ -714,7 +714,7 @@ extension ReportStatus : UIPickerViewDelegate, UIPickerViewDataSource, PaguthiVi
         {
             let cate = items.sub_category_name
             let id = items.id
-            self.subCategoeryName.append(cate)
+            self.subCategoeryName.append(cate.capitalized)
             self.subCatgoeryId.append(id)
 //            pickerView.reloadAllComponents()
         }

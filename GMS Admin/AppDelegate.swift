@@ -45,9 +45,9 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     // Genrate Device Token
     func application( _ application: UIApplication,didRegisterForRemoteNotificationsWithDeviceToken deviceToken: Data)
     {
-        let tokenParts = deviceToken.map { data in String(format: "%02.2hhx", data) }
-        GlobalVariables.shared.Devicetoken = tokenParts.joined()
-        print("Device Token: \(String(describing: GlobalVariables.shared.Devicetoken))")
+          let tokenParts = deviceToken.map { data in String(format: "%02.2hhx", data) }
+//        GlobalVariables.shared.Devicetoken = tokenParts.joined()
+//        print("Device Token: \(String(describing: GlobalVariables.shared.Devicetoken))")
     }
 
 }

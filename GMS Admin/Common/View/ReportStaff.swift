@@ -95,14 +95,14 @@ class ReportStaff: UIViewController, ReportStaffView ,UITableViewDelegate, UITab
         let cell = tableView.dequeueReusableCell(withIdentifier: "cell", for: indexPath) as! ReportStaffCell
         if searchBar.isActive && searchBar.searchBar.text != "" {
             let data = filterdArr[indexPath.row]
-            cell.userName.text = data.full_name
+            cell.userName.text = data.full_name?.capitalized
             cell.total.text = data.total
             cell.active.text = data.active
             cell.inactive.text = data.inactive
         }
         else{
             let data = reportData[indexPath.row]
-            cell.userName.text = data.full_name
+            cell.userName.text = data.full_name?.capitalized
             cell.total.text = data.total
             cell.active.text = data.active
             cell.inactive.text = data.inactive

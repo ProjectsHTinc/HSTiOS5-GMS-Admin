@@ -154,11 +154,11 @@ extension ReportSearch : ReportView, UITableViewDelegate, UITableViewDataSource{
             self.grievance_typeArr.append(greType!)
             self.petition_enquiry_noArr.append(petNo)
             self.mobile_noArr.append(mob)
-            self.grievance_nameArr.append(grevName)
-            self.full_nameArr.append(fullName)
-            self.created_byArr.append(createdby)
-            self.statusArr.append(status)
-            self.role_nameArr.append(role)
+            self.grievance_nameArr.append(grevName.capitalized)
+            self.full_nameArr.append(fullName.capitalized)
+            self.created_byArr.append(createdby.capitalized)
+            self.statusArr.append(status.capitalized)
+            self.role_nameArr.append(role.capitalized)
             self.grevDateArr.append(grevDate)
         }
         self.reportCount.text = String(format: "%@ %@", String (GlobalVariables.shared.result_count),"Records")
@@ -202,7 +202,7 @@ extension ReportSearch : ReportView, UITableViewDelegate, UITableViewDataSource{
             cell.status.text = statusArr[indexPath.row]
             let formatedDate = self.formattedDateFromString(dateString: grevDateArr[indexPath.row], withFormat: "dd-MM-YYYY")
             cell.createdby.text = formatedDate
-            if cell.status.text == "PROCESSING"{
+            if cell.status.text == "Processing"{
                 cell.status.textColor = UIColor(red: 253/255, green: 166/255, blue: 68/255, alpha: 1.0)
             }
             else{

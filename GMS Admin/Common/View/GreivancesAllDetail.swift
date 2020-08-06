@@ -76,7 +76,7 @@ class GreivancesAllDetail: UIViewController {
             self.descripitionTitleHeight.constant = 0
         }
         
-        if (self.status.text == "PROCESSING")
+        if (self.status.text == "Processing")
         {
             self.status.backgroundColor = UIColor(red: 253/255, green: 166/255, blue: 68/255, alpha: 1.0)
             self.status.layer.cornerRadius = 4.0

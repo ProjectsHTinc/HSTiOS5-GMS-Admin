@@ -57,7 +57,7 @@ class PlantDonation: UIViewController, PlantDonationView {
     
     func setPlantDonation(plant: [PlantDonationData]) {
          plantData = plant
-         self.plantName.text = plantData[0].name_of_plant
+         self.plantName.text = plantData[0].name_of_plant.capitalized
          self.plantNumber.text = plantData[0].no_of_plant
          let formated = self.formattedDateFromString(dateString: plantData[0].created_at, withFormat: "dd-MM-YYYY")
          self.recivedDate.text = formated

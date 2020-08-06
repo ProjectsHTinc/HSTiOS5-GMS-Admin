@@ -440,12 +440,12 @@
                                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="BNS-j4-ihs">
                                                                 <rect key="frame" x="0.0" y="0.0" width="134" height="116"/>
                                                                 <subviews>
-                                                                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="Tg" translatesAutoresizingMaskIntoConstraints="NO" id="aql-J7-NeE">
+                                                                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="widget_icons-3" translatesAutoresizingMaskIntoConstraints="NO" id="aql-J7-NeE">
                                                                         <rect key="frame" x="47" y="20" width="39" height="44"/>
                                                                         <autoresizingMask key="autoresizingMask" flexibleMinX="YES" widthSizable="YES" flexibleMaxX="YES" flexibleMinY="YES" heightSizable="YES" flexibleMaxY="YES"/>
                                                                     </imageView>
                                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Grievance" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="o6M-gq-Nlv">
-                                                                        <rect key="frame" x="3" y="75" width="126" height="20"/>
+                                                                        <rect key="frame" x="3" y="75" width="125" height="20"/>
                                                                         <autoresizingMask key="autoresizingMask" flexibleMinX="YES" widthSizable="YES" flexibleMaxX="YES" flexibleMinY="YES" heightSizable="YES" flexibleMaxY="YES"/>
                                                                         <fontDescription key="fontDescription" name="Roboto-Medium" family="Roboto" pointSize="17"/>
                                                                         <color key="textColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -476,12 +476,12 @@
                                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="uAP-B4-oU6">
                                                                 <rect key="frame" x="148" y="0.0" width="134" height="116"/>
                                                                 <subviews>
-                                                                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="Tm" translatesAutoresizingMaskIntoConstraints="NO" id="dLf-Va-252">
+                                                                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="widget_icons-2" translatesAutoresizingMaskIntoConstraints="NO" id="dLf-Va-252">
                                                                         <rect key="frame" x="47" y="16" width="39" height="44"/>
                                                                         <autoresizingMask key="autoresizingMask" flexibleMinX="YES" widthSizable="YES" flexibleMaxX="YES" flexibleMinY="YES" heightSizable="YES" flexibleMaxY="YES"/>
                                                                     </imageView>
                                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Meeting" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="qrA-ah-zYh">
-                                                                        <rect key="frame" x="13" y="75" width="107" height="20"/>
+                                                                        <rect key="frame" x="13" y="75" width="106" height="20"/>
                                                                         <autoresizingMask key="autoresizingMask" flexibleMinX="YES" widthSizable="YES" flexibleMaxX="YES" flexibleMinY="YES" heightSizable="YES" flexibleMaxY="YES"/>
                                                                         <fontDescription key="fontDescription" name="Roboto-Medium" family="Roboto" pointSize="17"/>
                                                                         <color key="textColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -521,8 +521,8 @@
                                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="iOU-4n-DsO">
                                                                 <rect key="frame" x="0.0" y="0.0" width="134" height="116"/>
                                                                 <subviews>
-                                                                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="Ci" translatesAutoresizingMaskIntoConstraints="NO" id="3O2-KI-2tc">
-                                                                        <rect key="frame" x="43" y="20" width="44" height="44"/>
+                                                                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="widget_icons-4" translatesAutoresizingMaskIntoConstraints="NO" id="3O2-KI-2tc">
+                                                                        <rect key="frame" x="43" y="20" width="43" height="44"/>
                                                                         <autoresizingMask key="autoresizingMask" flexibleMinX="YES" widthSizable="YES" flexibleMaxX="YES" flexibleMinY="YES" heightSizable="YES" flexibleMaxY="YES"/>
                                                                     </imageView>
                                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Interaction" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="xsH-HQ-8dH">
@@ -600,7 +600,7 @@
                                                         <rect key="frame" x="16" y="279" width="304" height="50"/>
                                                         <subviews>
                                                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="cdDocuments" translatesAutoresizingMaskIntoConstraints="NO" id="JhI-Ki-tya">
-                                                                <rect key="frame" x="61" y="13" width="21" height="22"/>
+                                                                <rect key="frame" x="60" y="13" width="21" height="22"/>
                                                                 <autoresizingMask key="autoresizingMask" flexibleMinX="YES" widthSizable="YES" flexibleMaxX="YES" flexibleMinY="YES" heightSizable="YES" flexibleMaxY="YES"/>
                                                             </imageView>
                                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="View Documents" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="2N7-32-Fm9">
@@ -2797,13 +2797,10 @@
         <segue reference="daP-Xn-46s"/>
     </inferredMetricsTieBreakers>
     <resources>
-        <image name="Ci" width="25" height="17.5"/>
         <image name="Consmobile" width="12" height="12"/>
         <image name="ConstituentSearch" width="17" height="17"/>
         <image name="LocationPin" width="16" height="23"/>
         <image name="Smstaff" width="18" height="21"/>
-        <image name="Tg" width="18.5" height="19.5"/>
-        <image name="Tm" width="20" height="19"/>
         <image name="calendar (1)" width="15" height="15"/>
         <image name="calenderblack" width="11.5" height="11.5"/>
         <image name="cdDocuments" width="21.5" height="21.5"/>
@@ -2823,6 +2820,9 @@
         <image name="profileSelected" width="128" height="128"/>
         <image name="receviedOn" width="28.5" height="28.5"/>
         <image name="sideMenu" width="16" height="12.5"/>
+        <image name="widget_icons-2" width="59" height="55"/>
+        <image name="widget_icons-3" width="46.5" height="49.5"/>
+        <image name="widget_icons-4" width="67" height="47.5"/>
         <namedColor name="AppBaseColor">
             <color red="0.17647058823529413" green="0.58039215686274515" blue="0.92156862745098034" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </namedColor>

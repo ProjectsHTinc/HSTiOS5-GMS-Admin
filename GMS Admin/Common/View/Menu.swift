@@ -43,8 +43,8 @@ class Menu: UITableViewController {
     func updateUI ()
     {
         self.userImage.sd_setImage(with: URL(string: GlobalVariables.shared.user_Image), placeholderImage: UIImage(named: "placeholder.png"))
-        self.userName.text = GlobalVariables.shared.user_name
-        self.userLocation.text = GlobalVariables.shared.selectedConstituencyName
+        self.userName.text = GlobalVariables.shared.user_name.capitalized
+        self.userLocation.text = GlobalVariables.shared.selectedConstituencyName.capitalized
         print(GlobalVariables.shared.user_Image,GlobalVariables.shared.selectedConstituencyName)
     }
 

@@ -178,12 +178,12 @@ extension Meeting: UITableViewDelegate,UITableViewDataSource, UISearchBarDelegat
         else
         {
             let data = meetingeData[indexPath.row]
-            cell.meetingTitle.text = data.meeting_title
+            cell.meetingTitle.text = data.meeting_title.capitalized
             let formatedDate = self.formattedDateFromString(dateString: data.meeting_date, withFormat: "dd-MM-YYYY")
             cell.meetingdate.text = formatedDate
-            cell.meetingStatus.text = data.meeting_status
+            cell.meetingStatus.text = data.meeting_status.capitalized
             
-            if cell.meetingStatus.text == "REQUESTED" || cell.meetingStatus.text == "PROCESSING"
+            if cell.meetingStatus.text == "Requested" || cell.meetingStatus.text == "Processing"
             {
                 cell.meetingTitle.textColor = UIColor(red: 0/255, green: 0/255, blue: 0/255, alpha: 1.0)
                 cell.meetingdate.textColor = UIColor(red: 0/255, green: 0/255, blue: 0/255, alpha: 1.0)
@@ -224,18 +224,18 @@ extension Meeting: UITableViewDelegate,UITableViewDataSource, UISearchBarDelegat
         {
             self.searchBar.isActive = false
             let data = filterdArr[indexPath.row]
-            self.meeting_Title = data.meeting_title
+            self.meeting_Title = data.meeting_title.capitalized
             self.meeting_Discrption = data.meeting_detail
             self.meeting_Date = data.meeting_date
-            self.meeting_Status = data.meeting_status
+            self.meeting_Status = data.meeting_status.capitalized
         }
         else
         {
             let data = meetingeData[indexPath.row]
-            self.meeting_Title = data.meeting_title
+            self.meeting_Title = data.meeting_title.capitalized
             self.meeting_Discrption = data.meeting_detail
             self.meeting_Date = data.meeting_date
-            self.meeting_Status = data.meeting_status
+            self.meeting_Status = data.meeting_status.capitalized
         }
 
         self.performSegue(withIdentifier: "to_MeetingDetails", sender: self)

@@ -69,9 +69,9 @@ class UserProfile: UIViewController, ProfileDetailsView, UIImagePickerController
     
     func setProfileDetails(user_id:String,user_role:String,constituency_id:String,pugathi_id:String,full_name:String,phone_number:String,email_id:String,gender:String,address:String,picture_url:String) {
          self.userImage.sd_setImage(with: URL(string: picture_url), placeholderImage: UIImage(named: "placeholder.png"))
-         self.name.text = full_name
+         self.name.text = full_name.capitalized
          self.phone.text = phone_number
-         self.emailId.text = email_id
+         self.emailId.text = email_id.capitalized
          let seg = gender
          let userRole = user_role
          if userRole == "2"{
@@ -102,7 +102,7 @@ class UserProfile: UIViewController, ProfileDetailsView, UIImagePickerController
             genderSegment.selectedSegmentIndex = 1
             selectedSegmentValue = "F"
          }
-         self.address.text = address
+         self.address.text = address.capitalized
     }
     
     func setEmpty(errorMessage: String) {
@@ -154,7 +154,7 @@ class UserProfile: UIViewController, ProfileDetailsView, UIImagePickerController
         
     func openGallary(){
          imagePicker.sourceType = UIImagePickerController.SourceType.photoLibrary
-            //If you dont want to edit the photo then you can set allowsEditing to false
+         //If you dont want to edit the photo then you can set allowsEditing to false
          imagePicker.allowsEditing = true
          imagePicker.delegate = self
          self.present(imagePicker, animated: true, completion: nil)
@@ -184,7 +184,6 @@ class UserProfile: UIViewController, ProfileDetailsView, UIImagePickerController
             let functionName = "apiios/profilePictureUpload/"
             let baseUrl = GlobalVariables.shared.CLIENTURL + functionName + GlobalVariables.shared.user_id
             let url = URL(string: baseUrl)!
-               
             Alamofire.upload(multipartFormData: { multipartFormData in
                 multipartFormData.append(imgData!, withName: "user_pic",fileName: "file.jpg", mimeType: "image/jpg")
             },
@@ -196,14 +195,13 @@ class UserProfile: UIViewController, ProfileDetailsView, UIImagePickerController
                            print("Upload Progress: \(progress.fractionCompleted)")
                        })
                        upload.responseJSON { response in
-                        print(response.result.value as Any)
-                          //    ActivityIndicator().hideActivityIndicator(uiView: self.view)
-                        let JSON = response.result.value as? [String: Any]
-                        let msg = JSON?["msg"] as? String
-                        let status = JSON?["status"] as? String
-                        GlobalVariables.shared.user_Image = (JSON?["picture_url"] as? String)!
-                        print(msg!,status!,GlobalVariables.shared.user_Image)
-                        
+                       print(response.result.value as Any)
+                       //ActivityIndicator().hideActivityIndicator(uiView: self.view)
+                       let JSON = response.result.value as? [String: Any]
+                       let msg = JSON?["msg"] as? String
+                       let status = JSON?["status"] as? String
+                       GlobalVariables.shared.user_Image = (JSON?["picture_url"] as? String)!
+                       print(msg!,status!,GlobalVariables.shared.user_Image)
                     }
                 case .failure(let encodingError):
                     print(encodingError)

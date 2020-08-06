@@ -219,28 +219,28 @@ extension Document: UITableViewDelegate, UITableViewDataSource, UISearchBarDeleg
         {
             if searchBar.isActive && searchBar.searchBar.text != "" {
                 let data = filterdConsArr[indexPath.row]
-                cell.titleLabel.text = data.doc_name
-                let formatedDate = self.formattedDateFromString(dateString: data.created_at, withFormat: "dd-MMM-YYYY HH:mm a")
+                cell.titleLabel.text = data.doc_name.capitalized
+                let formatedDate = self.formattedDateFromString(dateString: data.created_at, withFormat: "dd-MMM-YYYY h:mm a")
                 cell.date.text = formatedDate
             }
             else{
                 let data = ConData[indexPath.row]
-                cell.titleLabel.text = data.doc_name
-                let formatedDate = self.formattedDateFromString(dateString: data.created_at, withFormat: "dd-MMM-YYYY HH:mm a")
+                cell.titleLabel.text = data.doc_name.capitalized
+                let formatedDate = self.formattedDateFromString(dateString: data.created_at, withFormat: "dd-MMM-YYYY h:mm a")
                 cell.date.text = formatedDate
             }
         }
         else{
             if searchBar.isActive && searchBar.searchBar.text != "" {
                 let data = filterdGriArr[indexPath.row]
-                cell.titleLabel.text = data.doc_name
-                let formatedDate = self.formattedDateFromString(dateString: data.created_at, withFormat: "dd-MMM-YYYY HH:mm a")
+                cell.titleLabel.text = data.doc_name.capitalized
+                let formatedDate = self.formattedDateFromString(dateString: data.created_at, withFormat: "dd-MMM-YYYY h:mm a")
                 cell.date.text = formatedDate
             }
             else{
                 let data = griData[indexPath.row]
-                cell.titleLabel.text = data.doc_name
-                let formatedDate = self.formattedDateFromString(dateString: data.created_at, withFormat: "dd-MMM-YYYY HH:mm a")
+                cell.titleLabel.text = data.doc_name.capitalized
+                let formatedDate = self.formattedDateFromString(dateString: data.created_at, withFormat: "dd-MMM-YYYY h:mm a")
                 cell.date.text = formatedDate
             }
         }

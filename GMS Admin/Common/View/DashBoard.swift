@@ -174,20 +174,13 @@ class DashBoard: UIViewController, ChartViewDelegate {
                                 let dispMonth = dict["disp_month"].string
                                 let newGrev = dict["new_grev"].double
                                 let repeatedGrev = dict["repeated_grev"].double
-                                let _total = dict["total"].string
-                                if _total == nil
-                                {
-                                    self.total.append(0)
-                                }
-                                else
-                                {
-                                    let conv = (_total! as NSString).doubleValue
-                                    self.total.append(conv)
-                                }
+                                let _total = dict["total"].double
                                 
                                 self.dispMonth.append(dispMonth!)
                                 self.new_grev.append(newGrev!)
                                 self.repeeated_grev.append(repeatedGrev!)
+                                self.total.append(_total!)
+
                             }
                             self.setupView()
                             /*Pie Chart*/
@@ -444,7 +437,7 @@ extension DashBoard : PaguthiView, UIPickerViewDelegate, UIPickerViewDataSource,
          {
             let paguthi = items.paguthi_name
             let id = items.id
-            self.paguthiName.append(paguthi)
+            self.paguthiName.append(paguthi.capitalized)
             self.paguthiId.append(id)
          }
          self.paguthiName.insert("ALL", at: 0)
@@ -470,10 +463,10 @@ extension DashBoard : PaguthiView, UIPickerViewDelegate, UIPickerViewDataSource,
          return self.paguthiName[row] // dropdown item
     }
     
-    func pickerView(_ pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
-         area.text = self.paguthiName[row] // selected item
-         GlobalVariables.shared.selectedPaguthiId = self.paguthiId[row]
-    }
+//    func pickerView(_ pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
+//         area.text = self.paguthiName[row] // selected item
+//         GlobalVariables.shared.selectedPaguthiId = self.paguthiId[row]
+//    }
         
 }
 

@@ -44,18 +44,18 @@ class ConstituentGreivancesDetail: UIViewController {
         super.viewDidLoad()
 
         // Do any additional setup after loading the view.
-        self.place.text = _place
-        self.seekerType.text = _seekerType
+        self.place.text = _place.capitalized
+        self.seekerType.text = _seekerType.capitalized
         self.petitionNumber.text = _petitionNumber
         self.refNumber.text = _refNumber
-        self.greivanceName.text = _greivanceName
-        self.subcat.text = _subcat
-        self.desc.text = _desc
+        self.greivanceName.text = _greivanceName.capitalized
+        self.subcat.text = _subcat.capitalized
+        self.desc.text = _desc.capitalized
         let formatedCreated = self.formattedDateFromString(dateString: _createdon, withFormat: "dd-MM-YYYY")
         let formatedUpdatedOn = self.formattedDateFromString(dateString: _updatedOn, withFormat: "dd-MM-YYYY")
         self.createdon.text = formatedCreated
         self.updatedOn.text = formatedUpdatedOn
-        self.status.text = _status
+        self.status.text = _status.capitalized
         
         if (type == "P")
         {
@@ -72,7 +72,7 @@ class ConstituentGreivancesDetail: UIViewController {
             self.descripitionTitleHeight.constant = 0
         }
         
-        if (self.status.text == "PROCESSING")
+        if (self.status.text == "Processing")
         {
             self.status.backgroundColor = UIColor(red: 253/255, green: 166/255, blue: 68/255, alpha: 1.0)
             self.status.layer.cornerRadius = 4.0

@@ -141,12 +141,12 @@ extension MeetingAll : MeetingAllDataView, UISearchBarDelegate ,  UITableViewDel
             let createdby = items.created_by
             let meetingId = items.id
             
-            self.fullNameArr.append(fullName)
+            self.fullNameArr.append(fullName.capitalized)
             self.meetingDateArr.append(meetingdate)
-            self.paguthiNameArr.append(paguthiName)
-            self.meetingTitleArr.append(meetingTitle)
-            self.meetingStatusArr.append(meetingstatus)
-            self.createdByArr.append(createdby)
+            self.paguthiNameArr.append(paguthiName.capitalized)
+            self.meetingTitleArr.append(meetingTitle.capitalized)
+            self.meetingStatusArr.append(meetingstatus.capitalized)
+            self.createdByArr.append(createdby.capitalized)
             self.meetingIdArr.append(meetingId)
 
         }

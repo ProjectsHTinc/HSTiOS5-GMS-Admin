@@ -58,16 +58,16 @@ class StaffDetail: UIViewController, StaffDetailView {
     func setStaffDetail(staffdetail: [StaffDetailData]) {
          data = staffdetail
         self.userImage.sd_setImage(with: URL(string: Globals.userImgUrl + data[0].profile_pic), placeholderImage: UIImage(named: "PhUserImage.png"))
-        self.name.text = data[0].full_name
-        self.email.text = data[0].email_id
-        self.location.text = data[0].paguthi_name
-        self.status.text = data[0].status
-        self.role.text = data[0].role_name
-        self.gender.text = data[0].gender
+        self.name.text = data[0].full_name.capitalized
+        self.email.text = data[0].email_id.capitalized
+        self.location.text = data[0].paguthi_name.capitalized
+        self.status.text = data[0].status.capitalized
+        self.role.text = data[0].role_name.capitalized
+        self.gender.text = data[0].gender.capitalized
         self.phone.text = data[0].phone_number
-        self.address.text = data[0].address
+        self.address.text = data[0].address.capitalized
         
-        if self.status.text == "ACTIVE"{
+        if self.status.text == "Active"{
             self.status.textColor = UIColor(red: 106/255, green: 168/255, blue: 79/255, alpha: 1.0)
             self.statusView.backgroundColor = UIColor(red: 106/255, green: 168/255, blue: 79/255, alpha: 1.0)
         }

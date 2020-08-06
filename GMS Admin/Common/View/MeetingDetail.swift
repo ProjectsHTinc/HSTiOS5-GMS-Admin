@@ -27,12 +27,12 @@ class MeetingDetail: UIViewController {
         /*Set Values*/
         self.addCustomizedBackBtn(title:"  Details of Meeting")
         self.meetingTitle.text = meeting_Title
-        self.meetingDiscrption.text = meeting_Discrption
+        self.meetingDiscrption.text = meeting_Discrption.capitalized
         let formatted = self.formattedDateFromString(dateString: meeting_Date, withFormat: "dd-MM-YYYY")
         self.meetingDate.text =  String(format: "%@ %@", "Date :",formatted!)
         self.meetingStatus.text = meeting_Status
         
-        if self.meetingStatus.text == "REQUESTED" || self.meetingStatus.text == "PROCESSING"
+        if self.meetingStatus.text == "Requested" || self.meetingStatus.text == "Processing"
         {
             self.meetingStatus.textColor =  UIColor(red: 253.0/255, green: 166.0/255, blue: 68.0/255, alpha: 1.0)
 

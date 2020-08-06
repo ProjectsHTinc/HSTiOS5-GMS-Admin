@@ -161,13 +161,13 @@ extension ConstituentGreivances : ConstituentGreivancesView, UITableViewDelegate
                 cell.pettionNumber.text = "Enquiry Number - " +  " " + data.petition_enquiry_no
             }
     //      cell.greivanesType.text = data.grievance_type
-            cell.greivanceName.text = data.grievance_name
-            cell.subCategoeryName.text = data.sub_category_name
-            cell.status.text = data.status
+            cell.greivanceName.text = data.grievance_name.capitalized
+            cell.subCategoeryName.text = data.sub_category_name.capitalized
+            cell.status.text = data.status.capitalized
             let formatedDate = self.formattedDateFromString(dateString: data.grievance_date, withFormat: "dd-MM-YYYY")
             cell.date.text = formatedDate
             
-            if cell.status.text == "PROCESSING"{
+            if cell.status.text == "Processing"{
                 cell.statusBgView.backgroundColor = UIColor(red: 253/255, green: 166/255, blue: 68/255, alpha: 1.0)
             }
             else{
@@ -187,13 +187,13 @@ extension ConstituentGreivances : ConstituentGreivancesView, UITableViewDelegate
                 cell.pettionNumber.text = "Enquiry Number - " +  " " + data.petition_enquiry_no
             }
     //      cell.greivanesType.text = data.grievance_type
-            cell.greivanceName.text = data.grievance_name
-            cell.subCategoeryName.text = data.sub_category_name
-            cell.status.text = data.status
+            cell.greivanceName.text = data.grievance_name.capitalized
+            cell.subCategoeryName.text = data.sub_category_name.capitalized
+            cell.status.text = data.status.capitalized
             let formatedDate = self.formattedDateFromString(dateString: data.grievance_date, withFormat: "dd-MM-YYYY")
             cell.date.text = formatedDate
             
-            if cell.status.text == "PROCESSING"{
+            if cell.status.text == "Processing"{
                 cell.statusBgView.backgroundColor = UIColor(red: 253/255, green: 166/255, blue: 68/255, alpha: 1.0)
             }
             else{

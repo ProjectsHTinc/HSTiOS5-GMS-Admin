@@ -101,9 +101,9 @@ extension ConstituentGreivancesMessage : ConstituentGreivancesMessageView, UITab
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "cell", for: indexPath) as! ConstituentGreivancesMessageCell
         let data = PresenterData[indexPath.row]
-        cell.message.text = data.sms_text
-        cell.sentBy.text = data.created_by
-        let formatedDate = self.formattedDateFromString(dateString: data.created_at, withFormat: "dd-MMM-YYYY HH:mm a")
+        cell.message.text = data.sms_text.capitalized
+        cell.sentBy.text = data.created_by.capitalized
+        let formatedDate = self.formattedDateFromString(dateString: data.created_at, withFormat: "dd-MMM-YYYY h:mm a")
         cell.date.text = formatedDate
         return cell
     }

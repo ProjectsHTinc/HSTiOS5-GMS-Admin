@@ -140,9 +140,8 @@
                                                             <nil key="highlightedColor"/>
                                                         </label>
                                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="pending" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="QFP-3f-N3B">
-                                                            <rect key="frame" x="16" y="127" width="120" height="16"/>
+                                                            <rect key="frame" x="16" y="127" width="46.5" height="16"/>
                                                             <constraints>
-                                                                <constraint firstAttribute="width" constant="120" id="QSM-ux-5si"/>
                                                                 <constraint firstAttribute="height" constant="16" id="dLh-B7-pyA"/>
                                                             </constraints>
                                                             <fontDescription key="fontDescription" name="Roboto-Regular" family="Roboto" pointSize="13"/>
@@ -150,9 +149,8 @@
                                                             <nil key="highlightedColor"/>
                                                         </label>
                                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Created by Kumaran" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="w0a-zx-xFS">
-                                                            <rect key="frame" x="190" y="127" width="150" height="16"/>
+                                                            <rect key="frame" x="223" y="127" width="117" height="16"/>
                                                             <constraints>
-                                                                <constraint firstAttribute="width" constant="150" id="JKz-Pe-3sy"/>
                                                                 <constraint firstAttribute="height" constant="16" id="u6L-TM-qdR"/>
                                                             </constraints>
                                                             <fontDescription key="fontDescription" name="Roboto-Regular" family="Roboto" pointSize="13"/>
@@ -368,19 +366,17 @@
                                                             <nil key="highlightedColor"/>
                                                         </label>
                                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="pending" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="evj-lo-4tn">
-                                                            <rect key="frame" x="16" y="127" width="120" height="16"/>
+                                                            <rect key="frame" x="16" y="127" width="46.5" height="16"/>
                                                             <constraints>
                                                                 <constraint firstAttribute="height" constant="16" id="TrY-pF-G12"/>
-                                                                <constraint firstAttribute="width" constant="120" id="V7P-ML-hoU"/>
                                                             </constraints>
                                                             <fontDescription key="fontDescription" name="Roboto-Regular" family="Roboto" pointSize="13"/>
                                                             <color key="textColor" red="0.99215686270000003" green="0.65098039220000004" blue="0.2666666667" alpha="1" colorSpace="calibratedRGB"/>
                                                             <nil key="highlightedColor"/>
                                                         </label>
                                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Created by Kumaran" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="SJN-gg-fNc">
-                                                            <rect key="frame" x="190" y="127" width="150" height="16"/>
+                                                            <rect key="frame" x="223" y="127" width="117" height="16"/>
                                                             <constraints>
-                                                                <constraint firstAttribute="width" constant="150" id="h77-R2-35n"/>
                                                                 <constraint firstAttribute="height" constant="16" id="v0H-nP-dKR"/>
                                                             </constraints>
                                                             <fontDescription key="fontDescription" name="Roboto-Regular" family="Roboto" pointSize="13"/>

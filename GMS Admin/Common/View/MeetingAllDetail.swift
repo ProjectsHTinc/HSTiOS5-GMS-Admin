@@ -39,7 +39,7 @@ class MeetingAllDetail: UIViewController ,MeetingAllDetailView, UIPickerViewDele
              })
              return
         }
-        self.statusArr = ["REQUESTED","COMPLETED"]
+        self.statusArr = ["Requested","Completed"]
         self.createPickerView()
         self.callAPIMeetingDetail()
 
@@ -85,7 +85,6 @@ class MeetingAllDetail: UIViewController ,MeetingAllDetailView, UIPickerViewDele
         self.pickerView.selectRow(row, inComponent: 0, animated: false)
         if self.status.isFirstResponder{
             status.text = self.statusArr[row]// selected item
-            self.callAPIMeetingUpdate(meeting_id: meetingId, user_id: GlobalVariables.shared.user_id, status: status.text!)
         }
         self.status.resignFirstResponder()
         view.endEditing(true)
@@ -105,9 +104,9 @@ class MeetingAllDetail: UIViewController ,MeetingAllDetailView, UIPickerViewDele
          return self.statusArr[row] // dropdown item
     }
     
-    func pickerView(_ pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
-         status.text = self.statusArr[row] // selected item
-    }
+//    func pickerView(_ pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
+//         status.text = self.statusArr[row] // selected item
+//    }
     
     func callAPIMeetingUpdate(meeting_id: String, user_id: String, status: String){
         presenterUpdate.attachView(view: self)
@@ -124,13 +123,13 @@ class MeetingAllDetail: UIViewController ,MeetingAllDetailView, UIPickerViewDele
     
     func setMeetingDetail(meetingdetail: [MeetingAllDetailData]) {
         data = meetingdetail
-        self.name.text = data[0].full_name
+        self.name.text = data[0].full_name.capitalized
         let formatedDate = self.formattedDateFromString(dateString: data[0].meeting_date, withFormat: "dd-MM-YYYY")
         self.date.text = formatedDate
-        self.place.text = data[0].paguthi_name + "(Paguthi)"
-        self.meetingTitle.text = data[0].meeting_title
-        self.detail.text = data[0].meeting_detail
-        self.status.text = data[0].meeting_status
+        self.place.text = data[0].paguthi_name.capitalized + "(Paguthi)"
+        self.meetingTitle.text = data[0].meeting_title.capitalized
+        self.detail.text = data[0].meeting_detail.capitalized
+        self.status.text = data[0].meeting_status.capitalized
     }
     
     func setEmpty(errorMessage: String) {
@@ -153,6 +152,13 @@ class MeetingAllDetail: UIViewController ,MeetingAllDetailView, UIPickerViewDele
     
     @IBAction func update(_ sender: Any) {
         
+        guard Reachability.isConnectedToNetwork() == true else {
+              AlertController.shared.offlineAlert(targetVc: self, complition: {
+                //Custom action code
+             })
+             return
+        }
+        self.callAPIMeetingUpdate(meeting_id: meetingId, user_id: GlobalVariables.shared.user_id, status: status.text!)
     }
     
     func formattedDateFromString(dateString: String, withFormat format: String) -> String? {

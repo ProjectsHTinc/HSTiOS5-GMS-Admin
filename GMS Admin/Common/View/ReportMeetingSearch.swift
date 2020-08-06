@@ -110,12 +110,12 @@ extension ReportMeetingSearch : ReportMeetingView ,UITableViewDelegate, UITableV
             let status = item.meeting_status
             let createdby = item.created_by
             
-            self.fullNameArr.append(fullname)
+            self.fullNameArr.append(fullname.capitalized)
             self.meetingDateArr.append(meetingdate)
-            self.paguthinameArr.append(paguthi)
-            self.meetingTitleArr.append(title)
-            self.meetingStatusArr.append(status)
-            self.createdbyArr.append(createdby)
+            self.paguthinameArr.append(paguthi.capitalized)
+            self.meetingTitleArr.append(title.capitalized)
+            self.meetingStatusArr.append(status.capitalized)
+            self.createdbyArr.append(createdby.capitalized)
         }
         self.meetingCount.text = String(GlobalVariables.shared.meetingAllCount) + " Meetings"
         self.tableView.isHidden = false

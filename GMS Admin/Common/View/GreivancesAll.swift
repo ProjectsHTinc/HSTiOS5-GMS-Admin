@@ -342,19 +342,19 @@ extension GreivancesAll : PaguthiView , UISearchBarDelegate, GreivancesAllView ,
             let date = items.grievance_date
             let id = items.constituent_id
             
-            self.placeArr.append(place)
-            self.seekerTypeArr.append(seekerType)
+            self.placeArr.append(place.capitalized)
+            self.seekerTypeArr.append(seekerType.capitalized)
             self.petitionNumberArr.append(petitionNumber)
             self.refNumberArr.append(refNumber)
-            self.greivanceNameArr.append(greivanceName)
-            self.subcatArr.append(subcat)
-            self.descArr.append(desc)
+            self.greivanceNameArr.append(greivanceName.capitalized)
+            self.subcatArr.append(subcat.capitalized)
+            self.descArr.append(desc.capitalized)
             self.createdonArr.append(createdon)
             self.updatedOnArr.append(updatedOn)
-            self.statusArr.append(status)
+            self.statusArr.append(status.capitalized)
             self.greivanceIdArr.append(greivanceId)
             self.typeArr.append(type)
-            self.userNameArr.append(username)
+            self.userNameArr.append(username.capitalized)
             self.dateArr.append(date)
             self.idArr.append(id)
         }
@@ -398,7 +398,7 @@ extension GreivancesAll : PaguthiView , UISearchBarDelegate, GreivancesAllView ,
         let formatedDate = self.formattedDateFromString(dateString: dateArr[indexPath.row], withFormat: "dd-MM-YYYY")
         cell.date.text = formatedDate
         
-        if cell.status.text == "PROCESSING"{
+        if cell.status.text == "Processing"{
             cell.statusBgView.backgroundColor = UIColor(red: 253/255, green: 166/255, blue: 68/255, alpha: 1.0)
         }
         else{
