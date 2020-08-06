@@ -278,8 +278,8 @@
                                                     <color key="titleColor" red="0.31764705879999999" green="0.31764705879999999" blue="0.31764705879999999" alpha="1" colorSpace="calibratedRGB"/>
                                                 </state>
                                                 <connections>
+                                                    <action selector="forgotPassoword:" destination="3zz-RP-4aU" eventType="touchUpInside" id="DJF-uw-qP8"/>
                                                     <action selector="forgotPassword:" destination="3zz-RP-4aU" eventType="touchUpInside" id="YuR-am-cyP"/>
-                                                    <segue destination="Ug5-sO-My1" kind="show" id="ZCl-wg-AHS"/>
                                                 </connections>
                                             </button>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Tpz-AQ-hCk">
@@ -372,6 +372,7 @@
                         <outlet property="hidePswrdOutlet" destination="SRV-IV-MsT" id="YFd-jG-kCe"/>
                         <outlet property="password" destination="s96-Wh-bmZ" id="kHH-cB-jsq"/>
                         <segue destination="c20-bE-L1U" kind="show" identifier="to_dashboard" id="XNb-zz-9NN"/>
+                        <segue destination="Ug5-sO-My1" kind="show" identifier="to_fp" id="JLh-Yf-lXF"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="NyD-7E-YUd" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
@@ -791,7 +792,7 @@
         </scene>
     </scenes>
     <inferredMetricsTieBreakers>
-        <segue reference="ZCl-wg-AHS"/>
+        <segue reference="JLh-Yf-lXF"/>
     </inferredMetricsTieBreakers>
     <resources>
         <image name="LocationPin" width="16" height="23"/>

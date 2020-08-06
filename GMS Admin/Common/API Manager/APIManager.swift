@@ -292,7 +292,7 @@ class APIManager: NSObject {
     //MARK: GET FORGOT PASSWORD RESPONSE
     func callAPIFp(user_name:String, onSuccess successCallback: ((_ fp: ForgotPasswordModel) -> Void)?,onFailure failureCallback: ((_ errorMessage: String) -> Void)?) {
         // Build URL
-        let url = MAIN_URL + Endpoint.forgotPasswordUrl.rawValue
+        let url = GlobalVariables.shared.CLIENTURL + Endpoint.forgotPasswordUrl.rawValue
         // Set Parameters
         let parameters: Parameters =  ["user_name": user_name]
         // call API
@@ -305,9 +305,11 @@ class APIManager: NSObject {
               return
         }
           
-            let status = responseObject["success"].string
+            let status = responseObject["status"].string
+            let msgRes = responseObject["msg"].string
             let sendToModel = ForgotPasswordModel()
             sendToModel.status = status
+            sendToModel.msg = msgRes
             successCallback?(sendToModel)
             
         },

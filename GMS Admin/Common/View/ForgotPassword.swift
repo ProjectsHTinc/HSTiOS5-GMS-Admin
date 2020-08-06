@@ -96,10 +96,10 @@ extension ForgotPassword : ForgotPasswordView
         self.view.activityStopAnimating()
     }
     
-    func setStatus(status: String) {
+    func setStatus(status: String,msg:String) {
         if status == "success"
         {
-            AlertController.shared.showAlert(targetVc: self, title: Globals.alertTitle, message: status, complition: {
+            AlertController.shared.showAlert(targetVc: self, title: Globals.alertTitle, message: msg, complition: {
                 self.performSegue(withIdentifier: "to_login", sender: self)
             })
         }

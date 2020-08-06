@@ -52,7 +52,7 @@ class ConstituentGreivancesMessage: UIViewController {
         if let date = inputFormatter.date(from: dateString) {
 
             let outputFormatter = DateFormatter()
-          outputFormatter.dateFormat = format
+            outputFormatter.dateFormat = format
 
             return outputFormatter.string(from: date)
         }
@@ -103,7 +103,7 @@ extension ConstituentGreivancesMessage : ConstituentGreivancesMessageView, UITab
         let data = PresenterData[indexPath.row]
         cell.message.text = data.sms_text
         cell.sentBy.text = data.created_by
-        let formatedDate = self.formattedDateFromString(dateString: data.created_at, withFormat: "dd-MMM-YYYY HH:mm:ss")
+        let formatedDate = self.formattedDateFromString(dateString: data.created_at, withFormat: "dd-MMM-YYYY HH:mm a")
         cell.date.text = formatedDate
         return cell
     }

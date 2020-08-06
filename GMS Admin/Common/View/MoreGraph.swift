@@ -23,7 +23,7 @@ class MoreGraph: UIViewController, ChartViewDelegate {
 
         // Do any additional setup after loading the view.
         /*Set Values for PieChart*/
-        self.grievanceName = ["Completed","Processing","Enquiry"]
+        self.grievanceName = ["Enquiry","Processing","Completed"]
         /*Pie Chart*/
         self.SetPieChart()
         /*Line Chart*/
@@ -46,15 +46,17 @@ class MoreGraph: UIViewController, ChartViewDelegate {
           // 2. Set ChartDataSet
           let pieChartDataSet = PieChartDataSet(entries: dataEntries, label: nil)
           var colors: [UIColor] = []
-          let redcolor = UIColor(red:(219/255), green: (201/255), blue: (255/255),alpha: 1.0)
-          let greencolor = UIColor(red: (33/255), green: (132/255), blue: (217/255), alpha: 1.0)
-          let orangecolor = UIColor(red: (207/255), green: (255/255), blue: (216/255), alpha: 1.0)
-          colors.append(redcolor)
-          colors.append(orangecolor)
-          colors.append(greencolor)
+//         let totalColor =  UIColor.clear
+          let enquriyColor =  UIColor(red: (33/255), green: (132/255), blue: (217/255), alpha: 1.0)
+          let processinggreencolor = UIColor(red: (207/255), green: (255/255), blue: (216/255), alpha: 1.0)
+          let Completedorangecolor = UIColor(red:(219/255), green: (201/255), blue: (255/255),alpha: 1.0)
+//          colors.append(totalColor)
+          colors.append(enquriyColor)
+          colors.append(processinggreencolor)
+          colors.append(Completedorangecolor)
           pieChartDataSet.colors = colors
         
-          // 3. Set ChartData
+
           let pieChartData = PieChartData(dataSet: pieChartDataSet)
           let format = NumberFormatter()
           format.numberStyle = .none
@@ -82,7 +84,7 @@ class MoreGraph: UIViewController, ChartViewDelegate {
         for i in 0 ..< months.count {
             yVals1.append(ChartDataEntry(x:Double(i) , y:dollar[i]))
         }
-        let set1: LineChartDataSet = LineChartDataSet(entries: yVals1, label: "")
+        let set1: LineChartDataSet = LineChartDataSet(entries: yVals1, label: "Year")
         set1.axisDependency = .left // Line will correlate with left axis values
         set1.setColor(UIColor(red: (219/255), green: (201/255), blue: (255/255),alpha: 1.0))
         set1.setCircleColor(UIColor(red: (45/255), green: (148/255), blue: (235/255),alpha: 1.0))

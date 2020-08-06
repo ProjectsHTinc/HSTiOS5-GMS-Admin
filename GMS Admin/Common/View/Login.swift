@@ -96,6 +96,34 @@ class Login: UIViewController  {
         self.callAPILogin()
               
     }
+    @IBAction func forgotPassoword(_ sender: Any) {
+        
+        guard CheckValuesForConstituency () else {
+              return
+        }
+        
+        self.performSegue(withIdentifier: "to_fp", sender: self)
+    }
+    
+    func CheckValuesForConstituency () -> Bool
+    {
+        guard Reachability.isConnectedToNetwork() == true else{
+              AlertController.shared.offlineAlert(targetVc: self, complition: {
+                //Custom action code
+             })
+             return false
+        }
+        
+        guard self.constituency.text?.count != 0  else {
+            AlertController.shared.showAlert(targetVc: self, title: Globals.alertTitle, message: Globals.ConstituencyAlertMessage, complition: {
+                
+              })
+             return false
+         }
+        
+        return true
+
+    }
     
     func CheckValuesAreEmpty () -> Bool{
         
@@ -213,7 +241,7 @@ extension Login : LoginView
     
     func setEmpty(errorMessage: String) {
         AlertController.shared.showAlert(targetVc: self, title: Globals.alertTitle, message: errorMessage, complition: {
-            self.dismiss(animated: false, completion: nil)
+//            self.dismiss(animated: false, completion: nil)
         })
     }
     

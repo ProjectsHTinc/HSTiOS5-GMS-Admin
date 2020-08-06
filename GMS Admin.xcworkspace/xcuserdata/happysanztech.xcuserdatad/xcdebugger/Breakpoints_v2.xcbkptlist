@@ -16,7 +16,7 @@
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "100"
             endingLineNumber = "100"
-            landmarkName = "setStatus(status:)"
+            landmarkName = "setStatus(status:msg:)"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
@@ -151,22 +151,6 @@
       <BreakpointProxy
          BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
          <BreakpointContent
-            uuid = "0E34D818-6143-4F3E-BC3B-C91BE97F86A6"
-            shouldBeEnabled = "Yes"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "GMS Admin/Common/View/Document.swift"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "37"
-            endingLineNumber = "37"
-            landmarkName = "viewDidLoad()"
-            landmarkType = "7">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
             uuid = "0CF233F1-0704-47E5-B43D-872C01F15E6C"
             shouldBeEnabled = "Yes"
             ignoreCount = "0"
@@ -225,6 +209,22 @@
             startingLineNumber = "77"
             endingLineNumber = "77"
             landmarkName = "setProfileDetails(user_id:user_role:constituency_id:pugathi_id:full_name:phone_number:email_id:gender:address:picture_url:)"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "8B4D93F8-167A-4574-97CF-8C30D57DCBD1"
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "GMS Admin/Common/Presenter/ForgotPasswordPresenter.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "45"
+            endingLineNumber = "45"
+            landmarkName = "getFpStatus(user_name:)"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>

@@ -142,8 +142,8 @@ class DashBoard: UIViewController, ChartViewDelegate {
                     try AFWrapper.requestPOSTURL(url, params: (parameters), headers: nil, success: {
                         (JSONResponse) -> Void in
                         self.view.activityStopAnimating()
-                        print(JSONResponse)
                         let json = JSON(JSONResponse)
+                        print(json)
                         let msg = json["msg"].stringValue
                         let status = json["status"].stringValue
                         if msg == "Dashboard Details" && status == "Success"
@@ -175,22 +175,31 @@ class DashBoard: UIViewController, ChartViewDelegate {
                                 let newGrev = dict["new_grev"].double
                                 let repeatedGrev = dict["repeated_grev"].double
                                 let _total = dict["total"].string
-                                let conv = (_total! as NSString).doubleValue
+                                if _total == nil
+                                {
+                                    self.total.append(0)
+                                }
+                                else
+                                {
+                                    let conv = (_total! as NSString).doubleValue
+                                    self.total.append(conv)
+                                }
                                 
                                 self.dispMonth.append(dispMonth!)
                                 self.new_grev.append(newGrev!)
                                 self.repeeated_grev.append(repeatedGrev!)
-                                self.total.append(conv)
                             }
                             self.setupView()
                             /*Pie Chart*/
-                            let gerv_ecount = json["grievance_graph"]["gerv_ecount"].doubleValue
-                            let gerv_ppcount = json["grievance_graph"]["gerv_ppcount"].doubleValue
-                            let gerv_pccount = json["grievance_graph"]["gerv_pccount"].doubleValue
+                            //let gerv_count = json["grievance_graph"]["gerv_count"].doubleValue
+                            let gerv_enquiry = json["grievance_graph"]["gerv_ecount"].doubleValue
+                            let gerv_processing = json["grievance_graph"]["gerv_ppcount"].doubleValue
+                            let gerv_completed = json["grievance_graph"]["gerv_pccount"].doubleValue
 
-                            self.grivenacegraph.insert(gerv_ecount, at: 0)
-                            self.grivenacegraph.insert(gerv_ppcount, at: 1)
-                            self.grivenacegraph.insert(gerv_pccount, at: 2)
+                            //self.grivenacegraph.insert(gerv_count, at: 0)
+                            self.grivenacegraph.insert(gerv_enquiry, at: 0)
+                            self.grivenacegraph.insert(gerv_processing, at: 1)
+                            self.grivenacegraph.insert(gerv_completed, at: 2)
 
                             let meeting_graph = json["meeting_graph"]
                             for i in 0..<(meeting_graph.count)

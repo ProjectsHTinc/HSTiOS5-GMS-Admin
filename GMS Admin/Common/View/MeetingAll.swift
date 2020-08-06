@@ -205,7 +205,7 @@ extension MeetingAll : MeetingAllDataView, UISearchBarDelegate ,  UITableViewDel
            cell.paguthi.text = paguthiNameArr[indexPath.row] + "(Paguthi)"
            cell.title.text = meetingTitleArr[indexPath.row]
            cell.status.text = meetingStatusArr[indexPath.row]
-           cell.createdBy.text = createdByArr[indexPath.row]
+           cell.createdBy.text = "Created by - " + createdByArr[indexPath.row]
            return cell
     }
        

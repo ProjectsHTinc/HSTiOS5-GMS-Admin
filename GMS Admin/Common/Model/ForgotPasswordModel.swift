@@ -23,4 +23,11 @@ class ForgotPasswordModel {
             self.status = data
         }
     }
+    
+    // MARK: Class Method
+    class func build(_ dict: [String: AnyObject]) -> ForgotPasswordModel {
+        let forgotPasswordModel = ForgotPasswordModel()
+        forgotPasswordModel.loadFromDictionary(dict)
+        return forgotPasswordModel
+    }
 }

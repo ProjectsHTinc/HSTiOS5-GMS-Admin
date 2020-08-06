@@ -80,7 +80,7 @@ extension WidgetInterAction : UITableViewDelegate , UITableViewDataSource, Const
     func setCI(consituentInteraction: [ConstituentinterActionData]) {
         
         CIData = consituentInteraction
-        self.titleLabel.text =  "InterAction Count - " + GlobalVariables.shared.constituentInteractionCount
+        self.titleLabel.text =  "Constituent Interaction - " + GlobalVariables.shared.constituentInteractionCount
         self.tableView.isHidden = false
         self.tableView.reloadData()
          

@@ -92,10 +92,10 @@ class LoginModel {
     }
     
     // MARK: Class Method
-//    class func build(_ dict: [String: AnyObject]) -> LoginModel {
-//        let loginModel = LoginModel()
-//        loginModel.loadFromDictionary(dict)
-//        return loginModel
-//    }
+    class func build(_ dict: [String: AnyObject]) -> LoginModel {
+        let loginModel = LoginModel()
+        loginModel.loadFromDictionary(dict)
+        return loginModel
+    }
 
 }

@@ -129,7 +129,7 @@ extension ConstituentDetail: ConstituentDetailView{
          constituentdetail = constituentDetail
          self.name.text = constituentdetail[0].full_name
          self.mobileNumber.text = constituentdetail[0].mobile_no
-         self.location.text = constituentdetail[0].address
+         self.location.text = constituentdetail[0].paguthi_name
          self.wardNumber.text = constituentdetail[0].ward_name
          self.serialNumber.text = constituentdetail[0].serial_no
          self.voterID.text = constituentdetail[0].voter_id_no

@@ -10,12 +10,14 @@ import UIKit
 
 struct ForgotPasswordData {
     let status: String
+    let msg: String
+
 }
 protocol ForgotPasswordView : NSObjectProtocol {
 
     func startLoading()
     func finishLoading()
-    func setStatus(status:String)
+    func setStatus(status:String,msg:String)
     func setEmpty(errorMessage:String)
 }
 
@@ -39,8 +41,8 @@ class ForgotPasswordPresenter {
     func getFpStatus(user_name:String) {
         self.forgotPasswordView?.startLoading()
         forgotPasswordService.callAPIFp(
-            user_name: user_name, onSuccess: { (appversion) in
-                self.forgotPasswordView?.setStatus(status: appversion.status!)
+            user_name: user_name, onSuccess: { (fp) in
+                self.forgotPasswordView?.setStatus(status: fp.status!,msg:fp.msg!)
                 self.forgotPasswordView?.finishLoading()
             },
             onFailure: { (errorMessage) in

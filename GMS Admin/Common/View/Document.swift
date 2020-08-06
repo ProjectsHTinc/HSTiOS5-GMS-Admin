@@ -220,27 +220,47 @@ extension Document: UITableViewDelegate, UITableViewDataSource, UISearchBarDeleg
             if searchBar.isActive && searchBar.searchBar.text != "" {
                 let data = filterdConsArr[indexPath.row]
                 cell.titleLabel.text = data.doc_name
-                cell.date.text = data.created_at
+                let formatedDate = self.formattedDateFromString(dateString: data.created_at, withFormat: "dd-MMM-YYYY HH:mm a")
+                cell.date.text = formatedDate
             }
             else{
                 let data = ConData[indexPath.row]
                 cell.titleLabel.text = data.doc_name
-                cell.date.text = data.created_at
+                let formatedDate = self.formattedDateFromString(dateString: data.created_at, withFormat: "dd-MMM-YYYY HH:mm a")
+                cell.date.text = formatedDate
             }
         }
         else{
             if searchBar.isActive && searchBar.searchBar.text != "" {
                 let data = filterdGriArr[indexPath.row]
                 cell.titleLabel.text = data.doc_name
-                cell.date.text = data.created_at
+                let formatedDate = self.formattedDateFromString(dateString: data.created_at, withFormat: "dd-MMM-YYYY HH:mm a")
+                cell.date.text = formatedDate
             }
             else{
                 let data = griData[indexPath.row]
                 cell.titleLabel.text = data.doc_name
-                cell.date.text = data.created_at
+                let formatedDate = self.formattedDateFromString(dateString: data.created_at, withFormat: "dd-MMM-YYYY HH:mm a")
+                cell.date.text = formatedDate
             }
         }
         return cell
+    }
+    
+    func formattedDateFromString(dateString: String, withFormat format: String) -> String? {
+
+        let inputFormatter = DateFormatter()
+        inputFormatter.dateFormat = "yyyy-MM-dd HH:mm:ss"
+
+        if let date = inputFormatter.date(from: dateString) {
+
+            let outputFormatter = DateFormatter()
+          outputFormatter.dateFormat = format
+
+            return outputFormatter.string(from: date)
+        }
+
+        return nil
     }
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
