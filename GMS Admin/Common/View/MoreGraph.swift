@@ -53,6 +53,7 @@ class MoreGraph: UIViewController, ChartViewDelegate {
           colors.append(orangecolor)
           colors.append(greencolor)
           pieChartDataSet.colors = colors
+        
           // 3. Set ChartData
           let pieChartData = PieChartData(dataSet: pieChartDataSet)
           let format = NumberFormatter()

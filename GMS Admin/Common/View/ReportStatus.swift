@@ -67,7 +67,7 @@ class ReportStatus: UIViewController {
             self.pageTitle.text = "Status"
             self.addCustomizedBackBtn(title:"  Status Report")
             self.reportImageView.image = UIImage(named: "ReportStatus")
-            self.statusArr = ["ALL","REQUEST","COMPLETED"]
+            self.statusArr = ["ALL","PROCESSING","COMPLETED"]
             self.textfieldName = "Status"
         }
         else if (from == "categoery"){

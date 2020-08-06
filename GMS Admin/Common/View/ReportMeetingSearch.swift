@@ -151,7 +151,7 @@ extension ReportMeetingSearch : ReportMeetingView ,UITableViewDelegate, UITableV
            cell.paguthi.text = paguthinameArr[indexPath.row] + "(Paguthi)"
            cell.title.text = meetingTitleArr[indexPath.row]
            cell.status.text = meetingStatusArr[indexPath.row]
-           cell.createdBy.text = createdbyArr[indexPath.row]
+           cell.createdBy.text = "Created by - " + createdbyArr[indexPath.row]
            return cell
     }
        

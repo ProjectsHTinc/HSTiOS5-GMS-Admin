@@ -133,7 +133,6 @@ class Menu: UITableViewController {
         UserDefaults.standard.clearUserData()
         self.performSegue(withIdentifier: "logOut", sender: self)
 
-
     }
 
     /*

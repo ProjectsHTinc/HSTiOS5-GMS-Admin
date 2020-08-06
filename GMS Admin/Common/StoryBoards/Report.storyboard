@@ -1224,20 +1224,18 @@
                                                             <nil key="highlightedColor"/>
                                                         </label>
                                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="pending" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="CcL-aN-l7s">
-                                                            <rect key="frame" x="16" y="127" width="120" height="16"/>
+                                                            <rect key="frame" x="16" y="127" width="46.5" height="16"/>
                                                             <constraints>
                                                                 <constraint firstAttribute="height" constant="16" id="3hV-Xk-opt"/>
-                                                                <constraint firstAttribute="width" constant="120" id="IkU-KC-zEp"/>
                                                             </constraints>
                                                             <fontDescription key="fontDescription" name="Roboto-Regular" family="Roboto" pointSize="13"/>
                                                             <color key="textColor" red="0.99215686270000003" green="0.65098039220000004" blue="0.2666666667" alpha="1" colorSpace="calibratedRGB"/>
                                                             <nil key="highlightedColor"/>
                                                         </label>
                                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Created by Kumaran" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="bh6-zI-ikU">
-                                                            <rect key="frame" x="190" y="127" width="150" height="16"/>
+                                                            <rect key="frame" x="223" y="127" width="117" height="16"/>
                                                             <constraints>
-                                                                <constraint firstAttribute="width" constant="150" id="4Ol-ZZ-iUD"/>
-                                                                <constraint firstAttribute="height" constant="16" id="FET-AN-aer"/>
+                                                                <constraint firstAttribute="height" constant="16" id="NLV-3X-Rfk"/>
                                                             </constraints>
                                                             <fontDescription key="fontDescription" name="Roboto-Regular" family="Roboto" pointSize="13"/>
                                                             <color key="textColor" white="0.66666666669999997" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -1249,7 +1247,7 @@
                                                         <constraint firstItem="fDf-Ib-vAe" firstAttribute="top" secondItem="fHe-eu-WYn" secondAttribute="top" constant="8" id="0Zs-SZ-qlw"/>
                                                         <constraint firstAttribute="trailing" secondItem="xuS-2P-Pan" secondAttribute="trailing" constant="16" id="1P4-vz-7cB"/>
                                                         <constraint firstItem="no0-sY-SL0" firstAttribute="leading" secondItem="fHe-eu-WYn" secondAttribute="leading" constant="16" id="4Ko-K3-s4a"/>
-                                                        <constraint firstItem="bh6-zI-ikU" firstAttribute="top" secondItem="xuS-2P-Pan" secondAttribute="bottom" constant="6" id="ACM-cU-Jc8"/>
+                                                        <constraint firstAttribute="trailing" secondItem="bh6-zI-ikU" secondAttribute="trailing" constant="18" id="4bi-Ma-fzn"/>
                                                         <constraint firstItem="nk7-ur-3f6" firstAttribute="leading" secondItem="fHe-eu-WYn" secondAttribute="leading" constant="16" id="EAt-mI-A6c"/>
                                                         <constraint firstItem="CcL-aN-l7s" firstAttribute="leading" secondItem="fHe-eu-WYn" secondAttribute="leading" constant="16" id="Eb7-6s-FDv"/>
                                                         <constraint firstItem="CUZ-Kj-V9L" firstAttribute="top" secondItem="fDf-Ib-vAe" secondAttribute="bottom" constant="6" id="GnV-nc-ru1"/>
@@ -1262,12 +1260,12 @@
                                                         <constraint firstItem="CcL-aN-l7s" firstAttribute="top" secondItem="xuS-2P-Pan" secondAttribute="bottom" constant="6" id="Skl-mw-q3G"/>
                                                         <constraint firstItem="xuS-2P-Pan" firstAttribute="top" secondItem="yoT-Og-v0S" secondAttribute="bottom" constant="10" id="T0V-nz-vZn"/>
                                                         <constraint firstItem="Sqg-vJ-kVA" firstAttribute="top" secondItem="CUZ-Kj-V9L" secondAttribute="bottom" constant="6" id="VQb-ro-k9c"/>
-                                                        <constraint firstAttribute="trailing" secondItem="bh6-zI-ikU" secondAttribute="trailing" constant="18" id="X3u-yB-PC7"/>
                                                         <constraint firstItem="no0-sY-SL0" firstAttribute="top" secondItem="fHe-eu-WYn" secondAttribute="top" constant="11" id="YMe-mE-Zbk"/>
                                                         <constraint firstItem="CUZ-Kj-V9L" firstAttribute="leading" secondItem="ph3-Wh-HMA" secondAttribute="trailing" constant="8" id="YWV-ob-dGG"/>
                                                         <constraint firstItem="GzZ-GY-Qcy" firstAttribute="leading" secondItem="fHe-eu-WYn" secondAttribute="leading" constant="16" id="e4i-tc-dM4"/>
                                                         <constraint firstItem="ph3-Wh-HMA" firstAttribute="top" secondItem="no0-sY-SL0" secondAttribute="bottom" constant="12" id="jg8-ft-LpX"/>
                                                         <constraint firstItem="yoT-Og-v0S" firstAttribute="top" secondItem="Sqg-vJ-kVA" secondAttribute="bottom" constant="6" id="ko6-bf-3cy"/>
+                                                        <constraint firstItem="bh6-zI-ikU" firstAttribute="top" secondItem="xuS-2P-Pan" secondAttribute="bottom" constant="6" id="ryd-fT-rlu"/>
                                                         <constraint firstItem="Sqg-vJ-kVA" firstAttribute="leading" secondItem="nk7-ur-3f6" secondAttribute="trailing" constant="8" id="sub-my-Ay5"/>
                                                         <constraint firstItem="nk7-ur-3f6" firstAttribute="top" secondItem="ph3-Wh-HMA" secondAttribute="bottom" constant="12" id="t2Z-zn-tw0"/>
                                                         <constraint firstItem="ph3-Wh-HMA" firstAttribute="leading" secondItem="fHe-eu-WYn" secondAttribute="leading" constant="16" id="ywL-LT-3k2"/>
@@ -1327,7 +1325,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="xtM-Xe-pUJ" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-66" y="940"/>
+            <point key="canvasLocation" x="-66.400000000000006" y="939.58020989505258"/>
         </scene>
         <!--Report Meeting Search-->
         <scene sceneID="ZrL-QU-4ik">
@@ -1452,20 +1450,18 @@
                                                             <nil key="highlightedColor"/>
                                                         </label>
                                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="pending" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="PmB-SB-0TM">
-                                                            <rect key="frame" x="16" y="127" width="120" height="16"/>
+                                                            <rect key="frame" x="16" y="127" width="46.5" height="16"/>
                                                             <constraints>
                                                                 <constraint firstAttribute="height" constant="16" id="T11-G4-Ch3"/>
-                                                                <constraint firstAttribute="width" constant="120" id="lar-w9-aTY"/>
                                                             </constraints>
                                                             <fontDescription key="fontDescription" name="Roboto-Regular" family="Roboto" pointSize="13"/>
                                                             <color key="textColor" red="0.99215686270000003" green="0.65098039220000004" blue="0.2666666667" alpha="1" colorSpace="calibratedRGB"/>
                                                             <nil key="highlightedColor"/>
                                                         </label>
                                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Created by Kumaran" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="kRj-Sb-xjY">
-                                                            <rect key="frame" x="190" y="127" width="150" height="16"/>
+                                                            <rect key="frame" x="223" y="127" width="117" height="16"/>
                                                             <constraints>
                                                                 <constraint firstAttribute="height" constant="16" id="Ceh-IE-A0X"/>
-                                                                <constraint firstAttribute="width" constant="150" id="Pc5-q5-E0o"/>
                                                             </constraints>
                                                             <fontDescription key="fontDescription" name="Roboto-Regular" family="Roboto" pointSize="13"/>
                                                             <color key="textColor" white="0.66666666669999997" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -1648,7 +1644,7 @@
                                                                     <nil key="highlightedColor"/>
                                                                 </label>
                                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="150" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="MaB-F7-o9m">
-                                                                    <rect key="frame" x="179" y="64" width="50" height="21"/>
+                                                                    <rect key="frame" x="179" y="64" width="49" height="21"/>
                                                                     <autoresizingMask key="autoresizingMask" flexibleMinX="YES" widthSizable="YES" flexibleMaxX="YES" flexibleMinY="YES" heightSizable="YES" flexibleMaxY="YES"/>
                                                                     <fontDescription key="fontDescription" name="Roboto-Medium" family="Roboto" pointSize="15"/>
                                                                     <color key="textColor" red="0.41568627450000001" green="0.6588235294" blue="0.30980392159999998" alpha="1" colorSpace="calibratedRGB"/>

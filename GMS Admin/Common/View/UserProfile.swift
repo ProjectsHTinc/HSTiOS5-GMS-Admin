@@ -74,7 +74,7 @@ class UserProfile: UIViewController, ProfileDetailsView, UIImagePickerController
          self.emailId.text = email_id
          let seg = gender
          let userRole = user_role
-         if userRole == "1"{
+         if userRole == "2"{
             self.saveProfileOutlet.isHidden = true
             self.name.isEnabled = false
             self.phone.isEnabled = false

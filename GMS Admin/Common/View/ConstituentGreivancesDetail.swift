@@ -35,6 +35,11 @@ class ConstituentGreivancesDetail: UIViewController {
     @IBOutlet var status: UILabel!
     @IBOutlet var statusBgView: UIView!
     @IBOutlet var petitionTitleLabel: UILabel!
+    @IBOutlet var descripitionTitleLabel: UILabel!
+    @IBOutlet var descripitionBaseLabel: UILabel!
+    @IBOutlet var descripitionTitleHeight: NSLayoutConstraint!
+    @IBOutlet var descHeight: UILabel!
+    @IBOutlet var descripitionBaseHeight: NSLayoutConstraint!
     override func viewDidLoad() {
         super.viewDidLoad()
 
@@ -55,10 +60,16 @@ class ConstituentGreivancesDetail: UIViewController {
         if (type == "P")
         {
             self.petitionTitleLabel.text = "Petition Number"
+            self.descripitionTitleLabel.isHidden = false
+            self.descripitionBaseLabel.isHidden = false
         }
         else
         {
             self.petitionTitleLabel.text = "Enquiry Number"
+            self.descripitionTitleLabel.isHidden = true
+            self.descripitionBaseLabel.isHidden = true
+            self.descripitionBaseHeight.constant = 0
+            self.descripitionTitleHeight.constant = 0
         }
         
         if (self.status.text == "PROCESSING")

@@ -105,7 +105,7 @@ class DashBoard: UIViewController, ChartViewDelegate {
 
          toolBar.setItems([cancelButton,spaceButton,doneButton], animated: true)
          toolBar.isUserInteractionEnabled = true
-         toolBar.barTintColor = UIColor(red: 250/255.0, green: 250/255.0, blue: 248/255.0, alpha: 1.0)
+//       toolBar.barTintColor = UIColor(red: 250/255.0, green: 250/255.0, blue: 248/255.0, alpha: 1.0)
          toolBar.tintColor = UIColor(red: 45/255.0, green: 148/255.0, blue: 235/255.0, alpha: 1.0)
          toolBar.isUserInteractionEnabled = true
          toolBar.isTranslucent = true
