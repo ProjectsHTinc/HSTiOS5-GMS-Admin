@@ -43,8 +43,8 @@ class Constituent: UIViewController, PaguthiView {
         super.viewDidLoad()
 
         // Do any additional setup after loading the view.
-        setupSideMenu()
         self.title = "Constituent"
+        //setupSideMenu()
         /*Set Side menu*/
         self.sideMenuButton()
         /*Right Navigation Bar*/
@@ -79,6 +79,16 @@ class Constituent: UIViewController, PaguthiView {
         // Note that these continue to work on the Navigation Controller independent of the View Controller it displays!
         SideMenuManager.default.addPanGestureToPresent(toView: navigationController!.navigationBar)
         SideMenuManager.default.addScreenEdgePanGesturesToPresent(toView: view)
+    }
+    
+    func makeSettings() -> SideMenuSettings{
+        var settings = SideMenuSettings()
+        settings.allowPushOfSameClassTwice = false
+        settings.presentationStyle = .menuSlideIn
+        settings.presentationStyle.backgroundColor = .black
+        settings.presentationStyle.presentingEndAlpha = 0.5
+        settings.statusBarEndAlpha = 0
+        return settings
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -172,6 +182,11 @@ class Constituent: UIViewController, PaguthiView {
             vc.selectedconstitunecyId = self.selectedconstitunecyDetailId
             
         }
+//        else if (segue.identifier == "to_sideMenu")
+//        {
+//            guard let sideMenuNavigationController = segue.destination as? SideMenuNavigationController else { return }
+//            sideMenuNavigationController.settings = makeSettings()
+//        }
     }
 }
 

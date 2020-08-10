@@ -17,8 +17,8 @@ class Report: UIViewController {
         super.viewDidLoad()
 
         // Do any additional setup after loading the view.
-        setupSideMenu()
         self.title = "Report"
+        //setupSideMenu()
         self.sideMenuButton()
 
     }
@@ -33,6 +33,16 @@ class Report: UIViewController {
         // Note that these continue to work on the Navigation Controller independent of the View Controller it displays!
         SideMenuManager.default.addPanGestureToPresent(toView: navigationController!.navigationBar)
         SideMenuManager.default.addScreenEdgePanGesturesToPresent(toView: view)
+    }
+    
+    func makeSettings() -> SideMenuSettings{
+        var settings = SideMenuSettings()
+        settings.allowPushOfSameClassTwice = false
+        settings.presentationStyle = .menuSlideIn
+        settings.presentationStyle.backgroundColor = .black
+        settings.presentationStyle.presentingEndAlpha = 0.5
+        settings.statusBarEndAlpha = 0
+        return settings
     }
     
     @objc public override func sideMenuButtonClick()
@@ -86,6 +96,11 @@ class Report: UIViewController {
             let vc = segue.destination as! ReportStatus
             vc.from = sender as! String
         }
+//        else if (segue.identifier == "to_sideMenu")
+//        {
+//            guard let sideMenuNavigationController = segue.destination as? SideMenuNavigationController else { return }
+//            sideMenuNavigationController.settings = makeSettings()
+//        }
     }
     
 

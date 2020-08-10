@@ -127,14 +127,14 @@ extension ConstituentDetail: ConstituentDetailView{
     
     func setConstituentDetailData(constituentDetail: [ConstituentDetailData]) {
          constituentdetail = constituentDetail
-         self.name.text = constituentdetail[0].full_name.capitalized
+        self.name.text = constituentdetail[0].full_name?.capitalized
          self.mobileNumber.text = constituentdetail[0].mobile_no
-         self.location.text = constituentdetail[0].paguthi_name.capitalized
+        self.location.text = constituentdetail[0].paguthi_name?.capitalized
          self.wardNumber.text = constituentdetail[0].ward_name
          self.serialNumber.text = constituentdetail[0].serial_no
          self.voterID.text = constituentdetail[0].voter_id_no
          self.adharNumber.text = constituentdetail[0].aadhaar_no
-         self.constituentImage.sd_setImage(with: URL(string: Globals.imageUrl + constituentdetail[0].profile_pic), placeholderImage: UIImage(named: "placeholder.png"))
+        self.constituentImage.sd_setImage(with: URL(string: Globals.imageUrl + constituentdetail[0].profile_pic!), placeholderImage: UIImage(named: "placeholder.png"))
     }
     
     func setEmpty(errorMessage: String) {

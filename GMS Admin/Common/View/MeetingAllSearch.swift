@@ -139,7 +139,8 @@ extension MeetingAllSearch : MeetingAllDataView, UITableViewDelegate, UITableVie
        cell.name.text = fullNameArr[indexPath.row]
        let formatedDate = self.formattedDateFromString(dateString: meetingDateArr[indexPath.row], withFormat: "dd-MM-YYYY")
        cell.date.text = formatedDate
-       cell.paguthi.text = paguthiNameArr[indexPath.row] + "(Paguthi)"
+       cell.paguthi.text = paguthiNameArr[indexPath.row]
+       //+ "(Paguthi)"
        cell.title.text = meetingTitleArr[indexPath.row]
        cell.status.text = meetingStatusArr[indexPath.row]
        cell.createdBy.text = "Created by - " + createdByArr[indexPath.row]

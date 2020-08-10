@@ -9,27 +9,27 @@
 import UIKit
 
 struct ConstituentDetailData:Codable {
-    let full_name: String
-    let mobile_no: String
-    let address: String
-    let ward_id: String
-    let voter_id_no: String
-    let id: String
-    let aadhaar_no: String
-    let profile_pic: String
-    let pin_code : String
-    let father_husband_name : String
-    let whatsapp_no : String
-    let email_id : String
-    let constituency_name : String
-    let paguthi_name : String
-    let ward_name : String
-    let booth_name : String
-    let dob : String
-    let gender : String
-    let religion_name : String
-    let booth_address : String
-    let serial_no : String
+    let full_name: String?
+    let mobile_no: String?
+    let address: String?
+    let ward_id: String?
+    let voter_id_no: String?
+    let id: String?
+    let aadhaar_no: String?
+    let profile_pic: String?
+    let pin_code : String?
+    let father_husband_name : String?
+    let whatsapp_no : String?
+    let email_id : String?
+    let constituency_name : String?
+    let paguthi_name : String?
+    let ward_name : String?
+    let booth_name : String?
+    let dob : String?
+    let gender : String?
+    let religion_name : String?
+    let booth_address : String?
+    let serial_no : String?
 
 }
 

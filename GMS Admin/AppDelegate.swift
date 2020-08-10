@@ -8,6 +8,7 @@
 
 import UIKit
 import IQKeyboardManagerSwift
+import SideMenu
 
 @available(iOS 13.0, *)
 @UIApplicationMain
@@ -26,7 +27,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         application.registerForRemoteNotifications()
         return true
     }
-    
     // MARK: UISceneSession Lifecycle
 
     @available(iOS 13.0, *)

@@ -30,7 +30,7 @@ class Meeting: UIViewController {
 
         // Do any additional setup after loading the view.
         /*Check Internet Connection*/
-        setupSideMenu()
+        //setupSideMenu()
         guard checkInterConnection () else {
             return
         }
@@ -63,6 +63,16 @@ class Meeting: UIViewController {
         // Note that these continue to work on the Navigation Controller independent of the View Controller it displays!
         SideMenuManager.default.addPanGestureToPresent(toView: navigationController!.navigationBar)
         SideMenuManager.default.addScreenEdgePanGesturesToPresent(toView: view)
+    }
+    
+    func makeSettings() -> SideMenuSettings{
+        var settings = SideMenuSettings()
+        settings.allowPushOfSameClassTwice = false
+        settings.presentationStyle = .menuSlideIn
+        settings.presentationStyle.backgroundColor = .black
+        settings.presentationStyle.presentingEndAlpha = 0.5
+        settings.statusBarEndAlpha = 0
+        return settings
     }
     
     @objc public override func sideMenuButtonClick()
@@ -119,8 +129,12 @@ class Meeting: UIViewController {
             vc.meeting_Discrption = meeting_Discrption
             vc.meeting_Date = meeting_Date
             vc.meeting_Status = meeting_Status
-
         }
+//        else if (segue.identifier == "to_sideMenu")
+//        {
+//            guard let sideMenuNavigationController = segue.destination as? SideMenuNavigationController else { return }
+//            sideMenuNavigationController.settings = makeSettings()
+//        }
     }
 
 }
@@ -132,7 +146,7 @@ extension Meeting: UITableViewDelegate,UITableViewDataSource, UISearchBarDelegat
          if searchText?.count != 0
          {
             filterdArr = meetingeData.filter({( model : MeetingData) -> Bool in
-                return model.meeting_title.lowercased().contains(searchText!.lowercased())||model.meeting_date.lowercased().contains(searchText!.lowercased())
+                return model.meeting_title.lowercased().contains(searchText!.lowercased())||model.meeting_date.lowercased().contains(searchText!.lowercased())||model.meeting_status.lowercased().contains(searchText!.lowercased())
              })
          }
          tableView.reloadData()

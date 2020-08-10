@@ -12,7 +12,7 @@ class ForgotPassword: UIViewController {
 
     let presenter = ForgotPasswordPresenter(forgotPasswordService: ForgotPasswordService())
     
-    @IBOutlet var userName: ACFloatingTextfield!
+    @IBOutlet var userName: UITextField!
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view.
@@ -49,7 +49,9 @@ class ForgotPassword: UIViewController {
         }
         
         guard self.userName.text?.count != 0  else {
-             self.userName.showError()
+              //self.userName.showError()
+              AlertController.shared.showAlert(targetVc: self, title: Globals.alertTitle, message: "Email / Phone Number is Empty", complition: {
+              })
              return false
          }
         

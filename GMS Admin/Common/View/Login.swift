@@ -13,8 +13,8 @@ class Login: UIViewController  {
     var visioIsClicked = true
 
     @IBOutlet var constituency: UITextField!
-    @IBOutlet var email: ACFloatingTextfield!
-    @IBOutlet var password: ACFloatingTextfield!
+    @IBOutlet var email: UITextField!
+    @IBOutlet var password: UITextField!
     @IBOutlet var hidePswrdOutlet: UIButton!
     @IBOutlet var constituencyOutlet: UIButton!
     
@@ -142,12 +142,16 @@ class Login: UIViewController  {
          }
         
         guard self.email.text?.count != 0  else {
-              self.email.showError()
+              //self.email.showError()
+              AlertController.shared.showAlert(targetVc: self, title: Globals.alertTitle, message: "Email / Phone Number is Empty", complition: {
+              })
              return false
          }
         
         guard self.password.text?.count != 0  else {
-              self.password.showError()
+              //self.password.showError()
+              AlertController.shared.showAlert(targetVc: self, title: Globals.alertTitle, message: "Password is Empty", complition: {
+              })
              return false
          }
         

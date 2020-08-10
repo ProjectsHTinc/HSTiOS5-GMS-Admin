@@ -57,7 +57,7 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
             self.window?.rootViewController = UIStoryboard(name: "DashBoard", bundle: nil).instantiateInitialViewController()
               // Present window to screen
             self.window?.makeKeyAndVisible()
-        }
+        } 
     }
 
     @available(iOS 13.0, *)

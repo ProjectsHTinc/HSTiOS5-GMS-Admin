@@ -114,15 +114,15 @@ class Profile: UIViewController {
     {
         if GlobalVariables.shared.profGrivance == "GreiAll"
         {
-            self.userImageView.sd_setImage(with: URL(string: Globals.imageUrl + consprofiledata[0].profile_pic), placeholderImage: UIImage(named: "placeholder.png"))
-            self.userName.text = consprofiledata[0].full_name.capitalized
-            self.userNumber.text = consprofiledata[0].paguthi_name.capitalized
+            self.userImageView.sd_setImage(with: URL(string: Globals.imageUrl + consprofiledata[0].profile_pic!), placeholderImage: UIImage(named: "placeholder.png"))
+            self.userName.text = consprofiledata[0].full_name?.capitalized
+            self.userNumber.text = consprofiledata[0].paguthi_name?.capitalized
         }
         else
         {
-            self.userImageView.sd_setImage(with: URL(string: Globals.imageUrl + consprofiledata[0].profile_pic), placeholderImage: UIImage(named: "placeholder.png"))
-            self.userName.text = consprofiledata[0].full_name.capitalized
-            self.userNumber.text = consprofiledata[0].paguthi_name.capitalized
+            self.userImageView.sd_setImage(with: URL(string: Globals.imageUrl + consprofiledata[0].profile_pic!), placeholderImage: UIImage(named: "placeholder.png"))
+            self.userName.text = consprofiledata[0].full_name?.capitalized
+            self.userNumber.text = consprofiledata[0].paguthi_name?.capitalized
         }
 
     }

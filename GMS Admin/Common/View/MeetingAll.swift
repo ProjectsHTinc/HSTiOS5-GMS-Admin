@@ -33,8 +33,8 @@ class MeetingAll: UIViewController {
         super.viewDidLoad()
 
         // Do any additional setup after loading the view.
-        setupSideMenu()
         self.title = "Meeting"
+        //setupSideMenu()
         /*Set Side menu*/
         self.sideMenuButton()
         /*Right Navigation Bar*/
@@ -68,6 +68,16 @@ class MeetingAll: UIViewController {
         // Note that these continue to work on the Navigation Controller independent of the View Controller it displays!
         SideMenuManager.default.addPanGestureToPresent(toView: navigationController!.navigationBar)
         SideMenuManager.default.addScreenEdgePanGesturesToPresent(toView: view)
+    }
+    
+    func makeSettings() -> SideMenuSettings{
+        var settings = SideMenuSettings()
+        settings.allowPushOfSameClassTwice = false
+        settings.presentationStyle = .menuSlideIn
+        settings.presentationStyle.backgroundColor = .black
+        settings.presentationStyle.presentingEndAlpha = 0.5
+        settings.statusBarEndAlpha = 0
+        return settings
     }
     
     func callAPIMeetingAll (url:String, keyword: String,constituency_id:String, offset: String, rowcount:String)
@@ -107,13 +117,15 @@ class MeetingAll: UIViewController {
             let vc = segue.destination as! MeetingAllSearch
             vc.keyword = sender as! String
         }
-        else
-        {
-            if (segue.identifier == "to_meetingallDetail"){
+        else if (segue.identifier == "to_meetingallDetail"){
                 let vc = segue.destination as! MeetingAllDetail
                 vc.meetingId = sender as! String
-            }
         }
+//        else if (segue.identifier == "to_sideMenu")
+//        {
+//            guard let sideMenuNavigationController = segue.destination as? SideMenuNavigationController else { return }
+//            sideMenuNavigationController.settings = makeSettings()
+//        }
     }
     
 
@@ -202,7 +214,8 @@ extension MeetingAll : MeetingAllDataView, UISearchBarDelegate ,  UITableViewDel
            cell.name.text = fullNameArr[indexPath.row]
            let formatedDate = self.formattedDateFromString(dateString: meetingDateArr[indexPath.row], withFormat: "dd-MM-YYYY")
            cell.date.text = formatedDate
-           cell.paguthi.text = paguthiNameArr[indexPath.row] + "(Paguthi)"
+           cell.paguthi.text = paguthiNameArr[indexPath.row]
+           //+ "(Paguthi)"
            cell.title.text = meetingTitleArr[indexPath.row]
            cell.status.text = meetingStatusArr[indexPath.row]
            cell.createdBy.text = "Created by - " + createdByArr[indexPath.row]

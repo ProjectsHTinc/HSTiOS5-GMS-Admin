@@ -67,8 +67,8 @@ class GreivancesAll: UIViewController {
         super.viewDidLoad()
 
         // Do any additional setup after loading the view.
-        setupSideMenu()
         self.title = "Grievances"
+        //setupSideMenu()
         /*Set Side menu*/
         self.sideMenuButton()
         /*Right Navigation Bar*/
@@ -111,6 +111,16 @@ class GreivancesAll: UIViewController {
         // Note that these continue to work on the Navigation Controller independent of the View Controller it displays!
         SideMenuManager.default.addPanGestureToPresent(toView: navigationController!.navigationBar)
         SideMenuManager.default.addScreenEdgePanGesturesToPresent(toView: view)
+    }
+    
+    func makeSettings() -> SideMenuSettings{
+        var settings = SideMenuSettings()
+        settings.allowPushOfSameClassTwice = false
+        settings.presentationStyle = .menuSlideIn
+        settings.presentationStyle.backgroundColor = .black
+        settings.presentationStyle.presentingEndAlpha = 0.5
+        settings.statusBarEndAlpha = 0
+        return settings
     }
     
     func callAPIPaguthi ()
@@ -166,7 +176,7 @@ class GreivancesAll: UIViewController {
         statSegContrl.tintColor = UIColor.white
         statSegContrl.setTitleTextAttributes([
             NSAttributedString.Key.font : UIFont(name: "Roboto-Regular", size: 13) as Any,
-            NSAttributedString.Key.foregroundColor: UIColor(red: 45.0/255.0, green: 148.0/255.0, blue: 235.0/255.0, alpha: 1.0)
+            NSAttributedString.Key.foregroundColor: UIColor.black
             ], for: .normal)
 
         statSegContrl.setTitleTextAttributes([
@@ -265,8 +275,12 @@ class GreivancesAll: UIViewController {
             vc.greivanceId = greivanceId
             vc.type = self.type
             vc.id = self.id
-
         }
+//        else if (segue.identifier == "to_sideMenu")
+//        {
+//            guard let sideMenuNavigationController = segue.destination as? SideMenuNavigationController else { return }
+//            sideMenuNavigationController.settings = makeSettings()
+//        }
     }
 }
 

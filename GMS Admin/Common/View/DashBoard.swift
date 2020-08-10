@@ -47,10 +47,11 @@ class DashBoard: UIViewController, ChartViewDelegate {
 
         // Do any additional setup after loading the view.
         /*Removeing NavigationBar Bottom Line*/
-        setupSideMenu()
+        
         self.navigationController?.navigationBar.setBackgroundImage(UIImage(), for:.default)
         self.navigationController?.navigationBar.shadowImage = UIImage()
         self.navigationController?.navigationBar.layoutIfNeeded()
+        //setupSideMenu()
         /*Set delegate*/
         self.searchText.delegate = self
         self.area.delegate = self
@@ -82,15 +83,25 @@ class DashBoard: UIViewController, ChartViewDelegate {
     private func setupSideMenu() {
         // Define the menus
         SideMenuManager.default.leftMenuNavigationController = storyboard?.instantiateViewController(withIdentifier: "LeftMenuNavigationController") as? SideMenuNavigationController
-        
         //SideMenuPresentationStyle.menuSlideIn
-        
+        SideMenuManager.default.leftMenuNavigationController?.settings = makeSettings()
+
         // Enable gestures. The left and/or right menus must be set up above for these to work.
         // Note that these continue to work on the Navigation Controller independent of the View Controller it displays!
         SideMenuManager.default.addPanGestureToPresent(toView: navigationController!.navigationBar)
         SideMenuManager.default.addScreenEdgePanGesturesToPresent(toView: view)
     }
     
+    func makeSettings() -> SideMenuSettings{
+        var settings = SideMenuSettings()
+        settings.allowPushOfSameClassTwice = false
+        settings.presentationStyle = .menuSlideIn
+        settings.presentationStyle.backgroundColor = .black
+        settings.presentationStyle.presentingEndAlpha = 0.5
+        settings.statusBarEndAlpha = 0
+        return settings
+    }
+        
     func createPickerView() {
          pickerView.dataSource = self
          pickerView.delegate = self
@@ -387,8 +398,12 @@ class DashBoard: UIViewController, ChartViewDelegate {
             let vc = segue.destination as! Search
             vc.keyWord = sender as! String
             vc.from = "dh"
-
         }
+//        else
+//        {
+//            guard let sideMenuNavigationController = segue.destination as? SideMenuNavigationController else { return }
+//            sideMenuNavigationController.settings = makeSettings()
+//        }
     }
     
 
