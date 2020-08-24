@@ -206,11 +206,13 @@ extension Staff : StaffView, UITableViewDelegate, UITableViewDataSource, UISearc
         if searchBar.isActive && searchBar.searchBar.text != "" {
             let staff = filterdArr[indexPath.row]
             let staffId = staff.id
+            self.searchBar.isActive = false
             self.performSegue(withIdentifier: "to_staffDetail", sender: staffId)
         }
         else{
             let staff = data[indexPath.row]
             let staffId = staff.id
+            self.searchBar.isActive = false
             self.performSegue(withIdentifier: "to_staffDetail", sender: staffId)
         }
     }
