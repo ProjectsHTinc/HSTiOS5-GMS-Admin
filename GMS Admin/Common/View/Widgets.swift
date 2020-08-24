@@ -102,7 +102,7 @@ class Widgets: UIViewController {
     func SetDataTG (grievance_count: Int, enquiry_count: Int, petition_count: Int, processing_count: Int, completed_count: Int)
     {
         self.widgetImageView.image = UIImage(named: "widget_icons-3.png")
-        self.titleLabel.text = String (format: "%@ %@", "Total Meetings - ",GlobalVariables.shared.totalGrievancesCount)
+        self.titleLabel.text = String (format: "%@ %@", "Total Grievance - ",GlobalVariables.shared.totalGrievancesCount)
         self.label1.text = "No. of Enquiry"
         self.label2.text = "No. of Petition"
         self.label3.text = "No. of Processing"

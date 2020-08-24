@@ -88,14 +88,14 @@ class DashBoard: UIViewController, ChartViewDelegate {
 
         // Enable gestures. The left and/or right menus must be set up above for these to work.
         // Note that these continue to work on the Navigation Controller independent of the View Controller it displays!
-        SideMenuManager.default.addPanGestureToPresent(toView: navigationController!.navigationBar)
-        SideMenuManager.default.addScreenEdgePanGesturesToPresent(toView: view)
+//        SideMenuManager.default.addPanGestureToPresent(toView: navigationController!.navigationBar)
+//        SideMenuManager.default.addScreenEdgePanGesturesToPresent(toView: view)
     }
     
     func makeSettings() -> SideMenuSettings{
         var settings = SideMenuSettings()
         settings.allowPushOfSameClassTwice = false
-        settings.presentationStyle = .menuSlideIn
+        settings.presentationStyle = .viewSlideOut
         settings.presentationStyle.backgroundColor = .black
         settings.presentationStyle.presentingEndAlpha = 0.5
         settings.statusBarEndAlpha = 0

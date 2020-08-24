@@ -96,7 +96,7 @@ public struct SideMenuSettings: Model, InitializableStruct {
     public var presentingViewControllerUserInteractionEnabled: Bool = false
     public var presentingViewControllerUseSnapshot: Bool = false
     public var presentDuration: Double = 0.35
-    public var presentationStyle: SideMenuPresentationStyle = .menuSlideIn
+    public var presentationStyle: SideMenuPresentationStyle = .viewSlideOut
     public var pushStyle: SideMenuPushStyle = .default
     public var statusBarEndAlpha: CGFloat = 0
     public var usingSpringWithDamping: CGFloat = 1

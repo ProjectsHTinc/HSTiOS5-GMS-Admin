@@ -1266,7 +1266,7 @@
             <objects>
                 <viewController storyboardIdentifier="widgets" modalPresentationStyle="fullScreen" id="AnJ-lf-egR" customClass="Widgets" customModule="GMS_Admin" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="neQ-S0-gLi">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="647"/>
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="GJx-2j-akA">
