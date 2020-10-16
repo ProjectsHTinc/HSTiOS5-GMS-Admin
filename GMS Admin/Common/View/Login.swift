@@ -135,33 +135,33 @@ class Login: UIViewController  {
         }
         
         guard self.constituency.text?.count != 0  else {
-            AlertController.shared.showAlert(targetVc: self, title: Globals.alertTitle, message: Globals.ConstituencyAlertMessage, complition: {
+              AlertController.shared.showAlert(targetVc: self, title: Globals.alertTitle, message: Globals.ConstituencyAlertMessage, complition: {
                 
               })
-             return false
+              return false
          }
         
         guard self.email.text?.count != 0  else {
               //self.email.showError()
               AlertController.shared.showAlert(targetVc: self, title: Globals.alertTitle, message: "Email / Phone Number is Empty", complition: {
               })
-             return false
+              return false
          }
         
         guard self.password.text?.count != 0  else {
               //self.password.showError()
               AlertController.shared.showAlert(targetVc: self, title: Globals.alertTitle, message: "Password is Empty", complition: {
               })
-             return false
+              return false
          }
         
         guard self.password.text!.count >= 6  else {
               AlertController.shared.showAlert(targetVc: self, title: Globals.alertTitle, message: "Short passwords are easy to guess!\nTry one with atleast 6 characters", complition: {
               })
-             return false
+              return false
          }
         
-          return true
+        return true
     }
     
     func callAPILogin ()

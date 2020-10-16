@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="16097.2" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="BRK-df-pfA">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="17156" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="BRK-df-pfA">
     <device id="retina4_7" orientation="portrait" appearance="light"/>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="16087"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="17125"/>
         <capability name="Named colors" minToolsVersion="9.0"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
@@ -48,7 +48,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" translatesAutoresizingMaskIntoConstraints="NO" id="gDk-wM-NJ1">
-                                <rect key="frame" x="0.0" y="0.0" width="375" height="934"/>
+                                <rect key="frame" x="0.0" y="0.0" width="375" height="978"/>
                                 <subviews>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="lDS-BZ-Yza">
                                         <rect key="frame" x="0.0" y="0.0" width="375" height="914"/>
@@ -160,7 +160,7 @@
                                                                 <color key="textColor" white="0.33333333329999998" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                                 <nil key="highlightedColor"/>
                                                             </label>
-                                                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Ev3-ow-4I8">
+                                                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Ev3-ow-4I8">
                                                                 <rect key="frame" x="0.0" y="0.0" width="165" height="115"/>
                                                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                                 <connections>
@@ -216,7 +216,7 @@
                                                                 <color key="textColor" white="0.33333333329999998" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                                 <nil key="highlightedColor"/>
                                                             </label>
-                                                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="RJT-ON-6s7">
+                                                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="RJT-ON-6s7">
                                                                 <rect key="frame" x="0.0" y="0.0" width="165" height="115"/>
                                                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                                 <connections>
@@ -287,7 +287,7 @@
                                                                         <color key="textColor" white="0.33333333329999998" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                                         <nil key="highlightedColor"/>
                                                                     </label>
-                                                                    <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="p6X-UL-pWV">
+                                                                    <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="p6X-UL-pWV">
                                                                         <rect key="frame" x="0.0" y="0.0" width="165" height="115"/>
                                                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                                         <connections>
@@ -346,7 +346,7 @@
                                                                         <color key="textColor" white="0.33333333329999998" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                                         <nil key="highlightedColor"/>
                                                                     </label>
-                                                                    <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="UcD-hW-0AY">
+                                                                    <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="UcD-hW-0AY">
                                                                         <rect key="frame" x="0.0" y="0.0" width="165" height="115"/>
                                                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                                         <connections>
@@ -411,7 +411,7 @@
                                                     <userDefinedRuntimeAttribute type="boolean" keyPath="shadow" value="YES"/>
                                                 </userDefinedRuntimeAttributes>
                                             </view>
-                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="DDV-Nn-BNU">
+                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="DDV-Nn-BNU">
                                                 <rect key="frame" x="101" y="716" width="173" height="40"/>
                                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                 <constraints>
@@ -475,6 +475,7 @@
                                 <viewLayoutGuide key="frameLayoutGuide" id="3zD-6l-2sR"/>
                             </scrollView>
                         </subviews>
+                        <viewLayoutGuide key="safeArea" id="nru-dx-SZ1"/>
                         <color key="backgroundColor" name="AppBaseColor"/>
                         <constraints>
                             <constraint firstItem="gDk-wM-NJ1" firstAttribute="leading" secondItem="nru-dx-SZ1" secondAttribute="leading" id="5wK-W4-rLx"/>
@@ -482,7 +483,6 @@
                             <constraint firstItem="gDk-wM-NJ1" firstAttribute="trailing" secondItem="nru-dx-SZ1" secondAttribute="trailing" id="p2p-a7-0zI"/>
                             <constraint firstItem="gDk-wM-NJ1" firstAttribute="bottom" secondItem="nru-dx-SZ1" secondAttribute="bottom" constant="158" id="sKy-sy-8bA"/>
                         </constraints>
-                        <viewLayoutGuide key="safeArea" id="nru-dx-SZ1"/>
                     </view>
                     <navigationItem key="navigationItem" title="GMS-DashBoard" id="uOo-1O-JRH">
                         <barButtonItem key="leftBarButtonItem" image="sideMenu" id="dbq-bf-6LU">
@@ -520,11 +520,11 @@
             <objects>
                 <viewController storyboardIdentifier="search" id="2h7-aY-0GI" customClass="Search" customModule="GMS_Admin" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="YPK-2r-58H">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="647"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="none" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="DiB-h7-JNV">
-                                <rect key="frame" x="0.0" y="43" width="375" height="580"/>
+                                <rect key="frame" x="0.0" y="43" width="375" height="604"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <prototypes>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="none" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="cell" rowHeight="118" id="mcs-cc-Syw" customClass="SearchCell" customModule="GMS_Admin" customModuleProvider="target">
@@ -653,6 +653,7 @@
                                 <nil key="highlightedColor"/>
                             </label>
                         </subviews>
+                        <viewLayoutGuide key="safeArea" id="9Ow-C7-BCI"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
                             <constraint firstItem="c6a-KL-awr" firstAttribute="centerX" secondItem="YPK-2r-58H" secondAttribute="centerX" id="ABa-Oo-RJd"/>
@@ -664,7 +665,6 @@
                             <constraint firstItem="97M-58-bLB" firstAttribute="centerX" secondItem="YPK-2r-58H" secondAttribute="centerX" id="vHI-7Q-mZv"/>
                             <constraint firstItem="DiB-h7-JNV" firstAttribute="trailing" secondItem="9Ow-C7-BCI" secondAttribute="trailing" id="vj5-yG-1ry"/>
                         </constraints>
-                        <viewLayoutGuide key="safeArea" id="9Ow-C7-BCI"/>
                     </view>
                     <navigationItem key="navigationItem" id="pun-fN-LeF"/>
                     <connections>
@@ -792,6 +792,7 @@
                                 <viewLayoutGuide key="frameLayoutGuide" id="xSG-7t-Xbn"/>
                             </scrollView>
                         </subviews>
+                        <viewLayoutGuide key="safeArea" id="ox8-vg-W82"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
                             <constraint firstItem="Nfz-5T-dNU" firstAttribute="bottom" secondItem="ox8-vg-W82" secondAttribute="bottom" id="R3o-Gs-kvh"/>
@@ -799,7 +800,6 @@
                             <constraint firstItem="Nfz-5T-dNU" firstAttribute="leading" secondItem="ox8-vg-W82" secondAttribute="leading" id="swz-1v-mQc"/>
                             <constraint firstItem="Nfz-5T-dNU" firstAttribute="trailing" secondItem="ox8-vg-W82" secondAttribute="trailing" id="sxg-ib-Td7"/>
                         </constraints>
-                        <viewLayoutGuide key="safeArea" id="ox8-vg-W82"/>
                     </view>
                     <navigationItem key="navigationItem" id="Y3D-Px-JyP"/>
                     <connections>
@@ -841,7 +841,7 @@
             <objects>
                 <tableViewController storyboardIdentifier="menu" modalPresentationStyle="fullScreen" id="cyo-OE-Q8t" customClass="Menu" customModule="GMS_Admin" customModuleProvider="target" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="static" style="plain" separatorStyle="none" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" id="d4t-3F-dcV">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="623"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <color key="tintColor" name="AppBaseColor"/>
@@ -991,7 +991,7 @@
                                                     <color key="textColor" red="0.45882352939999999" green="0.45882352939999999" blue="0.45882352939999999" alpha="1" colorSpace="calibratedRGB"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
-                                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="uCZ-YD-FGp">
+                                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="uCZ-YD-FGp">
                                                     <rect key="frame" x="52" y="44" width="307" height="21"/>
                                                     <constraints>
                                                         <constraint firstAttribute="width" constant="307" id="2Gv-cw-PM5"/>
@@ -1001,7 +1001,7 @@
                                                         <segue destination="vJM-LM-Fxd" kind="show" id="G1P-Qc-sex"/>
                                                     </connections>
                                                 </button>
-                                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="D2o-Gu-Ppf">
+                                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="D2o-Gu-Ppf">
                                                     <rect key="frame" x="52" y="79" width="307" height="21"/>
                                                     <constraints>
                                                         <constraint firstAttribute="width" constant="307" id="SQW-oU-PZ9"/>
@@ -1266,7 +1266,7 @@
             <objects>
                 <viewController storyboardIdentifier="widgets" modalPresentationStyle="fullScreen" id="AnJ-lf-egR" customClass="Widgets" customModule="GMS_Admin" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="neQ-S0-gLi">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="647"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="GJx-2j-akA">
@@ -1450,6 +1450,7 @@
                                 </userDefinedRuntimeAttributes>
                             </view>
                         </subviews>
+                        <viewLayoutGuide key="safeArea" id="f8h-D4-K7a"/>
                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
                             <constraint firstItem="GJx-2j-akA" firstAttribute="top" secondItem="f8h-D4-K7a" secondAttribute="top" id="DBi-zh-y9Y"/>
@@ -1457,7 +1458,6 @@
                             <constraint firstItem="GJx-2j-akA" firstAttribute="bottom" secondItem="f8h-D4-K7a" secondAttribute="bottom" id="YLj-wJ-WZm"/>
                             <constraint firstItem="GJx-2j-akA" firstAttribute="trailing" secondItem="f8h-D4-K7a" secondAttribute="trailing" id="gPI-iR-f3R"/>
                         </constraints>
-                        <viewLayoutGuide key="safeArea" id="f8h-D4-K7a"/>
                     </view>
                     <navigationItem key="navigationItem" id="STI-UH-5IM"/>
                     <connections>
@@ -1628,6 +1628,7 @@
                                 </userDefinedRuntimeAttributes>
                             </view>
                         </subviews>
+                        <viewLayoutGuide key="safeArea" id="h4l-MO-1bB"/>
                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
                             <constraint firstItem="GNG-Oo-zfC" firstAttribute="top" secondItem="h4l-MO-1bB" secondAttribute="top" id="2tP-ic-GEW"/>
@@ -1635,7 +1636,6 @@
                             <constraint firstItem="GNG-Oo-zfC" firstAttribute="leading" secondItem="h4l-MO-1bB" secondAttribute="leading" id="EzU-bz-fhp"/>
                             <constraint firstItem="GNG-Oo-zfC" firstAttribute="trailing" secondItem="h4l-MO-1bB" secondAttribute="trailing" id="qcR-lr-heK"/>
                         </constraints>
-                        <viewLayoutGuide key="safeArea" id="h4l-MO-1bB"/>
                     </view>
                     <navigationItem key="navigationItem" id="Kts-KF-kFs"/>
                     <connections>
@@ -1698,8 +1698,12 @@
             <point key="canvasLocation" x="2210" y="407"/>
         </scene>
     </scenes>
+    <designables>
+        <designable name="6LU-wn-lHE">
+            <size key="intrinsicContentSize" width="191.5" height="34"/>
+        </designable>
+    </designables>
     <inferredMetricsTieBreakers>
-        <segue reference="M6h-S3-MtH"/>
         <segue reference="DWE-Lb-ZeL"/>
     </inferredMetricsTieBreakers>
     <resources>

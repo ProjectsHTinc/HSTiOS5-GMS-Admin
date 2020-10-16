@@ -13,7 +13,7 @@ struct Globals {
        static let alertTitle = "GMS Admin";
        static let LoginEmailAlertMessage = "email is empty";
        static let LoginPasswordAlertMessage = "password is empty";
-       static let ConstituencyAlertMessage = "Please the constituency";
+       static let ConstituencyAlertMessage = "Please Select the Constituency";
        static let OTPAlertMessage = "Otp is incorrect";
        static let imageUrl = "https://happysanz.in/gms/assets/constituent/";
        static let documentUrl = "https://happysanz.in/gms/assets/constituent/doc/";
