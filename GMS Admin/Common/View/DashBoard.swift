@@ -15,13 +15,24 @@ import SideMenu
 class DashBoard: UIViewController, ChartViewDelegate {
 
     @IBOutlet var searchText: TextFieldWithImage!
+    @IBOutlet var fromDate: TextFieldWithImage!
+    @IBOutlet var toDate: TextFieldWithImage!
     @IBOutlet var area: UITextField!
-    @IBOutlet var constituentlabel: UILabel!
-    @IBOutlet var meetingLabel: UILabel!
-    @IBOutlet var grievanceLabel: UILabel!
-    @IBOutlet var interactionLabel: UILabel!
+    @IBOutlet weak var meetingLabel: UILabel!
     @IBOutlet var barchart: BarChartView!
-    
+    @IBOutlet weak var volounterLabel: UILabel!
+    @IBOutlet weak var greetingLabel: UILabel!
+    @IBOutlet weak var vedioLabel: UILabel!
+    @IBOutlet weak var grievanceLabel: UILabel!
+    @IBOutlet weak var footfallLabel: UILabel!
+    @IBOutlet weak var constituentLabel: UILabel!
+    @IBOutlet weak var view1: UIView!
+    @IBOutlet weak var view2: UIView!
+    @IBOutlet weak var view3: UIView!
+    @IBOutlet weak var view4: UIView!
+    @IBOutlet weak var view5: UIView!
+    @IBOutlet weak var view6: UIView!
+    @IBOutlet weak var view7: UIView!
     
     /*Get Paguthi List*/
     let presenter = PaguthiPresenter(areaService: AreaService())
@@ -29,6 +40,7 @@ class DashBoard: UIViewController, ChartViewDelegate {
     var paguthiName = [String]()
     var paguthiId = [String]()
     let pickerView = UIPickerView()
+    let datePicker = UIDatePicker()
 
 //    var selctedPaguthiId = String ()
     
@@ -39,6 +51,13 @@ class DashBoard: UIViewController, ChartViewDelegate {
     var grivenacegraph = [Double]()
     var meeting_request = [Double]()
     var month_year = [String]()
+    
+    var selectedFromDate = Date()
+    var selectedToDate = Date()
+    var textfieldName = String()
+    
+    var fromDateFormatted = String()
+    var toDateFormatted = String()
 
     var to = String()
 
@@ -47,7 +66,8 @@ class DashBoard: UIViewController, ChartViewDelegate {
 
         // Do any additional setup after loading the view.
         /*Removeing NavigationBar Bottom Line*/
-        
+        self.showDatePicker()
+        self.dropShadow()
         self.navigationController?.navigationBar.setBackgroundImage(UIImage(), for:.default)
         self.navigationController?.navigationBar.shadowImage = UIImage()
         self.navigationController?.navigationBar.layoutIfNeeded()
@@ -68,7 +88,10 @@ class DashBoard: UIViewController, ChartViewDelegate {
         self.createPickerView()
         GlobalVariables.shared.selectedPaguthiId = "ALL"
         GlobalVariables.shared.sideMenuDropdown =  "false"
-        self.callAPI(paguthi:GlobalVariables.shared.selectedPaguthiId)
+        GlobalVariables.shared.widgetFromDate = fromDateFormatted
+        GlobalVariables.shared.widgetToDate = toDateFormatted
+        
+        self.callAPI(paguthi:GlobalVariables.shared.selectedPaguthiId,FromDate:"",ToDate:"")
         setupView()
         /*Tap anywhere to hide keypad*/
         self.hideKeyboardWhenTappedAround()
@@ -124,7 +147,6 @@ class DashBoard: UIViewController, ChartViewDelegate {
          area.inputAccessoryView = toolBar
     }
     
-    
     @objc func action() {
           let row = self.pickerView.selectedRow(inComponent: 0)
           self.pickerView.selectRow(row, inComponent: 0, animated: false)
@@ -132,7 +154,8 @@ class DashBoard: UIViewController, ChartViewDelegate {
              area.text = self.paguthiName[row]// selected item
              GlobalVariables.shared.selectedPaguthiId = self.paguthiId[row]
           }
-          self.callAPI(paguthi:GlobalVariables.shared.selectedPaguthiId)
+          self.CheckValuesAreEmpty()
+//          self.callAPI(paguthi:GlobalVariables.shared.selectedPaguthiId)
           self.area.resignFirstResponder()
           view.endEditing(true)
     }
@@ -141,11 +164,11 @@ class DashBoard: UIViewController, ChartViewDelegate {
           view.endEditing(true)
     }
     
-    func callAPI (paguthi:String)
+    func callAPI (paguthi:String,FromDate:String,ToDate:String)
     {
         let url = GlobalVariables.shared.CLIENTURL + "apiios/dashBoard/"
-        let parameters = ["paguthi": paguthi]
-        self.view.activityStartAnimating()
+        let parameters = ["paguthi": paguthi,"from_date":FromDate,"to_date":ToDate]
+//        self.view.activityStartAnimating()
         DispatchQueue.global().async
             {
                 do
@@ -159,16 +182,19 @@ class DashBoard: UIViewController, ChartViewDelegate {
                         let status = json["status"].stringValue
                         if msg == "Dashboard Details" && status == "Success"
                         {
-                            self.constituentlabel.text = json["widgets_count"]["constituent_count"].stringValue
+                            self.constituentLabel.text = json["widgets_count"]["constituent_count"].stringValue
                             self.meetingLabel.text = json["widgets_count"]["meeting_count"].stringValue
                             self.grievanceLabel.text = json["widgets_count"]["grievance_count"].stringValue
-                            self.interactionLabel.text = json["widgets_count"]["interaction_count"].stringValue
+                            self.vedioLabel.text = json["widgets_count"]["video_count"].stringValue
+                            self.volounterLabel.text = json["widgets_count"]["volunter_count"].stringValue
+                            self.greetingLabel.text = json["widgets_count"]["geeting_count"].stringValue
+                            self.footfallLabel.text = json["widgets_count"]["footfall_count"].stringValue
                             
-                            GlobalVariables.shared.constituent_MemberCount = self.constituentlabel.text!
+//                            GlobalVariables.shared.constituent_MemberCount = self.constituentlabel.text!
                             GlobalVariables.shared.totalMeetingsCount = self.meetingLabel.text!
                             GlobalVariables.shared.totalGrievancesCount = self.grievanceLabel.text!
                             //GlobalVariables.shared.interActionCount = self.interactionLabel.text!
-                            GlobalVariables.shared.constituentInteractionCount = self.interactionLabel.text!
+//                            GlobalVariables.shared.constituentInteractionCount = self.interactionLabel.text!
 
                             self.dispMonth.removeAll()
                             self.new_grev.removeAll()
@@ -226,7 +252,7 @@ class DashBoard: UIViewController, ChartViewDelegate {
                     print("Unable to load data: \(error)")
                 }
          }
-    
+
     }
     
     /*BarChart View*/
@@ -331,28 +357,44 @@ class DashBoard: UIViewController, ChartViewDelegate {
         self.performSegue(withIdentifier: "to_graph", sender: self)
     }
     
-    @IBAction func CM(_ sender: Any)
-    {
-        self.to = "Cm"
-        self.performSegue(withIdentifier: "to_cm", sender: self.to)
-
+    @IBAction func volounteerCount(_ sender: Any) {
+        self.performSegue(withIdentifier: "to_volunteer", sender: self)
     }
     
-    @IBAction func TM(_ sender: Any)
-    {
-        self.to = "Tm"
-        self.performSegue(withIdentifier: "to_cm", sender: self.to)
+  
+    @IBAction func MeetingCount(_ sender: Any) {
+      
+        self.performSegue(withIdentifier: "to_meeting", sender: self)
+        
+        
     }
     
-    @IBAction func GM(_ sender: Any)
-    {
-        self.to = "TG"
-        self.performSegue(withIdentifier: "to_cm", sender: self.to)
+    @IBAction func vedioCount(_ sender: Any) {
+        
+        self.performSegue(withIdentifier: "to_vedio", sender: self)
     }
     
-    @IBAction func CI(_ sender: Any)
-    {
-        self.performSegue(withIdentifier: "to_ci", sender: self.to)
+    
+    
+    @IBAction func GC(_ sender: Any) {
+       
+        self.performSegue(withIdentifier: "to_GC", sender: self.to)
+    }
+    
+    @IBAction func FF(_ sender: Any) {
+        
+        self.performSegue(withIdentifier: "to_FF", sender: self.to)
+    }
+    @IBAction func greetingCount(_ sender: Any) {
+        
+        self.performSegue(withIdentifier: "greetingCount", sender: self.to)
+        
+        
+    }
+    
+    @IBAction func constituentCount(_ sender: Any) {
+        self.performSegue(withIdentifier: "const_member", sender: self.to)
+        
     }
     
     /*
@@ -384,11 +426,11 @@ class DashBoard: UIViewController, ChartViewDelegate {
             vc.month_year = self.month_year
             vc.meeting_request = self.meeting_request
         }
-        else if (segue.identifier == "to_cm")
+        else if (segue.identifier == "const_member")
         {
             let vc = segue.destination as! Widgets
             vc.paguthi_Id = GlobalVariables.shared.selectedPaguthiId
-            vc.From = self.to
+           
         }
         else if (segue.identifier == "to_ci"){
             let vc = segue.destination as! WidgetInterAction
@@ -399,6 +441,36 @@ class DashBoard: UIViewController, ChartViewDelegate {
             vc.keyWord = sender as! String
             vc.from = "dh"
         }
+        else if (segue.identifier == "to_GC"){
+            let vc = segue.destination as! WidgetGrievance
+            vc.paguthi_Id = sender as! String
+            
+        }
+        else if (segue.identifier == "to_FF"){
+            let vc = segue.destination as! WidgetFootFall
+            vc.paguthi_Id = sender as! String
+            
+        }
+        else if (segue.identifier == "to_meeting"){
+            let vc = segue.destination as! WidgetsMeeting
+            vc.paguthi_Id = GlobalVariables.shared.selectedPaguthiId
+            
+        }
+        else if (segue.identifier == "to_vedio"){
+            let vc = segue.destination as! WidgetVedio
+            vc.paguthi_Id = GlobalVariables.shared.selectedPaguthiId
+            
+        }
+        else if (segue.identifier == "greetingCount"){
+            let vc = segue.destination as! GreetingCount
+            vc.paguthi_Id = GlobalVariables.shared.selectedPaguthiId
+            
+        }
+        else if (segue.identifier == "to_volunteer"){
+            let vc = segue.destination as! WidgetVolounteer
+            vc.paguthi_Id = GlobalVariables.shared.selectedPaguthiId
+            
+        }
 //        else
 //        {
 //            guard let sideMenuNavigationController = segue.destination as? SideMenuNavigationController else { return }
@@ -406,7 +478,6 @@ class DashBoard: UIViewController, ChartViewDelegate {
 //        }
     }
     
-
 }
 
 extension DashBoard : PaguthiView, UIPickerViewDelegate, UIPickerViewDataSource, UITextFieldDelegate {
@@ -482,7 +553,141 @@ extension DashBoard : PaguthiView, UIPickerViewDelegate, UIPickerViewDataSource,
 //         area.text = self.paguthiName[row] // selected item
 //         GlobalVariables.shared.selectedPaguthiId = self.paguthiId[row]
 //    }
+    
+    func showDatePicker(){
+       //Formate Date
+       datePicker.datePickerMode = .date
+       datePicker.backgroundColor = UIColor.white
+       datePicker.setValue(UIColor.black, forKeyPath: "textColor")
+
+       //ToolBar
+       let toolbar = UIToolbar();
+       toolbar.sizeToFit()
+       toolbar.backgroundColor = UIColor.white
+       toolbar.tintColor = UIColor(red: 45/255.0, green: 148/255.0, blue: 235/255.0, alpha: 1.0)
+       let doneButton = UIBarButtonItem(title: "Done", style: .plain, target: self, action: #selector(donedatePicker));
+       let spaceButton = UIBarButtonItem(barButtonSystemItem: UIBarButtonItem.SystemItem.flexibleSpace, target: nil, action: nil)
+       let cancelButton = UIBarButtonItem(title: "Cancel", style: .plain, target: self, action: #selector(cancelDatePicker));
+       toolbar.setItems([cancelButton,spaceButton,doneButton], animated: false)
+
+       fromDate.inputAccessoryView = toolbar
+       fromDate.inputView = datePicker
         
+       toDate.inputAccessoryView = toolbar
+       toDate.inputView = datePicker
+
+    }
+    
+    func formattedDateFromString(dateString: String, withFormat format: String) -> String? {
+
+        let inputFormatter = DateFormatter()
+        inputFormatter.dateFormat = "yyyy-MM-dd"
+
+        if let date = inputFormatter.date(from: dateString) {
+
+            let outputFormatter = DateFormatter()
+          outputFormatter.dateFormat = format
+
+            return outputFormatter.string(from: date)
+        }
+
+        return nil
+    }
+    
+     @objc func donedatePicker(){
+        if fromDate.isFirstResponder
+        {
+            let formatter = DateFormatter()
+            formatter.dateFormat = "yyyy-MM-dd"
+            fromDateFormatted = formatter.string(from: datePicker.date)
+            selectedFromDate = datePicker.date
+            let formatted = self.formattedDateFromString(dateString: fromDateFormatted, withFormat: "dd-MM-YYYY")
+            fromDate.text = formatted
+            self.view.endEditing(true)
+        }
+        else
+        {
+            let formatter = DateFormatter()
+            formatter.dateFormat = "yyyy-MM-dd"
+            toDateFormatted = formatter.string(from: datePicker.date)
+            selectedToDate = datePicker.date
+            let formatted = self.formattedDateFromString(dateString: toDateFormatted, withFormat: "dd-MM-YYYY")
+            toDate.text = formatted
+            self.view.endEditing(true)
+        }
+
+    }
+        
+    @objc func cancelDatePicker(){
+       self.view.endEditing(true)
+     }
+    
+    func dropShadow () {
+        
+        view1.layer.masksToBounds = false
+        view1?.layer.shadowColor = UIColor.darkGray.cgColor
+        view1?.layer.shadowOffset =  CGSize.zero
+        view1?.layer.shadowOpacity = 0.6
+        view1?.layer.shadowRadius = 5
+        
+        view2.layer.masksToBounds = false
+        view2?.layer.shadowColor = UIColor.darkGray.cgColor
+        view2?.layer.shadowOffset =  CGSize.zero
+        view2?.layer.shadowOpacity = 0.6
+        view2?.layer.shadowRadius = 5
+        
+        view3.layer.masksToBounds = false
+        view3?.layer.shadowColor = UIColor.darkGray.cgColor
+        view3?.layer.shadowOffset =  CGSize.zero
+        view3?.layer.shadowOpacity = 0.6
+        view3?.layer.shadowRadius = 5
+        
+        view4.layer.masksToBounds = false
+        view4?.layer.shadowColor = UIColor.darkGray.cgColor
+        view4?.layer.shadowOffset =  CGSize.zero
+        view4?.layer.shadowOpacity = 0.6
+        view4?.layer.shadowRadius = 5
+        
+        view5.layer.masksToBounds = false
+        view5?.layer.shadowColor = UIColor.darkGray.cgColor
+        view5?.layer.shadowOffset =  CGSize.zero
+        view5?.layer.shadowOpacity = 0.6
+        view5?.layer.shadowRadius = 5
+        
+        view6.layer.masksToBounds = false
+        view6?.layer.shadowColor = UIColor.darkGray.cgColor
+        view6?.layer.shadowOffset =  CGSize.zero
+        view6?.layer.shadowOpacity = 0.6
+        view6?.layer.shadowRadius = 5
+        
+        view7.layer.masksToBounds = false
+        view7?.layer.shadowColor = UIColor.darkGray.cgColor
+        view7?.layer.shadowOffset =  CGSize.zero
+        view7?.layer.shadowOpacity = 0.6
+        view7?.layer.shadowRadius = 5
+        
+    }
+    func CheckValuesAreEmpty () {
+        
+        _ = selectedFromDate.timeIntervalSince1970 < selectedToDate.timeIntervalSince1970
+        
+          if self.fromDate.text?.count == 0   {
+                AlertController.shared.showAlert(targetVc: self, title: Globals.alertTitle, message: "From Date is Empty", complition: {
+                    
+                  })
+             }
+            
+           else if self.toDate.text?.count == 0 {
+                  AlertController.shared.showAlert(targetVc: self, title: Globals.alertTitle, message: "To Date is Empty", complition: {
+                      
+                    })
+           }
+           
+            else  {
+                 self.callAPI(paguthi:GlobalVariables.shared.selectedPaguthiId,FromDate:fromDateFormatted,ToDate:toDateFormatted)
+            
+        }
+    }
 }
 
 

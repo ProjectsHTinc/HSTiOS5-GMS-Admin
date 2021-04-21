@@ -26,6 +26,7 @@ class ConstituentDetail: UIViewController {
     @IBOutlet var serialNumber: UILabel!
     @IBOutlet var voterID: UILabel!
     @IBOutlet var adharNumber: UILabel!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 
@@ -113,7 +114,6 @@ class ConstituentDetail: UIViewController {
             vc.selectedconstitunecyId = self.selectedconstitunecyId
         }
     }
-
 }
 
 extension ConstituentDetail: ConstituentDetailView{

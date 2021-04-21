@@ -1,11 +1,12 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="16097" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="17156" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
     <device id="retina4_7" orientation="portrait" appearance="light"/>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="16087"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="17126"/>
         <capability name="Named colors" minToolsVersion="9.0"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="System colors in document resources" minToolsVersion="11.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <customFonts key="customFonts">
@@ -140,7 +141,7 @@
                                                             <nil key="highlightedColor"/>
                                                         </label>
                                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="pending" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="QFP-3f-N3B">
-                                                            <rect key="frame" x="16" y="127" width="46.5" height="16"/>
+                                                            <rect key="frame" x="16" y="127" width="47.5" height="16"/>
                                                             <constraints>
                                                                 <constraint firstAttribute="height" constant="16" id="dLh-B7-pyA"/>
                                                             </constraints>
@@ -149,7 +150,7 @@
                                                             <nil key="highlightedColor"/>
                                                         </label>
                                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Created by Kumaran" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="w0a-zx-xFS">
-                                                            <rect key="frame" x="223" y="127" width="117" height="16"/>
+                                                            <rect key="frame" x="219.5" y="127" width="120.5" height="16"/>
                                                             <constraints>
                                                                 <constraint firstAttribute="height" constant="16" id="u6L-TM-qdR"/>
                                                             </constraints>
@@ -217,6 +218,7 @@
                                 </connections>
                             </tableView>
                         </subviews>
+                        <viewLayoutGuide key="safeArea" id="8ug-NW-yuG"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
                             <constraint firstItem="qUy-RJ-Jm3" firstAttribute="leading" secondItem="8ug-NW-yuG" secondAttribute="leading" id="3jS-SB-Z3z"/>
@@ -230,7 +232,6 @@
                             <constraint firstItem="qUy-RJ-Jm3" firstAttribute="trailing" secondItem="8ug-NW-yuG" secondAttribute="trailing" id="wlg-eW-2s2"/>
                             <constraint firstItem="qUy-RJ-Jm3" firstAttribute="top" secondItem="l57-g5-kcr" secondAttribute="bottom" constant="8" id="yoA-kJ-uzo"/>
                         </constraints>
-                        <viewLayoutGuide key="safeArea" id="8ug-NW-yuG"/>
                     </view>
                     <connections>
                         <outlet property="baseLine" destination="l57-g5-kcr" id="HW7-4e-6gV"/>
@@ -366,7 +367,7 @@
                                                             <nil key="highlightedColor"/>
                                                         </label>
                                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="pending" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="evj-lo-4tn">
-                                                            <rect key="frame" x="16" y="127" width="46.5" height="16"/>
+                                                            <rect key="frame" x="16" y="127" width="47.5" height="16"/>
                                                             <constraints>
                                                                 <constraint firstAttribute="height" constant="16" id="TrY-pF-G12"/>
                                                             </constraints>
@@ -375,7 +376,7 @@
                                                             <nil key="highlightedColor"/>
                                                         </label>
                                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Created by Kumaran" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="SJN-gg-fNc">
-                                                            <rect key="frame" x="223" y="127" width="117" height="16"/>
+                                                            <rect key="frame" x="219.5" y="127" width="120.5" height="16"/>
                                                             <constraints>
                                                                 <constraint firstAttribute="height" constant="16" id="v0H-nP-dKR"/>
                                                             </constraints>
@@ -455,6 +456,7 @@
                                 <nil key="highlightedColor"/>
                             </label>
                         </subviews>
+                        <viewLayoutGuide key="safeArea" id="17M-Ky-mKo"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
                             <constraint firstAttribute="trailing" secondItem="yDQ-TS-O6o" secondAttribute="trailing" constant="20" id="2sn-SB-cFR"/>
@@ -468,7 +470,6 @@
                             <constraint firstItem="dv3-E7-DRC" firstAttribute="top" secondItem="17M-Ky-mKo" secondAttribute="top" constant="20" id="q0b-ku-zoa"/>
                             <constraint firstItem="yDQ-TS-O6o" firstAttribute="top" secondItem="dv3-E7-DRC" secondAttribute="bottom" constant="4" id="sTh-4p-CXe"/>
                         </constraints>
-                        <viewLayoutGuide key="safeArea" id="17M-Ky-mKo"/>
                     </view>
                     <navigationItem key="navigationItem" id="qWN-wt-b1A"/>
                     <connections>
@@ -655,7 +656,7 @@
                                                     </userDefinedRuntimeAttribute>
                                                 </userDefinedRuntimeAttributes>
                                             </view>
-                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="8uD-YH-FdL">
+                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="8uD-YH-FdL">
                                                 <rect key="frame" x="25.5" y="321" width="324" height="54"/>
                                                 <color key="backgroundColor" name="AppBaseColor"/>
                                                 <constraints>
@@ -700,14 +701,14 @@
                                 <viewLayoutGuide key="frameLayoutGuide" id="azi-0Z-zop"/>
                             </scrollView>
                         </subviews>
-                        <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                        <viewLayoutGuide key="safeArea" id="R7Y-Hk-fdX"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
                             <constraint firstItem="VTy-BP-h8n" firstAttribute="trailing" secondItem="R7Y-Hk-fdX" secondAttribute="trailing" id="2Cc-Ts-be0"/>
                             <constraint firstItem="VTy-BP-h8n" firstAttribute="leading" secondItem="R7Y-Hk-fdX" secondAttribute="leading" id="60X-Ag-C27"/>
                             <constraint firstItem="VTy-BP-h8n" firstAttribute="top" secondItem="R7Y-Hk-fdX" secondAttribute="top" id="DqK-oc-OpB"/>
                             <constraint firstItem="VTy-BP-h8n" firstAttribute="bottom" secondItem="R7Y-Hk-fdX" secondAttribute="bottom" id="cTK-jf-9Ra"/>
                         </constraints>
-                        <viewLayoutGuide key="safeArea" id="R7Y-Hk-fdX"/>
                     </view>
                     <navigationItem key="navigationItem" id="Lxq-3M-O0r"/>
                     <connections>
@@ -758,5 +759,8 @@
         <namedColor name="AppBaseColor">
             <color red="0.17647058823529413" green="0.58039215686274515" blue="0.92156862745098034" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </namedColor>
+        <systemColor name="systemBackgroundColor">
+            <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+        </systemColor>
     </resources>
 </document>

@@ -1,11 +1,12 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="16097.2" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="17156" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="3zz-RP-4aU">
     <device id="retina4_7" orientation="portrait" appearance="light"/>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="16087"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="17126"/>
         <capability name="Named colors" minToolsVersion="9.0"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="System colors in document resources" minToolsVersion="11.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <customFonts key="customFonts">
@@ -79,7 +80,7 @@
                                                 <subviews>
                                                     <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="LocationPin" translatesAutoresizingMaskIntoConstraints="NO" id="Cbs-Qj-MXT">
                                                         <rect key="frame" x="15" y="11" width="17" height="21"/>
-                                                        <color key="tintColor" systemColor="systemPinkColor" red="1" green="0.1764705882" blue="0.33333333329999998" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                        <color key="tintColor" systemColor="systemPinkColor"/>
                                                         <constraints>
                                                             <constraint firstAttribute="width" constant="17" id="HSC-k6-COP"/>
                                                             <constraint firstAttribute="height" constant="21" id="TVz-AC-LLq"/>
@@ -133,7 +134,7 @@
                                                     <userDefinedRuntimeAttribute type="boolean" keyPath="shadow" value="YES"/>
                                                 </userDefinedRuntimeAttributes>
                                             </view>
-                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="j1R-BZ-BJK">
+                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="j1R-BZ-BJK">
                                                 <rect key="frame" x="46" y="271" width="283" height="46"/>
                                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                 <constraints>
@@ -176,13 +177,13 @@
                                                         <color key="value" white="0.66666666666666663" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                     </userDefinedRuntimeAttribute>
                                                     <userDefinedRuntimeAttribute type="color" keyPath="selectedLineColor">
-                                                        <color key="value" name="AppBaseColor"/>
+                                                        <color key="value" red="0.08235294118" green="0.35294117650000001" blue="0.65490196079999996" alpha="1" colorSpace="calibratedRGB"/>
                                                     </userDefinedRuntimeAttribute>
                                                     <userDefinedRuntimeAttribute type="color" keyPath="placeHolderColor">
                                                         <color key="value" white="0.66666666666666663" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                     </userDefinedRuntimeAttribute>
                                                     <userDefinedRuntimeAttribute type="color" keyPath="selectedPlaceHolderColor">
-                                                        <color key="value" name="AppBaseColor"/>
+                                                        <color key="value" systemColor="linkColor"/>
                                                     </userDefinedRuntimeAttribute>
                                                     <userDefinedRuntimeAttribute type="color" keyPath="errorTextColor">
                                                         <color key="value" red="1" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
@@ -231,13 +232,13 @@
                                                         <color key="value" white="0.66666666666666663" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                     </userDefinedRuntimeAttribute>
                                                     <userDefinedRuntimeAttribute type="color" keyPath="selectedLineColor">
-                                                        <color key="value" name="AppBaseColor"/>
+                                                        <color key="value" red="0.08235294118" green="0.35294117650000001" blue="0.65490196079999996" alpha="1" colorSpace="calibratedRGB"/>
                                                     </userDefinedRuntimeAttribute>
                                                     <userDefinedRuntimeAttribute type="color" keyPath="placeHolderColor">
                                                         <color key="value" white="0.66666666666666663" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                     </userDefinedRuntimeAttribute>
                                                     <userDefinedRuntimeAttribute type="color" keyPath="selectedPlaceHolderColor">
-                                                        <color key="value" name="AppBaseColor"/>
+                                                        <color key="value" red="0.08235294118" green="0.35294117650000001" blue="0.65490196079999996" alpha="1" colorSpace="calibratedRGB"/>
                                                     </userDefinedRuntimeAttribute>
                                                     <userDefinedRuntimeAttribute type="color" keyPath="errorTextColor">
                                                         <color key="value" red="1" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
@@ -268,7 +269,7 @@
                                                     <action selector="hidePassword:" destination="3zz-RP-4aU" eventType="touchUpInside" id="LpA-uw-Nzs"/>
                                                 </connections>
                                             </button>
-                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="vAF-T6-GEs">
+                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="vAF-T6-GEs">
                                                 <rect key="frame" x="235" y="488" width="126" height="18"/>
                                                 <constraints>
                                                     <constraint firstAttribute="height" constant="18" id="cYd-SZ-rad"/>
@@ -282,8 +283,8 @@
                                                     <action selector="forgotPassword:" destination="3zz-RP-4aU" eventType="touchUpInside" id="YuR-am-cyP"/>
                                                 </connections>
                                             </button>
-                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Tpz-AQ-hCk">
-                                                <rect key="frame" x="14" y="538" width="347" height="47"/>
+                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Tpz-AQ-hCk">
+                                                <rect key="frame" x="14" y="526" width="347" height="47"/>
                                                 <color key="backgroundColor" name="AppBaseColor"/>
                                                 <constraints>
                                                     <constraint firstAttribute="height" constant="47" id="ea6-jB-FnT"/>
@@ -338,7 +339,7 @@
                                             <constraint firstItem="j1R-BZ-BJK" firstAttribute="top" secondItem="b4D-ac-nJ8" secondAttribute="bottom" constant="79" id="szz-aC-7TY"/>
                                             <constraint firstItem="fvg-qy-2c6" firstAttribute="centerX" secondItem="H28-Kd-zIq" secondAttribute="centerX" id="vQD-9j-pfr"/>
                                             <constraint firstItem="6jz-fh-zne" firstAttribute="leading" secondItem="H28-Kd-zIq" secondAttribute="leading" constant="14" id="x9A-uK-zCa"/>
-                                            <constraint firstItem="Tpz-AQ-hCk" firstAttribute="top" secondItem="vAF-T6-GEs" secondAttribute="bottom" constant="32" id="yxy-4L-vaK"/>
+                                            <constraint firstItem="Tpz-AQ-hCk" firstAttribute="top" secondItem="vAF-T6-GEs" secondAttribute="bottom" constant="20" id="yxy-4L-vaK"/>
                                         </constraints>
                                     </view>
                                 </subviews>
@@ -355,6 +356,7 @@
                                 <viewLayoutGuide key="frameLayoutGuide" id="Jdt-nv-Bqv"/>
                             </scrollView>
                         </subviews>
+                        <viewLayoutGuide key="safeArea" id="r8x-J4-Jsd"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
                             <constraint firstItem="br8-Tq-Ert" firstAttribute="leading" secondItem="r8x-J4-Jsd" secondAttribute="leading" id="0PJ-4L-1L0"/>
@@ -362,7 +364,6 @@
                             <constraint firstItem="br8-Tq-Ert" firstAttribute="bottom" secondItem="r8x-J4-Jsd" secondAttribute="bottom" id="9Jw-e7-hV0"/>
                             <constraint firstItem="br8-Tq-Ert" firstAttribute="top" secondItem="r8x-J4-Jsd" secondAttribute="top" id="PVe-Za-K7q"/>
                         </constraints>
-                        <viewLayoutGuide key="safeArea" id="r8x-J4-Jsd"/>
                     </view>
                     <navigationItem key="navigationItem" id="LHc-08-2v7"/>
                     <connections>
@@ -472,7 +473,7 @@
                                                         <nil key="textColor"/>
                                                         <nil key="highlightedColor"/>
                                                     </label>
-                                                    <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="t6p-o3-QSR">
+                                                    <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="t6p-o3-QSR">
                                                         <rect key="frame" x="0.0" y="3" width="137" height="51"/>
                                                         <autoresizingMask key="autoresizingMask" flexibleMinX="YES" widthSizable="YES" flexibleMaxX="YES" flexibleMinY="YES" heightSizable="YES" flexibleMaxY="YES"/>
                                                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -492,7 +493,7 @@
                                                         <nil key="textColor"/>
                                                         <nil key="highlightedColor"/>
                                                     </label>
-                                                    <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="AMr-Up-BmU">
+                                                    <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="AMr-Up-BmU">
                                                         <rect key="frame" x="146" y="3" width="138" height="51"/>
                                                         <autoresizingMask key="autoresizingMask" flexibleMinX="YES" widthSizable="YES" flexibleMaxX="YES" flexibleMinY="YES" heightSizable="YES" flexibleMaxY="YES"/>
                                                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -553,6 +554,7 @@
                                 </userDefinedRuntimeAttributes>
                             </view>
                         </subviews>
+                        <viewLayoutGuide key="safeArea" id="Ie0-JU-Mlc"/>
                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
                             <constraint firstItem="TwJ-Ng-77F" firstAttribute="bottom" secondItem="Ie0-JU-Mlc" secondAttribute="bottom" id="1q9-Y6-WXI"/>
@@ -560,7 +562,6 @@
                             <constraint firstItem="TwJ-Ng-77F" firstAttribute="top" secondItem="Ie0-JU-Mlc" secondAttribute="top" id="NZ4-oT-zVn"/>
                             <constraint firstItem="TwJ-Ng-77F" firstAttribute="trailing" secondItem="Ie0-JU-Mlc" secondAttribute="trailing" id="gL0-HK-EKe"/>
                         </constraints>
-                        <viewLayoutGuide key="safeArea" id="Ie0-JU-Mlc"/>
                     </view>
                     <navigationItem key="navigationItem" id="caL-LY-t5H"/>
                     <connections>
@@ -669,7 +670,7 @@
                                                 <nil key="textColor"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
-                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="49S-CE-7JU">
+                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="49S-CE-7JU">
                                                 <rect key="frame" x="14" y="316" width="347" height="47"/>
                                                 <color key="backgroundColor" name="AppBaseColor"/>
                                                 <constraints>
@@ -734,6 +735,7 @@
                                 <viewLayoutGuide key="frameLayoutGuide" id="Jug-Se-Cwm"/>
                             </scrollView>
                         </subviews>
+                        <viewLayoutGuide key="safeArea" id="GXx-vm-xG9"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
                             <constraint firstItem="NdD-BC-eiN" firstAttribute="bottom" secondItem="GXx-vm-xG9" secondAttribute="bottom" id="3JB-el-Nqe"/>
@@ -741,7 +743,6 @@
                             <constraint firstItem="NdD-BC-eiN" firstAttribute="trailing" secondItem="GXx-vm-xG9" secondAttribute="trailing" id="YDL-YI-WOV"/>
                             <constraint firstItem="NdD-BC-eiN" firstAttribute="leading" secondItem="GXx-vm-xG9" secondAttribute="leading" id="zMi-HE-DI1"/>
                         </constraints>
-                        <viewLayoutGuide key="safeArea" id="GXx-vm-xG9"/>
                     </view>
                     <navigationItem key="navigationItem" id="DW5-hb-EQD"/>
                     <connections>
@@ -754,9 +755,6 @@
             <point key="canvasLocation" x="1908" y="90"/>
         </scene>
     </scenes>
-    <inferredMetricsTieBreakers>
-        <segue reference="dzw-TE-ilx"/>
-    </inferredMetricsTieBreakers>
     <resources>
         <image name="LocationPin" width="16" height="23"/>
         <image name="forgotPassword" width="81" height="96.5"/>
@@ -765,5 +763,11 @@
         <namedColor name="AppBaseColor">
             <color red="0.17647058823529413" green="0.58039215686274515" blue="0.92156862745098034" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </namedColor>
+        <systemColor name="linkColor">
+            <color red="0.0" green="0.47843137254901963" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </systemColor>
+        <systemColor name="systemPinkColor">
+            <color red="1" green="0.17647058823529413" blue="0.33333333333333331" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </systemColor>
     </resources>
 </document>

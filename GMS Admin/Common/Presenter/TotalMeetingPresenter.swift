@@ -9,15 +9,17 @@
 import UIKit
 
 struct TotalMeetingData {
-    let meeting_count : Int?
-    let requested_count: Int?
-    let completed_count: Int?
+    var total_meeting: String?
+    var request_count_percentage: String?
+    var request_count : String?
+    var complete_count: String?
+    var complete_count_percentage : String?
 }
 
 protocol TotalMeetingView : NSObjectProtocol {
     func startLoadingTm()
     func finishLoadingTm()
-    func setTm(meeting_count: Int?, requested_count:Int?, completed_count:Int?)
+    func setTm(total_meeting: String?, request_count_percentage:String?, request_count:String?,complete_count: String?,complete_count_percentage : String?)
     func setEmptyTm(errorMessage:String)
 }
 
@@ -38,12 +40,12 @@ class TotalMeetingPresenter: NSObject {
         totalMeetingView = nil
     }
     
-    func getTotalMeeting(paguthi:String) {
+    func getTotalMeeting(paguthi:String,from_date:String,to_date:String) {
         self.totalMeetingView?.startLoadingTm()
         totalMeetingService.callAPITotalMeetings(
-            paguthi: paguthi, onSuccess: { (tm) in
+            paguthi: paguthi,to_date:to_date, from_date:from_date, onSuccess: { (tm) in
                 self.totalMeetingView?.finishLoadingTm()
-                self.totalMeetingView?.setTm(meeting_count: tm.meeting_count!, requested_count: tm.requested_count!, completed_count: tm.completed_count!)
+                self.totalMeetingView?.setTm(total_meeting: tm.total_meeting, request_count_percentage: tm.request_count_percentage!, request_count: tm.request_count!, complete_count: tm.complete_count!, complete_count_percentage: tm.complete_count_percentage!)
             },
             onFailure: { (errorMessage) in
                 self.totalMeetingView?.finishLoadingTm()

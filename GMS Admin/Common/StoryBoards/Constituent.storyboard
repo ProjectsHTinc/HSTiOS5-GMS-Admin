@@ -3,7 +3,7 @@
     <device id="retina4_7" orientation="portrait" appearance="light"/>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="17125"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="17126"/>
         <capability name="Named colors" minToolsVersion="9.0"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="System colors in document resources" minToolsVersion="11.0"/>
@@ -2775,6 +2775,7 @@
             <objects>
                 <navigationController storyboardIdentifier="LeftMenuNavigationController" modalPresentationStyle="fullScreen" id="CMd-yD-zMM" customClass="SideMenuNavigationController" customModule="SideMenu" sceneMemberID="viewController">
                     <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" translucent="NO" id="5rb-qg-3Hs">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                         <color key="backgroundColor" name="AppBaseColor"/>
                         <color key="tintColor" name="AppBaseColor"/>
@@ -2794,7 +2795,7 @@
     </scenes>
     <inferredMetricsTieBreakers>
         <segue reference="LXr-zg-6Q2"/>
-        <segue reference="daP-Xn-46s"/>
+        <segue reference="W6u-5T-hee"/>
     </inferredMetricsTieBreakers>
     <resources>
         <image name="Consmobile" width="12" height="12"/>

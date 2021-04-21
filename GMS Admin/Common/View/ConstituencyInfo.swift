@@ -13,7 +13,6 @@ class ConstituencyInfo: UITableViewController {
    var consprofiledata = [ConstituentDetailData]()
    var profiledata = [GreivancesAllData]()
 
-
     @IBOutlet var paguthi: UITextField!
     @IBOutlet var ward: UITextField!
     @IBOutlet var booth: UITextField!

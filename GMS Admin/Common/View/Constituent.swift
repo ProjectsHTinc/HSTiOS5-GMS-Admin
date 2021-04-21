@@ -301,7 +301,7 @@ extension Constituent: UISearchBarDelegate, UITableViewDelegate, UITableViewData
          self.constituencyName.insert("ALL", at: 0)
          self.constituencyID.insert("ALL", at: 0)
          self.setUpSegementControl()
-         self.selectedconstitunecyId = String (self.constituencyID[0])
+
          print(self.selectedconstitunecyId)
          self.callAPISearch(url: constituentcyList, constituency_id: self.selectedconstitunecyId, offset:"0", rowcount: "50")
     }

@@ -31,6 +31,7 @@ class UserProfile: UIViewController, ProfileDetailsView, UIImagePickerController
     @IBOutlet var address: UITextView!
     @IBOutlet var saveProfileOutlet: UIButton!
     @IBOutlet var userImageOutlet: UIButton!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 
@@ -244,7 +245,6 @@ class UserProfile: UIViewController, ProfileDetailsView, UIImagePickerController
         // Pass the selected object to the new view controller.
     }
     */
-    
 }
 
 extension UserProfile : ProfileUpdatesView, UITextFieldDelegate, UITextViewDelegate{

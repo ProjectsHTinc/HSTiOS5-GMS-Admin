@@ -10,26 +10,35 @@ import UIKit
 
 class TotalMeetings: NSObject {
     
-    var meeting_count: Int?
-    var requested_count: Int?
-    var completed_count : Int?
-
+    var total_meeting: String?
+    var request_count_percentage: String?
+    var request_count : String?
+    var complete_count: String?
+    var complete_count_percentage : String?
 
     // MARK: Instance Method
     func loadFromDictionary(_ dict: [String: AnyObject])
     {
         
-        if let data = dict["meeting_count"] as? Int?
+        if let data = dict["total_meeting"] as? String?
  {
-            self.meeting_count = data
+            self.total_meeting = data
         }
-        if let data = dict["requested_count"] as? Int?
+        if let data = dict["request_count_percentage"] as? String?
  {
-            self.requested_count = data
+            self.request_count_percentage = data
         }
-        if let data = dict["completed_count"] as? Int?
+        if let data = dict["request_count"] as? String?
  {
-            self.completed_count = data
+            self.request_count = data
+        }
+        if let data = dict["complete_count"] as? String?
+ {
+            self.complete_count = data
+        }
+        if let data = dict["complete_count_percentage"] as? String?
+ {
+            self.complete_count_percentage = data
         }
 
     }

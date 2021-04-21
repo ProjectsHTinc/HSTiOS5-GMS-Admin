@@ -34,6 +34,10 @@ class GlobalVariables: NSObject {
     var totalGrievancesCount = String()
     var constituentInteractionCount = String()
     var user_role = String()
-
-
+    var widgetFromDate = String()
+    var widgetToDate = String()
+    var total_greetings = Int()
+    var birthday_wish_count = String()
+    var festival_wishes_count = String()
+    var vedioCount = Int()
 }

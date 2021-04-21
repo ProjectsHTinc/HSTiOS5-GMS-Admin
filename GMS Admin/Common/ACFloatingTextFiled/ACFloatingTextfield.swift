@@ -78,7 +78,7 @@ import UIKit
             floatTheLabel()
         }
     }
-    
+
     override open var placeholder: String? {
         willSet {
             if newValue != "" {

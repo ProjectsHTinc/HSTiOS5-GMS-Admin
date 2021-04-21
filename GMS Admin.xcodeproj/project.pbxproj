@@ -7,6 +7,11 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		6B02B6762595A129000567F4 /* GreetingCount.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6B02B6752595A129000567F4 /* GreetingCount.swift */; };
+		6B02B67B2595A168000567F4 /* GreetingCountPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6B02B67A2595A168000567F4 /* GreetingCountPresenter.swift */; };
+		6B02B6802595A1AD000567F4 /* GreetingCountService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6B02B67F2595A1AD000567F4 /* GreetingCountService.swift */; };
+		6B02B6922595A96B000567F4 /* VedioCountService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6B02B6912595A96B000567F4 /* VedioCountService.swift */; };
+		6B1110B6259456890061B2A9 /* FootFallDetails.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6B1110B5259456890061B2A9 /* FootFallDetails.swift */; };
 		6B1703E624B83DE00029DDF4 /* Widgets.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6B1703E524B83DE00029DDF4 /* Widgets.swift */; };
 		6B1703EA24B84A4C0029DDF4 /* ConstituentMemberModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6B1703E924B84A4C0029DDF4 /* ConstituentMemberModel.swift */; };
 		6B1703EC24B84A730029DDF4 /* TotalMeetings.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6B1703EB24B84A730029DDF4 /* TotalMeetings.swift */; };
@@ -27,6 +32,11 @@
 		6B2B1E4224C8472E00D78634 /* MeetingAllDetailPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6B2B1E4124C8472E00D78634 /* MeetingAllDetailPresenter.swift */; };
 		6B2B1E4424C85E1A00D78634 /* MeetingAllDetailUpdateModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6B2B1E4324C85E1A00D78634 /* MeetingAllDetailUpdateModel.swift */; };
 		6B2B1E4624C85F8B00D78634 /* MeetingAllDetailUpdateService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6B2B1E4524C85F8B00D78634 /* MeetingAllDetailUpdateService.swift */; };
+		6B6494CA2594C78600D68D40 /* WidgetsMeeting.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6B6494C92594C78600D68D40 /* WidgetsMeeting.swift */; };
+		6B6494CF2594D04D00D68D40 /* WidgetVedio.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6B6494CE2594D04D00D68D40 /* WidgetVedio.swift */; };
+		6B6494D42594D13000D68D40 /* WidgetVolounteer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6B6494D32594D13000D68D40 /* WidgetVolounteer.swift */; };
+		6B6494D92594DC2700D68D40 /* VolounteerCountPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6B6494D82594DC2700D68D40 /* VolounteerCountPresenter.swift */; };
+		6B69ACF325BBF6FF006E672E /* GrievanceCountDetails.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6B69ACF225BBF6FF006E672E /* GrievanceCountDetails.swift */; };
 		6B6B3CE624C87B69006DA7FD /* MeetingAllDetailUpdatePresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6B6B3CE524C87B69006DA7FD /* MeetingAllDetailUpdatePresenter.swift */; };
 		6B6B3CE824C88085006DA7FD /* Grevances.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 6B6B3CE724C88085006DA7FD /* Grevances.storyboard */; };
 		6B71CDED24B3AB660099ECC8 /* Menu.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6B71CDEC24B3AB660099ECC8 /* Menu.swift */; };
@@ -66,6 +76,10 @@
 		6B85D80324CDF84000371319 /* ProfileUpdatePresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6B85D80224CDF84000371319 /* ProfileUpdatePresenter.swift */; };
 		6B85D80524CDF85200371319 /* ProfilePicPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6B85D80424CDF85200371319 /* ProfilePicPresenter.swift */; };
 		6B85D80724CDF86200371319 /* ChangePasswordPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6B85D80624CDF86200371319 /* ChangePasswordPresenter.swift */; };
+		6B8AFC9F2591E61B00B3B713 /* WidgetFootFall.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6B8AFC9E2591E61A00B3B713 /* WidgetFootFall.swift */; };
+		6B8AFCA42591F24E00B3B713 /* FootFallCountPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6B8AFCA32591F24E00B3B713 /* FootFallCountPresenter.swift */; };
+		6B8AFCA92591F2A000B3B713 /* FootFallService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6B8AFCA82591F2A000B3B713 /* FootFallService.swift */; };
+		6B8AFCAE2591F2B900B3B713 /* FootFallModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6B8AFCAD2591F2B900B3B713 /* FootFallModel.swift */; };
 		6B966D5424CA01A00045BB3A /* Report.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 6B966D5324CA01A00045BB3A /* Report.storyboard */; };
 		6B966D5624CA28430045BB3A /* Report.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6B966D5524CA28430045BB3A /* Report.swift */; };
 		6B966D5824CA28680045BB3A /* ReportStatus.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6B966D5724CA28680045BB3A /* ReportStatus.swift */; };
@@ -74,6 +88,7 @@
 		6B966D5E24CA28AE0045BB3A /* ReportListCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6B966D5D24CA28AE0045BB3A /* ReportListCell.swift */; };
 		6B9A3F6D24B9BE0400B1D349 /* Constituent.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6B9A3F6C24B9BE0400B1D349 /* Constituent.swift */; };
 		6B9A3F6F24B9BE2000B1D349 /* Constituent.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 6B9A3F6E24B9BE2000B1D349 /* Constituent.storyboard */; };
+		6BA1165D2591AC7E0087FB7D /* WidgetGrievance.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6BA1165C2591AC7E0087FB7D /* WidgetGrievance.swift */; };
 		6BA3D7DC24DAB17C004AFEAE /* SentenceCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6BA3D7DB24DAB17C004AFEAE /* SentenceCase.swift */; };
 		6BA49F2324CAFCBB00262ED2 /* CaategoeryModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6BA49F2224CAFCBB00262ED2 /* CaategoeryModel.swift */; };
 		6BA49F2524CAFCD500262ED2 /* SubCategoeryModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6BA49F2424CAFCD500262ED2 /* SubCategoeryModel.swift */; };
@@ -221,6 +236,11 @@
 		6BF2B92C24B5F67D00E42C4D /* AreaModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6BF2B92B24B5F67D00E42C4D /* AreaModel.swift */; };
 		6BF2B92E24B5F84C00E42C4D /* AreaService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6BF2B92D24B5F84C00E42C4D /* AreaService.swift */; };
 		6BF2B93024B5F8B300E42C4D /* PaguthiPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6BF2B92F24B5F8B300E42C4D /* PaguthiPresenter.swift */; };
+		79E55A1E262FD74C00CBA0EE /* VolounteerModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 79E55A1D262FD74C00CBA0EE /* VolounteerModel.swift */; };
+		79E55A23262FD75C00CBA0EE /* GreetingCountModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 79E55A22262FD75C00CBA0EE /* GreetingCountModel.swift */; };
+		79E55A28262FD77300CBA0EE /* VedioCountModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 79E55A27262FD77300CBA0EE /* VedioCountModel.swift */; };
+		79E55A2D262FD7AC00CBA0EE /* VolounteerCountService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 79E55A2C262FD7AC00CBA0EE /* VolounteerCountService.swift */; };
+		79E55A32262FD7CE00CBA0EE /* VedioCountPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 79E55A31262FD7CE00CBA0EE /* VedioCountPresenter.swift */; };
 		B7FB4663114C7B4664DD4373 /* Pods_GMS_Admin.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C91E7D0974F47612E35B85C2 /* Pods_GMS_Admin.framework */; };
 /* End PBXBuildFile section */
 
@@ -242,6 +262,11 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		6B02B6752595A129000567F4 /* GreetingCount.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GreetingCount.swift; sourceTree = "<group>"; };
+		6B02B67A2595A168000567F4 /* GreetingCountPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GreetingCountPresenter.swift; sourceTree = "<group>"; };
+		6B02B67F2595A1AD000567F4 /* GreetingCountService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GreetingCountService.swift; sourceTree = "<group>"; };
+		6B02B6912595A96B000567F4 /* VedioCountService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VedioCountService.swift; sourceTree = "<group>"; };
+		6B1110B5259456890061B2A9 /* FootFallDetails.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FootFallDetails.swift; sourceTree = "<group>"; };
 		6B1703E524B83DE00029DDF4 /* Widgets.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Widgets.swift; sourceTree = "<group>"; };
 		6B1703E924B84A4C0029DDF4 /* ConstituentMemberModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConstituentMemberModel.swift; sourceTree = "<group>"; };
 		6B1703EB24B84A730029DDF4 /* TotalMeetings.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TotalMeetings.swift; sourceTree = "<group>"; };
@@ -262,6 +287,11 @@
 		6B2B1E4124C8472E00D78634 /* MeetingAllDetailPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MeetingAllDetailPresenter.swift; sourceTree = "<group>"; };
 		6B2B1E4324C85E1A00D78634 /* MeetingAllDetailUpdateModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MeetingAllDetailUpdateModel.swift; sourceTree = "<group>"; };
 		6B2B1E4524C85F8B00D78634 /* MeetingAllDetailUpdateService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MeetingAllDetailUpdateService.swift; sourceTree = "<group>"; };
+		6B6494C92594C78600D68D40 /* WidgetsMeeting.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WidgetsMeeting.swift; sourceTree = "<group>"; };
+		6B6494CE2594D04D00D68D40 /* WidgetVedio.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WidgetVedio.swift; sourceTree = "<group>"; };
+		6B6494D32594D13000D68D40 /* WidgetVolounteer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WidgetVolounteer.swift; sourceTree = "<group>"; };
+		6B6494D82594DC2700D68D40 /* VolounteerCountPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VolounteerCountPresenter.swift; sourceTree = "<group>"; };
+		6B69ACF225BBF6FF006E672E /* GrievanceCountDetails.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GrievanceCountDetails.swift; sourceTree = "<group>"; };
 		6B6B3CE524C87B69006DA7FD /* MeetingAllDetailUpdatePresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MeetingAllDetailUpdatePresenter.swift; sourceTree = "<group>"; };
 		6B6B3CE724C88085006DA7FD /* Grevances.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Grevances.storyboard; sourceTree = "<group>"; };
 		6B71CDEC24B3AB660099ECC8 /* Menu.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Menu.swift; sourceTree = "<group>"; };
@@ -310,6 +340,10 @@
 		6B85D80224CDF84000371319 /* ProfileUpdatePresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileUpdatePresenter.swift; sourceTree = "<group>"; };
 		6B85D80424CDF85200371319 /* ProfilePicPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfilePicPresenter.swift; sourceTree = "<group>"; };
 		6B85D80624CDF86200371319 /* ChangePasswordPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChangePasswordPresenter.swift; sourceTree = "<group>"; };
+		6B8AFC9E2591E61A00B3B713 /* WidgetFootFall.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WidgetFootFall.swift; sourceTree = "<group>"; };
+		6B8AFCA32591F24E00B3B713 /* FootFallCountPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FootFallCountPresenter.swift; sourceTree = "<group>"; };
+		6B8AFCA82591F2A000B3B713 /* FootFallService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FootFallService.swift; sourceTree = "<group>"; };
+		6B8AFCAD2591F2B900B3B713 /* FootFallModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FootFallModel.swift; sourceTree = "<group>"; };
 		6B966D5324CA01A00045BB3A /* Report.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Report.storyboard; sourceTree = "<group>"; };
 		6B966D5524CA28430045BB3A /* Report.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Report.swift; sourceTree = "<group>"; };
 		6B966D5724CA28680045BB3A /* ReportStatus.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReportStatus.swift; sourceTree = "<group>"; };
@@ -318,6 +352,7 @@
 		6B966D5D24CA28AE0045BB3A /* ReportListCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReportListCell.swift; sourceTree = "<group>"; };
 		6B9A3F6C24B9BE0400B1D349 /* Constituent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constituent.swift; sourceTree = "<group>"; };
 		6B9A3F6E24B9BE2000B1D349 /* Constituent.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Constituent.storyboard; sourceTree = "<group>"; };
+		6BA1165C2591AC7E0087FB7D /* WidgetGrievance.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WidgetGrievance.swift; sourceTree = "<group>"; };
 		6BA3D7DB24DAB17C004AFEAE /* SentenceCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SentenceCase.swift; sourceTree = "<group>"; };
 		6BA49F2224CAFCBB00262ED2 /* CaategoeryModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CaategoeryModel.swift; sourceTree = "<group>"; };
 		6BA49F2424CAFCD500262ED2 /* SubCategoeryModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SubCategoeryModel.swift; sourceTree = "<group>"; };
@@ -465,6 +500,11 @@
 		6BF2B92B24B5F67D00E42C4D /* AreaModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AreaModel.swift; sourceTree = "<group>"; };
 		6BF2B92D24B5F84C00E42C4D /* AreaService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AreaService.swift; sourceTree = "<group>"; };
 		6BF2B92F24B5F8B300E42C4D /* PaguthiPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PaguthiPresenter.swift; sourceTree = "<group>"; };
+		79E55A1D262FD74C00CBA0EE /* VolounteerModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VolounteerModel.swift; sourceTree = "<group>"; };
+		79E55A22262FD75C00CBA0EE /* GreetingCountModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GreetingCountModel.swift; sourceTree = "<group>"; };
+		79E55A27262FD77300CBA0EE /* VedioCountModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VedioCountModel.swift; sourceTree = "<group>"; };
+		79E55A2C262FD7AC00CBA0EE /* VolounteerCountService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VolounteerCountService.swift; sourceTree = "<group>"; };
+		79E55A31262FD7CE00CBA0EE /* VedioCountPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = VedioCountPresenter.swift; path = "/Users/happysanzimac/Documents/HSTiOS5/GMS Admin/GMS Admin/Common/Presenter/VedioCountPresenter.swift"; sourceTree = "<absolute>"; };
 		7DBF413CA16A0A60CF1B6D37 /* Pods-GMS Admin.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-GMS Admin.release.xcconfig"; path = "Target Support Files/Pods-GMS Admin/Pods-GMS Admin.release.xcconfig"; sourceTree = "<group>"; };
 		C91E7D0974F47612E35B85C2 /* Pods_GMS_Admin.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_GMS_Admin.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		F83CCAC97D90DA277F993669 /* Pods-GMS Admin.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-GMS Admin.debug.xcconfig"; path = "Target Support Files/Pods-GMS Admin/Pods-GMS Admin.debug.xcconfig"; sourceTree = "<group>"; };
@@ -590,6 +630,10 @@
 				6B1703E924B84A4C0029DDF4 /* ConstituentMemberModel.swift */,
 				6B1703EB24B84A730029DDF4 /* TotalMeetings.swift */,
 				6B1703ED24B84A9C0029DDF4 /* TotalGreviancesModel.swift */,
+				6B8AFCAD2591F2B900B3B713 /* FootFallModel.swift */,
+				79E55A1D262FD74C00CBA0EE /* VolounteerModel.swift */,
+				79E55A22262FD75C00CBA0EE /* GreetingCountModel.swift */,
+				79E55A27262FD77300CBA0EE /* VedioCountModel.swift */,
 				6B1703EF24B84AFA0029DDF4 /* ConstituentInteractionModel.swift */,
 				6B74F78324BB9EC600CC95F9 /* ListConstiuentModel.swift */,
 				6BC8FE2224BCD0DD007457A2 /* ConstituentDetailModel.swift */,
@@ -650,6 +694,10 @@
 				6B1703F124B8515F0029DDF4 /* ConstituentMemberService.swift */,
 				6BEF3F2224B87468009BA5DF /* TotalMeetingService.swift */,
 				6BEF3F2424B879EB009BA5DF /* TotalGreviancesSerVice.swift */,
+				6B8AFCA82591F2A000B3B713 /* FootFallService.swift */,
+				6B02B67F2595A1AD000567F4 /* GreetingCountService.swift */,
+				6B02B6912595A96B000567F4 /* VedioCountService.swift */,
+				79E55A2C262FD7AC00CBA0EE /* VolounteerCountService.swift */,
 				6BEF3F2A24B88903009BA5DF /* ConstituentInteractionService.swift */,
 				6B74F78524BB9F3900CC95F9 /* ListConstituentservice.swift */,
 				6BC8FE2424BCD4AD007457A2 /* ConstituentDetailService.swift */,
@@ -692,6 +740,9 @@
 				6BF2B92F24B5F8B300E42C4D /* PaguthiPresenter.swift */,
 				6B1703F324B8523C0029DDF4 /* ConstituentMemberPresenter.swift */,
 				6BEF3F2024B87303009BA5DF /* TotalMeetingPresenter.swift */,
+				6B8AFCA32591F24E00B3B713 /* FootFallCountPresenter.swift */,
+				6B6494D82594DC2700D68D40 /* VolounteerCountPresenter.swift */,
+				6B02B67A2595A168000567F4 /* GreetingCountPresenter.swift */,
 				6BEF3F2624B87A44009BA5DF /* TotalGreviancesPresenter.swift */,
 				6BEF3F2C24B88988009BA5DF /* ConstituentinterActionPresenter.swift */,
 				6B74F78724BB9FD500CC95F9 /* ListConstituentPresenter.swift */,
@@ -719,6 +770,7 @@
 				6B85D80224CDF84000371319 /* ProfileUpdatePresenter.swift */,
 				6B85D80424CDF85200371319 /* ProfilePicPresenter.swift */,
 				6B85D80624CDF86200371319 /* ChangePasswordPresenter.swift */,
+				79E55A31262FD7CE00CBA0EE /* VedioCountPresenter.swift */,
 			);
 			path = Presenter;
 			sourceTree = "<group>";
@@ -750,6 +802,9 @@
 				6BC36B2724B3313B006043D9 /* ForgotPassword.swift */,
 				6BE7922424B7330500FB087F /* CustomLabelsXAxisValueFormatter.swift */,
 				6BD604E824B5132400EB84D3 /* DashBoard.swift */,
+				6B8AFC9E2591E61A00B3B713 /* WidgetFootFall.swift */,
+				6B1110B5259456890061B2A9 /* FootFallDetails.swift */,
+				6BA1165C2591AC7E0087FB7D /* WidgetGrievance.swift */,
 				6B71CDEC24B3AB660099ECC8 /* Menu.swift */,
 				6BEE0CF424B447750032EFA4 /* Search.swift */,
 				6BE7922624B749EF00FB087F /* MoreGraph.swift */,
@@ -793,6 +848,11 @@
 				6BCE976624CDD5780032E5EF /* ChangePassword.swift */,
 				6BCE976824CDD5890032E5EF /* AboutUs.swift */,
 				6BCE976A24CDD59C0032E5EF /* TermsAndCondition.swift */,
+				6B6494C92594C78600D68D40 /* WidgetsMeeting.swift */,
+				6B6494CE2594D04D00D68D40 /* WidgetVedio.swift */,
+				6B6494D32594D13000D68D40 /* WidgetVolounteer.swift */,
+				6B02B6752595A129000567F4 /* GreetingCount.swift */,
+				6B69ACF225BBF6FF006E672E /* GrievanceCountDetails.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -1106,6 +1166,7 @@
 				6BB8D11224C18E53002A2B20 /* ACFloatingTextfield.swift in Sources */,
 				6B2B1E3224C82A2800D78634 /* MeetingAllPresenter.swift in Sources */,
 				6B7220ED24A7597F004424CA /* Constituency.swift in Sources */,
+				6B6494CF2594D04D00D68D40 /* WidgetVedio.swift in Sources */,
 				6B74F78624BB9F3900CC95F9 /* ListConstituentservice.swift in Sources */,
 				6BC8FE4924BD0B6C007457A2 /* Document.swift in Sources */,
 				6BC0725324C62DF000BD09E4 /* ConstituentGreivancesDetail.swift in Sources */,
@@ -1119,14 +1180,18 @@
 				6BD881CF24B3464A00B1DCEF /* IconInTextfield.swift in Sources */,
 				6B2B1E4424C85E1A00D78634 /* MeetingAllDetailUpdateModel.swift in Sources */,
 				6BA49F2B24CAFF2C00262ED2 /* CategoeryPresenter.swift in Sources */,
+				6B6494CA2594C78600D68D40 /* WidgetsMeeting.swift in Sources */,
 				6BC8FE5324BD1113007457A2 /* ConsDocumentPresenter.swift in Sources */,
 				6BA49F2924CAFED000262ED2 /* SubCategoeryService.swift in Sources */,
 				6BE603CA24C8F50D00DA7ED5 /* StaffDetailModel.swift in Sources */,
 				6B85D7FB24CDF4EF00371319 /* ProfileUpdateService.swift in Sources */,
 				6B9A3F6D24B9BE0400B1D349 /* Constituent.swift in Sources */,
+				79E55A28262FD77300CBA0EE /* VedioCountModel.swift in Sources */,
 				6BEF3F2124B87303009BA5DF /* TotalMeetingPresenter.swift in Sources */,
+				6B69ACF325BBF6FF006E672E /* GrievanceCountDetails.swift in Sources */,
 				6BB7E14724B2F3D100E46D28 /* ClientUrlModel.swift in Sources */,
 				6BC8FE3324BCE805007457A2 /* MeetingDetail.swift in Sources */,
+				79E55A2D262FD7AC00CBA0EE /* VolounteerCountService.swift in Sources */,
 				6BE4E10F24B1EF0200FD735B /* UserDefault.swift in Sources */,
 				6B2B1E3A24C83B4000D78634 /* MeetingAllSearch.swift in Sources */,
 				6BA49F2D24CAFF4000262ED2 /* SubCategoeryPresenter.swift in Sources */,
@@ -1137,8 +1202,10 @@
 				6B74F78424BB9EC600CC95F9 /* ListConstiuentModel.swift in Sources */,
 				6BEF3F2724B87A44009BA5DF /* TotalGreviancesPresenter.swift in Sources */,
 				6BB5FCF524CABE74003B5F56 /* ReportService.swift in Sources */,
+				6BA1165D2591AC7E0087FB7D /* WidgetGrievance.swift in Sources */,
 				6BAC950124CB8A0D0082FCD3 /* ReportBirthday.swift in Sources */,
 				6BC8FE2F24BCE536007457A2 /* MeetingCell.swift in Sources */,
+				79E55A1E262FD74C00CBA0EE /* VolounteerModel.swift in Sources */,
 				6B71CDED24B3AB660099ECC8 /* Menu.swift in Sources */,
 				6B74F77B24BB7C1700CC95F9 /* ViewController.m in Sources */,
 				6B1703F224B8515F0029DDF4 /* ConstituentMemberService.swift in Sources */,
@@ -1160,7 +1227,9 @@
 				6B2B1E4024C846D700D78634 /* MeetingAllDetailService.swift in Sources */,
 				6BEE0CF724B447930032EFA4 /* SearchCell.swift in Sources */,
 				6BE7922524B7330500FB087F /* CustomLabelsXAxisValueFormatter.swift in Sources */,
+				79E55A32262FD7CE00CBA0EE /* VedioCountPresenter.swift in Sources */,
 				6BC0725124C60AF400BD09E4 /* ConstituentGreivancesCell.swift in Sources */,
+				6B6494D92594DC2700D68D40 /* VolounteerCountPresenter.swift in Sources */,
 				6BA49F2524CAFCD500262ED2 /* SubCategoeryModel.swift in Sources */,
 				6BC8FE5124BD10CA007457A2 /* GriDocumentService.swift in Sources */,
 				6BE603B824C8CA2D00DA7ED5 /* GreivanceAllSearch.swift in Sources */,
@@ -1170,28 +1239,35 @@
 				6B7220E724A75946004424CA /* ConstituencyService.swift in Sources */,
 				6B7220DB24A758E6004424CA /* ConstituencyModel.swift in Sources */,
 				6BC8FE4324BCFE47007457A2 /* InterAction.swift in Sources */,
+				6B02B6922595A96B000567F4 /* VedioCountService.swift in Sources */,
 				6BF2B93024B5F8B300E42C4D /* PaguthiPresenter.swift in Sources */,
 				6B85D7F324CDEE3E00371319 /* UserProfilePicModel.swift in Sources */,
 				6BBB902324C69DE800BF2C43 /* ConstituentGreivancesMessageCell.swift in Sources */,
 				6BC8FE2B24BCE445007457A2 /* MeetingService.swift in Sources */,
+				79E55A23262FD75C00CBA0EE /* GreetingCountModel.swift in Sources */,
 				6B85D7FF24CDF51200371319 /* ChangePasswordService.swift in Sources */,
 				6B2B1E3824C82C5C00D78634 /* MeetingAll.swift in Sources */,
 				6B85D7F724CDEEE500371319 /* ChangePasswordModel.swift in Sources */,
 				6B7220A224A7578B004424CA /* Login.swift in Sources */,
 				6BE02EE124B4A34400AA463A /* SearchPresenter.swift in Sources */,
 				6BE4E10324B1EEE800FD735B /* CustomNavigationBarBackButtonWithTitle.swift in Sources */,
+				6B8AFC9F2591E61B00B3B713 /* WidgetFootFall.swift in Sources */,
 				6BAC94EB24CB6D6B0082FCD3 /* ReportMeetingSearch.swift in Sources */,
 				6BE7922724B749EF00FB087F /* MoreGraph.swift in Sources */,
+				6B1110B6259456890061B2A9 /* FootFallDetails.swift in Sources */,
 				6BAC94F124CB6F000082FCD3 /* ReportMeetingPresenter.swift in Sources */,
 				6BC8FE3F24BCFD15007457A2 /* InteractionService.swift in Sources */,
+				6B02B6762595A129000567F4 /* GreetingCount.swift in Sources */,
 				6BE4E10C24B1EF0200FD735B /* AlertController.swift in Sources */,
 				6BE603C224C8EA6400DA7ED5 /* StaffCell.swift in Sources */,
 				6B966D5C24CA28960045BB3A /* ReportSearch.swift in Sources */,
+				6B8AFCA92591F2A000B3B713 /* FootFallService.swift in Sources */,
 				6BE603CC24C8F6D800DA7ED5 /* StaffDetailService.swift in Sources */,
 				6BA955D224B5D806007982B8 /* AFWrapper.swift in Sources */,
 				6B72209E24A7578B004424CA /* AppDelegate.swift in Sources */,
 				6BAC950724CB8C1F0082FCD3 /* ReportBirthdayModel.swift in Sources */,
 				6BB5FCF324CAB89F003B5F56 /* ReportModel.swift in Sources */,
+				6B8AFCA42591F24E00B3B713 /* FootFallCountPresenter.swift in Sources */,
 				6B7220E524A75936004424CA /* LoginService.swift in Sources */,
 				6BCE976524CDD55E0032E5EF /* UserProfile.swift in Sources */,
 				6BB7E14924B2F41000E46D28 /* ClientUrlService.swift in Sources */,
@@ -1206,6 +1282,7 @@
 				6B7C2E1724C717690077FAC2 /* EmptySegue.swift in Sources */,
 				6B966D5824CA28680045BB3A /* ReportStatus.swift in Sources */,
 				6BC8FE3D24BCFC2A007457A2 /* InteractionModel.swift in Sources */,
+				6B02B6802595A1AD000567F4 /* GreetingCountService.swift in Sources */,
 				6B85D7F924CDF4E000371319 /* ProfileDetailService.swift in Sources */,
 				6BC8FE4F24BD106F007457A2 /* ConsDocumentService.swift in Sources */,
 				6BB7E15124B2FB6A00E46D28 /* AppVersionService.swift in Sources */,
@@ -1242,6 +1319,7 @@
 				6BC295E324BC89F400DB8640 /* GradientColors.swift in Sources */,
 				6BC8FE3924BCF825007457A2 /* PlantDonationPresenter.swift in Sources */,
 				6BE4E10224B1EEE800FD735B /* TapToDismissKeypad.swift in Sources */,
+				6B6494D42594D13000D68D40 /* WidgetVolounteer.swift in Sources */,
 				6BAC94FD24CB82400082FCD3 /* ReportStaffService.swift in Sources */,
 				6BE603B624C8C0DF00DA7ED5 /* GreivancesAllPresenter.swift in Sources */,
 				6BBE649624D18B4A00B508D3 /* DateFormatter.swift in Sources */,
@@ -1262,7 +1340,9 @@
 				6BE4E10D24B1EF0200FD735B /* Constants.swift in Sources */,
 				6B85D80124CDF82A00371319 /* ProfileDetailPresenter.swift in Sources */,
 				6B7C2E1824C717690077FAC2 /* Container.swift in Sources */,
+				6B8AFCAE2591F2B900B3B713 /* FootFallModel.swift in Sources */,
 				6B2B1E2E24C825F800D78634 /* MeetingAllModel.swift in Sources */,
+				6B02B67B2595A168000567F4 /* GreetingCountPresenter.swift in Sources */,
 				6BAEF77424BEE52200CB458A /* DashBoardModel.swift in Sources */,
 				6BC8FE3524BCF660007457A2 /* PlantDonationModel.swift in Sources */,
 			);

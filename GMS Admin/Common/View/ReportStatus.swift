@@ -42,6 +42,7 @@ class ReportStatus: UIViewController {
     
     var selectedFromDate = Date()
     var selectedToDate = Date()
+    
     var textfieldName = String()
     
     var fromDateFormatted = String()

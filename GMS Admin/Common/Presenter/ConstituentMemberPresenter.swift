@@ -5,22 +5,46 @@
 //  Created by Happy Sanz Tech on 10/07/20.
 //  Copyright © 2020 HappySanzTech. All rights reserved.
 //
+//
 
 import UIKit
 
 struct ConstituentMemberData {
-    let member_count : Int?
-    let male_count: Int?
-    let female_count: Int?
-    let voterid_count: Int?
-    let aadhaar_count: Int?
+    
+    var total: String?
+    var malecount: String?
+    var malepercenatge : String?
+    var femalecount : String?
+    var femalepercenatge: String?
+    var others: String?
+    var otherpercenatge : String?
+    var malevoter_percentage : String?
+    var femalevoter: String?
+    var femalevoter_percentage: String?
+    var maleaadhar : String?
+    var maleaadhaar_percentage : String?
+    var femaleaadhar: String?
+    var femaleaadhaar_percentage: String?
+    var having_mobilenumber : String?
+    var mobile_percentage : String?
+    var having_email: String?
+    var email_percentage: String?
+    var having_whatsapp : String?
+    var whatsapp_percentage : String?
+    var having_whatsapp_broadcast: String?
+    var broadcast_percentage: String?
+    var having_voter_percenatge : String?
+    var having_vote_id : String?
+    var having_dob_percentage: String?
+    var having_dob: String?
+
 }
 
 protocol ConstituentMemberView : NSObjectProtocol {
-    func startLoadingCm()
-    func finishLoadingCm()
-    func setCm(member_count: Int?, male_count:Int?, female_count:Int?, voterid_count:Int?, aadhaar_count:Int?)
-    func setEmptyCm(errorMessage:String)
+    func startLoadingCi()
+    func finishLoadingCI()
+    func setCI(constituentMemberData:[ConstituentMemberData])
+    func setEmptyCI(errorMessage:String)
 }
 
 class ConstituentMemberPresenter: NSObject {
@@ -40,16 +64,23 @@ class ConstituentMemberPresenter: NSObject {
         constituentMemberView = nil
     }
     
-    func getConstituentMember(paguthi:String) {
-        self.constituentMemberView?.startLoadingCm()
-        constituentMemberService.callAPIConstituentMembers(
-            paguthi: paguthi, onSuccess: { (cm) in
-                self.constituentMemberView?.finishLoadingCm()
-                self.constituentMemberView?.setCm(member_count: cm.member_count!, male_count: cm.male_count!, female_count: cm.female_count!, voterid_count: cm.voterid_count!, aadhaar_count: cm.aadhaar_count!)
+    func getTotalGreviances(paguthi:String,from_date:String,to_date:String) {
+        self.constituentMemberView?.startLoadingCi()
+        constituentMemberService.callAPIConstituentMembers(paguthi: paguthi, from_date: from_date, to_date: to_date, onSuccess: { (ci) in
+                self.constituentMemberView?.finishLoadingCI()
+                if (ci.count == 0){
+                } else {
+                    let mappedUsers = ci.map {
+                        return ConstituentMemberData(total: "\($0.total ?? "")", malecount: "\($0.malecount ?? "")", malepercenatge: "\($0.malepercenatge ?? "")",femalecount: "\($0.femalecount ?? "")", femalepercenatge: "\($0.femalepercenatge ?? "")", others: "\($0.others ?? "")",otherpercenatge: "\($0.otherpercenatge ?? "")", malevoter_percentage: "\($0.malevoter_percentage ?? "")", femalevoter: "\($0.femalevoter ?? "")",  femalevoter_percentage: "\($0.femalevoter_percentage ?? "")", maleaadhar: "\($0.maleaadhar ?? "")", maleaadhaar_percentage: "\($0.maleaadhaar_percentage ?? "")",femaleaadhar: "\($0.femaleaadhar ?? "")", femaleaadhaar_percentage: "\($0.femaleaadhaar_percentage ?? "")", having_mobilenumber: "\($0.having_mobilenumber ?? "")",mobile_percentage: "\($0.mobile_percentage ?? "")", having_email: "\($0.having_email ?? "")", email_percentage: "\($0.email_percentage ?? "")",having_whatsapp: "\($0.having_whatsapp ?? "")", whatsapp_percentage: "\($0.whatsapp_percentage ?? "")", having_whatsapp_broadcast: "\($0.having_whatsapp_broadcast ?? "")",broadcast_percentage: "\($0.broadcast_percentage ?? "")", having_voter_percenatge: "\($0.having_voter_percenatge ?? "")", having_vote_id: "\($0.having_vote_id ?? "")", having_dob_percentage: "\($0.having_dob_percentage ?? "")", having_dob: "\($0.having_dob ?? "")")
+                                                     
+                    }
+                    self.constituentMemberView?.setCI(constituentMemberData: mappedUsers)
+
+                }
             },
             onFailure: { (errorMessage) in
-                self.constituentMemberView?.finishLoadingCm()
-                self.constituentMemberView?.setEmptyCm(errorMessage: errorMessage)
+                self.constituentMemberView?.startLoadingCi()
+                self.constituentMemberView?.setEmptyCI(errorMessage: errorMessage)
 
             }
         )

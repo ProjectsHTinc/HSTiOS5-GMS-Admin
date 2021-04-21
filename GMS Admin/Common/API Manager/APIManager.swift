@@ -60,6 +60,12 @@ class APIManager: NSObject {
           case profilePicUrl = "apiios/profilePictureUpload/"
           case profileUpdateUrl = "apiios/profileUpdate"
           case changePasswordUrl = "apiios/changePassword"
+          case footFallUrl = "apiios/widgets_footfall"
+          case volounteerUrl = "apiios/widgets_volunteer"
+          case greetingCountUrl = "apiios/widgets_greetings"
+          case vedioCountUrl = "apiios/widgets_videos"
+        
+        
 //        case otpUrl = "apiconstituentios/mobile_verify"
 //        case bannerImageUrl = "apiconstituentios/view_banners"
 //        case newsFeedUrl = "apiconstituentios/newsfeed_list"
@@ -453,11 +459,12 @@ class APIManager: NSObject {
     }
     
     //MARK: GET Constituency Members RESPONSE
-    func callAPIConstituentMembers(paguthi:String,onSuccess successCallback: ((_ constituentMember: ConstituentMemberModel) -> Void)?,onFailure failureCallback: ((_ errorMessage: String) -> Void)?) {
+
+    func callAPIConstituentMembers(paguthi:String,from_date:String,to_date:String,onSuccess successCallback: ((_ constituentInteractionModel: [ConstituentMemberModel]) -> Void)?,onFailure failureCallback: ((_ errorMessage: String) -> Void)?) {
         // Build URL
         let url = GlobalVariables.shared.CLIENTURL + Endpoint.constituentMembers.rawValue
         // Set Parameters
-        let parameters: Parameters =  ["paguthi": paguthi]
+        let parameters: Parameters =  ["paguthi": paguthi,"from_date":from_date,"to_date":to_date]
         // call API
         self.createRequestConstituentMembers(url, method: .post, headers: nil, parameters: parameters as? [String : String], onSuccess: {(responseObject: JSON) -> Void in
         // Create dictionary
@@ -467,22 +474,23 @@ class APIManager: NSObject {
               failureCallback?(responseObject["msg"].string!)
               return
         }
+            
+//            GlobalVariables.shared.interActionCount = responseObject["interaction_count"].int!
 
-              let member_count = responseObject["constituent_details"]["member_count"].int
-              let male_count = responseObject["constituent_details"]["male_count"].int
-              let female_count = responseObject["constituent_details"]["female_count"].int
-              let voterid_count = responseObject["constituent_details"]["voterid_count"].int
-              let aadhaar_count = responseObject["constituent_details"]["aadhaar_count"].int
-
-            // Create object
-                let sendToModel = ConstituentMemberModel()
-                sendToModel.male_count = male_count
-                sendToModel.female_count = female_count
-                sendToModel.voterid_count = voterid_count
-                sendToModel.aadhaar_count = aadhaar_count
-                sendToModel.member_count = member_count
-
-                successCallback?(sendToModel)
+              if let responseDict = responseObject["constituent_details"].arrayObject
+                {
+                      let constituentMemberModel = responseDict as! [[String:AnyObject]]
+                      // Create object
+                      var data = [ConstituentMemberModel]()
+                      for item in constituentMemberModel {
+                          let single = ConstituentMemberModel.build(item)
+                          data.append(single)
+                      }
+                      // Fire callback
+                      successCallback?(data)
+                 } else {
+                      failureCallback?("An error has occured.")
+                  }
         },
         onFailure: {(errorMessage: String) -> Void in
             failureCallback?(errorMessage)
@@ -511,11 +519,11 @@ class APIManager: NSObject {
     }
     
     //MARK: GET TOTAL MEETINGS RESPONSE
-    func callAPITotalMeetings(paguthi:String,onSuccess successCallback: ((_ totalMeetings: TotalMeetings) -> Void)?,onFailure failureCallback: ((_ errorMessage: String) -> Void)?) {
+    func callAPITotalMeetings(paguthi:String,from_date:String,to_date:String,onSuccess successCallback: ((_ totalMeetings: TotalMeetings) -> Void)?,onFailure failureCallback: ((_ errorMessage: String) -> Void)?) {
         // Build URL
         let url = GlobalVariables.shared.CLIENTURL + Endpoint.totalMeetingsUrl.rawValue
         // Set Parameters
-        let parameters: Parameters =  ["paguthi": paguthi]
+        let parameters: Parameters =  ["paguthi_id": paguthi,"from_date":from_date,"to_date":to_date]
         // call API
         self.createRequestConstituentMembers(url, method: .post, headers: nil, parameters: parameters as? [String : String], onSuccess: {(responseObject: JSON) -> Void in
         // Create dictionary
@@ -526,15 +534,20 @@ class APIManager: NSObject {
               return
         }
 
-              let member_count = responseObject["meeting_details"]["meeting_count"].int
-              let requested_count = responseObject["meeting_details"]["requested_count"].int
-              let completed_count = responseObject["meeting_details"]["completed_count"].int
+              let total_meeting = responseObject["meeting_details"]["total_meeting"].string
+              let request_count = responseObject["meeting_details"]["request_count"].string
+              let request_count_percentage = responseObject["meeting_details"]["request_count_percentage"].string
+              let complete_count = responseObject["meeting_details"]["complete_count"].string
+              let complete_count_percentage = responseObject["meeting_details"]["complete_count_percentage"].string
+            
 
               // Create object
               let sendToModel = TotalMeetings()
-              sendToModel.meeting_count = member_count
-              sendToModel.requested_count = requested_count
-              sendToModel.completed_count = completed_count
+              sendToModel.total_meeting = total_meeting
+              sendToModel.request_count_percentage = request_count_percentage
+              sendToModel.request_count = request_count
+              sendToModel.complete_count = complete_count
+              sendToModel.complete_count_percentage = complete_count_percentage
 
               successCallback?(sendToModel)
         },
@@ -564,35 +577,64 @@ class APIManager: NSObject {
         }
     }
     
-    //MARK: GET TOTAL GREViANCES RESPONSE
-    func callAPITotalGreivances(paguthi:String,onSuccess successCallback: ((_ totalGreviancesModel: TotalGreviancesModel) -> Void)?,onFailure failureCallback: ((_ errorMessage: String) -> Void)?) {
+    func callAPIFootfall(paguthi:String,from_date:String,to_date:String,onSuccess successCallback: ((_ totalGreviancesModel: FootFallModel) -> Void)?,onFailure failureCallback: ((_ errorMessage: String) -> Void)?) {
         // Build URL
-        let url = GlobalVariables.shared.CLIENTURL + Endpoint.totalGreivancesUrl.rawValue
+        let url = GlobalVariables.shared.CLIENTURL + Endpoint.footFallUrl.rawValue
         // Set Parameters
-        let parameters: Parameters =  ["paguthi": paguthi]
+        let parameters: Parameters =  ["paguthi_id": paguthi,"from_date":from_date,"to_date":to_date]
         // call API
-        self.createRequestTotalGreivances(url, method: .post, headers: nil, parameters: parameters as? [String : String], onSuccess: {(responseObject: JSON) -> Void in
+        self.createRequestToFootFall(url, method: .post, headers: nil, parameters: parameters as? [String : String], onSuccess: {(responseObject: JSON) -> Void in
         // Create dictionary
         print(responseObject)
           
-          guard let msg = responseObject["msg"].string, msg == "Grievances Details" else{
+          guard let msg = responseObject["msg"].string, msg == "Footfall Details" else{
               failureCallback?(responseObject["msg"].string!)
               return
         }
 
-              let grievance_count = responseObject["grievances_details"]["grievance_count"].int
-              let enquiry_count = responseObject["grievances_details"]["enquiry_count"].int
-              let petition_count = responseObject["grievances_details"]["petition_count"].int
-              let processing_count = responseObject["grievances_details"]["processing_count"].int
-              let completed_count = responseObject["grievances_details"]["completed_count"].int
-
+            let total_footfall_cnt = responseObject["footfall_details"]["total_footfall_cnt"].int
+            let unique_footfall_cnt = responseObject["footfall_details"]["unique_footfall_cnt"].int
+            let repeated_footfall_cnt_presntage = responseObject["footfall_details"]["repeated_footfall_cnt_presntage"].string
+            let repeated_footfall_cnt = responseObject["footfall_details"]["repeated_footfall_cnt"].int
+            let unique_footfall_cnt_presntage = responseObject["footfall_details"]["unique_footfall_cnt_presntage"].string
+            let total_unique_footfall_cnt = responseObject["footfall_details"]["total_unique_footfall_cnt"].int
+            let other_unique_footfall_cnt = responseObject["footfall_details"]["other_unique_footfall_cnt"].int
+            let cons_unique_footfall_cnt = responseObject["footfall_details"]["cons_unique_footfall_cnt"].int
+            let cons_unique_footfall_cnt_presntage = responseObject["footfall_details"]["cons_unique_footfall_cnt_presntage"].string
+            let other_unique_footfall_cnt_presntage = responseObject["footfall_details"]["other_unique_footfall_cnt_presntage"].string
+            let constituency_cnt = responseObject["footfall_details"]["constituency_cnt"].int
+            let cons_unique_cnt = responseObject["footfall_details"]["cons_unique_cnt"].int
+            let cons_repeated_cnt = responseObject["footfall_details"]["cons_repeated_cnt"].int
+            let cons_unique_cnt_presntage = responseObject["footfall_details"]["cons_unique_cnt_presntage"].string
+            let cons_repeated_cnt_presntage = responseObject["footfall_details"]["cons_repeated_cnt_presntage"].string
+            let other_cnt = responseObject["footfall_details"]["other_cnt"].int
+            let other_unique_cnt = responseObject["footfall_details"]["other_unique_cnt"].int
+            let other_repeated_cnt = responseObject["footfall_details"]["other_repeated_cnt"].int
+            let other_unique_cnt_presntage = responseObject["footfall_details"]["other_unique_cnt_presntage"].string
+            let other_repeated_cnt_presntage = responseObject["footfall_details"]["other_repeated_cnt_presntage"].string
+            
               // Create object
-              let sendToModel = TotalGreviancesModel()
-              sendToModel.grievance_count = grievance_count
-              sendToModel.enquiry_count = enquiry_count
-              sendToModel.petition_count = petition_count
-              sendToModel.processing_count = processing_count
-              sendToModel.completed_count = completed_count
+            let sendToModel = FootFallModel()
+            sendToModel.total_footfall_cnt = total_footfall_cnt
+            sendToModel.unique_footfall_cnt = unique_footfall_cnt
+            sendToModel.repeated_footfall_cnt = repeated_footfall_cnt
+            sendToModel.unique_footfall_cnt_presntage = unique_footfall_cnt_presntage
+            sendToModel.repeated_footfall_cnt_presntage = repeated_footfall_cnt_presntage
+            sendToModel.total_unique_footfall_cnt = total_unique_footfall_cnt
+            sendToModel.other_unique_footfall_cnt = other_unique_footfall_cnt
+            sendToModel.cons_unique_footfall_cnt = cons_unique_footfall_cnt
+            sendToModel.cons_unique_footfall_cnt_presntage = cons_unique_footfall_cnt_presntage
+            sendToModel.other_unique_footfall_cnt_presntage = other_unique_footfall_cnt_presntage
+            sendToModel.constituency_cnt = constituency_cnt
+            sendToModel.cons_unique_cnt = cons_unique_cnt
+            sendToModel.cons_repeated_cnt = cons_repeated_cnt
+            sendToModel.cons_unique_cnt_presntage = cons_unique_cnt_presntage
+            sendToModel.cons_repeated_cnt_presntage = cons_repeated_cnt_presntage
+            sendToModel.other_cnt = other_cnt
+            sendToModel.other_unique_cnt = other_unique_cnt
+            sendToModel.other_repeated_cnt = other_repeated_cnt
+            sendToModel.other_unique_cnt_presntage = other_unique_cnt_presntage
+            sendToModel.other_repeated_cnt_presntage = other_repeated_cnt_presntage
 
               successCallback?(sendToModel)
         },
@@ -603,7 +645,7 @@ class APIManager: NSObject {
     }
     
     // MARK: MAKE TOTAL GREViANCES URL REQUEST
-    func createRequestTotalGreivances(_ url: String,method: HTTPMethod,headers: [String: String]?,parameters: [String:String]?,onSuccess successCallback: ((JSON) -> Void)?,onFailure failureCallback: ((String) -> Void)?)
+    func createRequestToFootFall(_ url: String,method: HTTPMethod,headers: [String: String]?,parameters: [String:String]?,onSuccess successCallback: ((JSON) -> Void)?,onFailure failureCallback: ((String) -> Void)?)
     {
         manager.request(url, method: .post, parameters: parameters, encoding: JSONEncoding.default, headers: headers).responseJSON { (responseObject) -> Void in
             print(responseObject)
@@ -622,6 +664,323 @@ class APIManager: NSObject {
         }
     }
     
+    
+    
+    
+    //MARK: GET TOTAL GREViANCES RESPONSE
+    func callAPITotalGreivances(paguthi:String,from_date:String,to_date:String,onSuccess successCallback: ((_ totalGreviancesModel: TotalGreviancesModel) -> Void)?,onFailure failureCallback: ((_ errorMessage: String) -> Void)?) {
+        // Build URL
+        let url = GlobalVariables.shared.CLIENTURL + Endpoint.totalGreivancesUrl.rawValue
+        // Set Parameters
+        let parameters: Parameters =  ["paguthi": paguthi,"from_date":from_date,"to_date":to_date]
+        // call API
+        self.createRequestTotalGreivances(url, method: .post, headers: nil, parameters: parameters as? [String : String], onSuccess: {(responseObject: JSON) -> Void in
+        // Create dictionary
+        print(responseObject)
+          
+          guard let msg = responseObject["msg"].string, msg == "Grievances Details" else{
+              failureCallback?(responseObject["msg"].string!)
+              return
+        }
+
+            let tot_grive_count = responseObject["tot_grive_count"].int
+            let enquiry_count = responseObject["enquiry_count"].string
+            let petition_count = responseObject["petition_count"].string
+            let civic_petition_count = responseObject["civic_petition_count"].string
+            let online_petition_count = responseObject["online_petition_count"].string
+            let petition_completed = responseObject["petition_status"]["petition_completed"].string
+            let petition_pending_percentage = responseObject["petition_status"]["petition_pending_percentage"].string
+            let petition_completed_percentage = responseObject["petition_status"]["petition_completed_percentage"].string
+            let petition_rejected = responseObject["petition_status"]["petition_rejected"].string
+            let petition_pending = responseObject["petition_status"]["petition_pending"].string
+            let petition_rejected_percentage = responseObject["petition_status"]["petition_rejected_percentage"].string
+            let no_of_online = responseObject["petition_list"]["no_of_online"].string
+            let no_of_online_percentage = responseObject["petition_list"]["no_of_online_percentage"].string
+            let no_of_civic = responseObject["petition_list"]["no_of_civic"].string
+            let no_of_civic_percentage = responseObject["petition_list"]["no_of_civic_percentage"].string
+            let no_of_onlineEQ = responseObject["enquiry_list"]["no_of_online"].string
+            let no_of_online_percentageEQ = responseObject["enquiry_list"]["no_of_online_percentage"].string
+            let no_of_civicEQ = responseObject["enquiry_list"]["no_of_civic"].string
+            let no_of_civic_percentageEQ = responseObject["enquiry_list"]["no_of_civic_percentage"].string
+            let petition_pendingCivic = responseObject["civic_petition_status"]["petition_pending"].string
+            let petition_pending_percentageCivic = responseObject["civic_petition_status"]["petition_pending_percentage"].string
+            let petition_completedCivic = responseObject["civic_petition_status"]["petition_completed"].string
+            let petition_completed_percentageCivic = responseObject["civic_petition_status"]["petition_completed_percentage"].string
+            let petition_rejectedCivic = responseObject["civic_petition_status"]["petition_rejected"].string
+            let petition_rejected_percentageCivic = responseObject["civic_petition_status"]["petition_rejected_percentage"].string
+            let petition_pendingOnline = responseObject["online_petition_status"]["petition_pending"].string
+            let petition_pending_percentageOnline = responseObject["online_petition_status"]["petition_pending_percentage"].string
+            let petition_completedOnline = responseObject["online_petition_status"]["petition_completed"].string
+            let no_of_online_percentageOnline = responseObject["online_petition_status"]["petition_completed_percentage"].string
+            let petition_rejectedOnline = responseObject["online_petition_status"]["petition_rejected"].string
+            let petition_rejected_percentageOnline = responseObject["online_petition_status"]["petition_rejected_percentage"].string
+            
+              // Create object
+            let sendToModel = TotalGreviancesModel()
+            sendToModel.tot_grive_count = tot_grive_count
+            sendToModel.enquiry_count = enquiry_count
+            sendToModel.petition_count = petition_count
+//            sendToModel.processing_count = processing_count
+//            sendToModel.completed_count = completed_count
+            sendToModel.civic_petition_count = civic_petition_count
+            sendToModel.online_petition_count = online_petition_count
+            
+            sendToModel.petition_rejected_percentageOnline = petition_rejected_percentageOnline
+            sendToModel.petition_pendingOnline = petition_pendingOnline
+            sendToModel.petition_pending_percentageOnline = petition_pending_percentageOnline
+            sendToModel.no_of_online_percentageOnline = no_of_online_percentageOnline
+            sendToModel.petition_completedOnline = petition_completedOnline
+            sendToModel.petition_rejectedOnline = petition_rejectedOnline
+            
+            sendToModel.petition_rejected_percentageCivic = petition_rejected_percentageCivic
+            sendToModel.petition_rejectedCivic = petition_rejectedCivic
+            sendToModel.petition_completed_percentageCivic = petition_completed_percentageCivic
+            sendToModel.petition_completedCivic = petition_completedCivic
+            sendToModel.petition_pending_percentageCivic = petition_pending_percentageCivic
+            sendToModel.petition_pendingCivic = petition_pendingCivic
+
+            sendToModel.no_of_civic_percentageEQ = no_of_civic_percentageEQ
+            sendToModel.no_of_civicEQ = no_of_civicEQ
+            sendToModel.no_of_online_percentageEQ = no_of_online_percentageEQ
+            sendToModel.no_of_onlineEQ = no_of_onlineEQ
+          
+            sendToModel.no_of_online = no_of_online
+            sendToModel.no_of_online_percentage = no_of_online_percentage
+            sendToModel.no_of_civic = no_of_civic
+            sendToModel.no_of_civic_percentage = no_of_civic_percentage
+
+            sendToModel.petition_pending_percentage = petition_pending_percentage
+            sendToModel.petition_completed_percentage = petition_completed_percentage
+            sendToModel.petition_pending = petition_pending
+            sendToModel.petition_rejected_percentage = petition_rejected_percentage
+            sendToModel.petition_rejected = petition_rejected
+            sendToModel.petition_completed = petition_completed
+            
+        
+
+              successCallback?(sendToModel)
+        },
+        onFailure: {(errorMessage: String) -> Void in
+            failureCallback?(errorMessage)
+        }
+     )
+    }
+    
+    // MARK: MAKE TOTAL GREViANCES URL REQUEST
+    func createRequestTotalGreivances(_ url: String,method: HTTPMethod,headers: [String: String]?,parameters: [String:String]?,onSuccess successCallback: ((JSON) -> Void)?,onFailure failureCallback: ((String) -> Void)?)
+    {
+        manager.request(url, method: .post, parameters: parameters, encoding: JSONEncoding.default, headers: headers).responseJSON { (responseObject) -> Void in
+            print(responseObject)
+
+            if responseObject.result.isSuccess
+            {
+                let resJson = JSON(responseObject.result.value!)
+                successCallback?(resJson)
+            }
+
+            if responseObject.result.isFailure
+            {
+               let error : Error = responseObject.result.error!
+                failureCallback!(error.localizedDescription)
+            }
+        }
+    }
+    
+    func callAPIVolounteer(paguthi:String,from_date:String,to_date:String,onSuccess successCallback: ((_ volounteerModel: VolounteerModel) -> Void)?,onFailure failureCallback: ((_ errorMessage: String) -> Void)?) {
+        // Build URL
+        let url = GlobalVariables.shared.CLIENTURL + Endpoint.volounteerUrl.rawValue
+        // Set Parameters
+        let parameters: Parameters =  ["paguthi_id": paguthi,"from_date":from_date,"to_date":to_date]
+        // call API
+        self.createRequestVolounteer(url, method: .post, headers: nil, parameters: parameters as? [String : String], onSuccess: {(responseObject: JSON) -> Void in
+        // Create dictionary
+        print(responseObject)
+          
+          guard let msg = responseObject["msg"].string, msg == "Volunter Details" else{
+              failureCallback?(responseObject["msg"].string!)
+              return
+        }
+
+              let total_volunteer = responseObject["volunteer_details"]["total_volunteer"].string
+              let no_of_volunteer = responseObject["volunteer_details"]["no_of_volunteer"].string
+              let volunteer_percentage = responseObject["volunteer_details"]["volunteer_percentage"].string
+              let no_of_nonvolunteer = responseObject["volunteer_details`"]["no_of_nonvolunteer"].string
+              let nonvolunteer_percentage = responseObject["volunteer_details"]["nonvolunteer_percentage"].string
+            
+              // Create object
+              let sendToModel = VolounteerModel()
+              sendToModel.total_volunteer = total_volunteer
+              sendToModel.no_of_volunteer = no_of_volunteer
+              sendToModel.volunteer_percentage = volunteer_percentage
+              sendToModel.no_of_nonvolunteer = no_of_nonvolunteer
+              sendToModel.nonvolunteer_percentage = nonvolunteer_percentage
+
+              successCallback?(sendToModel)
+        },
+        onFailure: {(errorMessage: String) -> Void in
+            failureCallback?(errorMessage)
+        }
+     )
+    }
+    
+    // MARK: MAKE Constituency Members URL REQUEST
+    func createRequestVolounteer(_ url: String,method: HTTPMethod,headers: [String: String]?,parameters: [String:String]?,onSuccess successCallback: ((JSON) -> Void)?,onFailure failureCallback: ((String) -> Void)?)
+    {
+        manager.request(url, method: .post, parameters: parameters, encoding: JSONEncoding.default, headers: headers).responseJSON { (responseObject) -> Void in
+            print(responseObject)
+            
+            if responseObject.result.isSuccess
+            {
+                let resJson = JSON(responseObject.result.value!)
+                successCallback?(resJson)
+            }
+            
+            if responseObject.result.isFailure
+            {
+               let error : Error = responseObject.result.error!
+                failureCallback!(error.localizedDescription)
+            }
+        }
+    }
+    
+    func callAPIGreetingCount(paguthi:String,from_date:String,to_date:String,onSuccess successCallback: ((_ greetingCountModel: [GreetingCountModel]) -> Void)?,onFailure failureCallback: ((_ errorMessage: String) -> Void)?) {
+        // Build URL
+        let url = GlobalVariables.shared.CLIENTURL + Endpoint.greetingCountUrl.rawValue
+        // Set Parameters
+        let parameters: Parameters =  ["paguthi": paguthi,"from_date":from_date,"to_date":to_date]
+        // call API
+        self.createRequestConstituentMembers(url, method: .post, headers: nil, parameters: parameters as? [String : String], onSuccess: {(responseObject: JSON) -> Void in
+        // Create dictionary
+        print(responseObject)
+            
+            GlobalVariables.shared.birthday_wish_count = responseObject["greetings_details"]["birthday_wish_count"].string!
+            GlobalVariables.shared.festival_wishes_count = responseObject["greetings_details"]["festival_wishes_count"].string!
+            GlobalVariables.shared.total_greetings = responseObject["greetings_details"]["total_greetings"].int!
+            
+          guard let msg = responseObject["msg"].string, msg == "Greetings Details" else{
+              failureCallback?(responseObject["msg"].string!)
+              return
+        }
+            
+            if let responseDict = responseObject["festival_greetings_details"].arrayObject
+                {
+                      let greetingCountModel = responseDict as! [[String:AnyObject]]
+                      // Create object
+                      var data = [GreetingCountModel]()
+                      for item in greetingCountModel {
+                          let single = GreetingCountModel.build(item)
+                          data.append(single)
+                      }
+                      // Fire callback
+                      successCallback?(data)
+                 } else {
+                      failureCallback?("An error has occured.")
+                  }
+        },
+        onFailure: {(errorMessage: String) -> Void in
+            failureCallback?(errorMessage)
+        }
+     )
+    }
+    
+    // MARK: MAKE Constituency Members URL REQUEST
+    func createRequestGreetingCount(_ url: String,method: HTTPMethod,headers: [String: String]?,parameters: [String:String]?,onSuccess successCallback: ((JSON) -> Void)?,onFailure failureCallback: ((String) -> Void)?)
+    {
+        manager.request(url, method: .post, parameters: parameters, encoding: JSONEncoding.default, headers: headers).responseJSON { (responseObject) -> Void in
+            print(responseObject)
+            
+            if responseObject.result.isSuccess
+            {
+                let resJson = JSON(responseObject.result.value!)
+                successCallback?(resJson)
+            }
+            
+            if responseObject.result.isFailure
+            {
+               let error : Error = responseObject.result.error!
+                failureCallback!(error.localizedDescription)
+            }
+        }
+    }
+     
+    func callAPIVedioCount(paguthi:String,from_date:String,to_date:String,onSuccess successCallback: ((_ vedioCountModel: [VedioCountModel]) -> Void)?,onFailure failureCallback: ((_ errorMessage: String) -> Void)?) {
+        // Build URL
+        let url = GlobalVariables.shared.CLIENTURL + Endpoint.vedioCountUrl.rawValue
+        // Set Parameters
+        let parameters: Parameters =  ["paguthi": paguthi,"from_date":from_date,"to_date":to_date]
+        // call API
+        self.createRequestConstituentMembers(url, method: .post, headers: nil, parameters: parameters as? [String : String], onSuccess: {(responseObject: JSON) -> Void in
+        // Create dictionary
+        print(responseObject)
+          
+          guard let msg = responseObject["msg"].string, msg == "Video Details" else{
+              failureCallback?(responseObject["msg"].string!)
+              return
+        }
+            
+           GlobalVariables.shared.vedioCount = responseObject["video_count"].int!
+
+              if let responseDict = responseObject["video_list"].arrayObject
+                {
+                      let vedioCountModel = responseDict as! [[String:AnyObject]]
+                      // Create object
+                      var data = [VedioCountModel]()
+                      for item in vedioCountModel {
+                          let single = VedioCountModel.build(item)
+                          data.append(single)
+                      }
+                      // Fire callback
+                      successCallback?(data)
+                 } else {
+                      failureCallback?("An error has occured.")
+                  }
+        },
+        onFailure: {(errorMessage: String) -> Void in
+            failureCallback?(errorMessage)
+        }
+     )
+    }
+    
+    
+    // MARK: MAKE Constituency Members URL REQUEST
+    func createRequestVedioCount(_ url: String,method: HTTPMethod,headers: [String: String]?,parameters: [String:String]?,onSuccess successCallback: ((JSON) -> Void)?,onFailure failureCallback: ((String) -> Void)?)
+    {
+        manager.request(url, method: .post, parameters: parameters, encoding: JSONEncoding.default, headers: headers).responseJSON { (responseObject) -> Void in
+            print(responseObject)
+            
+            if responseObject.result.isSuccess
+            {
+                let resJson = JSON(responseObject.result.value!)
+                successCallback?(resJson)
+            }
+            
+            if responseObject.result.isFailure
+            {
+               let error : Error = responseObject.result.error!
+                failureCallback!(error.localizedDescription)
+            }
+        }
+    }
+     
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+//
     //MARK: GET CONSTITUENT INTERACTION RESPONSE
     func callAPIConstituentInteraction(paguthi:String,onSuccess successCallback: ((_ constituentInteractionModel: [ConstituentInteractionModel]) -> Void)?,onFailure failureCallback: ((_ errorMessage: String) -> Void)?) {
         // Build URL
@@ -706,7 +1065,8 @@ class APIManager: NSObject {
             
             GlobalVariables.shared.constituent_Count =  responseObject["constituent_count"].int!
               if let responseDict = responseObject["constituent_result"].arrayObject
-                {
+                
+              {
                       let listConstiuent = responseDict as! [[String:AnyObject]]
                       // Create object
                       var data = [ListConstiuentModel]()
@@ -743,7 +1103,7 @@ class APIManager: NSObject {
                let error : Error = responseObject.result.error!
                 failureCallback!(error.localizedDescription)
             }
-        }
+        } 
     }
     
     //MARK: GET Constituency Members RESPONSE
@@ -807,7 +1167,7 @@ class APIManager: NSObject {
         // Build URL
         let url = GlobalVariables.shared.CLIENTURL + Endpoint.constituentmeetingUrl.rawValue
         // Set Parameters
-        let parameters: Parameters =  ["constituent_id": constituency_id]
+        let parameters: Parameters =  ["constituent_id": constituency_id,]
         // call API
         self.createRequestForMeeting(url, method: .post, headers: nil, parameters: parameters as? [String : String], onSuccess: {(responseObject: JSON) -> Void in
         // Create dictionary
@@ -2203,9 +2563,7 @@ class APIManager: NSObject {
                 failureCallback!(error.localizedDescription)
             }
         }
-
     }
-    
     
     //MARK: GET CHANGE PASSWORD RESPONSE
     func callAPIChangePassword(user_id:String,new_password:String,old_password:String, onSuccess successCallback: ((_ changePasswordModel: ChangePasswordModel) -> Void)?,onFailure failureCallback: ((_ errorMessage: String) -> Void)?) {
