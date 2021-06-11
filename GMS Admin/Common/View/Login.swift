@@ -40,7 +40,6 @@ class Login: UIViewController  {
         navigationController?.setNavigationBarHidden(true, animated: animated)
     }
     
-    
     @IBAction func selectConstituency(_ sender: Any){
         
         guard Reachability.isConnectedToNetwork() == true else {
@@ -169,7 +168,6 @@ class Login: UIViewController  {
         presenter.attachView(view: self)
         presenter.getLoginData(user_name: self.email.text!, password: self.password.text!)
     }
-    
 }
 
 extension Login : UITextFieldDelegate
@@ -198,7 +196,6 @@ extension Login : UITextFieldDelegate
                  currentString.replacingCharacters(in: range, with: string) as NSString
              return newString.length <= maxLength
          }
-        
          return true
      }
 }
@@ -248,6 +245,4 @@ extension Login : LoginView
 //            self.dismiss(animated: false, completion: nil)
         })
     }
-    
-
 }

@@ -41,9 +41,7 @@ class DashBoard: UIViewController, ChartViewDelegate {
     var paguthiId = [String]()
     let pickerView = UIPickerView()
     let datePicker = UIDatePicker()
-
 //    var selctedPaguthiId = String ()
-    
     var dispMonth = [String]()
     var new_grev = [Double]()
     var repeeated_grev = [Double]()
@@ -51,14 +49,11 @@ class DashBoard: UIViewController, ChartViewDelegate {
     var grivenacegraph = [Double]()
     var meeting_request = [Double]()
     var month_year = [String]()
-    
     var selectedFromDate = Date()
     var selectedToDate = Date()
     var textfieldName = String()
-    
     var fromDateFormatted = String()
     var toDateFormatted = String()
-
     var to = String()
 
     override func viewDidLoad() {
@@ -148,6 +143,7 @@ class DashBoard: UIViewController, ChartViewDelegate {
     }
     
     @objc func action() {
+        
           let row = self.pickerView.selectedRow(inComponent: 0)
           self.pickerView.selectRow(row, inComponent: 0, animated: false)
           if self.area.isFirstResponder{
@@ -242,7 +238,7 @@ class DashBoard: UIViewController, ChartViewDelegate {
                                 self.month_year.append(monthyear!)
                             }
                         }
-                    }) {
+                     }) {
                         (error) -> Void in
                         print(error)
                     }
@@ -252,7 +248,6 @@ class DashBoard: UIViewController, ChartViewDelegate {
                     print("Unable to load data: \(error)")
                 }
          }
-
     }
     
     /*BarChart View*/
@@ -277,7 +272,6 @@ class DashBoard: UIViewController, ChartViewDelegate {
         yaxis.drawGridLinesEnabled = false
         yaxis.labelTextColor = UIColor.lightGray
         yaxis.axisLineColor = UIColor.lightGray
-        
         barchart.rightAxis.enabled = false
         
         // X - Axis Setup
@@ -292,9 +286,8 @@ class DashBoard: UIViewController, ChartViewDelegate {
         xaxis.axisLineColor = UIColor.lightGray
         xaxis.granularityEnabled = true
         xaxis.enabled = true
-        
-        
         barchart.delegate = self
+        
         //barchart.noDataText = "You need to provide data"
         barchart.noDataTextColor = UIColor.darkGray
         barchart.chartDescription?.textColor = UIColor.clear
@@ -324,7 +317,6 @@ class DashBoard: UIViewController, ChartViewDelegate {
         let chartDataSet = BarChartDataSet(entries: dataEntries, label: "Repeated Greivances")
         let chartDataSet1 = BarChartDataSet(entries: dataEntries1, label: "New Greivances")
         let chartDataSet2 = BarChartDataSet(entries: dataEntries2, label: "Total Greivances")
-
         let dataSets: [BarChartDataSet] = [chartDataSet,chartDataSet1,chartDataSet2]
         chartDataSet.colors = [UIColor(red: 219/255, green: 201/255, blue: 255/255, alpha: 1.0)]
         chartDataSet1.colors = [UIColor(red: 207/255, green: 255/255, blue: 216/255, alpha: 1.0)]
@@ -360,21 +352,16 @@ class DashBoard: UIViewController, ChartViewDelegate {
     @IBAction func volounteerCount(_ sender: Any) {
         self.performSegue(withIdentifier: "to_volunteer", sender: self)
     }
-    
   
     @IBAction func MeetingCount(_ sender: Any) {
       
         self.performSegue(withIdentifier: "to_meeting", sender: self)
-        
-        
     }
     
     @IBAction func vedioCount(_ sender: Any) {
         
         self.performSegue(withIdentifier: "to_vedio", sender: self)
     }
-    
-    
     
     @IBAction func GC(_ sender: Any) {
        
@@ -388,13 +375,10 @@ class DashBoard: UIViewController, ChartViewDelegate {
     @IBAction func greetingCount(_ sender: Any) {
         
         self.performSegue(withIdentifier: "greetingCount", sender: self.to)
-        
-        
     }
     
     @IBAction func constituentCount(_ sender: Any) {
         self.performSegue(withIdentifier: "const_member", sender: self.to)
-        
     }
     
     /*
@@ -430,7 +414,6 @@ class DashBoard: UIViewController, ChartViewDelegate {
         {
             let vc = segue.destination as! Widgets
             vc.paguthi_Id = GlobalVariables.shared.selectedPaguthiId
-           
         }
         else if (segue.identifier == "to_ci"){
             let vc = segue.destination as! WidgetInterAction
@@ -444,32 +427,26 @@ class DashBoard: UIViewController, ChartViewDelegate {
         else if (segue.identifier == "to_GC"){
             let vc = segue.destination as! WidgetGrievance
             vc.paguthi_Id = sender as! String
-            
         }
         else if (segue.identifier == "to_FF"){
             let vc = segue.destination as! WidgetFootFall
             vc.paguthi_Id = sender as! String
-            
         }
         else if (segue.identifier == "to_meeting"){
             let vc = segue.destination as! WidgetsMeeting
             vc.paguthi_Id = GlobalVariables.shared.selectedPaguthiId
-            
         }
         else if (segue.identifier == "to_vedio"){
             let vc = segue.destination as! WidgetVedio
             vc.paguthi_Id = GlobalVariables.shared.selectedPaguthiId
-            
         }
         else if (segue.identifier == "greetingCount"){
             let vc = segue.destination as! GreetingCount
             vc.paguthi_Id = GlobalVariables.shared.selectedPaguthiId
-            
         }
         else if (segue.identifier == "to_volunteer"){
             let vc = segue.destination as! WidgetVolounteer
             vc.paguthi_Id = GlobalVariables.shared.selectedPaguthiId
-            
         }
 //        else
 //        {
@@ -595,6 +572,7 @@ extension DashBoard : PaguthiView, UIPickerViewDelegate, UIPickerViewDataSource,
     }
     
      @objc func donedatePicker(){
+        
         if fromDate.isFirstResponder
         {
             let formatter = DateFormatter()
@@ -667,6 +645,7 @@ extension DashBoard : PaguthiView, UIPickerViewDelegate, UIPickerViewDataSource,
         view7?.layer.shadowRadius = 5
         
     }
+    
     func CheckValuesAreEmpty () {
         
         _ = selectedFromDate.timeIntervalSince1970 < selectedToDate.timeIntervalSince1970
@@ -674,18 +653,17 @@ extension DashBoard : PaguthiView, UIPickerViewDelegate, UIPickerViewDataSource,
           if self.fromDate.text?.count == 0   {
                 AlertController.shared.showAlert(targetVc: self, title: Globals.alertTitle, message: "From Date is Empty", complition: {
                     
-                  })
-             }
+                })
+        }
             
            else if self.toDate.text?.count == 0 {
                   AlertController.shared.showAlert(targetVc: self, title: Globals.alertTitle, message: "To Date is Empty", complition: {
                       
-                    })
-           }
+                })
+        }
            
             else  {
                  self.callAPI(paguthi:GlobalVariables.shared.selectedPaguthiId,FromDate:fromDateFormatted,ToDate:toDateFormatted)
-            
         }
     }
 }
