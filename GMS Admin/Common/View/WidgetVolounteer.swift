@@ -29,7 +29,7 @@ class WidgetVolounteer: UIViewController,VolounteerView {
     func CallAPIVolunteer ()
     {
         presenterTm.attachView(view: self)
-        presenterTm.getVolounteer(paguthi: paguthi_Id, from_date: GlobalVariables.shared.widgetFromDate, to_date: GlobalVariables.shared.widgetToDate)
+        presenterTm.getVolounteer(paguthi: paguthi_Id, from_date: GlobalVariables.shared.widgetFromDate, to_date: GlobalVariables.shared.widgetToDate,dynamic_db:GlobalVariables.shared.dynamic_db)
     }
 
     func startLoadingTm() {
@@ -42,9 +42,9 @@ class WidgetVolounteer: UIViewController,VolounteerView {
     
     func setTm(total_volunteer: String?, no_of_volunteer: String?, volunteer_percentage: String?, nonvolunteer_percentage: String?, no_of_nonvolunteer: String?) {
         
-        volouinteerCount.text = total_volunteer
+        volouinteerCount.text = " Volounteer count - \(total_volunteer)"
         constituencyPercentage.text = "Constituency(\(volunteer_percentage!)%)"
-        nonConstituencyPercentage.text = nonvolunteer_percentage
+        nonConstituencyPercentage.text = "Non - Constituency\(nonvolunteer_percentage)"
         constCount.text = no_of_volunteer
         nonConstCount.text = no_of_nonvolunteer
         

@@ -31,7 +31,7 @@ class MoreGraph: UIViewController, ChartViewDelegate {
         self.addCustomizedBackBtn(title:"  Graph")
     }
     
-    func SetPieChart(){
+    func SetPieChart() {
          // This will align label text to top right corner
          self.customizeChart(dataPoints: self.grievanceName, values: self.grievance)
     }

@@ -21,7 +21,7 @@ class ConstituentGreivancesMessage: UIViewController {
         super.viewDidLoad()
 
         // Do any additional setup after loading the view.
-        self.addCustomizedBackBtn(title:"  Message history")
+//        self.addCustomizedBackBtn(title:"  Message history")
         // Do any additional setup after loading the view.
         guard Reachability.isConnectedToNetwork() == true else {
               AlertController.shared.offlineAlert(targetVc: self, complition: {
@@ -41,7 +41,7 @@ class ConstituentGreivancesMessage: UIViewController {
     func callAPI ()
     {
         Presenter.attachView(view: self)
-        Presenter.getConsGrieMessage(grievance_id: greivanceId)
+        Presenter.getConsGrieMessage(grievance_id: greivanceId,dynamic_db:GlobalVariables.shared.dynamic_db)
     }
     
     func formattedDateFromString(dateString: String, withFormat format: String) -> String? {

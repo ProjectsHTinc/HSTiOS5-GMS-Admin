@@ -9,7 +9,7 @@
 import UIKit
 import SDWebImage
 
-let constituentcySearchList = "apiios/listConstituentsearch"
+let constituentcySearchList = "apiandroid/listConstituentsearch"
 
 class Search: UIViewController {
     
@@ -72,7 +72,7 @@ class Search: UIViewController {
     func callAPISearchCons (url:String,constituency_id:String, offset: String, rowcount:String, Keyword:String)
     {
         presenterCons.attachView(view: self)
-        presenterCons.getconstituencyList(url:url, Keyword: Keyword, paguthi: constituency_id, offset: offset, rowcount: rowcount)
+        presenterCons.getconstituencyList(url:url, Keyword: Keyword, paguthi: constituency_id, offset: offset, rowcount: rowcount,dynamic_db:GlobalVariables.shared.dynamic_db)
     }
     
     func callAPISearch (offset: String, rowCount: String)

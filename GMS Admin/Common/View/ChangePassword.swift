@@ -24,17 +24,39 @@ class ChangePassword: UIViewController {
     @IBOutlet var curentPswrdVisionOutlet: UIButton!
     @IBOutlet var newPswrdVisionOutlet: UIButton!
     @IBOutlet var confirmPswrdVisionOutlet: UIButton!
+    @IBOutlet var view1: UIView!
+    @IBOutlet var view2: UIView!
+    @IBOutlet var view3: UIView!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 
         // Do any additional setup after loading the view.
-        self.addCustomizedBackBtn(title:"  Change Password")
+//        self.addCustomizedBackBtn(title:"  Change Password")
         /*Tap anywhere to hide keypad*/
         self.hideKeyboardWhenTappedAround()
         /*Set Delegates to TextField*/
         currentPassword.delegate = self
         newPassword.delegate = self
         confirmPassword.delegate = self
+        
+//        view1.layer.masksToBounds = false
+//        view1?.layer.shadowColor = UIColor.darkGray.cgColor
+//        view1?.layer.shadowOffset =  CGSize.zero
+//        view1?.layer.shadowOpacity = 0.4
+//        view1?.layer.shadowRadius = 2
+//
+//        view2.layer.masksToBounds = false
+//        view2?.layer.shadowColor = UIColor.darkGray.cgColor
+//        view2?.layer.shadowOffset =  CGSize.zero
+//        view2?.layer.shadowOpacity = 0.4
+//        view2?.layer.shadowRadius = 2
+//
+//        view3.layer.masksToBounds = false
+//        view3?.layer.shadowColor = UIColor.darkGray.cgColor
+//        view3?.layer.shadowOffset =  CGSize.zero
+//        view3?.layer.shadowOpacity = 0.4
+//        view3?.layer.shadowRadius = 2
 
     }
     
@@ -154,7 +176,7 @@ class ChangePassword: UIViewController {
     
     func callAPI(current:String,new:String,confirm:String){
         presenter.attachView(view: self)
-        presenter.getChangePassword(user_id: GlobalVariables.shared.user_id, new_password: new, old_password: current)
+        presenter.getChangePassword(user_id: GlobalVariables.shared.user_id, new_password: new, old_password: current,dynamic_db:GlobalVariables.shared.dynamic_db)
     }
     
     

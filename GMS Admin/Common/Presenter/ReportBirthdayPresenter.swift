@@ -9,14 +9,15 @@
 import UIKit
 
 struct ReportBirthdayData {
-    let const_id: String?
-    let full_name: String?
-    let dob : String?
-    let mobile_no : String?
-    let door_no : String?
-    let address : String?
-    let pin_code : String?
-    let birth_wish_status : String?
+    var email_id: String?
+    var full_name: String?
+    var dob : String?
+    var mobile_no : String?
+    var door_no : String?
+    var address : String?
+    var pin_code : String?
+    var father_husband_name : String?
+    var send_on : String?
 }
 
 protocol ReportBirthdayView: NSObjectProtocol {
@@ -43,15 +44,15 @@ class ReportBirthdayPresenter: NSObject {
         reportBirthdayView = nil
     }
     
-    func getReportBirthday(url:String, select_month : String, keyword: String, offset:String, rowcount:String) {
+    func getReportBirthday(url : String,From: String,from_date: String,to_date: String,status: String,paguthi: String,offset: String,rowcount: String,category: String,sub_category: String,keyword: String,dynamic_db:String,office:String) {
           self.reportBirthdayView?.startLoading()
           reportBirthDayService.callAPIReportBirthday(
-            url: url, select_month: select_month, keyword: keyword, offset: offset, rowcount: rowcount, onSuccess: { (meettingAll) in
+            url : url,From: From,from_date: from_date,to_date: to_date,status: status,paguthi: paguthi,offset: offset,rowcount: rowcount,category: category,sub_category: sub_category,keyword: keyword,dynamic_db:dynamic_db,office:office, onSuccess: { (meettingAll) in
             self.reportBirthdayView?.finishLoading()
                 if (meettingAll.count == 0){
                 } else {
                   let mappedUsers = meettingAll.map {
-                    return ReportBirthdayData(const_id: "\($0.const_id ?? "")", full_name: "\($0.full_name ?? "")", dob: "\($0.dob ?? "")", mobile_no: "\($0.mobile_no ?? "")", door_no: "\($0.door_no ?? "")", address: "\($0.address ?? "")", pin_code: "\($0.pin_code ?? "")", birth_wish_status: "\($0.birth_wish_status ?? "")")
+                    return ReportBirthdayData(email_id: "\($0.email_id ?? "")", full_name: "\($0.full_name ?? "")", dob: "\($0.dob ?? "")", mobile_no: "\($0.mobile_no ?? "")", door_no: "\($0.door_no ?? "")", address: "\($0.address ?? "")", pin_code: "\($0.pin_code ?? "")", father_husband_name: "\($0.father_husband_name ?? "")",send_on: "\($0.send_on ?? "")")
                      }
                     self.reportBirthdayView?.setReportBirthday(reportbday: mappedUsers)
                 }

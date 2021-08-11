@@ -14,13 +14,11 @@ import UIKit
      override func leftViewRect(forBounds bounds: CGRect) -> CGRect {
          return super.leftViewRect(forBounds: bounds)
      }
-
      @IBInspectable var leftImage: UIImage? {
          didSet {
              updateView()
          }
      }
-        
      @IBInspectable var leftPadding: CGFloat = 0 {
          didSet {
              updateView()
@@ -36,13 +34,11 @@ import UIKit
              updateView()
          }
      }
-
      @IBInspectable var color: UIColor = UIColor.lightGray {
          didSet {
              updateView()
          }
      }
-
      func updateView() {
          if let image = leftImage {
              leftViewMode = UITextField.ViewMode.always
@@ -77,9 +73,7 @@ import UIKit
              imageSize.height = adjustedImageMaxHeight
              imageSize.width = imageSize.height / imageRatio
          }
-
          let paddingWidth = leftPadding + rightPadding
-
          let containerSize = CGSize(width: imageSize.width + paddingWidth, height: imageSize.height)
          return containerSize
      }
@@ -103,7 +97,7 @@ class CustomTextField : UITextField {
 
 override func rightViewRect(forBounds bounds: CGRect) -> CGRect {
     let offset = 5
-    let width  = 20
+    let width  = 10
     let height = width
     let x = Int(bounds.width) - width - offset
     let y = offset

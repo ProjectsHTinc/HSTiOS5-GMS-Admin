@@ -38,11 +38,11 @@ class PaguthiPresenter {
           paguthiView = nil
       }
       
-      func getPaguthi(constituency_id:String) {
+    func getPaguthi(constituency_id:String,dynamic_db:String) {
           
           self.paguthiView?.startLoading()
           areaService.callAPIPaguthi(
-              constituency_id: constituency_id, onSuccess: { (paguthi) in
+            constituency_id: constituency_id,dynamic_db:dynamic_db, onSuccess: { (paguthi) in
                   self.paguthiView?.finishLoading()
                   if (paguthi.count == 0){
                   } else {

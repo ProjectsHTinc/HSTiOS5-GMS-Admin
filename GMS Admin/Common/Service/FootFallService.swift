@@ -10,9 +10,9 @@ import UIKit
 
 class FootFallService : NSObject {
 
-    public func callAPIFootfall(paguthi:String,from_date:String,to_date:String, onSuccess successCallback: ((_ totalGreviancesModel: FootFallModel) -> Void)?,onFailure failureCallback: ((_ errorMessage: String) -> Void)?) {
+    public func callAPIFootfall(paguthi:String,from_date:String,to_date:String, dynamic_db:String,onSuccess successCallback: ((_ totalGreviancesModel: FootFallModel) -> Void)?,onFailure failureCallback: ((_ errorMessage: String) -> Void)?) {
         APIManager.instance.callAPIFootfall(
-            paguthi: paguthi,from_date:from_date,to_date: to_date, onSuccess: { (footFallModel) in
+            dynamic_db:dynamic_db, paguthi: paguthi,from_date:from_date,to_date: to_date,onSuccess: { (footFallModel) in
                 successCallback?(footFallModel)
             },
             onFailure: { (errorMessage) in

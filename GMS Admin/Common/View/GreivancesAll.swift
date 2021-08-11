@@ -9,7 +9,7 @@
 import UIKit
 import SideMenu
 
-let grevianceAllUrl = "apiios/listGrievancenew"
+let grevianceAllUrl = "apiandroid/listGrievancenew"
 
 class GreivancesAll: UIViewController {
     
@@ -67,10 +67,11 @@ class GreivancesAll: UIViewController {
         super.viewDidLoad()
 
         // Do any additional setup after loading the view.
-        self.title = "Grievances"
+//        self.title = "Grievances"
         //setupSideMenu()
         /*Set Side menu*/
         self.sideMenuButton()
+        segmentView.addShadow(offset: CGSize.init(width: 0, height: 2), color: UIColor.gray, radius: 2.0, opacity: 0.35)
         /*Right Navigation Bar*/
         self.addrightButton(bg_ImageName:"ConstituentSearch")
         self.tableView.backgroundColor = UIColor.white
@@ -126,13 +127,13 @@ class GreivancesAll: UIViewController {
     func callAPIPaguthi ()
     {
         Paguthipresenter.attachView(view: self)
-        Paguthipresenter.getPaguthi(constituency_id: GlobalVariables.shared.constituent_Id)
+        Paguthipresenter.getPaguthi(constituency_id: GlobalVariables.shared.constituent_Id,dynamic_db:GlobalVariables.shared.dynamic_db)
     }
     
     func callAPIGreviancesAll (url : String, keyword: String, paguthi:String, offset:String, rowcount:String, grievance_type: String)
     {
         presenter.attachView(view: self)
-        presenter.getGrieAll(url: url, keyword: "no", paguthi: self.selectedconstitunecyId, offset: offset, rowcount: rowcount, grievance_type: grievance_type)
+        presenter.getGrieAll(url: url, keyword: "no", paguthi: self.selectedconstitunecyId, offset: offset, rowcount: rowcount, grievance_type: grievance_type,dynamic_db:GlobalVariables.shared.dynamic_db)
     }
     
     @objc public override func sideMenuButtonClick()
@@ -160,19 +161,19 @@ class GreivancesAll: UIViewController {
         segmentedControl.addTarget(self, action: #selector(segmentedControlChangedValue(segmentedControl:)), for: .valueChanged)
         segmentView.addSubview(segmentedControl)
         segmentedControl.titleTextAttributes = [NSAttributedString.Key.foregroundColor: UIColor.darkGray]
-        segmentedControl.selectedTitleTextAttributes = [NSAttributedString.Key.foregroundColor: UIColor(red: 45/155, green: 148/255, blue: 235/255, alpha: 1.0)]
+        segmentedControl.selectedTitleTextAttributes = [NSAttributedString.Key.foregroundColor: UIColor.black]
         segmentedControl.selectionStyle = HMSegmentedControlSelectionStyle.fullWidthStripe
         segmentedControl.selectionIndicatorLocation = HMSegmentedControlSelectionIndicatorLocation.bottom
         segmentedControl.segmentWidthStyle = HMSegmentedControlSegmentWidthStyle.fixed
-        segmentedControl.selectionIndicatorHeight = 2.0
-        segmentedControl.selectionIndicatorColor = UIColor(red: 45/155, green: 148/255, blue: 235/255, alpha: 1.0)
+        segmentedControl.selectionIndicatorHeight = 4.0
+        segmentedControl.selectionIndicatorColor = UIColor.black
         segmentedControl.titleTextAttributes = [NSAttributedString.Key.font: UIFont(name: "Roboto-Medium", size: 15.0)!]
         self.setUpStatSegmentControl ()
     }
     
     func setUpStatSegmentControl ()
     {
-        statSegContrl.backgroundColor = UIColor.white
+//        statSegContrl.backgroundColor = UIColor.white
         statSegContrl.tintColor = UIColor.white
         statSegContrl.setTitleTextAttributes([
             NSAttributedString.Key.font : UIFont(name: "Roboto-Regular", size: 13) as Any,
@@ -180,8 +181,8 @@ class GreivancesAll: UIViewController {
             ], for: .normal)
 
         statSegContrl.setTitleTextAttributes([
-            NSAttributedString.Key.font : UIFont(name: "Roboto-Regular", size: 13) as Any,
-            NSAttributedString.Key.foregroundColor: UIColor.white
+            NSAttributedString.Key.font : UIFont(name: "Roboto-Bold", size: 15) as Any,
+            NSAttributedString.Key.foregroundColor: UIColor.black
         ], for: .selected)
     }
     

@@ -29,7 +29,7 @@ class PlantDonation: UIViewController, PlantDonationView {
         
         self.addCustomizedBackBtn(title:"  Plant Donation")
         plantPresener.attachView(view: self)
-        plantPresener.getPlantDonation(constituent_id: selectedconstitunecyId)
+        plantPresener.getPlantDonation(constituent_id: selectedconstitunecyId,dynamic_db:GlobalVariables.shared.dynamic_db)
     }
     
     func checkInterConnection () -> Bool

@@ -10,9 +10,9 @@ import UIKit
 
 class ConsDocumentService {
 
-    public func callAPIConsDocument(constituent_id:String, onSuccess successCallback: ((_ consDocumentModel: [ConsDocumentModel]) -> Void)?,onFailure failureCallback: ((_ errorMessage: String) -> Void)?) {
+    public func callAPIConsDocument(constituent_id:String,dynamic_db:String, onSuccess successCallback: ((_ consDocumentModel: [ConsDocumentModel]) -> Void)?,onFailure failureCallback: ((_ errorMessage: String) -> Void)?) {
         APIManager.instance.callAPIConsDocument(
-          constituent_id: constituent_id, onSuccess: { (consDocumentModel) in
+            dynamic_db:dynamic_db, constituent_id: constituent_id, onSuccess: { (consDocumentModel) in
                 successCallback?(consDocumentModel)
             },
             onFailure: { (errorMessage) in

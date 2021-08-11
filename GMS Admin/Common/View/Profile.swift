@@ -21,13 +21,13 @@ class Profile: UIViewController {
     var From = String()
     var id = String()
 
-
     @IBOutlet var userImageView: UIImageView!
     @IBOutlet var userName: UILabel!
     @IBOutlet var userNumber: UILabel!
     @IBOutlet var segmentControl: UISegmentedControl!
     @IBOutlet var containerViewOne: UIView!
     @IBOutlet var containerViewTwo: UIView!
+    @IBOutlet weak var backView: UIView!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -36,7 +36,8 @@ class Profile: UIViewController {
             return
         }
         self.view.isHidden = false
-        self.navigationItem.title = "Profile"
+//        self.navigationItem.title = "Profile"
+//        self.navigationController?.setNavigationBarHidden(true, animated: true)
         if GlobalVariables.shared.profGrivance == "GreiAll"
         {
             self.callAPIConstituentDetail()
@@ -47,13 +48,36 @@ class Profile: UIViewController {
             self.setAllValues()
         }
         self.setUpControl ()
+        backView.addShadow(offset: CGSize.init(width: 0, height: 2), color: UIColor.darkGray, radius: 2.0, opacity: 0.35)
+        addCustomizedBackBtn(title: "")
     }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+
+        // Make the navigation bar background clear
+        self.title = "Profile"
+        navigationController?.navigationBar.setBackgroundImage(UIImage(), for: .default)
+        navigationController?.navigationBar.shadowImage = UIImage()
+        navigationController?.navigationBar.isTranslucent = true
+    }
+
+    override func viewWillDisappear(_ animated: Bool) {
+        super.viewWillDisappear(animated)
+
+        // Restore the navigation bar to default
+        navigationController?.navigationBar.setBackgroundImage(nil, for: .default)
+        navigationController?.navigationBar.shadowImage = nil
+    }
+    
+//
+    
     
     func callAPIConstituentDetail ()
     {
         print(id)
         presenter.attachView(view: self)
-        presenter.getConstituentDetailData(constituent_id: id)
+        presenter.getConstituentDetailData(constituent_id: id,dynamic_db:GlobalVariables.shared.dynamic_db)
     }
     
     func checkInterConnection () -> Bool
@@ -68,25 +92,24 @@ class Profile: UIViewController {
               return true
     }
     
-    
     func setUpControl ()
     {
         if GlobalVariables.shared.profGrivance == "GreiAll"
         {
             segmentControl.setTitle("Profile", forSegmentAt: 0)
             segmentControl.setTitle("Constituency", forSegmentAt: 1)
-            segmentControl.setTitle("Interaction", forSegmentAt: 2)
+//            segmentControl.setTitle("Interaction", forSegmentAt: 2)
             segmentControl.selectedSegmentIndex = 0
-            segmentControl.backgroundColor = UIColor.white
-            segmentControl.tintColor = UIColor.white
+//            segmentControl.backgroundColor = UIColor.white
+//            segmentControl.tintColor = UIColor.white
             segmentControl.setTitleTextAttributes([
                 NSAttributedString.Key.font : UIFont(name: "Roboto-Regular", size: 13) as Any,
                 NSAttributedString.Key.foregroundColor: UIColor.black
                 ], for: .normal)
 
             segmentControl.setTitleTextAttributes([
-                NSAttributedString.Key.font : UIFont(name: "Roboto-Regular", size: 13) as Any,
-                NSAttributedString.Key.foregroundColor: UIColor.white
+                NSAttributedString.Key.font : UIFont(name: "Roboto-Bold", size: 15) as Any,
+                NSAttributedString.Key.foregroundColor: UIColor.black
             ], for: .selected)
         }
         else
@@ -95,19 +118,18 @@ class Profile: UIViewController {
             segmentControl.setTitle("Constituency", forSegmentAt: 1)
             segmentControl.removeSegment(at: 2, animated: false)
             segmentControl.selectedSegmentIndex = 0
-            segmentControl.backgroundColor = UIColor.white
-            segmentControl.tintColor = UIColor.white
+//            segmentControl.backgroundColor = UIColor.white
+//            segmentControl.tintColor = UIColor.white
             segmentControl.setTitleTextAttributes([
                 NSAttributedString.Key.font : UIFont(name: "Roboto-Regular", size: 13) as Any,
                 NSAttributedString.Key.foregroundColor: UIColor.black
                 ], for: .normal)
 
             segmentControl.setTitleTextAttributes([
-                NSAttributedString.Key.font : UIFont(name: "Roboto-Regular", size: 13) as Any,
-                NSAttributedString.Key.foregroundColor: UIColor.white
+                NSAttributedString.Key.font : UIFont(name: "Roboto-Bold", size: 15) as Any,
+                NSAttributedString.Key.foregroundColor: UIColor.black
             ], for: .selected)
         }
-
     }
     
     func setAllValues ()
@@ -124,27 +146,21 @@ class Profile: UIViewController {
             self.userName.text = consprofiledata[0].full_name?.capitalized
             self.userNumber.text = consprofiledata[0].paguthi_name?.capitalized
         }
-
     }
     
     @IBAction func segmentAction(_ sender: Any) {
+        
         if (segmentControl.selectedSegmentIndex == 0)
         {
             container!.segueIdentifierReceivedFromParent("profile")
         }
+        
         else if (segmentControl.selectedSegmentIndex == 1)
         {
             GlobalVariables.shared.profGrivance = From
             container!.segueIdentifierReceivedFromParent("constituencyInfo")
         }
-        else
-        {
-            let vc = InterAction()
-            vc.selectedconstitunecyId = self.id
-            container!.segueIdentifierReceivedFromParent("interaction")
-        }
     }
-    
     
     // MARK: - Navigation
 
@@ -183,6 +199,4 @@ extension Profile: ConstituentDetailView{
     func setEmpty(errorMessage: String) {
         //
     }
-    
-    
 }

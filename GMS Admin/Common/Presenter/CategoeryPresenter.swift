@@ -43,11 +43,11 @@ class CategoeryPresenter: NSObject {
     func detachView() {
         categoeryView = nil
     }
-    
-    func getCategoery(user_id : String) {
+
+    func getCategoery(user_id : String,dynamic_db:String) {
           self.categoeryView?.startLoadingCategoery()
           categoeryService.callAPICategoery(
-            user_id : user_id, onSuccess: { (cate) in
+            user_id : user_id,dynamic_db:dynamic_db, onSuccess: { (cate) in
             self.categoeryView?.finishLoadingCategoery()
                 if (cate.count == 0){
                 } else {

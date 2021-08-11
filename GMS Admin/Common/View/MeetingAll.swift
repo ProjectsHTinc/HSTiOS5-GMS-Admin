@@ -9,7 +9,7 @@
 import UIKit
 import SideMenu
 
-let meetingUrl = "apiios/meetingRequestnew"
+let meetingUrl = "apiandroid/meetingRequestnew"
 
 class MeetingAll: UIViewController {
     
@@ -31,9 +31,9 @@ class MeetingAll: UIViewController {
     @IBOutlet var tableView: UITableView!
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        
         // Do any additional setup after loading the view.
-        self.title = "Meeting"
+//        self.title = "Meeting"
         //setupSideMenu()
         /*Set Side menu*/
         self.sideMenuButton()
@@ -83,7 +83,7 @@ class MeetingAll: UIViewController {
     func callAPIMeetingAll (url:String, keyword: String,constituency_id:String, offset: String, rowcount:String)
     {
         presenter.attachView(view: self)
-        presenter.getMeetingAll(url:url, keyword: keyword,constituency_id: constituency_id, offset: offset, rowcount: rowcount)
+        presenter.getMeetingAll(url:url, keyword: keyword,constituency_id: constituency_id, offset: offset, rowcount: rowcount,dynamic_db:GlobalVariables.shared.dynamic_db)
     }
         
     @objc public override func rightButtonClick()
@@ -219,7 +219,14 @@ extension MeetingAll : MeetingAllDataView, UISearchBarDelegate ,  UITableViewDel
            cell.title.text = meetingTitleArr[indexPath.row]
            cell.status.text = meetingStatusArr[indexPath.row]
            cell.createdBy.text = "Created by - " + createdByArr[indexPath.row]
-           return cell
+          if cell.status.text == "REQUESTED" || cell.status.text == "PROCESSING"
+          {
+            cell.roundedView.backgroundColor = UIColor(red: 253.0/255, green: 166.0/255, blue: 68.0/255, alpha: 1.0)
+          }
+          else {
+            cell.roundedView.backgroundColor =  UIColor(red: 112.0/255, green: 173.0/255, blue: 71.0/255, alpha: 0.6)
+          }
+        return cell
     }
        
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {

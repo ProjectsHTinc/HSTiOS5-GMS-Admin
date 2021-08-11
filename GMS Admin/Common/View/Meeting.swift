@@ -111,7 +111,7 @@ class Meeting: UIViewController {
     func callAPI(offset:String,rowcount:String)
     {
         meetingPresener.attachView(view: self)
-        meetingPresener.getMeeting(constituency_id: selectedconstitunecyId, offset: offset, rowcount: rowcount)
+        meetingPresener.getMeeting(constituency_id: selectedconstitunecyId, offset: offset, rowcount: rowcount,dynamic_db:GlobalVariables.shared.dynamic_db)
     }
     
     

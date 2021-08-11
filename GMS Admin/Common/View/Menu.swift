@@ -131,6 +131,7 @@ class Menu: UITableViewController {
         GlobalVariables.shared.totalGrievancesCount = ""
         GlobalVariables.shared.constituentInteractionCount = ""
         UserDefaults.standard.clearUserData()
+//        UIApplication.shared.keyWindow?.rootViewController = storyboard!.instantiateViewController(withIdentifier: "constId")
         self.performSegue(withIdentifier: "logOut", sender: self)
 
     }
@@ -189,6 +190,5 @@ class Menu: UITableViewController {
         // Pass the selected object to the new view controller.
     }
     */
-
 }
 

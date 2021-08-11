@@ -37,10 +37,10 @@ class ProfileUpdatePresenter: NSObject {
         profileUpdatesView = nil
     }
     
-    func getProfileUpdate(user_id:String,name:String,address:String,phone:String,email:String,gender:String) {
+    func getProfileUpdate(user_id:String,name:String,address:String,phone:String,email:String,gender:String,dynamic_db:String) {
         self.profileUpdatesView?.startLoadingUpdate()
         profileUpdateService.callAPIUserProfileUpdate(
-            user_id: user_id, name: name,address: address, phone: phone, email: email, gender: gender, onSuccess: { (profUpdate) in
+            user_id: user_id, name: name,address: address, phone: phone, email: email, dynamic_db:dynamic_db, gender: gender, onSuccess: { (profUpdate) in
                 self.profileUpdatesView?.finishLoadingUpdate()
                 self.profileUpdatesView?.setProfileUpdate(msg:profUpdate.msg!,status: profUpdate.status!)
             },

@@ -22,11 +22,11 @@ class Constituency: UIViewController, ClientUrlView{
     var delegate : ConstituencyListDelegate?
     var strSaveText : NSString!
 
-    
     @IBOutlet var tableView: UITableView!
     @IBOutlet var cancelOutlet: UIButton!
     @IBOutlet var okOutlet: UIButton!
     @IBOutlet var mainView: RoundedView!
+    @IBOutlet weak var searchView: UIView!
     
     /*Get Constituency List*/
     let presenter = ConstituencyPresenter(constituencyService: ConstituencyService())
@@ -41,11 +41,16 @@ class Constituency: UIViewController, ClientUrlView{
         
         tableView?.delegate = self
         tableView?.dataSource = self
-        /*Remove EmptyCell in TableView*/
         tableView?.tableFooterView = UIView()
-        // Do any additional setup after loading the view.
         self.getConstituencyList ()
+        self.hideKeyboardWhenTappedAround()
         self.tableView.backgroundColor = UIColor.white
+        
+//        searchView.layer.cornerRadius = 6
+//        searchView.layer.shadowColor = UIColor.darkGray.cgColor
+//        searchView.layer.shadowOpacity = 0.5
+//        searchView.layer.shadowOffset = CGSize.zero
+//        searchView.layer.shadowRadius = 3
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -145,7 +150,7 @@ extension Constituency: UITableViewDataSource,UITableViewDelegate {
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        tableView.cellForRow(at: indexPath)?.accessoryType = .checkmark
+//        tableView.cellForRow(at: indexPath)?.accessoryType = .checkmark
         selectedIndex = indexPath.row;
         let constituency = constituencyNameList[selectedIndex]
         self.selectedParty_id = String (constituency.constituency_id)
@@ -156,7 +161,7 @@ extension Constituency: UITableViewDataSource,UITableViewDelegate {
     }
 
     func tableView(_ tableView: UITableView, didDeselectRowAt indexPath: IndexPath) {
-        tableView.cellForRow(at: indexPath)?.accessoryType = .none
+//        tableView.cellForRow(at: indexPath)?.accessoryType = .none
     }
 }
 

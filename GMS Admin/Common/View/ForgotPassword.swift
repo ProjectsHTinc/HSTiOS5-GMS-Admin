@@ -13,16 +13,22 @@ class ForgotPassword: UIViewController {
     let presenter = ForgotPasswordPresenter(forgotPasswordService: ForgotPasswordService())
     
     @IBOutlet var userName: UITextField!
+    @IBOutlet weak var view1: UIView!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view.
         /*Set Delegate for Textfields*/
         self.userName.delegate = self
         /*Set Navigation Back Button*/
-        self.addCustomizedBackBtn(title:"  Forgot Password")
+//        self.addCustomizedBackBtn(title:"")
         /*Tap anywhere to hide keypad*/
         self.hideKeyboardWhenTappedAround()
-
+//        view1.layer.cornerRadius = 6
+//        view1.layer.shadowColor = UIColor.darkGray.cgColor
+//        view1.layer.shadowOpacity = 0.5
+//        view1.layer.shadowOffset = CGSize.zero
+//        view1.layer.shadowRadius = 3
     }
     
     @objc public override func backButtonClick()
@@ -72,7 +78,6 @@ class ForgotPassword: UIViewController {
         // Pass the selected object to the new view controller.
     }
     */
-
 }
 
 extension ForgotPassword : UITextFieldDelegate
@@ -112,6 +117,4 @@ extension ForgotPassword : ForgotPasswordView
             self.dismiss(animated: false, completion: nil)
         })
     }
-    
-    
 }

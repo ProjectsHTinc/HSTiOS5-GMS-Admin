@@ -10,9 +10,9 @@ import UIKit
 
 class GriDocumentService {
 
-    public func callAPIGriDocument(constituent_id:String, onSuccess successCallback: ((_ griDocumentModel: [GriDocumentModel]) -> Void)?,onFailure failureCallback: ((_ errorMessage: String) -> Void)?) {
+    public func callAPIGriDocument(constituent_id:String,dynamic_db:String, onSuccess successCallback: ((_ griDocumentModel: [GriDocumentModel]) -> Void)?,onFailure failureCallback: ((_ errorMessage: String) -> Void)?) {
         APIManager.instance.callAPIGriDocument(
-          constituent_id: constituent_id, onSuccess: { (griDocumentModel) in
+            dynamic_db:dynamic_db, constituent_id: constituent_id, onSuccess: { (griDocumentModel) in
                 successCallback?(griDocumentModel)
             },
             onFailure: { (errorMessage) in

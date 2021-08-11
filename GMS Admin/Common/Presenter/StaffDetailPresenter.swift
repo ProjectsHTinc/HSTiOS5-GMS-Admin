@@ -44,10 +44,10 @@ class StaffDetailPresenter: NSObject {
         staffDetailView = nil
     }
     
-    func getStaffDetail(staff_id : String) {
+    func getStaffDetail(staff_id : String,dynamic_db:String) {
           self.staffDetailView?.startLoading()
           staffDetailService.callAPIStaffDetail(
-            staff_id: staff_id, onSuccess: { (staffDetail) in
+            staff_id: staff_id,dynamic_db:dynamic_db, onSuccess: { (staffDetail) in
             self.staffDetailView?.finishLoading()
                 if (staffDetail.count == 0){
                 } else {

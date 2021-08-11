@@ -50,10 +50,10 @@ class LoginPresenter {
         loginView = nil
     }
     
-    func getLoginData(user_name:String,password:String) {
+    func getLoginData(user_name:String,password:String,dynamic_db:String) {
         self.loginView?.startLoading()
         loginService.callAPILogin(
-            user_name: user_name, password: password, onSuccess: { (login) in
+            user_name: user_name, password: password,dynamic_db:dynamic_db, onSuccess: { (login) in
                 self.loginView?.finishLoading()
                 self.loginView?.setLoginData(user_id: login.user_id!,userImage:login.picture_url!,userName: login.full_name!,userlocation: login.address!)
             },

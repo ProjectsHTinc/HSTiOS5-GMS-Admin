@@ -8,7 +8,7 @@
 
 import UIKit
 
-let meetingSearchUrl = "apiios/meetingRequestsearch"
+let meetingSearchUrl = "apiandroid/meetingRequestsearch"
 
 class MeetingAllSearch: UIViewController {
     
@@ -56,7 +56,7 @@ class MeetingAllSearch: UIViewController {
     func callAPIMeetingSearch (url:String, keyword:String, constituency_id:String, offset: String, rowcount:String)
     {
         presenter.attachView(view: self)
-        presenter.getMeetingAll(url:url, keyword: keyword,constituency_id: constituency_id, offset: offset, rowcount: rowcount)
+        presenter.getMeetingAll(url:url, keyword: keyword,constituency_id: constituency_id, offset: offset, rowcount: rowcount,dynamic_db:GlobalVariables.shared.dynamic_db)
     }
 
     

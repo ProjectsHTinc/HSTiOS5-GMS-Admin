@@ -61,10 +61,10 @@ class FootFallPresenter: NSObject {
         footFallView = nil
     }
     
-    func getFootFall(paguthi:String,from_date:String,to_date:String) {
+    func getFootFall(paguthi:String,from_date:String,to_date:String,dynamic_db:String) {
         self.footFallView?.startLoadingFF()
         footFallService.callAPIFootfall(
-        paguthi: paguthi,from_date:from_date,to_date:to_date, onSuccess: { (tg) in
+        paguthi: paguthi,from_date:from_date,to_date:to_date,dynamic_db:dynamic_db, onSuccess: { (tg) in
                 self.footFallView?.finishLoadingFF()
             self.footFallView?.setFF(total_footfall_cnt: tg.total_footfall_cnt!, unique_footfall_cnt: tg.unique_footfall_cnt!, repeated_footfall_cnt: tg.repeated_footfall_cnt!, repeated_footfall_cnt_presntage: tg.repeated_footfall_cnt_presntage!,unique_footfall_cnt_presntage: tg.unique_footfall_cnt_presntage!, total_unique_footfall_cnt: tg.total_unique_footfall_cnt!, other_unique_footfall_cnt: tg.cons_unique_footfall_cnt!, cons_unique_footfall_cnt: tg.cons_unique_footfall_cnt!,cons_unique_footfall_cnt_presntage: tg.other_unique_footfall_cnt_presntage!,other_unique_footfall_cnt_presntage: tg.other_unique_footfall_cnt_presntage!, constituency_cnt: tg.constituency_cnt!, cons_unique_cnt: tg.cons_unique_cnt!,  cons_repeated_cnt: tg.cons_repeated_cnt!,cons_unique_cnt_presntage: tg.cons_unique_cnt_presntage!, cons_repeated_cnt_presntage: tg.cons_repeated_cnt_presntage!, other_cnt: tg.other_cnt!,  other_unique_cnt: tg.other_unique_cnt!, other_repeated_cnt: tg.other_repeated_cnt!, other_unique_cnt_presntage: tg.other_unique_cnt_presntage!,other_repeated_cnt_presntage: tg.unique_footfall_cnt_presntage!)
                 

@@ -210,7 +210,7 @@ private extension SideMenuPresentationController {
         containerViewWillLayoutSubviews()
         
         to.view.transform = .identity
-        to.view.alpha = 1
+        to.view.alpha =  2
 
         let x = (leftSide ? 1 : -1) * config.menuWidth * translate
         from.view.alpha = alpha

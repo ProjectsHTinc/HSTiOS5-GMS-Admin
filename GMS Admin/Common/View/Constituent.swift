@@ -9,7 +9,7 @@
 import UIKit
 import SideMenu
 
-let constituentcyList = "apiios/listConstituentnew"
+let constituentcyList = "apiandroid/listConstituentnew"
 
 class Constituent: UIViewController, PaguthiView {
 
@@ -47,6 +47,7 @@ class Constituent: UIViewController, PaguthiView {
         //setupSideMenu()
         /*Set Side menu*/
         self.sideMenuButton()
+        segmentView.addShadow(offset: CGSize.init(width: 0, height: 2), color: UIColor.gray, radius: 2.0, opacity: 0.35)
         /*Right Navigation Bar*/
         self.addrightButton(bg_ImageName:"ConstituentSearch")
         self.tableView.backgroundColor = UIColor.white
@@ -56,6 +57,7 @@ class Constituent: UIViewController, PaguthiView {
              })
              return
         }
+//        callAPISearch (url:constituentcyList,constituency_id:GlobalVariables.shared.constituent_Id, offset: "0", rowcount:"50",dynamic_db:GlobalVariables.shared.dynamic_db)
         
         self.constituentCount.isHidden = true
         self.bottomLine.isHidden = true
@@ -95,23 +97,23 @@ class Constituent: UIViewController, PaguthiView {
         /*Scroll Postion for TableView*/
         //self.reloadAndScrollToTop()
     }
-    
+     
     func callAPIPaguthi ()
     {
         print(GlobalVariables.shared.constituent_Id)
         Paguthipresenter.attachView(view: self)
-        Paguthipresenter.getPaguthi(constituency_id: GlobalVariables.shared.constituent_Id)
+        Paguthipresenter.getPaguthi(constituency_id: GlobalVariables.shared.constituent_Id,dynamic_db:GlobalVariables.shared.dynamic_db)
     }
     
-    func callAPISearch (url:String,constituency_id:String, offset: String, rowcount:String)
+    func callAPISearch (url:String,constituency_id:String, offset: String, rowcount:String,dynamic_db:String)
     {
         presenter.attachView(view: self)
-        presenter.getconstituencyList(url:url, Keyword: "no",paguthi: constituency_id, offset: offset, rowcount: rowcount)
+        presenter.getconstituencyList(url:url, Keyword: "no",paguthi: constituency_id, offset: offset, rowcount: rowcount,dynamic_db:GlobalVariables.shared.dynamic_db)
     }
     
     @objc public override func sideMenuButtonClick()
     {
-        self.performSegue(withIdentifier: "to_sideMenu", sender: self)
+        self.performSegue(withIdentifier: "to_sideMENU", sender: self)
     }
     
     @objc public override func rightButtonClick()
@@ -134,12 +136,12 @@ class Constituent: UIViewController, PaguthiView {
         segmentedControl.addTarget(self, action: #selector(segmentedControlChangedValue(segmentedControl:)), for: .valueChanged)
         segmentView.addSubview(segmentedControl)
         segmentedControl.titleTextAttributes = [NSAttributedString.Key.foregroundColor: UIColor.darkGray]
-        segmentedControl.selectedTitleTextAttributes = [NSAttributedString.Key.foregroundColor: UIColor(red: 45/155, green: 148/255, blue: 235/255, alpha: 1.0)]
+        segmentedControl.selectedTitleTextAttributes = [NSAttributedString.Key.foregroundColor: UIColor.black]
         segmentedControl.selectionStyle = HMSegmentedControlSelectionStyle.fullWidthStripe
         segmentedControl.selectionIndicatorLocation = HMSegmentedControlSelectionIndicatorLocation.bottom
         segmentedControl.segmentWidthStyle = HMSegmentedControlSegmentWidthStyle.fixed
-        segmentedControl.selectionIndicatorHeight = 2.0
-        segmentedControl.selectionIndicatorColor = UIColor(red: 45/155, green: 148/255, blue: 235/255, alpha: 1.0)
+        segmentedControl.selectionIndicatorHeight = 4.0
+        segmentedControl.selectionIndicatorColor = UIColor.black
         segmentedControl.titleTextAttributes = [NSAttributedString.Key.font: UIFont(name: "Roboto-Medium", size: 15.0)!]
     }
     
@@ -155,7 +157,7 @@ class Constituent: UIViewController, PaguthiView {
         let selectedIndex = Int(segmentedControl.selectedSegmentIndex)
         let sel = self.constituencyID[selectedIndex]
         self.selectedconstitunecyId = String (sel)
-        self.callAPISearch(url: constituentcyList, constituency_id: self.selectedconstitunecyId,offset: "0",rowcount: "50")
+        self.callAPISearch(url: constituentcyList, constituency_id: self.selectedconstitunecyId,offset: "0",rowcount: "50",dynamic_db:GlobalVariables.shared.dynamic_db)
     }
     
     func reloadAndScrollToTop() {
@@ -233,7 +235,7 @@ extension Constituent: UISearchBarDelegate, UITableViewDelegate, UITableViewData
             {
                 let lE = lastElement + 1
                 print(self.selectedconstitunecyId)
-                self.callAPISearch(url: constituentcyList, constituency_id: self.selectedconstitunecyId,offset: String(lE),rowcount: "50")
+                self.callAPISearch(url: constituentcyList, constituency_id: self.selectedconstitunecyId,offset: String(lE),rowcount: "50",dynamic_db :GlobalVariables.shared.dynamic_db)
             }
         }
     }
@@ -303,7 +305,7 @@ extension Constituent: UISearchBarDelegate, UITableViewDelegate, UITableViewData
          self.setUpSegementControl()
 
          print(self.selectedconstitunecyId)
-         self.callAPISearch(url: constituentcyList, constituency_id: self.selectedconstitunecyId, offset:"0", rowcount: "50")
+         self.callAPISearch(url: constituentcyList, constituency_id: self.selectedconstitunecyId, offset:"0", rowcount: "50",dynamic_db:GlobalVariables.shared.dynamic_db)
     }
     
     func setEmpty(errorMessage: String) {

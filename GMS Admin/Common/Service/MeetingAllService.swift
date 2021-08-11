@@ -10,9 +10,9 @@ import UIKit
 
 class MeetingAllService {
     
-    public func callAPIMeetingAll(url: String, keyword: String, constituency_id:String, offset:String, rowcount:String, onSuccess successCallback: ((_ meetingAllModel: [MeetingAllModel]) -> Void)?,onFailure failureCallback: ((_ errorMessage: String) -> Void)?) {
+    public func callAPIMeetingAll(url: String, keyword: String,dynamic_db:String,constituency_id:String, offset:String, rowcount:String, onSuccess successCallback: ((_ meetingAllModel: [MeetingAllModel]) -> Void)?,onFailure failureCallback: ((_ errorMessage: String) -> Void)?) {
         APIManager.instance.callAPIMeetingAll(
-            url: url, keyword: keyword, constituency_id: constituency_id,offset: offset,rowcount: rowcount, onSuccess: { (meetingAllModel) in
+            dynamic_db:dynamic_db, url: url, keyword: keyword, constituency_id: constituency_id,offset: offset,rowcount: rowcount,onSuccess: { (meetingAllModel) in
                 successCallback?(meetingAllModel)
             },
             onFailure: { (errorMessage) in

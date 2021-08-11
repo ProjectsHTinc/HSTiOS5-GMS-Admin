@@ -16,6 +16,7 @@ struct ReportMeetingData {
     let meeting_date : String
     let meeting_status : String
     let created_by : String
+   
 }
 
 protocol ReportMeetingView: NSObjectProtocol {
@@ -43,19 +44,19 @@ class ReportMeetingPresenter: NSObject {
         reportMeetingView = nil
     }
     
-    func getReportMeeting(url: String, keyword: String, from_date:String, to_date:String, offset:String, rowcount:String) {
+    func getReportMeeting(url: String, keyword: String, from_date:String, to_date:String, offset:String, rowcount:String,dynamic_db:String) {
           self.reportMeetingView?.startLoading()
           reportMeetingService.callAPIReportMeeting(
-            url: url, keyword: keyword, from_date: from_date, to_date: to_date, offset: offset, rowcount: rowcount, onSuccess: { (meettingAll) in
+            url: url, dynamic_db:dynamic_db, keyword: keyword, from_date: from_date, to_date: to_date, offset: offset, rowcount: rowcount, onSuccess: { (meettingAll) in
             self.reportMeetingView?.finishLoading()
                 if (meettingAll.count == 0){
                 } else {
                   let mappedUsers = meettingAll.map {
-                    return ReportMeetingData(id: "\($0.id ?? "")", full_name: "\($0.full_name ?? "")", paguthi_name: "\($0.paguthi_name ?? "")", meeting_title: "\($0.meeting_title ?? "")", meeting_date: "\($0.meeting_date ?? "")", meeting_status: "\($0.meeting_status ?? "")", created_by: "\($0.created_by ?? "")")
+                    return ReportMeetingData(id: "\($0.id ?? "")", full_name: "\($0.full_name ?? "")", paguthi_name: "\($0.paguthi_name ?? "")", meeting_title: "\($0.meeting_title ?? "")", meeting_date: "\($0.meeting_date ?? "")",meeting_status: "\($0.meeting_status ?? "")", created_by: "\($0.created_by ?? "")")
                      }
                     self.reportMeetingView?.setReport(report: mappedUsers)
                 }
-
+             
               },
               onFailure: { (errorMessage) in
                   self.reportMeetingView?.finishLoading()

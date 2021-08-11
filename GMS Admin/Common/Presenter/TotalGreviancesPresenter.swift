@@ -77,10 +77,10 @@ class TotalGreviancesPresenter: NSObject {
         totalGrevianceView = nil
     }
     
-    func getTotalGreviances(paguthi:String,from_date:String,to_date:String) {
+    func getTotalGreviances(paguthi:String,from_date:String,to_date:String,dynamic_db:String) {
         self.totalGrevianceView?.startLoadingTg()
         totalGreviancesSerVice.callAPITotalGreivances(
-            paguthi: paguthi,from_date:from_date,to_date:to_date, onSuccess: { (tg) in
+            paguthi: paguthi,from_date:from_date,to_date:to_date,dynamic_db:dynamic_db, onSuccess: { (tg) in
                 self.totalGrevianceView?.finishLoadingTg()
                 self.totalGrevianceView?.setTg(tot_grive_count: tg.tot_grive_count,
                                                enquiry_count: tg.enquiry_count,

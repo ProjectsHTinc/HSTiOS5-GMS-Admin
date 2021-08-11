@@ -39,10 +39,10 @@ class ConsDocumentPresenter: NSObject {
         consDocumentView = nil
     }
     
-    func getConsDoc(constituent_id:String) {
+    func getConsDoc(constituent_id:String,dynamic_db:String) {
           self.consDocumentView?.startLoadingCons()
           consDocumentService.callAPIConsDocument(
-            constituent_id: constituent_id, onSuccess: { (plant) in
+            constituent_id: constituent_id,dynamic_db:dynamic_db, onSuccess: { (plant) in
             self.consDocumentView?.finishLoadingCons()
                 if (plant.count == 0){
                 } else {

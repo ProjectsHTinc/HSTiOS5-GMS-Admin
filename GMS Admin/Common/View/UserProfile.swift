@@ -31,6 +31,9 @@ class UserProfile: UIViewController, ProfileDetailsView, UIImagePickerController
     @IBOutlet var address: UITextView!
     @IBOutlet var saveProfileOutlet: UIButton!
     @IBOutlet var userImageOutlet: UIButton!
+  
+    
+    
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -42,22 +45,22 @@ class UserProfile: UIViewController, ProfileDetailsView, UIImagePickerController
         self.phone.delegate = self
         self.emailId.delegate = self
         self.address.delegate = self
-        self.addCustomizedBackBtn(title:"  Edit Profile")
+//        self.addCustomizedBackBtn(title:"  Edit Profile")
         self.hideKeyboardWhenTappedAround()
     }
     
     func callAPI (){
         presenter.attachView(view: self)
-        presenter.getProfileDetails(user_id: GlobalVariables.shared.user_id)
+        presenter.getProfileDetails(user_id: GlobalVariables.shared.user_id,dynamic_db:GlobalVariables.shared.dynamic_db)
     }
     
     func setUpSegmentControl (){
         genderSegment.backgroundColor = .white
 //      genderSegment.tintColor = .white
         genderSegment.setTitleTextAttributes([NSAttributedString.Key.font: UIFont(name: "Roboto-Regular", size: 13) as Any], for: .normal)
-        genderSegment.setTitleTextAttributes([NSAttributedString.Key.foregroundColor: UIColor.white], for: .selected)
+        genderSegment.setTitleTextAttributes([NSAttributedString.Key.foregroundColor: UIColor.black], for: .selected)
         genderSegment.setTitleTextAttributes([NSAttributedString.Key.foregroundColor: UIColor.black], for: .normal)
-        genderSegment.setTitleTextAttributes([NSAttributedString.Key.font: UIFont(name: "Roboto-Regular", size: 13) as Any], for: .selected)
+        genderSegment.setTitleTextAttributes([NSAttributedString.Key.font: UIFont(name: "Roboto-Bold", size: 15) as Any], for: .selected)
     }
     
     func startLoading() {
@@ -182,7 +185,7 @@ class UserProfile: UIViewController, ProfileDetailsView, UIImagePickerController
         }
         else
         {
-            let functionName = "apiios/profilePictureUpload/"
+            let functionName = "apiandroid/profilePictureUpload/"
             let baseUrl = GlobalVariables.shared.CLIENTURL + functionName + GlobalVariables.shared.user_id
             let url = URL(string: baseUrl)!
             Alamofire.upload(multipartFormData: { multipartFormData in
@@ -233,7 +236,7 @@ class UserProfile: UIViewController, ProfileDetailsView, UIImagePickerController
     func updateAPI (name:String,phone:String,emailId:String,genderSegment:String,address:String)
     {
         presenterUpdate.attachView(view: self)
-        presenterUpdate.getProfileUpdate(user_id: GlobalVariables.shared.user_id, name: name, address: address, phone: phone, email: emailId, gender: genderSegment)
+        presenterUpdate.getProfileUpdate(user_id: GlobalVariables.shared.user_id, name: name, address: address, phone: phone, email: emailId, gender: genderSegment,dynamic_db:GlobalVariables.shared.dynamic_db)
     }
     
     /*

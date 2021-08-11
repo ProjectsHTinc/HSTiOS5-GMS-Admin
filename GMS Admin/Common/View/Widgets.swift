@@ -49,7 +49,7 @@ class Widgets: UIViewController,ConstituentMemberView {
     func callAPICI ()
     {
         presenter.attachView(view: self)
-        presenter.getTotalGreviances(paguthi: paguthi_Id, from_date: GlobalVariables.shared.widgetFromDate, to_date: GlobalVariables.shared.widgetToDate)
+        presenter.getTotalGreviances(paguthi: paguthi_Id, from_date: GlobalVariables.shared.widgetFromDate, to_date: GlobalVariables.shared.widgetToDate,dynamic_db:GlobalVariables.shared.dynamic_db)
     }
     
     

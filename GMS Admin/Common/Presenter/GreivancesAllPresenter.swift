@@ -52,10 +52,10 @@ class GreivancesAllPresenter: NSObject {
         greivancesAllView = nil
     }
     
-    func getGrieAll(url : String, keyword: String, paguthi:String, offset:String, rowcount:String, grievance_type: String) {
+    func getGrieAll(url : String, keyword: String, paguthi:String, offset:String, rowcount:String, grievance_type: String,dynamic_db:String) {
           self.greivancesAllView?.startLoadingGriAll()
           greivancesAllService.callAPIGreivancesAll(
-            url: url, keyword: keyword, paguthi: paguthi, offset: offset, rowcount: rowcount, grievance_type: grievance_type, onSuccess: { (grieAll) in
+            url: url, keyword: keyword,dynamic_db:dynamic_db, paguthi: paguthi, offset: offset, rowcount: rowcount, grievance_type: grievance_type, onSuccess: { (grieAll) in
             self.greivancesAllView?.finishLoadingGriAll()
                 if (grieAll.count == 0){
                 } else {

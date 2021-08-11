@@ -50,10 +50,10 @@ class ConstituentgreivancesPresenter: NSObject {
         constituentGreivancesView = nil
     }
     
-    func getConsGrie(constituent_id:String) {
+    func getConsGrie(constituent_id:String,dynamic_db:String) {
           self.constituentGreivancesView?.startLoadingGri()
           constituentGreivancesService.callAPIConstituentGrievances(
-            constituent_id: constituent_id, onSuccess: { (plant) in
+            constituent_id: constituent_id, dynamic_db:dynamic_db,onSuccess: { (plant) in
             self.constituentGreivancesView?.finishLoadingGri()
                 if (plant.count == 0){
                 } else {

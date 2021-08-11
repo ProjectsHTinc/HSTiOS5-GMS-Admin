@@ -57,10 +57,10 @@ class ConstituentDetailPresenter: NSObject {
         constituentDetailView = nil
     }
     
-    func getConstituentDetailData(constituent_id:String) {
+    func getConstituentDetailData(constituent_id:String,dynamic_db:String) {
         self.constituentDetailView?.startLoading()
         constituentDetailService.callAPIConstituentDetail(
-            constituent_id: constituent_id, onSuccess: { (constituentDetail) in
+            constituent_id: constituent_id,dynamic_db:dynamic_db, onSuccess: { (constituentDetail) in
                 self.constituentDetailView?.finishLoading()
                 if (constituentDetail.count == 0){
                 } else {

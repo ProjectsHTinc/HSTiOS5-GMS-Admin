@@ -36,7 +36,7 @@ class GreetingCount: UIViewController,GreetingCountView {
     func CallAPIGreeting ()
     {
         presenterTm.attachView(view: self)
-        presenterTm.getGreetingCount(paguthi: paguthi_Id, from_date: GlobalVariables.shared.widgetFromDate, to_date: GlobalVariables.shared.widgetToDate)
+        presenterTm.getGreetingCount(paguthi: paguthi_Id, from_date: GlobalVariables.shared.widgetFromDate, to_date: GlobalVariables.shared.widgetToDate,dynamic_db:GlobalVariables.shared.dynamic_db)
     }
     
     func startLoadingCi() {
@@ -54,7 +54,7 @@ class GreetingCount: UIViewController,GreetingCountView {
         self.greetingCount.text = ("Geeeting Count - \(GlobalVariables.shared.total_greetings)")
         self.festivalWishesCount.text = GlobalVariables.shared.festival_wishes_count
         self.birthdayWishesCount.text = GlobalVariables.shared.birthday_wish_count
-        self.festivalWishesPercentage.text = greetingCountData[0].festival_wishes_percentage
+        self.festivalWishesPercentage.text = "Festival Wishes \(greetingCountData[0].festival_wishes_percentage)"
         self.ramzanCount.text = greetingCountData[0].festival_wish_cnt
     }
     

@@ -10,9 +10,9 @@ import UIKit
 
 class LoginService {
     
-    public func callAPILogin(user_name:String, password:String, onSuccess successCallback: ((_ login: LoginModel) -> Void)?,onFailure failureCallback: ((_ errorMessage: String) -> Void)?) {
+    public func callAPILogin(user_name:String, password:String,dynamic_db:String, onSuccess successCallback: ((_ login: LoginModel) -> Void)?,onFailure failureCallback: ((_ errorMessage: String) -> Void)?) {
         APIManager.instance.callAPILogin(
-          user_name: user_name, password: password, onSuccess: { (loginData) in
+            user_name: user_name,password: password, dynamic_db:dynamic_db, onSuccess: { (loginData) in
                 successCallback?(loginData)
             },
             onFailure: { (errorMessage) in
@@ -20,5 +20,4 @@ class LoginService {
             }
         )
     }
-
 }

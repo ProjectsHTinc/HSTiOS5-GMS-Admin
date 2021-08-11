@@ -10,9 +10,9 @@ import UIKit
 
 class ConstituentGreivancesService {
     
-    public func callAPIConstituentGrievances(constituent_id:String, onSuccess successCallback: ((_ constituentGreivancesModel: [ConstituentGreivancesModel]) -> Void)?,onFailure failureCallback: ((_ errorMessage: String) -> Void)?) {
+    public func callAPIConstituentGrievances(constituent_id:String,dynamic_db:String, onSuccess successCallback: ((_ constituentGreivancesModel: [ConstituentGreivancesModel]) -> Void)?,onFailure failureCallback: ((_ errorMessage: String) -> Void)?) {
         APIManager.instance.callAPIConstituentGrievances(
-          constituent_id: constituent_id, onSuccess: { (constituentGreivancesModel) in
+            dynamic_db:dynamic_db, constituent_id: constituent_id, onSuccess: { (constituentGreivancesModel) in
                 successCallback?(constituentGreivancesModel)
             },
             onFailure: { (errorMessage) in

@@ -42,10 +42,10 @@ class StaffPresenter: NSObject {
         staffView = nil
     }
     
-    func getStaff(constituency_id : String) {
+    func getStaff(constituency_id : String,dynamic_db:String) {
           self.staffView?.startLoading()
           staffService.callAPIStaff(
-            constituency_id: constituency_id, onSuccess: { (staff) in
+            constituency_id: constituency_id, dynamic_db:dynamic_db,onSuccess: { (staff) in
             self.staffView?.finishLoading()
                 if (staff.count == 0){
                 } else {

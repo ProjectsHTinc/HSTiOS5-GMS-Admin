@@ -88,9 +88,6 @@ open class Container: UIViewController {
             }, completion: { (complete) in
                 self.viewController.didMove(toParent: self)
             })
-           
         }
-        
     }
-
 }

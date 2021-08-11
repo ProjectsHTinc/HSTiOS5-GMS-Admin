@@ -42,10 +42,10 @@ class ListConstituentPresenter: NSObject {
         listConstituencyView = nil
     }
     
-    func getconstituencyList(url:String,Keyword:String,paguthi:String,offset:String, rowcount:String) {
+    func getconstituencyList(url:String,Keyword:String,paguthi:String,offset:String, rowcount:String,dynamic_db:String) {
         self.listConstituencyView?.startLoading()
         listConstituentservice.callAPIConstituentList(
-            url: url,Keyword: Keyword, paguthi: paguthi, offset: offset, rowcount: rowcount, onSuccess: { (constituentName) in
+            url: url,Keyword: Keyword, paguthi: paguthi,offset:offset, rowcount: offset, dynamic_db: dynamic_db, onSuccess: { (constituentName) in
                 self.listConstituencyView?.finishLoading()
                 if (constituentName.count == 0){
                 } else {

@@ -40,6 +40,7 @@ class ConstituentGreivancesDetail: UIViewController {
     @IBOutlet var descripitionTitleHeight: NSLayoutConstraint!
     @IBOutlet var descHeight: UILabel!
     @IBOutlet var descripitionBaseHeight: NSLayoutConstraint!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 
@@ -85,7 +86,7 @@ class ConstituentGreivancesDetail: UIViewController {
             self.status.clipsToBounds = true
         }
 
-        self.addCustomizedBackBtn(title:"  Grievance detail")
+//        self.addCustomizedBackBtn(title:"  Grievance detail")
 
     }
     

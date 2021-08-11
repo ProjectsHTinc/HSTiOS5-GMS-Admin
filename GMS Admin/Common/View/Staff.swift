@@ -15,19 +15,29 @@ class Staff: UIViewController {
     let presenter = StaffPresenter(staffService: StaffService())
     var data = [staffData]()
     var filterdArr = [staffData]()
-
+    var selectedSegmentIndexValue = Int()
+    var fullNameArr = [String]()
+    var idArr = [String]()
+    var paguthiNameArr = [String]()
+    var statusArr = [String]()
+    var emailIdArr = [String]()
+    var profilePicArr = [String]()
     var searchBar = UISearchController()
+    var phoneNumberArr = [String]()
 
     @IBOutlet var staffCount: UILabel!
     @IBOutlet var tableView: UITableView!
+    @IBOutlet weak var segmentedControl: UISegmentedControl!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 
         // Do any additional setup after loading the view.
-        self.title = "Staff"
+//        self.title = "Staff"
         //setupSideMenu()
         /*Set Side menu*/
         self.sideMenuButton()
+        setUpStatSegmentControl ()
         /*Right Navigation Bar*/
         self.tableView.backgroundColor = UIColor.white
         guard Reachability.isConnectedToNetwork() == true else {
@@ -40,6 +50,8 @@ class Staff: UIViewController {
         self.addrightButton(bg_ImageName:"ConstituentSearch")
         tableView.tableFooterView = UIView()
         self.callAPIStaff ()
+        
+//        if segmentedControl.selectedSegmentIndex
     }
     
     private func setupSideMenu() {
@@ -54,7 +66,8 @@ class Staff: UIViewController {
         SideMenuManager.default.addScreenEdgePanGesturesToPresent(toView: view)
     }
     
-    func makeSettings() -> SideMenuSettings{
+    func makeSettings() -> SideMenuSettings {
+        
         var settings = SideMenuSettings()
         settings.allowPushOfSameClassTwice = false
         settings.presentationStyle = .menuSlideIn
@@ -62,6 +75,74 @@ class Staff: UIViewController {
         settings.presentationStyle.presentingEndAlpha = 0.5
         settings.statusBarEndAlpha = 0
         return settings
+    }
+    
+    func setUpStatSegmentControl ()
+    {
+//        statSegContrl.backgroundColor = UIColor.white
+        segmentedControl.tintColor = UIColor.white
+        segmentedControl.setTitleTextAttributes([
+            NSAttributedString.Key.font : UIFont(name: "Roboto-Regular", size: 13) as Any,
+            NSAttributedString.Key.foregroundColor: UIColor.black
+            ], for: .normal)
+
+        segmentedControl.setTitleTextAttributes([
+            NSAttributedString.Key.font : UIFont(name: "Roboto-Bold", size: 15) as Any,
+            NSAttributedString.Key.foregroundColor: UIColor.black
+        ], for: .selected)
+    }
+    
+    @IBAction func segmentedControlAction(_ sender: Any) {
+        
+        if segmentedControl.selectedSegmentIndex == 0 {
+            self.selectedSegmentIndexValue  =  0
+            
+            if statusArr.contains("ACTIVE") {
+//             let datas = filterdArr
+     
+            for datas in filterdArr {
+                let fullName = datas.full_name
+                let paguthiName = datas.paguthi_name
+                let profilePic = datas.profile_pic
+                let phoneNum = datas.phone_number
+                let emailId = datas.email_id
+                let status = datas.status
+                
+                self.fullNameArr.append(fullName)
+                self.paguthiNameArr.append(paguthiName)
+                self.emailIdArr.append(emailId)
+                self.profilePicArr.append(profilePic)
+                self.statusArr.append(status)
+                self.phoneNumberArr.append(phoneNum)
+            }
+            self.tableView.isHidden = false
+            self.tableView.reloadData()
+            }
+        }
+        else {
+            self.selectedSegmentIndexValue  =  1
+            if statusArr.contains("INACTIVE") {
+//             let datas = filterdArr
+     
+            for datas in filterdArr {
+                let fullName = datas.full_name
+                let paguthiName = datas.paguthi_name
+                let profilePic = datas.profile_pic
+                let phoneNum = datas.phone_number
+                let emailId = datas.email_id
+                let status = datas.status
+                
+                self.fullNameArr.append(fullName)
+                self.paguthiNameArr.append(paguthiName)
+                self.emailIdArr.append(emailId)
+                self.profilePicArr.append(profilePic)
+                self.statusArr.append(status)
+                self.phoneNumberArr.append(phoneNum)
+            }
+            self.tableView.isHidden = false
+            self.tableView.reloadData()
+            }
+        }
     }
     
     @objc public override func rightButtonClick()
@@ -83,14 +164,13 @@ class Staff: UIViewController {
     func callAPIStaff ()
     {
         presenter.attachView(view: self)
-        presenter.getStaff(constituency_id: GlobalVariables.shared.constituent_Id)
+        presenter.getStaff(constituency_id: GlobalVariables.shared.constituent_Id,dynamic_db:GlobalVariables.shared.dynamic_db)
     }
     
     @objc public override func sideMenuButtonClick()
     {
         self.performSegue(withIdentifier: "to_sideMenu", sender: self)
     }
-
     
     // MARK: - Navigation
 
@@ -109,8 +189,6 @@ class Staff: UIViewController {
 //            sideMenuNavigationController.settings = makeSettings()
 //        }
     }
-    
-
 }
 
 extension Staff : StaffView, UITableViewDelegate, UITableViewDataSource, UISearchBarDelegate, UISearchControllerDelegate, UISearchResultsUpdating {
@@ -140,6 +218,22 @@ extension Staff : StaffView, UITableViewDelegate, UITableViewDataSource, UISearc
         data = staff
         filterdArr = data
         self.staffCount.text = String(format: "%@ %@", String (GlobalVariables.shared.staffCount),"Staff")
+        
+        for datas in filterdArr {
+            let fullName = datas.full_name
+            let paguthiName = datas.paguthi_name
+            let profilePic = datas.profile_pic
+            let phoneNum = datas.phone_number
+            let emailId = datas.email_id
+            let status = datas.status
+            
+            self.fullNameArr.append(fullName)
+            self.paguthiNameArr.append(paguthiName)
+            self.emailIdArr.append(emailId)
+            self.profilePicArr.append(profilePic)
+            self.statusArr.append(status)
+            self.phoneNumberArr.append(phoneNum)
+        }
         self.tableView.isHidden = false
         self.tableView.reloadData()
     }
@@ -158,49 +252,52 @@ extension Staff : StaffView, UITableViewDelegate, UITableViewDataSource, UISearc
             return data.count
         }
     }
-    
+//    self.fullNameArr.append(fullName)
+//    self.paguthiNameArr.append(paguthiName)
+//    self.emailIdArr.append(emailId)
+//    self.profilePicArr.append(profilePic)
+//    self.statusArr.append(status)
+//    self.phoneNumberArr.append(phoneNum)
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "cell", for: indexPath) as! StaffCell
         if searchBar.isActive && searchBar.searchBar.text != "" {
-            let staff = filterdArr[indexPath.row]
-            cell.name.text = staff.full_name.capitalized
-            cell.mail.text = staff.email_id.capitalized
-            cell.location.text = staff.paguthi_name.capitalized
-            cell.status.text = staff.status.capitalized
-            cell.profPic.sd_setImage(with: URL(string: Globals.userImgUrl + staff.profile_pic), placeholderImage: UIImage(named: "placeholder.png"))
+//            let staff = filterdArr[indexPath.row]
+            cell.name.text = fullNameArr[indexPath.row]
+            cell.mail.text = emailIdArr[indexPath.row]
+            cell.location.text = paguthiNameArr[indexPath.row]
+//            cell.status.text = statusArr[indexPath.row]
+            cell.profPic.sd_setImage(with: URL(string: Globals.userImgUrl + profilePicArr[indexPath.row]), placeholderImage: UIImage(named: "placeholder.png"))
 
-            if cell.status.text == "Active"{
-                cell.status.textColor = UIColor(red: 106/255, green: 168/255, blue: 79/255, alpha: 1.0)
-                cell.statusView.backgroundColor = UIColor(red: 106/255, green: 168/255, blue: 79/255, alpha: 1.0)
-            }
-            else{
-                cell.status.textColor = UIColor(red: 204/255, green: 0/255, blue: 0/255, alpha: 1.0)
-                cell.statusView.backgroundColor = UIColor(red: 204/255, green: 0/255, blue: 0/255, alpha: 1.0)
-            }
+//            if cell.status.text == "Active"{
+//                cell.status.textColor = UIColor(red: 106/255, green: 168/255, blue: 79/255, alpha: 1.0)
+//                cell.statusView.backgroundColor = UIColor(red: 106/255, green: 168/255, blue: 79/255, alpha: 1.0)
+//            }
+//            else{
+//                cell.status.textColor = UIColor(red: 204/255, green: 0/255, blue: 0/255, alpha: 1.0)
+//                cell.statusView.backgroundColor = UIColor(red: 204/255, green: 0/255, blue: 0/255, alpha: 1.0)
+//            }
         }
-        else{
-            let staff = data[indexPath.row]
-            cell.name.text = staff.full_name.capitalized
-            cell.mail.text = staff.email_id.capitalized
-            cell.location.text = staff.paguthi_name.capitalized
-            cell.status.text = staff.status.capitalized
-            cell.profPic.sd_setImage(with: URL(string: Globals.userImgUrl + staff.profile_pic), placeholderImage: UIImage(named: "placeholder.png"))
+        else {
+            cell.name.text = fullNameArr[indexPath.row]
+            cell.mail.text = emailIdArr[indexPath.row]
+            cell.location.text = paguthiNameArr[indexPath.row]
+//            cell.status.text = statusArr[indexPath.row]
+            cell.profPic.sd_setImage(with: URL(string: Globals.userImgUrl + profilePicArr[indexPath.row]), placeholderImage: UIImage(named: "placeholder.png"))
 
-            if cell.status.text == "Active"{
-                cell.status.textColor = UIColor(red: 106/255, green: 168/255, blue: 79/255, alpha: 1.0)
-                cell.statusView.backgroundColor = UIColor(red: 106/255, green: 168/255, blue: 79/255, alpha: 1.0)
+//            if cell.status.text == "Active"{
+//                cell.status.textColor = UIColor(red: 106/255, green: 168/255, blue: 79/255, alpha: 1.0)
+//                cell.statusView.backgroundColor = UIColor(red: 106/255, green: 168/255, blue: 79/255, alpha: 1.0)
+//            }
+//            else{
+//                cell.status.textColor = UIColor(red: 204/255, green: 0/255, blue: 0/255, alpha: 1.0)
+//                cell.statusView.backgroundColor = UIColor(red: 204/255, green: 0/255, blue: 0/255, alpha: 1.0)
             }
-            else{
-                cell.status.textColor = UIColor(red: 204/255, green: 0/255, blue: 0/255, alpha: 1.0)
-                cell.statusView.backgroundColor = UIColor(red: 204/255, green: 0/255, blue: 0/255, alpha: 1.0)
-            }
-        }
         return cell
     }
     
-    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        return 142
-    }
+//    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+//        return 142
+//    }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         if searchBar.isActive && searchBar.searchBar.text != "" {

@@ -40,4 +40,7 @@ class GlobalVariables: NSObject {
     var birthday_wish_count = String()
     var festival_wishes_count = String()
     var vedioCount = Int()
+    var dynamic_db = String()
+    var paguthi_id = String()
+    var selectedConstiuencyIdMeeting = String()
 }

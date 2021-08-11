@@ -41,10 +41,10 @@ class MeetingAllDetailUpdatePresenter: NSObject {
         meetingAllDetailUpdateView = nil
     }
     
-    func getMeetingAllDetail(meeting_id : String, user_id : String, status : String) {
+    func getMeetingAllDetail(meeting_id : String, user_id : String, status : String,dynamic_db:String) {
           self.meetingAllDetailUpdateView?.startLoading()
           meetingAllDetailUpdateService.callAPIMeetingAllDetailUpdate(
-            meeting_id: meeting_id, user_id: user_id, status: status, onSuccess: { (meettingUpdate) in
+            meeting_id: meeting_id, dynamic_db:dynamic_db,user_id: user_id, status: status, onSuccess: { (meettingUpdate) in
             self.meetingAllDetailUpdateView?.finishLoading()
                 self.meetingAllDetailUpdateView?.setMeetingUpdate(msg: meettingUpdate.msg!, status: meettingUpdate.status!)
               },

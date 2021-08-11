@@ -43,6 +43,10 @@ class GreetingCountDetails: UIViewController,TotalGrevianceView {
     @IBOutlet weak var civicEnqiryPercentage: UILabel!
     @IBOutlet weak var onlineEnquiryPercentage: UILabel!
     @IBOutlet weak var civicEnquiryPercentage: UILabel!
+    @IBOutlet weak var view1: UIView!
+    @IBOutlet weak var view2: UIView!
+    @IBOutlet weak var view3: UIView!
+    @IBOutlet weak var navView: UIView!
     
     var paguthi_Id = String()
     let presenterTG = TotalGreviancesPresenter(totalGreviancesSerVice: TotalGreviancesSerVice())
@@ -51,12 +55,17 @@ class GreetingCountDetails: UIViewController,TotalGrevianceView {
         super.viewDidLoad()
         
         self.CallAPITG()
+        
+        view1.addShadow(offset: CGSize.init(width: 0, height: 2), color: UIColor.gray, radius: 2.0, opacity: 0.35)
+        view2.addShadow(offset: CGSize.init(width: 0, height: 2), color: UIColor.gray, radius: 2.0, opacity: 0.35)
+        view3.addShadow(offset: CGSize.init(width: 0, height: 2), color: UIColor.gray, radius: 2.0, opacity: 0.35)
+        navView.addShadow(offset: CGSize.init(width: 0, height: 2), color: UIColor.gray, radius: 2.0, opacity: 0.35)
     }
            
     func CallAPITG ()
     {
            presenterTG.attachView(view: self)
-       presenterTG.getTotalGreviances(paguthi: paguthi_Id,from_date:GlobalVariables.shared.widgetFromDate,to_date: GlobalVariables.shared.widgetFromDate)
+       presenterTG.getTotalGreviances(paguthi: paguthi_Id,from_date:GlobalVariables.shared.widgetFromDate,to_date: GlobalVariables.shared.widgetFromDate,dynamic_db:GlobalVariables.shared.dynamic_db)
     }
        
     func startLoadingTg() {
@@ -80,39 +89,37 @@ class GreetingCountDetails: UIViewController,TotalGrevianceView {
         self.petionCompletedCount.text = petition_completed
         self.petionPendingCount.text = petition_pending
         self.petionRejectedCount.text = petition_rejected
-        self.petionCompletedPercentage.text = petition_completed_percentage
-        self.petionPendingPercentage.text = petition_pending_percentage
-        self.petionRejectedPercentage.text = petition_rejected_percentage
+        self.petionCompletedPercentage.text = "Completed \((petition_completed_percentage!))%"
+        self.petionPendingPercentage.text = "Completed \(petition_pending_percentage!)) %"
+        self.petionRejectedPercentage.text = "Rejected \(petition_rejected_percentage!) %"
         self.petionCount1.text = petition_count
-        self.onlinepetionPercentage.text = no_of_online_percentage
-        self.civicPetionPercentage.text = no_of_civic_percentage
+        self.onlinepetionPercentage.text = "online \(no_of_online_percentage!) % "
+        self.civicPetionPercentage.text = "civic \(no_of_civic_percentage!)% "
         self.onlinePetionCount.text = no_of_online
         self.civicPetionCount.text = no_of_civic
         self.onlinePetion.text = no_of_online
         self.onlinepetionCompletedCount.text = petition_completedOnline
         self.onlinepetionPendingCount.text = petition_pendingOnline
         self.onlinepetionRejectedCount.text = petition_rejectedOnline
-        self.onlinepetionCompletedPercentage.text = petition_completed_percentage
-        self.onlinepetionPendingPercentage.text = petition_pending_percentageOnline
-        self.onlinepetionRejectedPercentage.text = petition_rejected_percentageOnline
+        self.onlinepetionCompletedPercentage.text = "Completed \(petition_completed_percentage!)%"
+        self.onlinepetionPendingPercentage.text = "Pending \(petition_pending_percentageOnline!)%"
+        self.onlinepetionRejectedPercentage.text = "Rejected \(petition_rejected_percentageOnline!)%"
         self.civicPetion.text = no_of_civic
         self.civicPetionCompletedCount.text = petition_completedCivic
         self.civicPetionPendingCount.text = petition_pendingCivic
         self.civicPetionRejectedCount.text = petition_rejectedCivic
-        self.civicPetionCompletedPercentage.text = petition_completed_percentageCivic
-        self.civicPetionPendingPercentage.text = petition_pending_percentage
-        self.civicPetionRejectedPercentage.text = petition_rejected_percentageCivic
+        self.civicPetionCompletedPercentage.text = "Completed \(petition_completed_percentageCivic!)%"
+        self.civicPetionPendingPercentage.text = "Pending \(petition_pending_percentage!)%"
+        self.civicPetionRejectedPercentage.text = "Rejected \(petition_rejected_percentageCivic!)%"
         self.enquiryCount1.text = enquiry_count
         self.onlineEnquiryCount.text = no_of_onlineEQ
         self.civicEnqiryPercentage.text = no_of_civic_percentageEQ
         self.onlineEnquiryPercentage.text = no_of_online_percentageEQ
         self.civicEnquiryPercentage.text = no_of_civic_percentageEQ
-        
     }
 
     @IBAction func dissmissAction(_ sender: Any) {
         self.dismiss(animated: true, completion: nil)
         
     }
-    
 }

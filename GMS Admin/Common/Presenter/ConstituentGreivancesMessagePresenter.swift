@@ -40,10 +40,10 @@ class ConstituentGreivancesMessagePresenter: NSObject {
         constituentGreivancesMessageView = nil
     }
     
-    func getConsGrieMessage(grievance_id:String) {
+    func getConsGrieMessage(grievance_id:String,dynamic_db:String) {
           self.constituentGreivancesMessageView?.startLoading()
           constituentGreivancesMessageService.callAPIConstituentGreivancesMeeting(
-            grievance_id: grievance_id, onSuccess: { (plant) in
+            grievance_id: grievance_id,dynamic_db:dynamic_db, onSuccess: { (plant) in
             self.constituentGreivancesMessageView?.finishLoading()
                 if (plant.count == 0){
                 } else {

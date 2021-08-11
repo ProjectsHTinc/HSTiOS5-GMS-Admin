@@ -26,6 +26,8 @@ class StaffDetail: UIViewController, StaffDetailView {
     @IBOutlet var gender: UILabel!
     @IBOutlet var phone: UILabel!
     @IBOutlet var address: UILabel!
+    @IBOutlet var backView: UIView!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 
@@ -38,13 +40,17 @@ class StaffDetail: UIViewController, StaffDetailView {
         }
         self.callAPIStaffDetail ()
         self.addCustomizedBackBtn(title:"  Staff details")
-
+        backView.layer.cornerRadius = 6
+        backView.layer.shadowColor = UIColor.darkGray.cgColor
+        backView.layer.shadowOpacity = 0.5
+        backView.layer.shadowOffset = CGSize.zero
+        backView.layer.shadowRadius = 3
     }
     
     func callAPIStaffDetail ()
     {
         presenter.attachView(view: self)
-        presenter.getStaffDetail(staff_id: staffId)
+        presenter.getStaffDetail(staff_id: staffId,dynamic_db:GlobalVariables.shared.dynamic_db)
     }
     
     func startLoading() {

@@ -10,9 +10,9 @@ import UIKit
 
 class AreaService {
     
-    public func callAPIPaguthi(constituency_id:String, onSuccess successCallback: ((_ paguthi: [AreaModel]) -> Void)?,onFailure failureCallback: ((_ errorMessage: String) -> Void)?) {
+    public func callAPIPaguthi(constituency_id:String,dynamic_db:String, onSuccess successCallback: ((_ paguthi: [AreaModel]) -> Void)?,onFailure failureCallback: ((_ errorMessage: String) -> Void)?) {
         APIManager.instance.callAPIPaguthi(
-          constituency_id: constituency_id, onSuccess: { (paguthi) in
+            constituency_id: constituency_id,dynamic_db:dynamic_db, onSuccess: { (paguthi) in
                 successCallback?(paguthi)
             },
             onFailure: { (errorMessage) in

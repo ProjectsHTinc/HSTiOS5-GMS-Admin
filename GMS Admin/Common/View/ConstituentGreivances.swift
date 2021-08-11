@@ -69,7 +69,7 @@ class ConstituentGreivances: UIViewController {
     {
         print(selectedconstitunecyId)
         Presenter.attachView(view: self)
-        Presenter.getConsGrie(constituent_id: selectedconstitunecyId)
+        Presenter.getConsGrie(constituent_id: selectedconstitunecyId,dynamic_db:GlobalVariables.shared.dynamic_db)
     }
     
 

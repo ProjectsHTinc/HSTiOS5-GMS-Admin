@@ -11,9 +11,9 @@ import UIKit
 
 class GreetingCountService: NSObject {
     
-    public func callAPIGreetingCount(paguthi:String,from_date:String,to_date:String,onSuccess successCallback: ((_ greetingCountModel: [GreetingCountModel]) -> Void)?,onFailure failureCallback: ((_ errorMessage: String) -> Void)?) {
+    public func callAPIGreetingCount(paguthi:String,from_date:String,to_date:String,dynamic_db:String,onSuccess successCallback: ((_ greetingCountModel: [GreetingCountModel]) -> Void)?,onFailure failureCallback: ((_ errorMessage: String) -> Void)?) {
         APIManager.instance.callAPIGreetingCount(
-            paguthi: paguthi,from_date:from_date,to_date:to_date, onSuccess: { (greetingCountModel) in
+            paguthi: paguthi,from_date:from_date,to_date:to_date,dynamic_db:dynamic_db, onSuccess: { (greetingCountModel) in
                 successCallback?(greetingCountModel)
             },
             onFailure: { (errorMessage) in

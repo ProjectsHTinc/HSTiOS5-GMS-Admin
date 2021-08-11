@@ -39,10 +39,10 @@ class InteractionPresenter: NSObject {
         interactionView = nil
     }
     
-    func getInteraction(constituent_id:String) {
+    func getInteraction(constituent_id:String,dynamic_db:String) {
           self.interactionView?.startLoading()
           interactionService.callAPIInteraction(
-            constituent_id: constituent_id, onSuccess: { (plant) in
+            constituent_id: constituent_id,dynamic_db:dynamic_db, onSuccess: { (plant) in
             self.interactionView?.finishLoading()
                 if (plant.count == 0){
                 } else {

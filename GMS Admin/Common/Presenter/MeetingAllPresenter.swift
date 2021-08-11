@@ -43,10 +43,10 @@ class MeetingAllPresenter: NSObject {
         meetingAllDataView = nil
     }
     
-    func getMeetingAll(url: String, keyword: String, constituency_id:String, offset:String, rowcount:String) {
+    func getMeetingAll(url: String, keyword: String, constituency_id:String, offset:String, rowcount:String,dynamic_db:String) {
           self.meetingAllDataView?.startLoading()
           meetingAllService.callAPIMeetingAll(
-            url: url, keyword: keyword, constituency_id: constituency_id, offset: offset, rowcount: rowcount, onSuccess: { (meettingAll) in
+            url: url, keyword: keyword, dynamic_db:dynamic_db, constituency_id: constituency_id, offset: offset, rowcount: rowcount, onSuccess: { (meettingAll) in
             self.meetingAllDataView?.finishLoading()
                 if (meettingAll.count == 0){
                 } else {

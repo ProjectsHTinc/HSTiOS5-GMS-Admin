@@ -40,10 +40,10 @@ class MeetingPresenter {
           meetingView = nil
       }
       
-    func getMeeting(constituency_id:String,offset:String,rowcount:String) {
+    func getMeeting(constituency_id:String,offset:String,rowcount:String,dynamic_db:String) {
           self.meetingView?.startLoading()
           meetingService.callAPIMeeting(
-            constituency_id: constituency_id,offset: offset,rowcount: rowcount, onSuccess: { (meeting) in
+            constituency_id: constituency_id,dynamic_db:dynamic_db, offset: offset,rowcount: rowcount, onSuccess: { (meeting) in
                   self.meetingView?.finishLoading()
                   if (meeting.count == 0){
                   } else {

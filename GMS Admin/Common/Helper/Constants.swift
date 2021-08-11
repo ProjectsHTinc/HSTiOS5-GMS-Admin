@@ -9,7 +9,7 @@
 import UIKit
 
 struct Globals {
-       static let mobileType = "2";
+       static let mobileType = "1";
        static let alertTitle = "GMS Admin";
        static let LoginEmailAlertMessage = "email is empty";
        static let LoginPasswordAlertMessage = "password is empty";

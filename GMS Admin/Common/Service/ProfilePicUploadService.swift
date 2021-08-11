@@ -10,9 +10,9 @@ import UIKit
 
 class ProfilePicUploadService: NSObject {
     
-    public func callAPIUserProfilePicUpdate(user_id:String, onSuccess successCallback: ((_ userProfilePicModel: UserProfilePicModel) -> Void)?,onFailure failureCallback: ((_ errorMessage: String) -> Void)?) {
+    public func callAPIUserProfilePicUpdate(user_id:String,dynamic_db:String, onSuccess successCallback: ((_ userProfilePicModel: UserProfilePicModel) -> Void)?,onFailure failureCallback: ((_ errorMessage: String) -> Void)?) {
         APIManager.instance.callAPIUserProfilePicUpdate(
-            user_id: user_id, onSuccess: { (userProfilePicModel) in
+            dynamic_db:dynamic_db, user_id: user_id, onSuccess: { (userProfilePicModel) in
                 successCallback?(userProfilePicModel)
             },
             onFailure: { (errorMessage) in

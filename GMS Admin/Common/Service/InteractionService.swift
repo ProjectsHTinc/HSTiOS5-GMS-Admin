@@ -10,9 +10,9 @@ import UIKit
 
 class InteractionService {
     
-    public func callAPIInteraction(constituent_id:String, onSuccess successCallback: ((_ interactionModel: [InteractionModel]) -> Void)?,onFailure failureCallback: ((_ errorMessage: String) -> Void)?) {
+    public func callAPIInteraction(constituent_id:String,dynamic_db:String, onSuccess successCallback: ((_ interactionModel: [InteractionModel]) -> Void)?,onFailure failureCallback: ((_ errorMessage: String) -> Void)?) {
         APIManager.instance.callAPIInteraction(
-          constituent_id: constituent_id, onSuccess: { (interactionModel) in
+            dynamic_db:dynamic_db, constituent_id: constituent_id, onSuccess: { (interactionModel) in
                 successCallback?(interactionModel)
             },
             onFailure: { (errorMessage) in

@@ -41,10 +41,10 @@ class ReportStaffPresenter: NSObject {
         reportStaffView = nil
     }
     
-    func getReportStaff(from_date:String, to_date:String) {
+    func getReportStaff(from_date:String, to_date:String,dynamic_db:String) {
           self.reportStaffView?.startLoading()
           reportStaffService.callAPIReportStaff(
-            from_date: from_date, to_date: to_date, onSuccess: { (meettingAll) in
+            from_date: from_date,dynamic_db:dynamic_db, to_date: to_date, onSuccess: { (meettingAll) in
             self.reportStaffView?.finishLoading()
                 if (meettingAll.count == 0){
                 } else {

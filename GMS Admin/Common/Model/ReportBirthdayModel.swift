@@ -10,21 +10,22 @@ import UIKit
 
 class ReportBirthdayModel: NSObject {
     
-    var const_id: String?
+    var email_id: String?
     var full_name: String?
     var dob : String?
     var mobile_no : String?
     var door_no : String?
     var address : String?
     var pin_code : String?
-    var birth_wish_status : String?
+    var father_husband_name : String?
+    var send_on : String?
 
 
     // MARK: Instance Method
     func loadFromDictionary(_ dict: [String: AnyObject])
     {
-        if let data = dict["const_id"] as? String {
-            self.const_id = data
+        if let data = dict["email_id"] as? String {
+            self.email_id = data
         }
         if let data = dict["full_name"] as? String {
             self.full_name = data
@@ -44,8 +45,11 @@ class ReportBirthdayModel: NSObject {
         if let data = dict["pin_code"] as? String {
             self.pin_code = data
         }
-        if let data = dict["birth_wish_status"] as? String {
-            self.birth_wish_status = data
+        if let data = dict["father_husband_name"] as? String {
+            self.father_husband_name = data
+        }
+        if let data = dict["send_on"] as? String {
+            self.send_on = data
         }
     }
     

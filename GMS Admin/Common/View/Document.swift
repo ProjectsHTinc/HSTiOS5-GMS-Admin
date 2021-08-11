@@ -37,7 +37,7 @@ class Document: UIViewController {
         self.setUpSegmentControl()
         self.segmentControl.isHidden = true
         /*Right Navigation Bar*/
-        self.addrightButton(bg_ImageName:"ConstituentSearch")
+//        self.addrightButton(bg_ImageName:"ConstituentSearch")
         self.tableView.backgroundColor = UIColor.white
         guard Reachability.isConnectedToNetwork() == true else {
               AlertController.shared.offlineAlert(targetVc: self, complition: {
@@ -49,7 +49,7 @@ class Document: UIViewController {
         self.callAPIConsDoc ()
         /*Set delegate for Document preview*/
         documentInteractionController.delegate = self
-        self.addCustomizedBackBtn(title:"  Constituent documents")
+//        self.addCustomizedBackBtn(title:"  Constituent documents")
 
     }
     
@@ -95,13 +95,13 @@ class Document: UIViewController {
     func callAPIConsDoc ()
     {
         ConPresenter.attachView(view: self)
-        ConPresenter.getConsDoc(constituent_id: selectedconstitunecyId)
+        ConPresenter.getConsDoc(constituent_id: selectedconstitunecyId,dynamic_db:GlobalVariables.shared.dynamic_db)
     }
     
     func callAPIGriDoc ()
     {
         GriPresenter.attachView(view: self)
-        GriPresenter.getGriDoc(constituent_id: selectedconstitunecyId)
+        GriPresenter.getGriDoc(constituent_id: selectedconstitunecyId,dynamic_db:GlobalVariables.shared.dynamic_db)
     }
     
     /*

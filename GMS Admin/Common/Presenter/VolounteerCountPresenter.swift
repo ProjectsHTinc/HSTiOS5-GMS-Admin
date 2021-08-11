@@ -41,10 +41,10 @@ class VolounteerPresenter: NSObject {
         volounteerView = nil
     }
     
-    func getVolounteer(paguthi:String,from_date:String,to_date:String) {
+    func getVolounteer(paguthi:String,from_date:String,to_date:String,dynamic_db:String) {
         self.volounteerView?.startLoadingTm()
         volounteerService.callAPIVolounteer(
-            paguthi: paguthi,from_date:from_date, to_date:to_date, onSuccess: { (tm) in
+            paguthi: paguthi,from_date:from_date,to_date:to_date, dynamic_db:dynamic_db, onSuccess: { (tm) in
                 self.volounteerView?.finishLoadingTm()
                 self.volounteerView?.setTm(total_volunteer: tm.total_volunteer, no_of_volunteer: tm.no_of_volunteer, volunteer_percentage: tm.volunteer_percentage, nonvolunteer_percentage: tm.nonvolunteer_percentage, no_of_nonvolunteer: tm.no_of_nonvolunteer)
             },

@@ -10,7 +10,6 @@ import UIKit
 
 class WidgetGrievance: UIViewController,TotalGrevianceView{
     
-
     @IBOutlet weak var grievanceCount: UILabel!
     @IBOutlet weak var overallGrievanceCount: UILabel!
     @IBOutlet weak var petion: UILabel!
@@ -28,15 +27,13 @@ class WidgetGrievance: UIViewController,TotalGrevianceView{
         super.viewDidLoad()
 
         // Do any additional setup after loading the view.
-        
      self.CallAPITG()
-        
     }
         
    func CallAPITG ()
     {
         presenterTG.attachView(view: self)
-    presenterTG.getTotalGreviances(paguthi: paguthi_Id,from_date:GlobalVariables.shared.widgetFromDate,to_date: GlobalVariables.shared.widgetFromDate)
+    presenterTG.getTotalGreviances(paguthi: paguthi_Id,from_date:GlobalVariables.shared.widgetFromDate,to_date: GlobalVariables.shared.widgetFromDate,dynamic_db:GlobalVariables.shared.dynamic_db)
     }
     
     func startLoadingTg() {
@@ -54,7 +51,7 @@ class WidgetGrievance: UIViewController,TotalGrevianceView{
     
     func setTg(tot_grive_count: Int?, enquiry_count: String?, petition_count: String?,  petition_rejected_percentageOnline: String?, no_of_civicOnline: String?, no_of_online_percentageOnline: String?, petition_completedOnline: String?, petition_pendingOnline: String?, petition_pending_percentageOnline: String?, petition_rejectedOnline: String?, petition_rejected_percentageCivic: String?, petition_rejectedCivic: String?, petition_completed_percentageCivic: String?, petition_completedCivic: String?, petition_pendingCivic: String?, no_of_civic_percentageEQ: String?, no_of_civicEQ: String?, no_of_online_percentageEQ: String?, no_of_onlineEQ: String?, no_of_online: String?, no_of_online_percentage: String?, no_of_civic: String?, no_of_civic_percentage: String?, petition_pending_percentage: String?, petition_pending: String?, petition_rejected_percentage: String?, petition_rejected: String?, petition_completed: String?, petition_completed_percentage: String?) {
         
-        self.grievanceCount.text = String(tot_grive_count!)
+        self.grievanceCount.text = "Grievance Count - \(String(tot_grive_count!))"
         self.overallGrievanceCount.text = String(tot_grive_count!)
         self.petion.text = petition_count
         self.onlinePetion.text = no_of_online

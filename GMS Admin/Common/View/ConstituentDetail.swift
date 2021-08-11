@@ -26,15 +26,16 @@ class ConstituentDetail: UIViewController {
     @IBOutlet var serialNumber: UILabel!
     @IBOutlet var voterID: UILabel!
     @IBOutlet var adharNumber: UILabel!
+    @IBOutlet weak var shadowView: UIView!
     
     override func viewDidLoad() {
         super.viewDidLoad()
 
         // Do any additional setup after loading the view.
         /*Removeing NavigationBar Bottom Line*/
-        self.navigationController?.navigationBar.setBackgroundImage(UIImage(), for:.default)
-        self.navigationController?.navigationBar.shadowImage = UIImage()
-        self.navigationController?.navigationBar.layoutIfNeeded()
+//        self.navigationController?.navigationBar.setBackgroundImage(UIImage(), for:.default)
+//        self.navigationController?.navigationBar.shadowImage = UIImage()
+//        self.navigationController?.navigationBar.layoutIfNeeded()
         /*Set Gradient View*/
         //self.setGradientBackGroundView()
         guard Reachability.isConnectedToNetwork() == true else {
@@ -43,15 +44,20 @@ class ConstituentDetail: UIViewController {
              })
              return
         }
+        shadowView.layer.cornerRadius = 6
+        shadowView.layer.shadowColor = UIColor.darkGray.cgColor
+        shadowView.layer.shadowOpacity = 0.5
+        shadowView.layer.shadowOffset = CGSize.zero
+        shadowView.layer.shadowRadius = 3
         self.callAPIConstituentDetail()
     }
     
-    override func viewDidLayoutSubviews(){
-        gradientView.addGradient(colors: [UIColor(red: 45.0 / 255.0, green: 148.0 / 255.0, blue: 235.0 / 255.0, alpha: 1.0), UIColor(red: 23.0 / 255.0, green: 74.0 / 255.0, blue: 118.0 / 255.0, alpha: 1.0)], locations: [0.1, 1.0])
-
-    }
-    
-    func setGradientBackGroundView (){
+//    override func viewDidLayoutSubviews(){
+//        gradientView.addGradient(colors: [UIColor(red: 45.0 / 255.0, green: 148.0 / 255.0, blue: 235.0 / 255.0, alpha: 1.0), UIColor(red: 23.0 / 255.0, green: 74.0 / 255.0, blue: 118.0 / 255.0, alpha: 1.0)], locations: [0.1, 1.0])
+//
+//    }
+//
+    func setGradientBackGroundView () {
         gradientView.backgroundColor = UIColor.white
         let backgroundLayer = colors.gl
         backgroundLayer!.frame = gradientView.bounds
@@ -62,7 +68,7 @@ class ConstituentDetail: UIViewController {
     {
         print(selectedconstitunecyId)
         presenter.attachView(view: self)
-        presenter.getConstituentDetailData(constituent_id: selectedconstitunecyId)
+        presenter.getConstituentDetailData(constituent_id: selectedconstitunecyId,dynamic_db:GlobalVariables.shared.dynamic_db)
     }
     
     @IBAction func meeting(_ sender: Any) {
@@ -73,13 +79,13 @@ class ConstituentDetail: UIViewController {
         self.performSegue(withIdentifier: "to_ConstituentGre", sender: self)
     }
     
-    @IBAction func interaction(_ sender: Any) {
-        self.performSegue(withIdentifier: "to_interaction", sender: self)
-    }
+//    @IBAction func interaction(_ sender: Any) {
+//        self.performSegue(withIdentifier: "to_interaction", sender: self)
+//    }
     
-    @IBAction func plants(_ sender: Any) {
-        self.performSegue(withIdentifier: "to_plantDonation", sender: self)
-    }
+//    @IBAction func plants(_ sender: Any) {
+//        self.performSegue(withIdentifier: "to_plantDonation", sender: self)
+//    }
     
     @IBAction func documents(_ sender: Any) {
         self.performSegue(withIdentifier: "to_doc", sender: self)
@@ -96,9 +102,10 @@ class ConstituentDetail: UIViewController {
         // Get the new view controller using segue.destination.
         // Pass the selected object to the new view controller.
         if (segue.identifier == "to_meeting"){
-            let vc = segue.destination as! Meeting
-            vc.From = "Cd"
-            vc.selectedconstitunecyId = self.selectedconstitunecyId
+            _ = segue.destination as! MeetingTabViewController
+//            vc.From = "Cd"
+//            vc.selectedconstitunecyId = self.selectedconstitunecyId
+            GlobalVariables.shared.selectedConstiuencyIdMeeting = selectedconstitunecyId
         }
         else if (segue.identifier == "to_plantDonation"){
             let vc = segue.destination as! PlantDonation
@@ -107,7 +114,6 @@ class ConstituentDetail: UIViewController {
         else if (segue.identifier == "to_doc"){
             let vc = segue.destination as! Document
             vc.selectedconstitunecyId = self.selectedconstitunecyId
-
         }
         else if (segue.identifier == "to_ConstituentGre"){
             let vc = segue.destination as! ConstituentGreivances
@@ -142,7 +148,4 @@ extension ConstituentDetail: ConstituentDetailView{
          //self.dismiss(animated: false, completion: nil)
          })
     }
-    
-    
-    
 }

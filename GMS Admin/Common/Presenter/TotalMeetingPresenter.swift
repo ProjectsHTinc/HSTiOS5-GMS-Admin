@@ -40,10 +40,10 @@ class TotalMeetingPresenter: NSObject {
         totalMeetingView = nil
     }
     
-    func getTotalMeeting(paguthi:String,from_date:String,to_date:String) {
+    func getTotalMeeting(paguthi:String,from_date:String,to_date:String,dynamic_db:String) {
         self.totalMeetingView?.startLoadingTm()
         totalMeetingService.callAPITotalMeetings(
-            paguthi: paguthi,to_date:to_date, from_date:from_date, onSuccess: { (tm) in
+            paguthi: paguthi,to_date:to_date, from_date:from_date,dynamic_db:dynamic_db, onSuccess: { (tm) in
                 self.totalMeetingView?.finishLoadingTm()
                 self.totalMeetingView?.setTm(total_meeting: tm.total_meeting, request_count_percentage: tm.request_count_percentage!, request_count: tm.request_count!, complete_count: tm.complete_count!, complete_count_percentage: tm.complete_count_percentage!)
             },

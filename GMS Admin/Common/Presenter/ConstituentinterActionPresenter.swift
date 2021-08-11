@@ -39,10 +39,10 @@ class ConstituentinterActionPresenter: NSObject {
         constituentinterActionView = nil
     }
     
-    func getTotalGreviances(paguthi:String) {
+    func getTotalGreviances(paguthi:String,dynamic_db:String) {
         self.constituentinterActionView?.startLoadingCi()
         constituentInteractionService.callAPIConstituentIneraction(
-            paguthi: paguthi, onSuccess: { (ci) in
+            paguthi: paguthi,dynamic_db:dynamic_db, onSuccess: { (ci) in
                 self.constituentinterActionView?.finishLoadingCI()
                 if (ci.count == 0){
                 } else {

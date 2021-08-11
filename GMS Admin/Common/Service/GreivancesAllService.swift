@@ -10,9 +10,9 @@ import UIKit
 
 class GreivancesAllService: NSObject {
     
-    public func callAPIGreivancesAll(url : String, keyword: String, paguthi:String, offset:String, rowcount:String, grievance_type: String, onSuccess successCallback: ((_ constituentGreivancesModel: [ConstituentGreivancesModel]) -> Void)?,onFailure failureCallback: ((_ errorMessage: String) -> Void)?) {
+    public func callAPIGreivancesAll(url : String, keyword: String, dynamic_db:String,paguthi:String, offset:String, rowcount:String, grievance_type: String, onSuccess successCallback: ((_ constituentGreivancesModel: [ConstituentGreivancesModel]) -> Void)?,onFailure failureCallback: ((_ errorMessage: String) -> Void)?) {
         APIManager.instance.callAPIGreivancesAll(
-            url: url, keyword: keyword, paguthi: paguthi, grievance_type: grievance_type, offset: offset, rowcount: rowcount, onSuccess: { (constituentGreivancesModel) in
+            dynamic_db:dynamic_db, url: url, keyword: keyword, paguthi: paguthi, grievance_type: grievance_type, offset: offset, rowcount: rowcount,onSuccess: { (constituentGreivancesModel) in
                 successCallback?(constituentGreivancesModel)
             },
             onFailure: { (errorMessage) in

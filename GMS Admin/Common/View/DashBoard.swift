@@ -5,21 +5,22 @@
 //  Created by Happy Sanz Tech on 06/07/20.
 //  Copyright © 2020 HappySanzTech. All rights reserved.
 //
-
+ 
 import UIKit
 import Alamofire
 import SwiftyJSON
 import Charts
 import SideMenu
 
-class DashBoard: UIViewController, ChartViewDelegate {
-
-    @IBOutlet var searchText: TextFieldWithImage!
+class DashBoard: UIViewController, ChartViewDelegate,OfficeView {
+       
+//    @IBOutlet var searchText: TextFieldWithImage!
     @IBOutlet var fromDate: TextFieldWithImage!
     @IBOutlet var toDate: TextFieldWithImage!
     @IBOutlet var area: UITextField!
+    @IBOutlet var office: UITextField!
     @IBOutlet weak var meetingLabel: UILabel!
-    @IBOutlet var barchart: BarChartView!
+//    @IBOutlet var barchart: BarChartView!
     @IBOutlet weak var volounterLabel: UILabel!
     @IBOutlet weak var greetingLabel: UILabel!
     @IBOutlet weak var vedioLabel: UILabel!
@@ -33,7 +34,12 @@ class DashBoard: UIViewController, ChartViewDelegate {
     @IBOutlet weak var view5: UIView!
     @IBOutlet weak var view6: UIView!
     @IBOutlet weak var view7: UIView!
+    @IBOutlet weak var segmentView: UIView!
+    @IBOutlet weak var containerView1: UIView!
+    @IBOutlet weak var containerView2: UIView!
+    @IBOutlet weak var dashboardView: UIView!
     
+//    paguthi_id
     /*Get Paguthi List*/
     let presenter = PaguthiPresenter(areaService: AreaService())
     var paguthiData = [PaguthiData]()
@@ -55,20 +61,45 @@ class DashBoard: UIViewController, ChartViewDelegate {
     var fromDateFormatted = String()
     var toDateFormatted = String()
     var to = String()
-
+    var segmentTitle = [String]()
+    var segmentedControl = HMSegmentedControl()
+    let presenterOffice = OfficePresenter(officeService: OfficeService())
+    var officeData = [OfficeData]()
+    var officeName = [String]()
+    var officeId = [String]()
+    var selectedofficeID  = String()
+    
+    
     override func viewDidLoad() {
         super.viewDidLoad()
+
+        segmentTitle = ["DashBoard","Footfall Graph"]
+        containerView1.alpha = 0
+        containerView2.alpha = 0
+        dashboardView.alpha = 0
+    
+        
+        self.setViewShadow()
+        let dynamic_db = UserDefaults.standard.object(forKey:"dynamicDBKey") ?? ""
+        
+        if dynamic_db as! String == ""
+        {
+
+        }
+        else {
+            GlobalVariables.shared.dynamic_db = UserDefaults.standard.object(forKey: "dynamicDBKey") as! String
+            print(GlobalVariables.shared.dynamic_db)
+        }
 
         // Do any additional setup after loading the view.
         /*Removeing NavigationBar Bottom Line*/
         self.showDatePicker()
-        self.dropShadow()
-        self.navigationController?.navigationBar.setBackgroundImage(UIImage(), for:.default)
-        self.navigationController?.navigationBar.shadowImage = UIImage()
-        self.navigationController?.navigationBar.layoutIfNeeded()
+//        self.navigationController?.navigationBar.setBackgroundImage(UIImage(), for:.default)
+//        self.navigationController?.navigationBar.shadowImage = UIImage()
+//        self.navigationController?.navigationBar.layoutIfNeeded()
         //setupSideMenu()
         /*Set delegate*/
-        self.searchText.delegate = self
+//        self.searchText.delegate = self
         self.area.delegate = self
         /*Set PlaceHolder textColor*/
         area.attributedPlaceholder =
@@ -81,21 +112,84 @@ class DashBoard: UIViewController, ChartViewDelegate {
              return
         }
         self.createPickerView()
+       
         GlobalVariables.shared.selectedPaguthiId = "ALL"
         GlobalVariables.shared.sideMenuDropdown =  "false"
+        
         GlobalVariables.shared.widgetFromDate = fromDateFormatted
         GlobalVariables.shared.widgetToDate = toDateFormatted
         
-        self.callAPI(paguthi:GlobalVariables.shared.selectedPaguthiId,FromDate:"",ToDate:"")
-        setupView()
+        segmentView.addShadow(offset: CGSize.init(width: 0, height: 2), color: UIColor.darkGray, radius: 2.0, opacity: 0.35)
+        
+        self.callAPI(paguthi:GlobalVariables.shared.selectedPaguthiId,FromDate:"",ToDate:"",dynamic_db:GlobalVariables.shared.dynamic_db)
+        callAPIOffice ()
+//        setupView()
         /*Tap anywhere to hide keypad*/
         self.hideKeyboardWhenTappedAround()
+        setUpSegementControl ()
+        self.navigationController?.navigationBar.layer.masksToBounds = false
+        self.navigationController?.navigationBar.layer.shadowColor = UIColor.lightGray.cgColor
+        self.navigationController?.navigationBar.layer.shadowOpacity = 0.5
+        self.navigationController?.navigationBar.layer.shadowOffset = CGSize(width: 0, height: 3.0)
+        self.navigationController?.navigationBar.layer.shadowRadius = 3
+        self.view.isHidden = false
+        UINavigationBar.appearance().shadowImage = UIImage()
     }
-
+    
+    @IBAction func clear_Action(_ sender: Any) {
+        
+        self.fromDate.text = ""
+        self.toDate.text = ""
+        self.area.text = ""
+        self.office.text = ""
+    }
+    
+    func setUpSegementControl ()
+    {
+        segmentedControl = HMSegmentedControl(sectionTitles: self.segmentTitle)
+        segmentedControl.autoresizingMask = [.flexibleRightMargin, .flexibleWidth]
+        segmentedControl.frame = CGRect(x: 0, y: 0, width: self.segmentView.frame.width, height: 50)
+        segmentedControl.addTarget(self, action: #selector(segmentedControlChangedValue(segmentedControl:)), for: .valueChanged)
+        segmentView.addSubview(segmentedControl)
+        segmentedControl.titleTextAttributes = [NSAttributedString.Key.foregroundColor: UIColor.lightGray]
+        segmentedControl.selectedTitleTextAttributes = [NSAttributedString.Key.foregroundColor: UIColor.black]
+        segmentedControl.selectionStyle = HMSegmentedControlSelectionStyle.fullWidthStripe
+        segmentedControl.selectionIndicatorLocation = HMSegmentedControlSelectionIndicatorLocation.bottom
+        segmentedControl.segmentWidthStyle = HMSegmentedControlSegmentWidthStyle.fixed
+        segmentedControl.selectionIndicatorHeight = 4.0
+        segmentedControl.selectionIndicatorColor = UIColor.black
+        segmentedControl.titleTextAttributes = [NSAttributedString.Key.font: UIFont(name: "Roboto-Medium", size: 15.0)!]
+    }
+    
+    @objc func segmentedControlChangedValue(segmentedControl: HMSegmentedControl) {
+    
+        if segmentedControl.selectedSegmentIndex == 0 {
+            containerView1.alpha = 0
+            containerView2.alpha = 0
+            dashboardView.alpha = 0
+        }
+        else if segmentedControl.selectedSegmentIndex == 1 {
+            dashboardView.alpha = 0
+            containerView1.alpha = 1
+            containerView2.alpha = 0
+        }
+//        else {
+//            dashboardView.alpha = 0
+//            containerView1.alpha = 0
+//            containerView2.alpha = 1
+//        }
+    }
+    
     func callAPIPaguthi ()
     {
         presenter.attachView(view: self)
-        presenter.getPaguthi(constituency_id: GlobalVariables.shared.constituent_Id)
+        presenter.getPaguthi(constituency_id: GlobalVariables.shared.constituent_Id,dynamic_db:GlobalVariables.shared.dynamic_db)
+    }
+    
+    func callAPIOffice ()
+    {
+        presenterOffice.attachView(view: self)
+        presenterOffice.getOffice(constituency_id: GlobalVariables.shared.constituent_Id, dynamic_db:GlobalVariables.shared.dynamic_db)
     }
     
     private func setupSideMenu() {
@@ -103,20 +197,33 @@ class DashBoard: UIViewController, ChartViewDelegate {
         SideMenuManager.default.leftMenuNavigationController = storyboard?.instantiateViewController(withIdentifier: "LeftMenuNavigationController") as? SideMenuNavigationController
         //SideMenuPresentationStyle.menuSlideIn
         SideMenuManager.default.leftMenuNavigationController?.settings = makeSettings()
-
+//        SideMenuManager.menuWidth = 240
+        
         // Enable gestures. The left and/or right menus must be set up above for these to work.
         // Note that these continue to work on the Navigation Controller independent of the View Controller it displays!
 //        SideMenuManager.default.addPanGestureToPresent(toView: navigationController!.navigationBar)
 //        SideMenuManager.default.addScreenEdgePanGesturesToPresent(toView: view)
     }
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+    
+    }
+
+    override func viewWillDisappear(_ animated: Bool) {
+        super.viewWillDisappear(animated)
+        
+    }
+    
     
     func makeSettings() -> SideMenuSettings{
         var settings = SideMenuSettings()
         settings.allowPushOfSameClassTwice = false
-        settings.presentationStyle = .viewSlideOut
+        settings.presentationStyle = .menuDissolveIn
         settings.presentationStyle.backgroundColor = .black
         settings.presentationStyle.presentingEndAlpha = 0.5
-        settings.statusBarEndAlpha = 0
+//        settings.menuWidth = 400
+        settings.statusBarEndAlpha = 1
+        
         return settings
     }
         
@@ -131,28 +238,35 @@ class DashBoard: UIViewController, ChartViewDelegate {
          let doneButton = UIBarButtonItem(title: "Done", style: .plain, target: self, action: #selector(self.action))
          let spaceButton = UIBarButtonItem(barButtonSystemItem: UIBarButtonItem.SystemItem.flexibleSpace, target: nil, action: nil)
          let cancelButton = UIBarButtonItem(title: "Cancel", style: .plain, target: self, action: #selector(self.cancel))
-
          toolBar.setItems([cancelButton,spaceButton,doneButton], animated: true)
          toolBar.isUserInteractionEnabled = true
 //       toolBar.barTintColor = UIColor(red: 250/255.0, green: 250/255.0, blue: 248/255.0, alpha: 1.0)
          toolBar.tintColor = UIColor(red: 45/255.0, green: 148/255.0, blue: 235/255.0, alpha: 1.0)
          toolBar.isUserInteractionEnabled = true
-         toolBar.isTranslucent = true
+         toolBar.isTranslucent = false
          area.inputView = pickerView
          area.inputAccessoryView = toolBar
+         office.inputView = pickerView
+         office.inputAccessoryView = toolBar
     }
     
     @objc func action() {
         
           let row = self.pickerView.selectedRow(inComponent: 0)
           self.pickerView.selectRow(row, inComponent: 0, animated: false)
+        
           if self.area.isFirstResponder{
              area.text = self.paguthiName[row]// selected item
              GlobalVariables.shared.selectedPaguthiId = self.paguthiId[row]
           }
+          else if self.office.isFirstResponder{
+            self.office.text = self.officeName[row]
+            self.selectedofficeID = self.officeId[row]
+          }
           self.CheckValuesAreEmpty()
 //          self.callAPI(paguthi:GlobalVariables.shared.selectedPaguthiId)
           self.area.resignFirstResponder()
+          self.office.resignFirstResponder()
           view.endEditing(true)
     }
     
@@ -160,14 +274,14 @@ class DashBoard: UIViewController, ChartViewDelegate {
           view.endEditing(true)
     }
     
-    func callAPI (paguthi:String,FromDate:String,ToDate:String)
+    func callAPI (paguthi:String,FromDate:String,ToDate:String,dynamic_db:String)
     {
-        let url = GlobalVariables.shared.CLIENTURL + "apiios/dashBoard/"
-        let parameters = ["paguthi": paguthi,"from_date":FromDate,"to_date":ToDate]
+        let url = GlobalVariables.shared.CLIENTURL + "apiandroid/dashBoard/"
+        let parameters = ["paguthi": paguthi,"from_date":FromDate,"to_date":ToDate,"dynamic_db":dynamic_db]
 //        self.view.activityStartAnimating()
         DispatchQueue.global().async
             {
-                do
+            do
                 {
                     try AFWrapper.requestPOSTURL(url, params: (parameters), headers: nil, success: {
                         (JSONResponse) -> Void in
@@ -215,7 +329,7 @@ class DashBoard: UIViewController, ChartViewDelegate {
                                 self.total.append(_total!)
 
                             }
-                            self.setupView()
+//                            self.setupView()
                             /*Pie Chart*/
                             //let gerv_count = json["grievance_graph"]["gerv_count"].doubleValue
                             let gerv_enquiry = json["grievance_graph"]["gerv_ecount"].doubleValue
@@ -247,98 +361,98 @@ class DashBoard: UIViewController, ChartViewDelegate {
                 {
                     print("Unable to load data: \(error)")
                 }
-         }
+          }
     }
     
     /*BarChart View*/
-    func setupView() {
-        
-        //legend
-        let legend = barchart.legend
-        legend.enabled = true
-        legend.horizontalAlignment = .right
-        legend.verticalAlignment = .top
-        legend.orientation = .vertical
-        legend.drawInside = true
-        legend.yOffset = 10.0;
-        legend.xOffset = 10.0;
-        legend.yEntrySpace = 0.0;
-        legend.textColor = UIColor.lightGray
-        
-        // Y - Axis Setup
-        let yaxis = barchart.leftAxis
-        yaxis.spaceTop = 0.35
-        yaxis.axisMinimum = 0
-        yaxis.drawGridLinesEnabled = false
-        yaxis.labelTextColor = UIColor.lightGray
-        yaxis.axisLineColor = UIColor.lightGray
-        barchart.rightAxis.enabled = false
-        
-        // X - Axis Setup
-        let xaxis = barchart.xAxis
-        let formatter = CustomLabelsXAxisValueFormatter()//custom value formatter
-        formatter.labels = self.dispMonth
-        xaxis.valueFormatter = formatter
-        xaxis.drawGridLinesEnabled = false
-        xaxis.labelPosition = .bottom
-        xaxis.labelTextColor = UIColor.lightGray
-        xaxis.centerAxisLabelsEnabled = true
-        xaxis.axisLineColor = UIColor.lightGray
-        xaxis.granularityEnabled = true
-        xaxis.enabled = true
-        barchart.delegate = self
-        
-        //barchart.noDataText = "You need to provide data"
-        barchart.noDataTextColor = UIColor.darkGray
-        barchart.chartDescription?.textColor = UIColor.clear
-        
-        setChart(dispMonth: self.dispMonth, newgrev: self.new_grev, repetedgrev: self.repeeated_grev, totalgrev: self.total)
-    }
-    func setChart(dispMonth: [String], newgrev: [Double], repetedgrev: [Double], totalgrev: [Double]) {
-        
-        barchart.noDataText = "You need to provide data"
-        var dataEntries: [BarChartDataEntry] = []
-        var dataEntries1: [BarChartDataEntry] = []
-        var dataEntries2: [BarChartDataEntry] = []
-
-        for i in 0..<self.dispMonth.count {
-            
-            let dataEntry = BarChartDataEntry(x: Double(i) , y: Double(self.repeeated_grev[i]))
-            dataEntries.append(dataEntry)
-            
-            let dataEntry1 = BarChartDataEntry(x: Double(i) , y: Double(self.new_grev[i]))
-            dataEntries1.append(dataEntry1)
-            
-            let dataEntry2 = BarChartDataEntry(x: Double(i) , y: Double(self.total[i]))
-            dataEntries2.append(dataEntry2)
-            
-        }
-        
-        let chartDataSet = BarChartDataSet(entries: dataEntries, label: "Repeated Greivances")
-        let chartDataSet1 = BarChartDataSet(entries: dataEntries1, label: "New Greivances")
-        let chartDataSet2 = BarChartDataSet(entries: dataEntries2, label: "Total Greivances")
-        let dataSets: [BarChartDataSet] = [chartDataSet,chartDataSet1,chartDataSet2]
-        chartDataSet.colors = [UIColor(red: 219/255, green: 201/255, blue: 255/255, alpha: 1.0)]
-        chartDataSet1.colors = [UIColor(red: 207/255, green: 255/255, blue: 216/255, alpha: 1.0)]
-        chartDataSet2.colors = [UIColor(red: (33/255), green: (132/255), blue: (217/255), alpha: 1.0)]
-        let chartData = BarChartData(dataSets: dataSets)
-        
-        let groupSpace = 0.4
-        let barSpace = 0.03
-        let barWidth = 0.2
-        
-        chartData.barWidth = barWidth
-        barchart.xAxis.axisMinimum = 0.0
-        barchart.xAxis.axisMaximum = 0.0 + chartData.groupWidth(groupSpace: groupSpace, barSpace: barSpace) * Double(self.dispMonth.count)
-        chartData.groupBars(fromX: 0.0, groupSpace: groupSpace, barSpace: barSpace)
-        barchart.xAxis.granularity = barchart.xAxis.axisMaximum / Double(self.dispMonth.count)
-        barchart.data = chartData
-        barchart.notifyDataSetChanged()
-        barchart.setVisibleXRangeMaximum(4)
-        barchart.animate(yAxisDuration: 2.0, easingOption: .easeInBounce)
-        barchart.backgroundColor = UIColor.white
-        chartData.setValueTextColor(UIColor.lightGray)
-    }
+//    func setupView() {
+//
+//        //legend
+//        let legend = barchart.legend
+//        legend.enabled = true
+//        legend.horizontalAlignment = .right
+//        legend.verticalAlignment = .top
+//        legend.orientation = .vertical
+//        legend.drawInside = true
+//        legend.yOffset = 10.0;
+//        legend.xOffset = 10.0;
+//        legend.yEntrySpace = 0.0;
+//        legend.textColor = UIColor.lightGray
+//
+//        // Y - Axis Setup
+//        let yaxis = barchart.leftAxis
+//        yaxis.spaceTop = 0.35
+//        yaxis.axisMinimum = 0
+//        yaxis.drawGridLinesEnabled = false
+//        yaxis.labelTextColor = UIColor.lightGray
+//        yaxis.axisLineColor = UIColor.lightGray
+//        barchart.rightAxis.enabled = false
+//
+//        // X - Axis Setup
+//        let xaxis = barchart.xAxis
+//        let formatter = CustomLabelsXAxisValueFormatter()//custom value formatter
+//        formatter.labels = self.dispMonth
+//        xaxis.valueFormatter = formatter
+//        xaxis.drawGridLinesEnabled = false
+//        xaxis.labelPosition = .bottom
+//        xaxis.labelTextColor = UIColor.lightGray
+//        xaxis.centerAxisLabelsEnabled = true
+//        xaxis.axisLineColor = UIColor.lightGray
+//        xaxis.granularityEnabled = true
+//        xaxis.enabled = true
+//        barchart.delegate = self
+//
+//        //barchart.noDataText = "You need to provide data"
+//        barchart.noDataTextColor = UIColor.darkGray
+//        barchart.chartDescription?.textColor = UIColor.clear
+//
+//        setChart(dispMonth: self.dispMonth, newgrev: self.new_grev, repetedgrev: self.repeeated_grev, totalgrev: self.total)
+//    }
+//    func setChart(dispMonth: [String], newgrev: [Double], repetedgrev: [Double], totalgrev: [Double]) {
+//
+//        barchart.noDataText = "You need to provide data"
+//        var dataEntries: [BarChartDataEntry] = []
+//        var dataEntries1: [BarChartDataEntry] = []
+//        var dataEntries2: [BarChartDataEntry] = []
+//
+//        for i in 0..<self.dispMonth.count {
+//
+//            let dataEntry = BarChartDataEntry(x: Double(i) , y: Double(self.repeeated_grev[i]))
+//            dataEntries.append(dataEntry)
+//
+//            let dataEntry1 = BarChartDataEntry(x: Double(i) , y: Double(self.new_grev[i]))
+//            dataEntries1.append(dataEntry1)
+//
+//            let dataEntry2 = BarChartDataEntry(x: Double(i) , y: Double(self.total[i]))
+//            dataEntries2.append(dataEntry2)
+//
+//        }
+//
+//        let chartDataSet = BarChartDataSet(entries: dataEntries, label: "Repeated Greivances")
+//        let chartDataSet1 = BarChartDataSet(entries: dataEntries1, label: "New Greivances")
+//        let chartDataSet2 = BarChartDataSet(entries: dataEntries2, label: "Total Greivances")
+//        let dataSets: [BarChartDataSet] = [chartDataSet,chartDataSet1,chartDataSet2]
+//        chartDataSet.colors = [UIColor(red: 219/255, green: 201/255, blue: 255/255, alpha: 1.0)]
+//        chartDataSet1.colors = [UIColor(red: 207/255, green: 255/255, blue: 216/255, alpha: 1.0)]
+//        chartDataSet2.colors = [UIColor(red: (33/255), green: (132/255), blue: (217/255), alpha: 1.0)]
+//        let chartData = BarChartData(dataSets: dataSets)
+//
+//        let groupSpace = 0.4
+//        let barSpace = 0.03
+//        let barWidth = 0.2
+//
+//        chartData.barWidth = barWidth
+//        barchart.xAxis.axisMinimum = 0.0
+//        barchart.xAxis.axisMaximum = 0.0 + chartData.groupWidth(groupSpace: groupSpace, barSpace: barSpace) * Double(self.dispMonth.count)
+//        chartData.groupBars(fromX: 0.0, groupSpace: groupSpace, barSpace: barSpace)
+//        barchart.xAxis.granularity = barchart.xAxis.axisMaximum / Double(self.dispMonth.count)
+//        barchart.data = chartData
+//        barchart.notifyDataSetChanged()
+//        barchart.setVisibleXRangeMaximum(4)
+//        barchart.animate(yAxisDuration: 2.0, easingOption: .easeInBounce)
+//        barchart.backgroundColor = UIColor.white
+//        chartData.setValueTextColor(UIColor.lightGray)
+//    }
     
     //MARK:- ChartView Delegate -
     func chartValueSelected(chartView: ChartViewBase, entry: ChartDataEntry, dataSetIndex: Int, highlight: Highlight) {
@@ -454,31 +568,33 @@ class DashBoard: UIViewController, ChartViewDelegate {
 //            sideMenuNavigationController.settings = makeSettings()
 //        }
     }
-    
 }
 
 extension DashBoard : PaguthiView, UIPickerViewDelegate, UIPickerViewDataSource, UITextFieldDelegate {
 
-    func textFieldShouldReturn(_ textField: UITextField) -> Bool
-    {
-        if textField == searchText
-        {
-            if searchText.text?.isEmpty == true{
-               AlertController.shared.showAlert(targetVc: self, title: Globals.alertTitle, message: "Empty", complition: {
-               })
-            }
-            else{
-                self.performSegue(withIdentifier: "to_search", sender: searchText.text)
-                self.view.endEditing(true)
-            }
-        }
-            return true
-    }
-    
+//    func textFieldShouldReturn(_ textField: UITextField) -> Bool
+//    {
+//        if textField == searchText
+//        {
+//            if searchText.text?.isEmpty == true{
+//               AlertController.shared.showAlert(targetVc: self, title: Globals.alertTitle, message: "Empty", complition: {
+//               })
+//            }
+//            else{
+//                self.performSegue(withIdentifier: "to_search", sender: searchText.text)
+//                self.view.endEditing(true)
+//            }
+//        }
+//            return true
+//    }
+//    
     
     func textFieldShouldBeginEditing(_ textField: UITextField) -> Bool {
         if textField == area{
             self.callAPIPaguthi ()
+        }
+        else if textField == office {
+            self.callAPIOffice ()
         }
         return true
     }
@@ -519,22 +635,38 @@ extension DashBoard : PaguthiView, UIPickerViewDelegate, UIPickerViewDataSource,
     }
     
     func pickerView(_ pickerView: UIPickerView, numberOfRowsInComponent component: Int) -> Int {
+        
+        if self.area.isFirstResponder{
          return self.paguthiName.count
+        }
+        else
+        {
+            return self.officeName.count
+        }
+        
     }
     
     func pickerView(_ pickerView: UIPickerView, titleForRow row: Int, forComponent component: Int) -> String? {
-         return self.paguthiName[row] // dropdown item
+        if self.area.isFirstResponder{
+         return self.paguthiName[row]
+        }
+        else
+        {
+            return self.officeName[row]
+        }
     }
     
 //    func pickerView(_ pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
 //         area.text = self.paguthiName[row] // selected item
 //         GlobalVariables.shared.selectedPaguthiId = self.paguthiId[row]
 //    }
-    
-    func showDatePicker(){
+    func showDatePicker() {
+        
        //Formate Date
        datePicker.datePickerMode = .date
        datePicker.backgroundColor = UIColor.white
+        datePicker.preferredDatePickerStyle = UIDatePickerStyle.wheels
+//        datePicker.datePickerStyle = .
        datePicker.setValue(UIColor.black, forKeyPath: "textColor")
 
        //ToolBar
@@ -567,7 +699,6 @@ extension DashBoard : PaguthiView, UIPickerViewDelegate, UIPickerViewDataSource,
 
             return outputFormatter.string(from: date)
         }
-
         return nil
     }
     
@@ -593,57 +724,28 @@ extension DashBoard : PaguthiView, UIPickerViewDelegate, UIPickerViewDataSource,
             toDate.text = formatted
             self.view.endEditing(true)
         }
-
     }
         
     @objc func cancelDatePicker(){
        self.view.endEditing(true)
      }
     
-    func dropShadow () {
+    func setoffice(office: [OfficeData]) {
         
-        view1.layer.masksToBounds = false
-        view1?.layer.shadowColor = UIColor.darkGray.cgColor
-        view1?.layer.shadowOffset =  CGSize.zero
-        view1?.layer.shadowOpacity = 0.6
-        view1?.layer.shadowRadius = 5
-        
-        view2.layer.masksToBounds = false
-        view2?.layer.shadowColor = UIColor.darkGray.cgColor
-        view2?.layer.shadowOffset =  CGSize.zero
-        view2?.layer.shadowOpacity = 0.6
-        view2?.layer.shadowRadius = 5
-        
-        view3.layer.masksToBounds = false
-        view3?.layer.shadowColor = UIColor.darkGray.cgColor
-        view3?.layer.shadowOffset =  CGSize.zero
-        view3?.layer.shadowOpacity = 0.6
-        view3?.layer.shadowRadius = 5
-        
-        view4.layer.masksToBounds = false
-        view4?.layer.shadowColor = UIColor.darkGray.cgColor
-        view4?.layer.shadowOffset =  CGSize.zero
-        view4?.layer.shadowOpacity = 0.6
-        view4?.layer.shadowRadius = 5
-        
-        view5.layer.masksToBounds = false
-        view5?.layer.shadowColor = UIColor.darkGray.cgColor
-        view5?.layer.shadowOffset =  CGSize.zero
-        view5?.layer.shadowOpacity = 0.6
-        view5?.layer.shadowRadius = 5
-        
-        view6.layer.masksToBounds = false
-        view6?.layer.shadowColor = UIColor.darkGray.cgColor
-        view6?.layer.shadowOffset =  CGSize.zero
-        view6?.layer.shadowOpacity = 0.6
-        view6?.layer.shadowRadius = 5
-        
-        view7.layer.masksToBounds = false
-        view7?.layer.shadowColor = UIColor.darkGray.cgColor
-        view7?.layer.shadowOffset =  CGSize.zero
-        view7?.layer.shadowOpacity = 0.6
-        view7?.layer.shadowRadius = 5
-        
+        officeData = office
+        self.officeName.removeAll()
+        self.officeId.removeAll()
+        for items in officeData
+        {
+           let office = items.office_name
+            let id = items.id!
+            self.officeName.append(office!.capitalized)
+           self.officeId.append(id)
+//
+        }
+        self.officeName.insert("ALL", at: 0)
+        self.officeId.insert("ALL", at: 0)
+        pickerView.reloadAllComponents()
     }
     
     func CheckValuesAreEmpty () {
@@ -663,8 +765,53 @@ extension DashBoard : PaguthiView, UIPickerViewDelegate, UIPickerViewDataSource,
         }
            
             else  {
-                 self.callAPI(paguthi:GlobalVariables.shared.selectedPaguthiId,FromDate:fromDateFormatted,ToDate:toDateFormatted)
+                 self.callAPI(paguthi:GlobalVariables.shared.selectedPaguthiId,FromDate:fromDateFormatted,ToDate:toDateFormatted,dynamic_db:GlobalVariables.shared.dynamic_db)
         }
+    }
+    
+    func setViewShadow() {
+        
+                view1.layer.masksToBounds = false
+                view1?.layer.shadowColor = UIColor.darkGray.cgColor
+                view1?.layer.shadowOffset =  CGSize.zero
+                view1?.layer.shadowOpacity = 0.4
+                view1?.layer.shadowRadius = 2
+                
+                view2.layer.masksToBounds = false
+                view2?.layer.shadowColor = UIColor.darkGray.cgColor
+                view2?.layer.shadowOffset =  CGSize.zero
+                view2?.layer.shadowOpacity = 0.4
+                view2?.layer.shadowRadius = 2
+                
+                view3.layer.masksToBounds = false
+                view3?.layer.shadowColor = UIColor.darkGray.cgColor
+                view3?.layer.shadowOffset =  CGSize.zero
+                view3?.layer.shadowOpacity = 0.4
+                view3?.layer.shadowRadius = 2
+                
+                view4.layer.masksToBounds = false
+                view4?.layer.shadowColor = UIColor.darkGray.cgColor
+                view4?.layer.shadowOffset =  CGSize.zero
+                view4?.layer.shadowOpacity = 0.4
+                view4?.layer.shadowRadius = 2
+                
+                view5.layer.masksToBounds = false
+                view5?.layer.shadowColor = UIColor.darkGray.cgColor
+                view5?.layer.shadowOffset =  CGSize.zero
+                view5?.layer.shadowOpacity = 0.4
+                view5?.layer.shadowRadius = 2
+                
+                view6.layer.masksToBounds = false
+                view6?.layer.shadowColor = UIColor.darkGray.cgColor
+                view6?.layer.shadowOffset =  CGSize.zero
+                view6?.layer.shadowOpacity = 0.4
+                view6?.layer.shadowRadius = 2
+                
+                view7.layer.masksToBounds = false
+                view7?.layer.shadowColor = UIColor.darkGray.cgColor
+                view7?.layer.shadowOffset =  CGSize.zero
+                view7?.layer.shadowOpacity = 0.4
+                view7?.layer.shadowRadius = 2
     }
 }
 

@@ -47,10 +47,10 @@ class MeetingAllDetailPresenter: NSObject {
         meetingAllDetailView = nil
     }
     
-    func getMeetingAllDetail(meeting_id : String) {
+    func getMeetingAllDetail(meeting_id : String,dynamic_db:String) {
           self.meetingAllDetailView?.startLoading()
           meetingAllDetailService.callAPIMeetingAllDetail(
-            meeting_id: meeting_id,  onSuccess: { (meettingAll) in
+            meeting_id: meeting_id,dynamic_db:dynamic_db,  onSuccess: { (meettingAll) in
             self.meetingAllDetailView?.finishLoading()
                 if (meettingAll.count == 0){
                 } else {

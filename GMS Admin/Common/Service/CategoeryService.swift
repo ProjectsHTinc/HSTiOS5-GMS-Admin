@@ -10,9 +10,9 @@ import UIKit
 
 class CategoeryService: NSObject {
 
-    public func callAPICategoery(user_id : String, onSuccess successCallback: ((_ caategoeryModel: [CaategoeryModel]) -> Void)?,onFailure failureCallback: ((_ errorMessage: String) -> Void)?) {
+    public func callAPICategoery(user_id : String,dynamic_db:String, onSuccess successCallback: ((_ caategoeryModel: [CaategoeryModel]) -> Void)?,onFailure failureCallback: ((_ errorMessage: String) -> Void)?) {
         APIManager.instance.callAPICategoery(
-            user_id:user_id,  onSuccess: { (caategoeryModel) in
+            dynamic_db:dynamic_db, user_id:user_id, onSuccess: { (caategoeryModel) in
                 successCallback?(caategoeryModel)
             },
             onFailure: { (errorMessage) in

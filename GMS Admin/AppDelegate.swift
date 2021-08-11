@@ -21,6 +21,13 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
         // Override point for customization after application launch.
         /*Set user Defined keyboard*/
+        
+        UINavigationBar.appearance().barTintColor = UIColor.white
+        UINavigationBar.appearance().tintColor = UIColor.black
+        UINavigationBar.appearance().titleTextAttributes = [NSAttributedString.Key.foregroundColor: UIColor.black]
+//        UINavigationBar.appearance().shadowImage = UIImage()
+        UINavigationBar.appearance().setBackgroundImage(UIImage(named: ""), for: UIBarMetrics.default)
+        UINavigationBar.appearance().shadowImage = UIImage(named: "")
         IQKeyboardManager.shared.enable = true
         IQKeyboardManager.shared.previousNextDisplayMode = .alwaysHide
         IQKeyboardManager.shared.toolbarDoneBarButtonItemText = "Close"
@@ -50,6 +57,5 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 //        GlobalVariables.shared.Devicetoken = tokenParts.joined()
 //        print("Device Token: \(String(describing: GlobalVariables.shared.Devicetoken))")
     }
-
 }
 

@@ -39,10 +39,10 @@ class GriDocumentPresenter: NSObject {
         griDocumentView = nil
     }
     
-    func getGriDoc(constituent_id:String) {
+    func getGriDoc(constituent_id:String,dynamic_db:String) {
           self.griDocumentView?.startLoadingGri()
           griDocumentService.callAPIGriDocument(
-            constituent_id: constituent_id, onSuccess: { (plant) in
+            constituent_id: constituent_id, dynamic_db:dynamic_db,onSuccess: { (plant) in
             self.griDocumentView?.finishLoadingGri()
                 if (plant.count == 0){
                 } else {

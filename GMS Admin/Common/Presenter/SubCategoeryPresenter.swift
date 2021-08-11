@@ -43,10 +43,10 @@ class SubCategoeryPresenter: NSObject {
         subCategoeryView = nil
     }
     
-    func getSubCate(user_id : String) {
+    func getSubCate(user_id : String,dynamic_db:String) {
           self.subCategoeryView?.startLoadingSubCategoery()
           subCategoeryService.callAPISubCategoery(
-            user_id : user_id, onSuccess: { (subCate) in
+            user_id : user_id,dynamic_db:dynamic_db, onSuccess: { (subCate) in
             self.subCategoeryView?.finishLoadingSubCategoery()
                 if (subCate.count == 0){
                 } else {

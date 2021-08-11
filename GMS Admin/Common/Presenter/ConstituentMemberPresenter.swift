@@ -64,9 +64,9 @@ class ConstituentMemberPresenter: NSObject {
         constituentMemberView = nil
     }
     
-    func getTotalGreviances(paguthi:String,from_date:String,to_date:String) {
+    func getTotalGreviances(paguthi:String,from_date:String,to_date:String,dynamic_db:String) {
         self.constituentMemberView?.startLoadingCi()
-        constituentMemberService.callAPIConstituentMembers(paguthi: paguthi, from_date: from_date, to_date: to_date, onSuccess: { (ci) in
+        constituentMemberService.callAPIConstituentMembers(paguthi: paguthi, from_date: from_date, to_date: to_date,dynamic_db:dynamic_db, onSuccess: { (ci) in
                 self.constituentMemberView?.finishLoadingCI()
                 if (ci.count == 0){
                 } else {

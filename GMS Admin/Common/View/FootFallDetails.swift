@@ -30,6 +30,11 @@ class FootFallDetails: UIViewController,FootFallView {
     @IBOutlet weak var constRepeatedCount: UILabel!
     @IBOutlet weak var otherUniqueCount: UILabel!
     @IBOutlet weak var otherRepeatedCount: UILabel!
+    @IBOutlet weak var view1: UIView!
+    @IBOutlet weak var view2: UIView!
+    @IBOutlet weak var view3: UIView!
+    @IBOutlet weak var view4: UIView!
+    @IBOutlet weak var navView: UIView!
     
     let presenterTG = FootFallPresenter(footFallService: FootFallService())
     var paguthi_Id = String()
@@ -39,12 +44,17 @@ class FootFallDetails: UIViewController,FootFallView {
 
         // Do any additional setup after loading the view.
         self.CallAPIFF()
+        view1.addShadow(offset: CGSize.init(width: 0, height: 2), color: UIColor.gray, radius: 2.0, opacity: 0.35)
+        view2.addShadow(offset: CGSize.init(width: 0, height: 2), color: UIColor.gray, radius: 2.0, opacity: 0.35)
+        view3.addShadow(offset: CGSize.init(width: 0, height: 2), color: UIColor.gray, radius: 2.0, opacity: 0.35)
+        view4.addShadow(offset: CGSize.init(width: 0, height: 2), color: UIColor.gray, radius: 2.0, opacity: 0.35)
+        navView.addShadow(offset: CGSize.init(width: 0, height: 2), color: UIColor.gray, radius: 2.0, opacity: 0.35)
     }
     
     func CallAPIFF ()
     {
         presenterTG.attachView(view: self)
-        presenterTG.getFootFall(paguthi: paguthi_Id, from_date: GlobalVariables.shared.widgetFromDate, to_date: GlobalVariables.shared.widgetToDate)
+        presenterTG.getFootFall(paguthi: paguthi_Id, from_date: GlobalVariables.shared.widgetFromDate, to_date: GlobalVariables.shared.widgetToDate,dynamic_db:GlobalVariables.shared.dynamic_db)
     }
     
     func startLoadingFF() {
@@ -56,6 +66,7 @@ class FootFallDetails: UIViewController,FootFallView {
     }
     
     func setFF(total_footfall_cnt: Int?, unique_footfall_cnt: Int?, repeated_footfall_cnt: Int?, repeated_footfall_cnt_presntage: String?, unique_footfall_cnt_presntage: String?, total_unique_footfall_cnt: Int?, other_unique_footfall_cnt: Int?, cons_unique_footfall_cnt: Int?, cons_unique_footfall_cnt_presntage: String?, other_unique_footfall_cnt_presntage: String?, constituency_cnt: Int?, cons_unique_cnt: Int?, cons_repeated_cnt: Int?, cons_unique_cnt_presntage: String?, cons_repeated_cnt_presntage: String?, other_cnt: Int?, other_unique_cnt: Int?, other_repeated_cnt: Int?, other_unique_cnt_presntage: String?, other_repeated_cnt_presntage: String?) {
+        
         
         uniqueFootfallCount.text = String(unique_footfall_cnt!)
         totalFootfallCount.text = String(total_footfall_cnt!)
@@ -77,7 +88,6 @@ class FootFallDetails: UIViewController,FootFallView {
         constRepeatedCount.text = String(cons_repeated_cnt!)
         otherUniqueCount.text = String(other_unique_cnt!)
         otherRepeatedCount.text = String(other_repeated_cnt!)
-        
     }
     
     func setEmptyFF(errorMessage: String) {

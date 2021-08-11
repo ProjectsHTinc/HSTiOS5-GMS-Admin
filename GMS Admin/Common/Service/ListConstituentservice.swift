@@ -10,9 +10,9 @@ import UIKit
 
 class ListConstituentservice {
     
-    public func callAPIConstituentList(url:String,Keyword:String,paguthi:String, offset:String, rowcount:String, onSuccess successCallback: ((_ listConstiuentModel: [ListConstiuentModel]) -> Void)?,onFailure failureCallback: ((_ errorMessage: String) -> Void)?) {
+    public func callAPIConstituentList(url:String,Keyword:String,paguthi:String, offset:String, rowcount:String,dynamic_db:String, onSuccess successCallback: ((_ listConstiuentModel: [ListConstiuentModel]) -> Void)?,onFailure failureCallback: ((_ errorMessage: String) -> Void)?) {
         APIManager.instance.callAPIConstituentList(
-            url:url,Keyword:Keyword,paguthi: paguthi, offset: offset, rowcount: rowcount, onSuccess: { (listConstiuentModel) in
+            dynamic_db:dynamic_db, url:url,Keyword:Keyword,paguthi: paguthi,offset: offset, rowcount: rowcount, onSuccess: { (listConstiuentModel) in
                 successCallback?(listConstiuentModel)
             },
             onFailure: { (errorMessage) in

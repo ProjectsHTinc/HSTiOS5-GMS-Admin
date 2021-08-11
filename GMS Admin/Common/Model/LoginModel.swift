@@ -8,7 +8,7 @@
 
 import UIKit
 
-class LoginModel {
+class MobileLoginModel {
     
     var msg : String?
     var status : String?
@@ -92,8 +92,8 @@ class LoginModel {
     }
     
     // MARK: Class Method
-    class func build(_ dict: [String: AnyObject]) -> LoginModel {
-        let loginModel = LoginModel()
+    class func build(_ dict: [String: AnyObject]) -> MobileLoginModel {
+        let loginModel = MobileLoginModel()
         loginModel.loadFromDictionary(dict)
         return loginModel
     }

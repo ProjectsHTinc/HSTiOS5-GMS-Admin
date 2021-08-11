@@ -45,10 +45,10 @@ class ProfileDetailPresenter: NSObject {
         profileDetailsView = nil
     }
     
-    func getProfileDetails(user_id:String) {
+    func getProfileDetails(user_id:String,dynamic_db:String) {
           self.profileDetailsView?.startLoading()
           profileDetailService.callAPIUserProfileDetails(
-            user_id: user_id, onSuccess: { (profiledetails) in
+            user_id: user_id,dynamic_db:dynamic_db, onSuccess: { (profiledetails) in
             self.profileDetailsView?.finishLoading()
                 self.profileDetailsView?.setProfileDetails(user_id: profiledetails.user_id!, user_role: profiledetails.user_role!, constituency_id: profiledetails.constituency_id!, pugathi_id: profiledetails.pugathi_id!, full_name: profiledetails.full_name!, phone_number: profiledetails.phone_number!, email_id: profiledetails.email_id!, gender: profiledetails.gender!, address: profiledetails.address!, picture_url: profiledetails.picture_url!)
               },

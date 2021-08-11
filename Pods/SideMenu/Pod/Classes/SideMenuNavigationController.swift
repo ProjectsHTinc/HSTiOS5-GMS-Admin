@@ -94,7 +94,7 @@ public struct SideMenuSettings: Model, InitializableStruct {
         return min(round(minimumSize * 0.75), 240)
     }()
     public var presentingViewControllerUserInteractionEnabled: Bool = false
-    public var presentingViewControllerUseSnapshot: Bool = false
+    public var presentingViewControllerUseSnapshot: Bool = true
     public var presentDuration: Double = 0.35
     public var presentationStyle: SideMenuPresentationStyle = .viewSlideOut
     public var pushStyle: SideMenuPushStyle = .default

@@ -38,10 +38,10 @@ class ChangePasswordPresenter: NSObject {
         changePasswordView = nil
     }
     
-    func getChangePassword(user_id:String,new_password:String,old_password:String) {
+    func getChangePassword(user_id:String,new_password:String,old_password:String,dynamic_db:String) {
         self.changePasswordView?.startLoading()
         changePasswordService.callAPIChangePassword(
-            user_id: user_id,new_password: new_password,old_password: old_password, onSuccess: { (profUpdate) in
+            user_id: user_id,new_password: new_password,old_password: old_password,dynamic_db:dynamic_db, onSuccess: { (profUpdate) in
                 self.changePasswordView?.finishLoading()
                 self.changePasswordView?.setChangePassword(msg:profUpdate.msg!,status: profUpdate.status!)
             },

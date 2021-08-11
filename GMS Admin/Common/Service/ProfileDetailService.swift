@@ -10,9 +10,9 @@ import UIKit
 
 class ProfileDetailService: NSObject {
     
-    public func callAPIUserProfileDetails(user_id:String, onSuccess successCallback: ((_ userProfileModel: UserProfileModel) -> Void)?,onFailure failureCallback: ((_ errorMessage: String) -> Void)?) {
+    public func callAPIUserProfileDetails(user_id:String, dynamic_db:String,onSuccess successCallback: ((_ userProfileModel: UserProfileModel) -> Void)?,onFailure failureCallback: ((_ errorMessage: String) -> Void)?) {
         APIManager.instance.callAPIUserProfileDetails(
-            user_id: user_id, onSuccess: { (userProfileModel) in
+            dynamic_db:dynamic_db, user_id: user_id, onSuccess: { (userProfileModel) in
                 successCallback?(userProfileModel)
             },
             onFailure: { (errorMessage) in

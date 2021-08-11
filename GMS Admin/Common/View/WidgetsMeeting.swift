@@ -29,16 +29,16 @@ class WidgetsMeeting: UIViewController,TotalMeetingView {
     func CallAPITM ()
     {
         presenterTm.attachView(view: self)
-        presenterTm.getTotalMeeting(paguthi: paguthi_Id, from_date: GlobalVariables.shared.widgetFromDate, to_date: GlobalVariables.shared.widgetToDate)
+        presenterTm.getTotalMeeting(paguthi: paguthi_Id, from_date: GlobalVariables.shared.widgetFromDate, to_date: GlobalVariables.shared.widgetToDate,dynamic_db:GlobalVariables.shared.dynamic_db)
     }
     
     func setTm(total_meeting: String?, request_count_percentage: String?, request_count: String?, complete_count: String?, complete_count_percentage: String?) {
         
-        widgetMeeting.text = String(" Meeting Count - \(total_meeting!)")
+        widgetMeeting.text = String("Meeting Count - \(total_meeting!)")
         requestedCount.text = String(request_count!)
         completedCount.text = String(complete_count!)
-        requestedCountPercentage.text = String("Meeting Requested(\(request_count_percentage!)%)")
-        completedCountpercentage.text = String("Meeting Completed (\(complete_count_percentage!)%)")
+        requestedCountPercentage.text = String("Requested(\(request_count_percentage!)%)")
+        completedCountpercentage.text = String("Completed (\(complete_count_percentage!)%)")
 
     }
     

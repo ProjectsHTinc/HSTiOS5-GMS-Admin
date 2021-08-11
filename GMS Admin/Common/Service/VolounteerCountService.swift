@@ -10,9 +10,9 @@ import Foundation
 
 class VolounteerService : NSObject {
 
-    public func callAPIVolounteer(paguthi:String,from_date:String,to_date:String, onSuccess successCallback: ((_ volounteerModel: VolounteerModel) -> Void)?,onFailure failureCallback: ((_ errorMessage: String) -> Void)?) {
+    public func callAPIVolounteer(paguthi:String,from_date:String,to_date:String,dynamic_db:String, onSuccess successCallback: ((_ volounteerModel: VolounteerModel) -> Void)?,onFailure failureCallback: ((_ errorMessage: String) -> Void)?) {
         APIManager.instance.callAPIVolounteer(
-            paguthi: paguthi,from_date:from_date,to_date: to_date, onSuccess: { (volounteerModel) in
+            paguthi: paguthi,from_date:from_date,dynamic_db:dynamic_db, to_date: to_date, onSuccess: { (volounteerModel) in
                 successCallback?(volounteerModel)
             },
             onFailure: { (errorMessage) in

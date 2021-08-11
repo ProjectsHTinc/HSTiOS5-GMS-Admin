@@ -8,7 +8,7 @@
 
 import UIKit
 
-let grevianceAllSearchUrl = "apiios/listGrievancesearch"
+let grevianceAllSearchUrl = "apiandroid/listGrievancesearch"
 
 class GreivanceAllSearch: UIViewController, GreivancesAllView,  UITableViewDelegate, UITableViewDataSource {
 
@@ -56,7 +56,7 @@ class GreivanceAllSearch: UIViewController, GreivancesAllView,  UITableViewDeleg
         super.viewDidLoad()
 
         // Do any additional setup after loading the view.
-        self.addCustomizedBackBtn(title:"  Grievances Search")
+//        self.addCustomizedBackBtn(title:"  Grievances Search")
         self.tableView.backgroundColor = UIColor.white
         guard Reachability.isConnectedToNetwork() == true else {
               AlertController.shared.offlineAlert(targetVc: self, complition: {
@@ -89,7 +89,7 @@ class GreivanceAllSearch: UIViewController, GreivancesAllView,  UITableViewDeleg
     func callAPIGreviancesAll (url : String, keyword: String, paguthi:String, offset:String, rowcount:String, grievance_type: String)
     {
         presenter.attachView(view: self)
-        presenter.getGrieAll(url: url, keyword: keyword, paguthi: paguthi, offset: offset, rowcount: rowcount, grievance_type: grievance_type)
+        presenter.getGrieAll(url: url, keyword: keyword, paguthi: paguthi, offset: offset, rowcount: rowcount, grievance_type: grievance_type,dynamic_db:GlobalVariables.shared.dynamic_db)
     }
     
     func startLoadingGriAll() {

@@ -44,7 +44,7 @@ class WidgetVedio: UIViewController,VedioCountView {
     func CallAPIVolunteer ()
     {
         presenterTm.attachView(view: self)
-        presenterTm.getvedioCount(paguthi: paguthi_Id, from_date: GlobalVariables.shared.widgetFromDate, to_date: GlobalVariables.shared.widgetToDate)
+        presenterTm.getvedioCount(paguthi: paguthi_Id, from_date: GlobalVariables.shared.widgetFromDate, to_date: GlobalVariables.shared.widgetToDate,dynamic_db:GlobalVariables.shared.dynamic_db)
     }
 
 

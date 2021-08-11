@@ -23,5 +23,4 @@ class EmptySegue: UIStoryboardSegue{
         // Pass the selected object to the new view controller.
     }
     */
-
 }

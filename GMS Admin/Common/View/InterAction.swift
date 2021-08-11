@@ -34,7 +34,7 @@ class InterAction: UIViewController {
     func callAPI ()
     {
         Presenter.attachView(view: self)
-        Presenter.getInteraction(constituent_id: selectedconstitunecyId)
+        Presenter.getInteraction(constituent_id: selectedconstitunecyId,dynamic_db:GlobalVariables.shared.dynamic_db)
     }
     
 

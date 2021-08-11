@@ -37,10 +37,10 @@ class ProfilePicPresenter: NSObject {
          profilePicView = nil
      }
      
-     func getProfilePic(user_id:String) {
+     func getProfilePic(user_id:String,dynamic_db:String) {
          self.profilePicView?.startLoadingPic()
          profilePicUploadService.callAPIUserProfilePicUpdate(
-            user_id: user_id, onSuccess: { (profUpdate) in
+            user_id: user_id,dynamic_db:dynamic_db, onSuccess: { (profUpdate) in
                  self.profilePicView?.finishLoadingPic()
                  self.profilePicView?.setProfilePic(msg:profUpdate.msg!,status: profUpdate.status!)
              },

@@ -236,11 +236,74 @@
 		6BF2B92C24B5F67D00E42C4D /* AreaModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6BF2B92B24B5F67D00E42C4D /* AreaModel.swift */; };
 		6BF2B92E24B5F84C00E42C4D /* AreaService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6BF2B92D24B5F84C00E42C4D /* AreaService.swift */; };
 		6BF2B93024B5F8B300E42C4D /* PaguthiPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6BF2B92F24B5F8B300E42C4D /* PaguthiPresenter.swift */; };
+		7901BD38267DD00500D950B2 /* CheckConstituentCodeVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7901BD37267DD00500D950B2 /* CheckConstituentCodeVC.swift */; };
+		7901BD3D267DD02B00D950B2 /* CheckConstituentPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7901BD3C267DD02B00D950B2 /* CheckConstituentPresenter.swift */; };
+		7901BD42267DD03F00D950B2 /* CheckConstituentService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7901BD41267DD03F00D950B2 /* CheckConstituentService.swift */; };
+		7901BD47267DD05300D950B2 /* CheckConstituentModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7901BD46267DD05300D950B2 /* CheckConstituentModel.swift */; };
+		790828EE26882040004E28C1 /* GarphFootFallVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 790828ED2688203F004E28C1 /* GarphFootFallVC.swift */; };
+		790C06362692D52F00A79346 /* BirthdayYearPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 790C06352692D52F00A79346 /* BirthdayYearPresenter.swift */; };
+		790C063B2692D55700A79346 /* BirthdayYearService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 790C063A2692D55700A79346 /* BirthdayYearService.swift */; };
+		790C06402692D56A00A79346 /* BirthdayYearModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 790C063F2692D56A00A79346 /* BirthdayYearModel.swift */; };
+		790C06522692EE2D00A79346 /* ReportFestivalService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 790C06512692EE2D00A79346 /* ReportFestivalService.swift */; };
+		790C06682692FD8C00A79346 /* FestivalListPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 790C06672692FD8C00A79346 /* FestivalListPresenter.swift */; };
+		790C066D2692FDC500A79346 /* FestivalListService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 790C066C2692FDC500A79346 /* FestivalListService.swift */; };
+		790C06722692FDD600A79346 /* FestivalListModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 790C06712692FDD600A79346 /* FestivalListModel.swift */; };
+		790C067A26930C9500A79346 /* ConstituentListVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 790C067926930C9500A79346 /* ConstituentListVC.swift */; };
+		790C067F26930D1600A79346 /* ConstituentListCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 790C067E26930D1600A79346 /* ConstituentListCell.swift */; };
+		79229390268DA89900A84A50 /* ReportVideoVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7922938F268DA89900A84A50 /* ReportVideoVC.swift */; };
+		79229395268DAB5300A84A50 /* ReportStaffVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 79229394268DAB5300A84A50 /* ReportStaffVC.swift */; };
+		792293A2268DB62200A84A50 /* ReportConstituentVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 792293A1268DB62200A84A50 /* ReportConstituentVC.swift */; };
+		792293A7268DC25100A84A50 /* ReportConstituentInfoCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 792293A6268DC25100A84A50 /* ReportConstituentInfoCell.swift */; };
+		7926A73C268F29B100B5A5E2 /* ReportMeetingModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7926A73B268F29B100B5A5E2 /* ReportMeetingModel.swift */; };
+		7926A741268F54D400B5A5E2 /* ReportMeetingListPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7926A740268F54D300B5A5E2 /* ReportMeetingListPresenter.swift */; };
+		7926A746268F559900B5A5E2 /* ReportMeetingListService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7926A745268F559900B5A5E2 /* ReportMeetingListService.swift */; };
+		794BA0C3269047D500F6CFD2 /* ReportGrievanceListPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 794BA0C2269047D400F6CFD2 /* ReportGrievanceListPresenter.swift */; };
+		794BA0C8269047F600F6CFD2 /* ReportGrievanceListService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 794BA0C7269047F600F6CFD2 /* ReportGrievanceListService.swift */; };
+		794BA0CA2690480900F6CFD2 /* ReportGrievanceListModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 794BA0C92690480900F6CFD2 /* ReportGrievanceListModel.swift */; };
+		794BA0CF269079B900F6CFD2 /* SeekerNamePresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 794BA0CE269079B900F6CFD2 /* SeekerNamePresenter.swift */; };
+		794BA0D4269079D700F6CFD2 /* SeekerNameService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 794BA0D3269079D700F6CFD2 /* SeekerNameService.swift */; };
+		794BA0D6269079ED00F6CFD2 /* SeekerNameModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 794BA0D5269079ED00F6CFD2 /* SeekerNameModel.swift */; };
+		796F9271267E60EC00F43475 /* OTPVc.swift in Sources */ = {isa = PBXBuildFile; fileRef = 796F9270267E60EC00F43475 /* OTPVc.swift */; };
+		7971DA0926B9453A0068A996 /* SceduledCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7971DA0626B945390068A996 /* SceduledCell.swift */; };
+		7971DA0A26B9453A0068A996 /* CompletedCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7971DA0726B945390068A996 /* CompletedCell.swift */; };
+		7971DA0B26B9453A0068A996 /* RequestedCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7971DA0826B9453A0068A996 /* RequestedCell.swift */; };
+		7971DA1326B945930068A996 /* MeetingTabViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7971DA0F26B9458D0068A996 /* MeetingTabViewController.swift */; };
+		7971DA1426B945930068A996 /* RequestedViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7971DA1026B9458E0068A996 /* RequestedViewController.swift */; };
+		7971DA1526B945930068A996 /* ScheduleViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7971DA1126B945920068A996 /* ScheduleViewController.swift */; };
+		7971DA1626B945930068A996 /* CompletedViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7971DA1226B945930068A996 /* CompletedViewController.swift */; };
+		797DE7E6268D817100857DE9 /* ReportMeetingVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 797DE7E5268D817100857DE9 /* ReportMeetingVC.swift */; };
+		797DE7EB268D874500857DE9 /* ReporBirthdayVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 797DE7EA268D874500857DE9 /* ReporBirthdayVC.swift */; };
+		797DE7F0268D94C700857DE9 /* ReportFestivalVc.swift in Sources */ = {isa = PBXBuildFile; fileRef = 797DE7EF268D94C600857DE9 /* ReportFestivalVc.swift */; };
+		797DE7FD268D97D900857DE9 /* ReportFestivalPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 797DE7FC268D97D900857DE9 /* ReportFestivalPresenter.swift */; };
+		797DE807268D985500857DE9 /* ReportFestivalModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 797DE806268D985500857DE9 /* ReportFestivalModel.swift */; };
+		797DE80C268DA16800857DE9 /* ReportGrievanceVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 797DE80B268DA16800857DE9 /* ReportGrievanceVC.swift */; };
+		799139B1269312E3007CFE9A /* ReportConstituentPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 799139B0269312E3007CFE9A /* ReportConstituentPresenter.swift */; };
+		799139B6269312FA007CFE9A /* ReportConstituentService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 799139B5269312FA007CFE9A /* ReportConstituentService.swift */; };
+		799139BB2693130C007CFE9A /* ReportConstituentModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 799139BA2693130C007CFE9A /* ReportConstituentModel.swift */; };
+		799139C0269329D9007CFE9A /* ReportVideoListPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 799139BF269329D9007CFE9A /* ReportVideoListPresenter.swift */; };
+		799139C526932AEF007CFE9A /* ReportVedioListModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 799139C426932AEF007CFE9A /* ReportVedioListModel.swift */; };
+		799139CF269331E7007CFE9A /* ReportStaffListVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 799139CE269331E7007CFE9A /* ReportStaffListVC.swift */; };
+		799139D126933217007CFE9A /* ReportStaffListCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 799139D026933217007CFE9A /* ReportStaffListCell.swift */; };
+		799139D6269336A5007CFE9A /* ReportStaffListPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 799139D5269336A5007CFE9A /* ReportStaffListPresenter.swift */; };
+		799139DB269336BA007CFE9A /* ReportStaffListService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 799139DA269336BA007CFE9A /* ReportStaffListService.swift */; };
+		799139E5269336FE007CFE9A /* ReportStafffListModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 799139E4269336FE007CFE9A /* ReportStafffListModel.swift */; };
+		79AB3FD926B7D0FC00038485 /* MobileLogin.swift in Sources */ = {isa = PBXBuildFile; fileRef = 79AB3FD826B7D0FC00038485 /* MobileLogin.swift */; };
+		79AB3FDE26B7D2B900038485 /* MobileLoginPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 79AB3FDD26B7D2B900038485 /* MobileLoginPresenter.swift */; };
+		79AB3FE326B7D2DF00038485 /* MobileLoginService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 79AB3FE226B7D2DF00038485 /* MobileLoginService.swift */; };
+		79AB3FE826B7D2F300038485 /* MobileLoginModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 79AB3FE726B7D2F300038485 /* MobileLoginModel.swift */; };
+		79AB3FED26B7D9A900038485 /* CheckOtpPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 79AB3FEC26B7D9A900038485 /* CheckOtpPresenter.swift */; };
+		79AB3FF226B7D9BD00038485 /* CheckOtpService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 79AB3FF126B7D9BD00038485 /* CheckOtpService.swift */; };
+		79AB3FF726B7D9D600038485 /* CheckOtpModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 79AB3FF626B7D9D600038485 /* CheckOtpModel.swift */; };
 		79E55A1E262FD74C00CBA0EE /* VolounteerModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 79E55A1D262FD74C00CBA0EE /* VolounteerModel.swift */; };
 		79E55A23262FD75C00CBA0EE /* GreetingCountModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 79E55A22262FD75C00CBA0EE /* GreetingCountModel.swift */; };
 		79E55A28262FD77300CBA0EE /* VedioCountModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 79E55A27262FD77300CBA0EE /* VedioCountModel.swift */; };
 		79E55A2D262FD7AC00CBA0EE /* VolounteerCountService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 79E55A2C262FD7AC00CBA0EE /* VolounteerCountService.swift */; };
 		79E55A32262FD7CE00CBA0EE /* VedioCountPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 79E55A31262FD7CE00CBA0EE /* VedioCountPresenter.swift */; };
+		79E9D159268DEFA00076ACD1 /* StatusReportList.swift in Sources */ = {isa = PBXBuildFile; fileRef = 79E9D158268DEFA00076ACD1 /* StatusReportList.swift */; };
+		79E9D15E268DF23D0076ACD1 /* StatusReportCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 79E9D15D268DF23D0076ACD1 /* StatusReportCell.swift */; };
+		79EBFD26268B3FA90048D493 /* OfficePresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 79EBFD25268B3FA90048D493 /* OfficePresenter.swift */; };
+		79EBFD2B268B3FE00048D493 /* OfficeService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 79EBFD2A268B3FE00048D493 /* OfficeService.swift */; };
+		79EBFD30268B3FFF0048D493 /* OfficeModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 79EBFD2F268B3FFF0048D493 /* OfficeModel.swift */; };
 		B7FB4663114C7B4664DD4373 /* Pods_GMS_Admin.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C91E7D0974F47612E35B85C2 /* Pods_GMS_Admin.framework */; };
 /* End PBXBuildFile section */
 
@@ -500,11 +563,74 @@
 		6BF2B92B24B5F67D00E42C4D /* AreaModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AreaModel.swift; sourceTree = "<group>"; };
 		6BF2B92D24B5F84C00E42C4D /* AreaService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AreaService.swift; sourceTree = "<group>"; };
 		6BF2B92F24B5F8B300E42C4D /* PaguthiPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PaguthiPresenter.swift; sourceTree = "<group>"; };
+		7901BD37267DD00500D950B2 /* CheckConstituentCodeVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CheckConstituentCodeVC.swift; sourceTree = "<group>"; };
+		7901BD3C267DD02B00D950B2 /* CheckConstituentPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CheckConstituentPresenter.swift; sourceTree = "<group>"; };
+		7901BD41267DD03F00D950B2 /* CheckConstituentService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CheckConstituentService.swift; sourceTree = "<group>"; };
+		7901BD46267DD05300D950B2 /* CheckConstituentModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CheckConstituentModel.swift; sourceTree = "<group>"; };
+		790828ED2688203F004E28C1 /* GarphFootFallVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GarphFootFallVC.swift; sourceTree = "<group>"; };
+		790C06352692D52F00A79346 /* BirthdayYearPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BirthdayYearPresenter.swift; sourceTree = "<group>"; };
+		790C063A2692D55700A79346 /* BirthdayYearService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = BirthdayYearService.swift; path = ../../../../../../BirthdayYearService.swift; sourceTree = "<group>"; };
+		790C063F2692D56A00A79346 /* BirthdayYearModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BirthdayYearModel.swift; sourceTree = "<group>"; };
+		790C06512692EE2D00A79346 /* ReportFestivalService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReportFestivalService.swift; sourceTree = "<group>"; };
+		790C06672692FD8C00A79346 /* FestivalListPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FestivalListPresenter.swift; sourceTree = "<group>"; };
+		790C066C2692FDC500A79346 /* FestivalListService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FestivalListService.swift; sourceTree = "<group>"; };
+		790C06712692FDD600A79346 /* FestivalListModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FestivalListModel.swift; sourceTree = "<group>"; };
+		790C067926930C9500A79346 /* ConstituentListVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConstituentListVC.swift; sourceTree = "<group>"; };
+		790C067E26930D1600A79346 /* ConstituentListCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConstituentListCell.swift; sourceTree = "<group>"; };
+		7922938F268DA89900A84A50 /* ReportVideoVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReportVideoVC.swift; sourceTree = "<group>"; };
+		79229394268DAB5300A84A50 /* ReportStaffVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReportStaffVC.swift; sourceTree = "<group>"; };
+		792293A1268DB62200A84A50 /* ReportConstituentVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReportConstituentVC.swift; sourceTree = "<group>"; };
+		792293A6268DC25100A84A50 /* ReportConstituentInfoCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReportConstituentInfoCell.swift; sourceTree = "<group>"; };
+		7926A73B268F29B100B5A5E2 /* ReportMeetingModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReportMeetingModel.swift; sourceTree = "<group>"; };
+		7926A740268F54D300B5A5E2 /* ReportMeetingListPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReportMeetingListPresenter.swift; sourceTree = "<group>"; };
+		7926A745268F559900B5A5E2 /* ReportMeetingListService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = ReportMeetingListService.swift; path = ../../../../../../ReportMeetingListService.swift; sourceTree = "<group>"; };
+		794BA0C2269047D400F6CFD2 /* ReportGrievanceListPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReportGrievanceListPresenter.swift; sourceTree = "<group>"; };
+		794BA0C7269047F600F6CFD2 /* ReportGrievanceListService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReportGrievanceListService.swift; sourceTree = "<group>"; };
+		794BA0C92690480900F6CFD2 /* ReportGrievanceListModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReportGrievanceListModel.swift; sourceTree = "<group>"; };
+		794BA0CE269079B900F6CFD2 /* SeekerNamePresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SeekerNamePresenter.swift; sourceTree = "<group>"; };
+		794BA0D3269079D700F6CFD2 /* SeekerNameService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = SeekerNameService.swift; path = ../../../../../../SeekerNameService.swift; sourceTree = "<group>"; };
+		794BA0D5269079ED00F6CFD2 /* SeekerNameModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SeekerNameModel.swift; sourceTree = "<group>"; };
+		796F9270267E60EC00F43475 /* OTPVc.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OTPVc.swift; sourceTree = "<group>"; };
+		7971DA0626B945390068A996 /* SceduledCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SceduledCell.swift; sourceTree = "<group>"; };
+		7971DA0726B945390068A996 /* CompletedCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CompletedCell.swift; sourceTree = "<group>"; };
+		7971DA0826B9453A0068A996 /* RequestedCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RequestedCell.swift; sourceTree = "<group>"; };
+		7971DA0F26B9458D0068A996 /* MeetingTabViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MeetingTabViewController.swift; sourceTree = "<group>"; };
+		7971DA1026B9458E0068A996 /* RequestedViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RequestedViewController.swift; sourceTree = "<group>"; };
+		7971DA1126B945920068A996 /* ScheduleViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ScheduleViewController.swift; sourceTree = "<group>"; };
+		7971DA1226B945930068A996 /* CompletedViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CompletedViewController.swift; sourceTree = "<group>"; };
+		797DE7E5268D817100857DE9 /* ReportMeetingVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReportMeetingVC.swift; sourceTree = "<group>"; };
+		797DE7EA268D874500857DE9 /* ReporBirthdayVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReporBirthdayVC.swift; sourceTree = "<group>"; };
+		797DE7EF268D94C600857DE9 /* ReportFestivalVc.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReportFestivalVc.swift; sourceTree = "<group>"; };
+		797DE7FC268D97D900857DE9 /* ReportFestivalPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = ReportFestivalPresenter.swift; path = ../../../../../../ReportFestivalPresenter.swift; sourceTree = "<group>"; };
+		797DE806268D985500857DE9 /* ReportFestivalModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReportFestivalModel.swift; sourceTree = "<group>"; };
+		797DE80B268DA16800857DE9 /* ReportGrievanceVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReportGrievanceVC.swift; sourceTree = "<group>"; };
+		799139B0269312E3007CFE9A /* ReportConstituentPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = ReportConstituentPresenter.swift; path = ../../../../../../ReportConstituentPresenter.swift; sourceTree = "<group>"; };
+		799139B5269312FA007CFE9A /* ReportConstituentService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReportConstituentService.swift; sourceTree = "<group>"; };
+		799139BA2693130C007CFE9A /* ReportConstituentModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReportConstituentModel.swift; sourceTree = "<group>"; };
+		799139BF269329D9007CFE9A /* ReportVideoListPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReportVideoListPresenter.swift; sourceTree = "<group>"; };
+		799139C426932AEF007CFE9A /* ReportVedioListModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReportVedioListModel.swift; sourceTree = "<group>"; };
+		799139CE269331E7007CFE9A /* ReportStaffListVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReportStaffListVC.swift; sourceTree = "<group>"; };
+		799139D026933217007CFE9A /* ReportStaffListCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReportStaffListCell.swift; sourceTree = "<group>"; };
+		799139D5269336A5007CFE9A /* ReportStaffListPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReportStaffListPresenter.swift; sourceTree = "<group>"; };
+		799139DA269336BA007CFE9A /* ReportStaffListService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReportStaffListService.swift; sourceTree = "<group>"; };
+		799139E4269336FE007CFE9A /* ReportStafffListModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReportStafffListModel.swift; sourceTree = "<group>"; };
+		79AB3FD826B7D0FC00038485 /* MobileLogin.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MobileLogin.swift; sourceTree = "<group>"; };
+		79AB3FDD26B7D2B900038485 /* MobileLoginPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MobileLoginPresenter.swift; sourceTree = "<group>"; };
+		79AB3FE226B7D2DF00038485 /* MobileLoginService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = MobileLoginService.swift; path = ../../../../../../MobileLoginService.swift; sourceTree = "<group>"; };
+		79AB3FE726B7D2F300038485 /* MobileLoginModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MobileLoginModel.swift; sourceTree = "<group>"; };
+		79AB3FEC26B7D9A900038485 /* CheckOtpPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CheckOtpPresenter.swift; sourceTree = "<group>"; };
+		79AB3FF126B7D9BD00038485 /* CheckOtpService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CheckOtpService.swift; sourceTree = "<group>"; };
+		79AB3FF626B7D9D600038485 /* CheckOtpModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CheckOtpModel.swift; sourceTree = "<group>"; };
 		79E55A1D262FD74C00CBA0EE /* VolounteerModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VolounteerModel.swift; sourceTree = "<group>"; };
 		79E55A22262FD75C00CBA0EE /* GreetingCountModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GreetingCountModel.swift; sourceTree = "<group>"; };
 		79E55A27262FD77300CBA0EE /* VedioCountModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VedioCountModel.swift; sourceTree = "<group>"; };
 		79E55A2C262FD7AC00CBA0EE /* VolounteerCountService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VolounteerCountService.swift; sourceTree = "<group>"; };
 		79E55A31262FD7CE00CBA0EE /* VedioCountPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = VedioCountPresenter.swift; path = "/Users/happysanzimac/Documents/HSTiOS5/GMS Admin/GMS Admin/Common/Presenter/VedioCountPresenter.swift"; sourceTree = "<absolute>"; };
+		79E9D158268DEFA00076ACD1 /* StatusReportList.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StatusReportList.swift; sourceTree = "<group>"; };
+		79E9D15D268DF23D0076ACD1 /* StatusReportCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = StatusReportCell.swift; path = ../../../../../../StatusReportCell.swift; sourceTree = "<group>"; };
+		79EBFD25268B3FA90048D493 /* OfficePresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OfficePresenter.swift; sourceTree = "<group>"; };
+		79EBFD2A268B3FE00048D493 /* OfficeService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OfficeService.swift; sourceTree = "<group>"; };
+		79EBFD2F268B3FFF0048D493 /* OfficeModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OfficeModel.swift; sourceTree = "<group>"; };
 		7DBF413CA16A0A60CF1B6D37 /* Pods-GMS Admin.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-GMS Admin.release.xcconfig"; path = "Target Support Files/Pods-GMS Admin/Pods-GMS Admin.release.xcconfig"; sourceTree = "<group>"; };
 		C91E7D0974F47612E35B85C2 /* Pods_GMS_Admin.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_GMS_Admin.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		F83CCAC97D90DA277F993669 /* Pods-GMS Admin.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-GMS Admin.debug.xcconfig"; path = "Target Support Files/Pods-GMS Admin/Pods-GMS Admin.debug.xcconfig"; sourceTree = "<group>"; };
@@ -621,12 +747,16 @@
 			isa = PBXGroup;
 			children = (
 				6B7220D824A758D6004424CA /* LoginModel.swift */,
+				79AB3FE726B7D2F300038485 /* MobileLoginModel.swift */,
+				79AB3FF626B7D9D600038485 /* CheckOtpModel.swift */,
+				7901BD46267DD05300D950B2 /* CheckConstituentModel.swift */,
 				6B7220DA24A758E6004424CA /* ConstituencyModel.swift */,
 				6BB7E14624B2F3D100E46D28 /* ClientUrlModel.swift */,
 				6BB7E14E24B2FA3500E46D28 /* AppVersionModel.swift */,
 				6BC36B2924B33231006043D9 /* ForgotPasswordModel.swift */,
 				6BE02EDC24B49F1300AA463A /* SearchModel.swift */,
 				6BF2B92B24B5F67D00E42C4D /* AreaModel.swift */,
+				79EBFD2F268B3FFF0048D493 /* OfficeModel.swift */,
 				6B1703E924B84A4C0029DDF4 /* ConstituentMemberModel.swift */,
 				6B1703EB24B84A730029DDF4 /* TotalMeetings.swift */,
 				6B1703ED24B84A9C0029DDF4 /* TotalGreviancesModel.swift */,
@@ -652,13 +782,22 @@
 				6BE603C924C8F50D00DA7ED5 /* StaffDetailModel.swift */,
 				6BB5FCF224CAB89F003B5F56 /* ReportModel.swift */,
 				6BA49F2224CAFCBB00262ED2 /* CaategoeryModel.swift */,
+				794BA0D5269079ED00F6CFD2 /* SeekerNameModel.swift */,
+				7926A73B268F29B100B5A5E2 /* ReportMeetingModel.swift */,
 				6BA49F2424CAFCD500262ED2 /* SubCategoeryModel.swift */,
 				6BAC94FA24CB81340082FCD3 /* ReportStaffModel.swift */,
+				794BA0C92690480900F6CFD2 /* ReportGrievanceListModel.swift */,
 				6BAC950624CB8C1F0082FCD3 /* ReportBirthdayModel.swift */,
 				6B85D7F024CDED8700371319 /* UserProfileModel.swift */,
 				6B85D7F424CDEE8E00371319 /* UserProfileUpdateModel.swift */,
 				6B85D7F224CDEE3E00371319 /* UserProfilePicModel.swift */,
+				790C06712692FDD600A79346 /* FestivalListModel.swift */,
 				6B85D7F624CDEEE500371319 /* ChangePasswordModel.swift */,
+				797DE806268D985500857DE9 /* ReportFestivalModel.swift */,
+				790C063F2692D56A00A79346 /* BirthdayYearModel.swift */,
+				799139BA2693130C007CFE9A /* ReportConstituentModel.swift */,
+				799139C426932AEF007CFE9A /* ReportVedioListModel.swift */,
+				799139E4269336FE007CFE9A /* ReportStafffListModel.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -685,12 +824,16 @@
 			isa = PBXGroup;
 			children = (
 				6B7220E424A75936004424CA /* LoginService.swift */,
+				79AB3FE226B7D2DF00038485 /* MobileLoginService.swift */,
+				79AB3FF126B7D9BD00038485 /* CheckOtpService.swift */,
+				7901BD41267DD03F00D950B2 /* CheckConstituentService.swift */,
 				6B7220E624A75946004424CA /* ConstituencyService.swift */,
 				6BB7E14824B2F41000E46D28 /* ClientUrlService.swift */,
 				6BB7E15024B2FB6A00E46D28 /* AppVersionService.swift */,
 				6BC36B2B24B33353006043D9 /* ForgotPasswordService.swift */,
 				6BE02EDE24B4A2FE00AA463A /* SearchService.swift */,
 				6BF2B92D24B5F84C00E42C4D /* AreaService.swift */,
+				79EBFD2A268B3FE00048D493 /* OfficeService.swift */,
 				6B1703F124B8515F0029DDF4 /* ConstituentMemberService.swift */,
 				6BEF3F2224B87468009BA5DF /* TotalMeetingService.swift */,
 				6BEF3F2424B879EB009BA5DF /* TotalGreviancesSerVice.swift */,
@@ -715,15 +858,23 @@
 				6BE603C524C8ED0E00DA7ED5 /* StaffService.swift */,
 				6BE603CB24C8F6D800DA7ED5 /* StaffDetailService.swift */,
 				6BB5FCF424CABE74003B5F56 /* ReportService.swift */,
+				7926A745268F559900B5A5E2 /* ReportMeetingListService.swift */,
 				6BA49F2624CAFEBD00262ED2 /* CategoeryService.swift */,
+				794BA0D3269079D700F6CFD2 /* SeekerNameService.swift */,
 				6BA49F2824CAFED000262ED2 /* SubCategoeryService.swift */,
 				6BAC94EE24CB6EB70082FCD3 /* ReportMeetingService.swift */,
 				6BAC94FC24CB82400082FCD3 /* ReportStaffService.swift */,
+				794BA0C7269047F600F6CFD2 /* ReportGrievanceListService.swift */,
 				6BAC950824CB8D310082FCD3 /* ReportBirthDayService.swift */,
+				790C06512692EE2D00A79346 /* ReportFestivalService.swift */,
 				6B85D7F824CDF4E000371319 /* ProfileDetailService.swift */,
 				6B85D7FA24CDF4EF00371319 /* ProfileUpdateService.swift */,
+				790C066C2692FDC500A79346 /* FestivalListService.swift */,
 				6B85D7FC24CDF50300371319 /* ProfilePicUploadService.swift */,
 				6B85D7FE24CDF51200371319 /* ChangePasswordService.swift */,
+				790C063A2692D55700A79346 /* BirthdayYearService.swift */,
+				799139B5269312FA007CFE9A /* ReportConstituentService.swift */,
+				799139DA269336BA007CFE9A /* ReportStaffListService.swift */,
 			);
 			path = Service;
 			sourceTree = "<group>";
@@ -732,12 +883,16 @@
 			isa = PBXGroup;
 			children = (
 				6B7220E824A75955004424CA /* LoginPresenter.swift */,
+				79AB3FDD26B7D2B900038485 /* MobileLoginPresenter.swift */,
+				7901BD3C267DD02B00D950B2 /* CheckConstituentPresenter.swift */,
+				79AB3FEC26B7D9A900038485 /* CheckOtpPresenter.swift */,
 				6B7220EA24A75962004424CA /* ConstituencyPresenter.swift */,
 				6BB7E14A24B2F43200E46D28 /* ClientUrlPresenter.swift */,
 				6BB7E15224B2FB9300E46D28 /* AppVersionPresenter.swift */,
 				6BC36B2D24B333C9006043D9 /* ForgotPasswordPresenter.swift */,
 				6BE02EE024B4A34400AA463A /* SearchPresenter.swift */,
 				6BF2B92F24B5F8B300E42C4D /* PaguthiPresenter.swift */,
+				79EBFD25268B3FA90048D493 /* OfficePresenter.swift */,
 				6B1703F324B8523C0029DDF4 /* ConstituentMemberPresenter.swift */,
 				6BEF3F2024B87303009BA5DF /* TotalMeetingPresenter.swift */,
 				6B8AFCA32591F24E00B3B713 /* FootFallCountPresenter.swift */,
@@ -761,16 +916,25 @@
 				6BE603C724C8ED5500DA7ED5 /* StaffPresenter.swift */,
 				6BE603CD24C8F72A00DA7ED5 /* StaffDetailPresenter.swift */,
 				6BB5FCF624CABF18003B5F56 /* ReportPresenter.swift */,
+				7926A740268F54D300B5A5E2 /* ReportMeetingListPresenter.swift */,
 				6BA49F2A24CAFF2C00262ED2 /* CategoeryPresenter.swift */,
 				6BA49F2C24CAFF4000262ED2 /* SubCategoeryPresenter.swift */,
 				6BAC94F024CB6F000082FCD3 /* ReportMeetingPresenter.swift */,
+				794BA0CE269079B900F6CFD2 /* SeekerNamePresenter.swift */,
 				6BAC94FE24CB828E0082FCD3 /* ReportStaffPresenter.swift */,
 				6BAC950A24CB8DBE0082FCD3 /* ReportBirthdayPresenter.swift */,
+				794BA0C2269047D400F6CFD2 /* ReportGrievanceListPresenter.swift */,
 				6B85D80024CDF82A00371319 /* ProfileDetailPresenter.swift */,
+				797DE7FC268D97D900857DE9 /* ReportFestivalPresenter.swift */,
 				6B85D80224CDF84000371319 /* ProfileUpdatePresenter.swift */,
 				6B85D80424CDF85200371319 /* ProfilePicPresenter.swift */,
 				6B85D80624CDF86200371319 /* ChangePasswordPresenter.swift */,
+				790C06672692FD8C00A79346 /* FestivalListPresenter.swift */,
 				79E55A31262FD7CE00CBA0EE /* VedioCountPresenter.swift */,
+				790C06352692D52F00A79346 /* BirthdayYearPresenter.swift */,
+				799139B0269312E3007CFE9A /* ReportConstituentPresenter.swift */,
+				799139BF269329D9007CFE9A /* ReportVideoListPresenter.swift */,
+				799139D5269336A5007CFE9A /* ReportStaffListPresenter.swift */,
 			);
 			path = Presenter;
 			sourceTree = "<group>";
@@ -798,10 +962,14 @@
 			isa = PBXGroup;
 			children = (
 				6B7220A124A7578B004424CA /* Login.swift */,
+				79AB3FD826B7D0FC00038485 /* MobileLogin.swift */,
+				796F9270267E60EC00F43475 /* OTPVc.swift */,
+				7901BD37267DD00500D950B2 /* CheckConstituentCodeVC.swift */,
 				6B7220EC24A7597F004424CA /* Constituency.swift */,
 				6BC36B2724B3313B006043D9 /* ForgotPassword.swift */,
 				6BE7922424B7330500FB087F /* CustomLabelsXAxisValueFormatter.swift */,
 				6BD604E824B5132400EB84D3 /* DashBoard.swift */,
+				790828ED2688203F004E28C1 /* GarphFootFallVC.swift */,
 				6B8AFC9E2591E61A00B3B713 /* WidgetFootFall.swift */,
 				6B1110B5259456890061B2A9 /* FootFallDetails.swift */,
 				6BA1165C2591AC7E0087FB7D /* WidgetGrievance.swift */,
@@ -834,15 +1002,6 @@
 				6BE603B924C8D18500DA7ED5 /* GreivancesAllDetail.swift */,
 				6BE603BD24C8E9F600DA7ED5 /* Staff.swift */,
 				6BE603BF24C8EA4D00DA7ED5 /* StaffDetail.swift */,
-				6B966D5524CA28430045BB3A /* Report.swift */,
-				6B966D5724CA28680045BB3A /* ReportStatus.swift */,
-				6B966D5924CA28800045BB3A /* ReportList.swift */,
-				6B966D5B24CA28960045BB3A /* ReportSearch.swift */,
-				6BAC94E824CB6D500082FCD3 /* ReportMeeting.swift */,
-				6BAC94EA24CB6D6B0082FCD3 /* ReportMeetingSearch.swift */,
-				6BAC94F424CB7CC80082FCD3 /* ReportStaff.swift */,
-				6BAC950024CB8A0D0082FCD3 /* ReportBirthday.swift */,
-				6BAC950224CB8A2B0082FCD3 /* ReportBirthDaySearch.swift */,
 				6BCE976224CDD53B0032E5EF /* Settings.swift */,
 				6BCE976424CDD55E0032E5EF /* UserProfile.swift */,
 				6BCE976624CDD5780032E5EF /* ChangePassword.swift */,
@@ -853,6 +1012,11 @@
 				6B6494D32594D13000D68D40 /* WidgetVolounteer.swift */,
 				6B02B6752595A129000567F4 /* GreetingCount.swift */,
 				6B69ACF225BBF6FF006E672E /* GrievanceCountDetails.swift */,
+				7971DA0F26B9458D0068A996 /* MeetingTabViewController.swift */,
+				7971DA1226B945930068A996 /* CompletedViewController.swift */,
+				7971DA1026B9458E0068A996 /* RequestedViewController.swift */,
+				7971DA1126B945920068A996 /* ScheduleViewController.swift */,
+				797DE7DE268D80F700857DE9 /* Report */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -920,7 +1084,14 @@
 				6BE603C124C8EA6400DA7ED5 /* StaffCell.swift */,
 				6B966D5D24CA28AE0045BB3A /* ReportListCell.swift */,
 				6BAC94F824CB80C10082FCD3 /* ReportStaffCell.swift */,
+				79E9D15D268DF23D0076ACD1 /* StatusReportCell.swift */,
 				6BAC950424CB8A510082FCD3 /* ReportBirthdayCellTableViewCell.swift */,
+				792293A6268DC25100A84A50 /* ReportConstituentInfoCell.swift */,
+				790C067E26930D1600A79346 /* ConstituentListCell.swift */,
+				799139D026933217007CFE9A /* ReportStaffListCell.swift */,
+				7971DA0726B945390068A996 /* CompletedCell.swift */,
+				7971DA0826B9453A0068A996 /* RequestedCell.swift */,
+				7971DA0626B945390068A996 /* SceduledCell.swift */,
 			);
 			path = Cells;
 			sourceTree = "<group>";
@@ -938,6 +1109,32 @@
 				6BCE976024CDC44B0032E5EF /* Profile.storyboard */,
 			);
 			path = StoryBoards;
+			sourceTree = "<group>";
+		};
+		797DE7DE268D80F700857DE9 /* Report */ = {
+			isa = PBXGroup;
+			children = (
+				6B966D5524CA28430045BB3A /* Report.swift */,
+				6B966D5724CA28680045BB3A /* ReportStatus.swift */,
+				6B966D5924CA28800045BB3A /* ReportList.swift */,
+				79E9D158268DEFA00076ACD1 /* StatusReportList.swift */,
+				6B966D5B24CA28960045BB3A /* ReportSearch.swift */,
+				6BAC94E824CB6D500082FCD3 /* ReportMeeting.swift */,
+				6BAC94EA24CB6D6B0082FCD3 /* ReportMeetingSearch.swift */,
+				6BAC94F424CB7CC80082FCD3 /* ReportStaff.swift */,
+				6BAC950024CB8A0D0082FCD3 /* ReportBirthday.swift */,
+				6BAC950224CB8A2B0082FCD3 /* ReportBirthDaySearch.swift */,
+				797DE7E5268D817100857DE9 /* ReportMeetingVC.swift */,
+				797DE7EA268D874500857DE9 /* ReporBirthdayVC.swift */,
+				797DE7EF268D94C600857DE9 /* ReportFestivalVc.swift */,
+				797DE80B268DA16800857DE9 /* ReportGrievanceVC.swift */,
+				7922938F268DA89900A84A50 /* ReportVideoVC.swift */,
+				79229394268DAB5300A84A50 /* ReportStaffVC.swift */,
+				792293A1268DB62200A84A50 /* ReportConstituentVC.swift */,
+				790C067926930C9500A79346 /* ConstituentListVC.swift */,
+				799139CE269331E7007CFE9A /* ReportStaffListVC.swift */,
+			);
+			path = Report;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -1135,6 +1332,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				799139D126933217007CFE9A /* ReportStaffListCell.swift in Sources */,
 				6BC8FE4524BCFECF007457A2 /* InteractionCell.swift in Sources */,
 				6BC0724924C6062300BD09E4 /* ConstituentGreivancesModel.swift in Sources */,
 				6B1703EA24B84A4C0029DDF4 /* ConstituentMemberModel.swift in Sources */,
@@ -1145,45 +1343,64 @@
 				6BC36B2C24B33353006043D9 /* ForgotPasswordService.swift in Sources */,
 				6B2B1E4624C85F8B00D78634 /* MeetingAllDetailUpdateService.swift in Sources */,
 				6BB7E14F24B2FA3500E46D28 /* AppVersionModel.swift in Sources */,
+				797DE7E6268D817100857DE9 /* ReportMeetingVC.swift in Sources */,
+				790828EE26882040004E28C1 /* GarphFootFallVC.swift in Sources */,
 				6BE603B424C8C0B500DA7ED5 /* GreivancesAllService.swift in Sources */,
 				6B1703F424B8523C0029DDF4 /* ConstituentMemberPresenter.swift in Sources */,
+				797DE807268D985500857DE9 /* ReportFestivalModel.swift in Sources */,
 				6B85D7F524CDEE8E00371319 /* UserProfileUpdateModel.swift in Sources */,
 				6BB7E15324B2FB9300E46D28 /* AppVersionPresenter.swift in Sources */,
+				7926A746268F559900B5A5E2 /* ReportMeetingListService.swift in Sources */,
+				7971DA1526B945930068A996 /* ScheduleViewController.swift in Sources */,
 				6BA3D7DC24DAB17C004AFEAE /* SentenceCase.swift in Sources */,
+				794BA0D4269079D700F6CFD2 /* SeekerNameService.swift in Sources */,
 				6BC8FE3B24BCF8E9007457A2 /* PlantDonation.swift in Sources */,
+				794BA0CF269079B900F6CFD2 /* SeekerNamePresenter.swift in Sources */,
+				79229395268DAB5300A84A50 /* ReportStaffVC.swift in Sources */,
+				7926A741268F54D400B5A5E2 /* ReportMeetingListPresenter.swift in Sources */,
+				797DE80C268DA16800857DE9 /* ReportGrievanceVC.swift in Sources */,
 				6BC8FE4724BD0B16007457A2 /* DocumentCell.swift in Sources */,
 				6BAC94F924CB80C10082FCD3 /* ReportStaffCell.swift in Sources */,
 				6BE02EDD24B49F1300AA463A /* SearchModel.swift in Sources */,
 				6B1703EE24B84A9C0029DDF4 /* TotalGreviancesModel.swift in Sources */,
 				6BAC94E924CB6D500082FCD3 /* ReportMeeting.swift in Sources */,
 				6BAC94FF24CB828E0082FCD3 /* ReportStaffPresenter.swift in Sources */,
+				7971DA1626B945930068A996 /* CompletedViewController.swift in Sources */,
 				6BC8FE4D24BD0F51007457A2 /* GriDocumentModel.swift in Sources */,
 				6BE603B224C8BE9100DA7ED5 /* GreivancesAll.swift in Sources */,
 				6B966D5E24CA28AE0045BB3A /* ReportListCell.swift in Sources */,
 				6BE603C824C8ED5500DA7ED5 /* StaffPresenter.swift in Sources */,
 				6B2B1E3024C829CF00D78634 /* MeetingAllService.swift in Sources */,
 				6BE4E10124B1EEE800FD735B /* RoundedCornersForButton.swift in Sources */,
+				790C066D2692FDC500A79346 /* FestivalListService.swift in Sources */,
 				6BB8D11224C18E53002A2B20 /* ACFloatingTextfield.swift in Sources */,
 				6B2B1E3224C82A2800D78634 /* MeetingAllPresenter.swift in Sources */,
 				6B7220ED24A7597F004424CA /* Constituency.swift in Sources */,
 				6B6494CF2594D04D00D68D40 /* WidgetVedio.swift in Sources */,
+				79EBFD26268B3FA90048D493 /* OfficePresenter.swift in Sources */,
 				6B74F78624BB9F3900CC95F9 /* ListConstituentservice.swift in Sources */,
 				6BC8FE4924BD0B6C007457A2 /* Document.swift in Sources */,
+				79AB3FE826B7D2F300038485 /* MobileLoginModel.swift in Sources */,
 				6BC0725324C62DF000BD09E4 /* ConstituentGreivancesDetail.swift in Sources */,
+				79EBFD2B268B3FE00048D493 /* OfficeService.swift in Sources */,
 				6BB5FCF724CABF18003B5F56 /* ReportPresenter.swift in Sources */,
+				797DE7F0268D94C700857DE9 /* ReportFestivalVc.swift in Sources */,
 				6BBB901D24C69C0500BF2C43 /* ConstituentGreivancesMessageService.swift in Sources */,
 				6B1703F024B84AFA0029DDF4 /* ConstituentInteractionModel.swift in Sources */,
 				6B7C2E1B24C7178F0077FAC2 /* ConstituencyInfo.swift in Sources */,
 				6B966D5624CA28430045BB3A /* Report.swift in Sources */,
 				6BEF3F2B24B88903009BA5DF /* ConstituentInteractionService.swift in Sources */,
 				6BBB901F24C69C7200BF2C43 /* ConstituentGreivancesMessagePresenter.swift in Sources */,
+				799139C0269329D9007CFE9A /* ReportVideoListPresenter.swift in Sources */,
 				6BD881CF24B3464A00B1DCEF /* IconInTextfield.swift in Sources */,
 				6B2B1E4424C85E1A00D78634 /* MeetingAllDetailUpdateModel.swift in Sources */,
 				6BA49F2B24CAFF2C00262ED2 /* CategoeryPresenter.swift in Sources */,
+				790C06522692EE2D00A79346 /* ReportFestivalService.swift in Sources */,
 				6B6494CA2594C78600D68D40 /* WidgetsMeeting.swift in Sources */,
 				6BC8FE5324BD1113007457A2 /* ConsDocumentPresenter.swift in Sources */,
 				6BA49F2924CAFED000262ED2 /* SubCategoeryService.swift in Sources */,
 				6BE603CA24C8F50D00DA7ED5 /* StaffDetailModel.swift in Sources */,
+				799139B6269312FA007CFE9A /* ReportConstituentService.swift in Sources */,
 				6B85D7FB24CDF4EF00371319 /* ProfileUpdateService.swift in Sources */,
 				6B9A3F6D24B9BE0400B1D349 /* Constituent.swift in Sources */,
 				79E55A28262FD77300CBA0EE /* VedioCountModel.swift in Sources */,
@@ -1196,22 +1413,33 @@
 				6B2B1E3A24C83B4000D78634 /* MeetingAllSearch.swift in Sources */,
 				6BA49F2D24CAFF4000262ED2 /* SubCategoeryPresenter.swift in Sources */,
 				6BAC950924CB8D310082FCD3 /* ReportBirthDayService.swift in Sources */,
+				799139E5269336FE007CFE9A /* ReportStafffListModel.swift in Sources */,
 				6B7C2E1C24C7178F0077FAC2 /* ProfileDetails.swift in Sources */,
+				7971DA1426B945930068A996 /* RequestedViewController.swift in Sources */,
+				790C06722692FDD600A79346 /* FestivalListModel.swift in Sources */,
 				6BB7E14524B2F11100E46D28 /* APIManager.swift in Sources */,
+				79229390268DA89900A84A50 /* ReportVideoVC.swift in Sources */,
 				6BCE976724CDD5780032E5EF /* ChangePassword.swift in Sources */,
+				792293A7268DC25100A84A50 /* ReportConstituentInfoCell.swift in Sources */,
+				79AB3FF726B7D9D600038485 /* CheckOtpModel.swift in Sources */,
 				6B74F78424BB9EC600CC95F9 /* ListConstiuentModel.swift in Sources */,
 				6BEF3F2724B87A44009BA5DF /* TotalGreviancesPresenter.swift in Sources */,
 				6BB5FCF524CABE74003B5F56 /* ReportService.swift in Sources */,
 				6BA1165D2591AC7E0087FB7D /* WidgetGrievance.swift in Sources */,
 				6BAC950124CB8A0D0082FCD3 /* ReportBirthday.swift in Sources */,
+				797DE7FD268D97D900857DE9 /* ReportFestivalPresenter.swift in Sources */,
+				794BA0C8269047F600F6CFD2 /* ReportGrievanceListService.swift in Sources */,
 				6BC8FE2F24BCE536007457A2 /* MeetingCell.swift in Sources */,
 				79E55A1E262FD74C00CBA0EE /* VolounteerModel.swift in Sources */,
+				794BA0D6269079ED00F6CFD2 /* SeekerNameModel.swift in Sources */,
+				799139BB2693130C007CFE9A /* ReportConstituentModel.swift in Sources */,
 				6B71CDED24B3AB660099ECC8 /* Menu.swift in Sources */,
 				6B74F77B24BB7C1700CC95F9 /* ViewController.m in Sources */,
 				6B1703F224B8515F0029DDF4 /* ConstituentMemberService.swift in Sources */,
 				6BE4E0FF24B1EEE800FD735B /* RoundedcornerForUIView.swift in Sources */,
 				6B966D5A24CA28800045BB3A /* ReportList.swift in Sources */,
 				6BAC94EF24CB6EB70082FCD3 /* ReportMeetingService.swift in Sources */,
+				790C06402692D56A00A79346 /* BirthdayYearModel.swift in Sources */,
 				6BAC94F524CB7CC80082FCD3 /* ReportStaff.swift in Sources */,
 				6B7220EB24A75962004424CA /* ConstituencyPresenter.swift in Sources */,
 				6BC8FE2D24BCE4DF007457A2 /* MeetingPresenter.swift in Sources */,
@@ -1221,6 +1449,7 @@
 				6B85D80324CDF84000371319 /* ProfileUpdatePresenter.swift in Sources */,
 				6BEF3F2524B879EB009BA5DF /* TotalGreviancesSerVice.swift in Sources */,
 				6BC36B2A24B33231006043D9 /* ForgotPasswordModel.swift in Sources */,
+				79AB3FDE26B7D2B900038485 /* MobileLoginPresenter.swift in Sources */,
 				6BC8FE2324BCD0DD007457A2 /* ConstituentDetailModel.swift in Sources */,
 				6BE603C424C8EC2B00DA7ED5 /* StaffModel.swift in Sources */,
 				6BC8FE2524BCD4AD007457A2 /* ConstituentDetailService.swift in Sources */,
@@ -1236,13 +1465,17 @@
 				6BEF3F3124B89163009BA5DF /* WidgetInterActionCell.swift in Sources */,
 				6B7220D924A758D6004424CA /* LoginModel.swift in Sources */,
 				6BC36B2E24B333C9006043D9 /* ForgotPasswordPresenter.swift in Sources */,
+				79E9D159268DEFA00076ACD1 /* StatusReportList.swift in Sources */,
 				6B7220E724A75946004424CA /* ConstituencyService.swift in Sources */,
+				794BA0CA2690480900F6CFD2 /* ReportGrievanceListModel.swift in Sources */,
 				6B7220DB24A758E6004424CA /* ConstituencyModel.swift in Sources */,
 				6BC8FE4324BCFE47007457A2 /* InterAction.swift in Sources */,
 				6B02B6922595A96B000567F4 /* VedioCountService.swift in Sources */,
 				6BF2B93024B5F8B300E42C4D /* PaguthiPresenter.swift in Sources */,
 				6B85D7F324CDEE3E00371319 /* UserProfilePicModel.swift in Sources */,
 				6BBB902324C69DE800BF2C43 /* ConstituentGreivancesMessageCell.swift in Sources */,
+				799139CF269331E7007CFE9A /* ReportStaffListVC.swift in Sources */,
+				79E9D15E268DF23D0076ACD1 /* StatusReportCell.swift in Sources */,
 				6BC8FE2B24BCE445007457A2 /* MeetingService.swift in Sources */,
 				79E55A23262FD75C00CBA0EE /* GreetingCountModel.swift in Sources */,
 				6B85D7FF24CDF51200371319 /* ChangePasswordService.swift in Sources */,
@@ -1256,18 +1489,22 @@
 				6BE7922724B749EF00FB087F /* MoreGraph.swift in Sources */,
 				6B1110B6259456890061B2A9 /* FootFallDetails.swift in Sources */,
 				6BAC94F124CB6F000082FCD3 /* ReportMeetingPresenter.swift in Sources */,
+				794BA0C3269047D500F6CFD2 /* ReportGrievanceListPresenter.swift in Sources */,
 				6BC8FE3F24BCFD15007457A2 /* InteractionService.swift in Sources */,
+				79AB3FED26B7D9A900038485 /* CheckOtpPresenter.swift in Sources */,
 				6B02B6762595A129000567F4 /* GreetingCount.swift in Sources */,
 				6BE4E10C24B1EF0200FD735B /* AlertController.swift in Sources */,
 				6BE603C224C8EA6400DA7ED5 /* StaffCell.swift in Sources */,
 				6B966D5C24CA28960045BB3A /* ReportSearch.swift in Sources */,
 				6B8AFCA92591F2A000B3B713 /* FootFallService.swift in Sources */,
+				799139DB269336BA007CFE9A /* ReportStaffListService.swift in Sources */,
 				6BE603CC24C8F6D800DA7ED5 /* StaffDetailService.swift in Sources */,
 				6BA955D224B5D806007982B8 /* AFWrapper.swift in Sources */,
 				6B72209E24A7578B004424CA /* AppDelegate.swift in Sources */,
 				6BAC950724CB8C1F0082FCD3 /* ReportBirthdayModel.swift in Sources */,
 				6BB5FCF324CAB89F003B5F56 /* ReportModel.swift in Sources */,
 				6B8AFCA42591F24E00B3B713 /* FootFallCountPresenter.swift in Sources */,
+				790C06682692FD8C00A79346 /* FestivalListPresenter.swift in Sources */,
 				6B7220E524A75936004424CA /* LoginService.swift in Sources */,
 				6BCE976524CDD55E0032E5EF /* UserProfile.swift in Sources */,
 				6BB7E14924B2F41000E46D28 /* ClientUrlService.swift in Sources */,
@@ -1279,12 +1516,16 @@
 				6BEF3F2D24B88988009BA5DF /* ConstituentinterActionPresenter.swift in Sources */,
 				6BE603BE24C8E9F600DA7ED5 /* Staff.swift in Sources */,
 				6BAC94FB24CB81340082FCD3 /* ReportStaffModel.swift in Sources */,
+				79EBFD30268B3FFF0048D493 /* OfficeModel.swift in Sources */,
+				7901BD42267DD03F00D950B2 /* CheckConstituentService.swift in Sources */,
+				7971DA0926B9453A0068A996 /* SceduledCell.swift in Sources */,
 				6B7C2E1724C717690077FAC2 /* EmptySegue.swift in Sources */,
 				6B966D5824CA28680045BB3A /* ReportStatus.swift in Sources */,
 				6BC8FE3D24BCFC2A007457A2 /* InteractionModel.swift in Sources */,
 				6B02B6802595A1AD000567F4 /* GreetingCountService.swift in Sources */,
 				6B85D7F924CDF4E000371319 /* ProfileDetailService.swift in Sources */,
 				6BC8FE4F24BD106F007457A2 /* ConsDocumentService.swift in Sources */,
+				796F9271267E60EC00F43475 /* OTPVc.swift in Sources */,
 				6BB7E15124B2FB6A00E46D28 /* AppVersionService.swift in Sources */,
 				6B6B3CE624C87B69006DA7FD /* MeetingAllDetailUpdatePresenter.swift in Sources */,
 				6B85D7FD24CDF50300371319 /* ProfilePicUploadService.swift in Sources */,
@@ -1294,10 +1535,14 @@
 				6BC36B2824B3313B006043D9 /* ForgotPassword.swift in Sources */,
 				6B85D7F124CDED8700371319 /* UserProfileModel.swift in Sources */,
 				6B2B1E4224C8472E00D78634 /* MeetingAllDetailPresenter.swift in Sources */,
+				790C063B2692D55700A79346 /* BirthdayYearService.swift in Sources */,
 				6B85D80724CDF86200371319 /* ChangePasswordPresenter.swift in Sources */,
+				7901BD47267DD05300D950B2 /* CheckConstituentModel.swift in Sources */,
+				790C067A26930C9500A79346 /* ConstituentListVC.swift in Sources */,
 				6BB7E14B24B2F43200E46D28 /* ClientUrlPresenter.swift in Sources */,
 				6BE4E10024B1EEE800FD735B /* ShadowEffectForUIView.swift in Sources */,
 				6BB7E14D24B2F4A500E46D28 /* ConstituencyCell.swift in Sources */,
+				79AB3FF226B7D9BD00038485 /* CheckOtpService.swift in Sources */,
 				6BA49F2724CAFEBD00262ED2 /* CategoeryService.swift in Sources */,
 				6BCE976324CDD53B0032E5EF /* Settings.swift in Sources */,
 				6BCE976B24CDD59C0032E5EF /* TermsAndCondition.swift in Sources */,
@@ -1307,8 +1552,10 @@
 				6BC8FE3724BCF791007457A2 /* PlantDonationService.swift in Sources */,
 				6BEE0CF524B447750032EFA4 /* Search.swift in Sources */,
 				6BF2B92C24B5F67D00E42C4D /* AreaModel.swift in Sources */,
+				7901BD3D267DD02B00D950B2 /* CheckConstituentPresenter.swift in Sources */,
 				6BC8FE5524BD1125007457A2 /* GriDocumentPresenter.swift in Sources */,
 				6BF2B92E24B5F84C00E42C4D /* AreaService.swift in Sources */,
+				790C067F26930D1600A79346 /* ConstituentListCell.swift in Sources */,
 				6BE4E10B24B1EF0200FD735B /* ActivityIndicator.swift in Sources */,
 				6BC8FE3124BCE54B007457A2 /* Meeting.swift in Sources */,
 				6BD604E924B5132400EB84D3 /* DashBoard.swift in Sources */,
@@ -1316,14 +1563,22 @@
 				6BE4E10424B1EEE800FD735B /* OneSidedRoundedCorners.swift in Sources */,
 				6BAC950324CB8A2B0082FCD3 /* ReportBirthDaySearch.swift in Sources */,
 				6BC8FE4B24BD0D58007457A2 /* ConsDocumentModel.swift in Sources */,
+				7926A73C268F29B100B5A5E2 /* ReportMeetingModel.swift in Sources */,
+				797DE7EB268D874500857DE9 /* ReporBirthdayVC.swift in Sources */,
 				6BC295E324BC89F400DB8640 /* GradientColors.swift in Sources */,
 				6BC8FE3924BCF825007457A2 /* PlantDonationPresenter.swift in Sources */,
+				799139D6269336A5007CFE9A /* ReportStaffListPresenter.swift in Sources */,
 				6BE4E10224B1EEE800FD735B /* TapToDismissKeypad.swift in Sources */,
+				799139C526932AEF007CFE9A /* ReportVedioListModel.swift in Sources */,
+				799139B1269312E3007CFE9A /* ReportConstituentPresenter.swift in Sources */,
 				6B6494D42594D13000D68D40 /* WidgetVolounteer.swift in Sources */,
+				790C06362692D52F00A79346 /* BirthdayYearPresenter.swift in Sources */,
 				6BAC94FD24CB82400082FCD3 /* ReportStaffService.swift in Sources */,
 				6BE603B624C8C0DF00DA7ED5 /* GreivancesAllPresenter.swift in Sources */,
 				6BBE649624D18B4A00B508D3 /* DateFormatter.swift in Sources */,
+				792293A2268DB62200A84A50 /* ReportConstituentVC.swift in Sources */,
 				6BC0724D24C6094A00BD09E4 /* ConstituentgreivancesPresenter.swift in Sources */,
+				79AB3FD926B7D0FC00038485 /* MobileLogin.swift in Sources */,
 				6BD8B8F724C68902007525D9 /* ConsGrieMessageModel.swift in Sources */,
 				6BE603CE24C8F72A00DA7ED5 /* StaffDetailPresenter.swift in Sources */,
 				6BE603C024C8EA4D00DA7ED5 /* StaffDetail.swift in Sources */,
@@ -1340,11 +1595,16 @@
 				6BE4E10D24B1EF0200FD735B /* Constants.swift in Sources */,
 				6B85D80124CDF82A00371319 /* ProfileDetailPresenter.swift in Sources */,
 				6B7C2E1824C717690077FAC2 /* Container.swift in Sources */,
+				7971DA0B26B9453A0068A996 /* RequestedCell.swift in Sources */,
 				6B8AFCAE2591F2B900B3B713 /* FootFallModel.swift in Sources */,
 				6B2B1E2E24C825F800D78634 /* MeetingAllModel.swift in Sources */,
+				79AB3FE326B7D2DF00038485 /* MobileLoginService.swift in Sources */,
 				6B02B67B2595A168000567F4 /* GreetingCountPresenter.swift in Sources */,
+				7901BD38267DD00500D950B2 /* CheckConstituentCodeVC.swift in Sources */,
+				7971DA1326B945930068A996 /* MeetingTabViewController.swift in Sources */,
 				6BAEF77424BEE52200CB458A /* DashBoardModel.swift in Sources */,
 				6BC8FE3524BCF660007457A2 /* PlantDonationModel.swift in Sources */,
+				7971DA0A26B9453A0068A996 /* CompletedCell.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1524,7 +1784,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 6V986NC4N5;
 				INFOPLIST_FILE = "GMS Admin/Info.plist";
-				IPHONEOS_DEPLOYMENT_TARGET = 12.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 14.4;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -1550,7 +1810,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 6V986NC4N5;
 				INFOPLIST_FILE = "GMS Admin/Info.plist";
-				IPHONEOS_DEPLOYMENT_TARGET = 12.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 14.4;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",

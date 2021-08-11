@@ -10,9 +10,9 @@ import UIKit
 
 class TotalGreviancesSerVice: NSObject {
 
-    public func callAPITotalGreivances(paguthi:String,from_date:String,to_date:String, onSuccess successCallback: ((_ totalGreviancesModel: TotalGreviancesModel) -> Void)?,onFailure failureCallback: ((_ errorMessage: String) -> Void)?) {
+    public func callAPITotalGreivances(paguthi:String,from_date:String,to_date:String,dynamic_db:String, onSuccess successCallback: ((_ totalGreviancesModel: TotalGreviancesModel) -> Void)?,onFailure failureCallback: ((_ errorMessage: String) -> Void)?) {
         APIManager.instance.callAPITotalGreivances(
-            paguthi: paguthi,from_date:from_date,to_date:to_date, onSuccess: { (totalGreviancesModel) in
+            paguthi: paguthi,from_date:from_date,dynamic_db:dynamic_db, to_date:to_date,onSuccess: { (totalGreviancesModel) in
                 successCallback?(totalGreviancesModel)
             },
             onFailure: { (errorMessage) in

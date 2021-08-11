@@ -10,9 +10,9 @@ import UIKit
 
 class ConstituentInteractionService: NSObject {
     
-    public func callAPIConstituentIneraction(paguthi:String, onSuccess successCallback: ((_ constituentInteractionModel: [ConstituentInteractionModel]) -> Void)?,onFailure failureCallback: ((_ errorMessage: String) -> Void)?) {
+    public func callAPIConstituentIneraction(paguthi:String, dynamic_db:String,onSuccess successCallback: ((_ constituentInteractionModel: [ConstituentInteractionModel]) -> Void)?,onFailure failureCallback: ((_ errorMessage: String) -> Void)?) {
         APIManager.instance.callAPIConstituentInteraction(
-          paguthi: paguthi, onSuccess: { (constituentInteractionModel) in
+            dynamic_db:dynamic_db, paguthi: paguthi, onSuccess: { (constituentInteractionModel) in
                 successCallback?(constituentInteractionModel)
             },
             onFailure: { (errorMessage) in

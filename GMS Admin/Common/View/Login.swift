@@ -17,6 +17,8 @@ class Login: UIViewController  {
     @IBOutlet var password: UITextField!
     @IBOutlet var hidePswrdOutlet: UIButton!
     @IBOutlet var constituencyOutlet: UIButton!
+    @IBOutlet weak var view1: UIView!
+    @IBOutlet weak var view2: UIView!
     
     /*Get login Data */
     let presenter = LoginPresenter(loginService: LoginService())
@@ -32,12 +34,23 @@ class Login: UIViewController  {
         NSAttributedString(string: "Select Constituency", attributes: [NSAttributedString.Key.foregroundColor: UIColor.black])
         /*Tap anywhere to hide keypad*/
         self.hideKeyboardWhenTappedAround()
-        //
+        self.addCustomizedBackBtn(title:"")
+//        view1.layer.cornerRadius = 6
+//        view1.layer.shadowColor = UIColor.darkGray.cgColor
+//        view1.layer.shadowOpacity = 0.5
+//        view1.layer.shadowOffset = CGSize.zero
+//        view1.layer.shadowRadius = 3
+//
+//        view2.layer.cornerRadius = 6
+//        view2.layer.shadowColor = UIColor.darkGray.cgColor
+//        view2.layer.shadowOpacity = 0.5
+//        view2.layer.shadowOffset = CGSize.zero
+//        view2.layer.shadowRadius = 3
     }
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        navigationController?.setNavigationBarHidden(true, animated: animated)
+//        navigationController?.setNavigationBarHidden(true, animated: animated)
     }
     
     @IBAction func selectConstituency(_ sender: Any){
@@ -48,9 +61,7 @@ class Login: UIViewController  {
              })
              return
         }
-        
         self.popOverButtonClick(sender: self.constituencyOutlet)
-
     }
     
     func popOverButtonClick (sender: UIButton)
@@ -74,7 +85,7 @@ class Login: UIViewController  {
     
     @IBAction func hidePassword(_ sender: Any) {
         
-        if visioIsClicked == true{
+        if visioIsClicked == true {
             self.visioIsClicked = false
             self.hidePswrdOutlet.setImage(UIImage(named: "visionHide"), for: .normal)
             self.password.isSecureTextEntry = true
@@ -86,22 +97,22 @@ class Login: UIViewController  {
         }
     }
     
-    @IBAction func go(_ sender: Any){
+    @IBAction func go(_ sender: Any) {
               
         guard CheckValuesAreEmpty () else {
               return
         }
-        
         self.callAPILogin()
               
     }
+    
     @IBAction func forgotPassoword(_ sender: Any) {
         
-        guard CheckValuesForConstituency () else {
-              return
-        }
+//        guard CheckValuesForConstituency () else {
+//              return
+//        }
         
-        self.performSegue(withIdentifier: "to_fp", sender: self)
+//        self.performSegue(withIdentifier: "to_fp", sender: self)
     }
     
     func CheckValuesForConstituency () -> Bool
@@ -166,7 +177,7 @@ class Login: UIViewController  {
     func callAPILogin ()
     {
         presenter.attachView(view: self)
-        presenter.getLoginData(user_name: self.email.text!, password: self.password.text!)
+        presenter.getLoginData(user_name: self.email.text!, password: self.password.text!,dynamic_db:GlobalVariables.shared.dynamic_db)
     }
 }
 

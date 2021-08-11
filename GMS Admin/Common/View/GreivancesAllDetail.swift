@@ -42,11 +42,13 @@ class GreivancesAllDetail: UIViewController {
     @IBOutlet var descHeight: UILabel!
     @IBOutlet var descripitionBaseHeight: NSLayoutConstraint!
     
+    @IBOutlet weak var backView: UIView!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 
         // Do any additional setup after loading the view.
-        self.addCustomizedBackBtn(title:"  Grievance Details")
+//        self.addCustomizedBackBtn(title:"  Grievance Details")
         self.place.text = _place
         self.seekerType.text = _seekerType
         self.petitionNumber.text = _petitionNumber
@@ -88,6 +90,11 @@ class GreivancesAllDetail: UIViewController {
             self.status.layer.cornerRadius = 4.0
             self.status.clipsToBounds = true
         }
+        backView.layer.cornerRadius = 6
+        backView.layer.shadowColor = UIColor.darkGray.cgColor
+        backView.layer.shadowOpacity = 0.5
+        backView.layer.shadowOffset = CGSize.zero
+        backView.layer.shadowRadius = 3
     }
     
     func formattedDateFromString(dateString: String, withFormat format: String) -> String? {

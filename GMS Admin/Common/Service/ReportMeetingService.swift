@@ -10,9 +10,9 @@ import UIKit
 
 class ReportMeetingService: NSObject {
     
-    public func callAPIReportMeeting(url: String, keyword: String, from_date:String, to_date:String, offset:String, rowcount:String, onSuccess successCallback: ((_ meetingAllModel: [MeetingAllModel]) -> Void)?,onFailure failureCallback: ((_ errorMessage: String) -> Void)?) {
+    public func callAPIReportMeeting(url: String, dynamic_db:String,keyword: String, from_date:String, to_date:String, offset:String, rowcount:String, onSuccess successCallback: ((_ meetingAllModel: [MeetingAllModel]) -> Void)?,onFailure failureCallback: ((_ errorMessage: String) -> Void)?) {
         APIManager.instance.callAPIReportMeeting(
-            url: url, keyword: keyword, from_date: from_date, to_date: to_date,offset: offset,rowcount: rowcount, onSuccess: { (meetingAllModel) in
+            dynamic_db:dynamic_db, url: url, keyword: keyword, from_date: from_date, to_date: to_date,offset: offset,rowcount: rowcount, onSuccess: { (meetingAllModel) in
                 successCallback?(meetingAllModel)
             },
             onFailure: { (errorMessage) in
@@ -20,5 +20,4 @@ class ReportMeetingService: NSObject {
             }
         )
     }
-
 }

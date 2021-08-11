@@ -48,7 +48,7 @@ class MeetingAllDetail: UIViewController ,MeetingAllDetailView, UIPickerViewDele
     func callAPIMeetingDetail ()
     {
         presenter.attachView(view: self)
-        presenter.getMeetingAllDetail(meeting_id: meetingId)
+        presenter.getMeetingAllDetail(meeting_id: meetingId,dynamic_db:GlobalVariables.shared.dynamic_db)
     }
     
     func createPickerView() {
@@ -69,8 +69,6 @@ class MeetingAllDetail: UIViewController ,MeetingAllDetailView, UIPickerViewDele
            toolBar.tintColor = UIColor(red: 45/255.0, green: 148/255.0, blue: 235/255.0, alpha: 1.0)
            toolBar.isTranslucent = true
            status.inputAccessoryView = toolBar
-        
-
     }
     
     @objc func cancel() {
@@ -110,7 +108,7 @@ class MeetingAllDetail: UIViewController ,MeetingAllDetailView, UIPickerViewDele
     
     func callAPIMeetingUpdate(meeting_id: String, user_id: String, status: String){
         presenterUpdate.attachView(view: self)
-        presenterUpdate.getMeetingAllDetail(meeting_id: meeting_id, user_id: user_id, status: status)
+        presenterUpdate.getMeetingAllDetail(meeting_id: meeting_id, user_id: user_id, status: status,dynamic_db:GlobalVariables.shared.dynamic_db)
     }
 
     func startLoading() {
@@ -150,6 +148,8 @@ class MeetingAllDetail: UIViewController ,MeetingAllDetailView, UIPickerViewDele
         }
     }
     
+   
+    
     @IBAction func update(_ sender: Any) {
         
         guard Reachability.isConnectedToNetwork() == true else {
@@ -176,16 +176,5 @@ class MeetingAllDetail: UIViewController ,MeetingAllDetailView, UIPickerViewDele
 
         return nil
     }
-    
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
-    }
-    */
-
 }
 

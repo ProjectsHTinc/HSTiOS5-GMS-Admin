@@ -10,9 +10,9 @@ import UIKit
 
 class PlantDonationService {
     
-    public func callAPIPlant(constituent_id:String, onSuccess successCallback: ((_ plant: [PlantDonationModel]) -> Void)?,onFailure failureCallback: ((_ errorMessage: String) -> Void)?) {
+    public func callAPIPlant(constituent_id:String,dynamic_db:String, onSuccess successCallback: ((_ plant: [PlantDonationModel]) -> Void)?,onFailure failureCallback: ((_ errorMessage: String) -> Void)?) {
         APIManager.instance.callAPIPlant(
-          constituent_id: constituent_id, onSuccess: { (plant) in
+            dynamic_db:dynamic_db, constituent_id: constituent_id, onSuccess: { (plant) in
                 successCallback?(plant)
             },
             onFailure: { (errorMessage) in

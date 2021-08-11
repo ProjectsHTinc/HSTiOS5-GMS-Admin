@@ -10,9 +10,9 @@ import Foundation
 
 class VedioCountService: NSObject {
     
-    public func callAPIVedioCount(paguthi:String,from_date:String,to_date:String,onSuccess successCallback: ((_ vedioCount: [VedioCountModel]) -> Void)?,onFailure failureCallback: ((_ errorMessage: String) -> Void)?) {
+    public func callAPIVedioCount(paguthi:String,from_date:String,to_date:String,dynamic_db:String,onSuccess successCallback: ((_ vedioCount: [VedioCountModel]) -> Void)?,onFailure failureCallback: ((_ errorMessage: String) -> Void)?) {
         APIManager.instance.callAPIVedioCount(
-            paguthi: paguthi,from_date:from_date,to_date:to_date, onSuccess: { (vedioCount) in
+            paguthi: paguthi,from_date:from_date,to_date:to_date,dynamic_db:dynamic_db, onSuccess: { (vedioCount) in
                 successCallback?(vedioCount)
             },
             onFailure: { (errorMessage) in

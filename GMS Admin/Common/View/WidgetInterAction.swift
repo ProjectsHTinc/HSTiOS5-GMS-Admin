@@ -31,7 +31,7 @@ class WidgetInterAction: UIViewController {
     func callAPICI ()
     {
         presenter.attachView(view: self)
-        presenter.getTotalGreviances(paguthi: paguthi_Id)
+        presenter.getTotalGreviances(paguthi: paguthi_Id,dynamic_db:GlobalVariables.shared.dynamic_db)
     }
     
     @IBAction func close(_ sender: Any)

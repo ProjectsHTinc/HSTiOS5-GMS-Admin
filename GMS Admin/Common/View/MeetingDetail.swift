@@ -19,7 +19,7 @@ class MeetingDetail: UIViewController {
     @IBOutlet var meetingDiscrption: UILabel!
     @IBOutlet var meetingDate: UILabel!
     @IBOutlet var meetingStatus: UILabel!
-    
+
     override func viewDidLoad() {
         super.viewDidLoad()
 
@@ -31,7 +31,7 @@ class MeetingDetail: UIViewController {
         let formatted = self.formattedDateFromString(dateString: meeting_Date, withFormat: "dd-MM-YYYY")
         self.meetingDate.text =  String(format: "%@ %@", "Date :",formatted!)
         self.meetingStatus.text = meeting_Status
-        
+
         if self.meetingStatus.text == "Requested" || self.meetingStatus.text == "Processing"
         {
             self.meetingStatus.textColor =  UIColor(red: 253.0/255, green: 166.0/255, blue: 68.0/255, alpha: 1.0)
@@ -41,7 +41,7 @@ class MeetingDetail: UIViewController {
             self.meetingStatus.textColor =  UIColor(red: 112.0/255, green: 173.0/255, blue: 71.0/255, alpha: 0.6)
         }
     }
-    
+
     func formattedDateFromString(dateString: String, withFormat format: String) -> String? {
 
         let inputFormatter = DateFormatter()
