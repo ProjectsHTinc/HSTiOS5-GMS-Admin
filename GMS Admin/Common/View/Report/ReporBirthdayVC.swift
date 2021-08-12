@@ -301,9 +301,11 @@ class ReporBirthdayVC: UIViewController,UIPickerViewDataSource,UIPickerViewDeleg
               return self.paguthiName.count
           }
         else if month.isFirstResponder{
+            
             return self.monthArr.count
         }
         else if fromDate.isFirstResponder{
+            
             return self.birtdayYearArr.count
         }
         else {
@@ -322,6 +324,7 @@ class ReporBirthdayVC: UIViewController,UIPickerViewDataSource,UIPickerViewDeleg
                   return self.paguthiName[row]
               }
               else if month.isFirstResponder{
+                
                   return self.monthArr[row]
               }
               else if fromDate.isFirstResponder{
@@ -332,11 +335,11 @@ class ReporBirthdayVC: UIViewController,UIPickerViewDataSource,UIPickerViewDeleg
               }
       }
       
-      func startLoading(){
+      func startLoading() {
           self.view.activityStartAnimating()
       }
       
-      func finishLoading(){
+      func finishLoading() {
            self.view.activityStopAnimating()
       }
       

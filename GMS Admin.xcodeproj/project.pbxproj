@@ -264,6 +264,11 @@
 		7939901626C4DDB7007ED29A /* StatusReportCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7939901526C4DDB7007ED29A /* StatusReportCell.swift */; };
 		793990CA26C52315007ED29A /* Widgets.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 793990C926C52315007ED29A /* Widgets.storyboard */; };
 		793990CF26C52348007ED29A /* WidgetDetails.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 793990CE26C52348007ED29A /* WidgetDetails.storyboard */; };
+		793990D426C5376A007ED29A /* ConstituentProfile.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 793990D326C5376A007ED29A /* ConstituentProfile.storyboard */; };
+		793990D926C539C8007ED29A /* ConstituentGrievance.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 793990D826C539C8007ED29A /* ConstituentGrievance.storyboard */; };
+		793990DE26C53E01007ED29A /* ConstituentMeeting.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 793990DD26C53E01007ED29A /* ConstituentMeeting.storyboard */; };
+		793990E326C5448A007ED29A /* Report2.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 793990E226C5448A007ED29A /* Report2.storyboard */; };
+		793990E826C54826007ED29A /* ReportDetails.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 793990E726C54826007ED29A /* ReportDetails.storyboard */; };
 		794BA0C3269047D500F6CFD2 /* ReportGrievanceListPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 794BA0C2269047D400F6CFD2 /* ReportGrievanceListPresenter.swift */; };
 		794BA0C8269047F600F6CFD2 /* ReportGrievanceListService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 794BA0C7269047F600F6CFD2 /* ReportGrievanceListService.swift */; };
 		794BA0CA2690480900F6CFD2 /* ReportGrievanceListModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 794BA0C92690480900F6CFD2 /* ReportGrievanceListModel.swift */; };
@@ -594,6 +599,11 @@
 		7939901526C4DDB7007ED29A /* StatusReportCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StatusReportCell.swift; sourceTree = "<group>"; };
 		793990C926C52315007ED29A /* Widgets.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Widgets.storyboard; sourceTree = "<group>"; };
 		793990CE26C52348007ED29A /* WidgetDetails.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = WidgetDetails.storyboard; sourceTree = "<group>"; };
+		793990D326C5376A007ED29A /* ConstituentProfile.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = ConstituentProfile.storyboard; sourceTree = "<group>"; };
+		793990D826C539C8007ED29A /* ConstituentGrievance.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = ConstituentGrievance.storyboard; sourceTree = "<group>"; };
+		793990DD26C53E01007ED29A /* ConstituentMeeting.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = ConstituentMeeting.storyboard; sourceTree = "<group>"; };
+		793990E226C5448A007ED29A /* Report2.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Report2.storyboard; sourceTree = "<group>"; };
+		793990E726C54826007ED29A /* ReportDetails.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = ReportDetails.storyboard; sourceTree = "<group>"; };
 		794BA0C2269047D400F6CFD2 /* ReportGrievanceListPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReportGrievanceListPresenter.swift; sourceTree = "<group>"; };
 		794BA0C7269047F600F6CFD2 /* ReportGrievanceListService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReportGrievanceListService.swift; sourceTree = "<group>"; };
 		794BA0C92690480900F6CFD2 /* ReportGrievanceListModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReportGrievanceListModel.swift; sourceTree = "<group>"; };
@@ -1108,10 +1118,15 @@
 				793990C926C52315007ED29A /* Widgets.storyboard */,
 				793990CE26C52348007ED29A /* WidgetDetails.storyboard */,
 				6B9A3F6E24B9BE2000B1D349 /* Constituent.storyboard */,
+				793990D326C5376A007ED29A /* ConstituentProfile.storyboard */,
+				793990D826C539C8007ED29A /* ConstituentGrievance.storyboard */,
+				793990DD26C53E01007ED29A /* ConstituentMeeting.storyboard */,
 				6B2B1E2B24C8257000D78634 /* Meeting.storyboard */,
 				6B6B3CE724C88085006DA7FD /* Grevances.storyboard */,
 				6BE603BB24C8E43500DA7ED5 /* Staff.storyboard */,
 				6B966D5324CA01A00045BB3A /* Report.storyboard */,
+				793990E226C5448A007ED29A /* Report2.storyboard */,
+				793990E726C54826007ED29A /* ReportDetails.storyboard */,
 				6BCE976024CDC44B0032E5EF /* Profile.storyboard */,
 			);
 			path = StoryBoards;
@@ -1252,13 +1267,17 @@
 			files = (
 				6BE4E12A24B1F85800FD735B /* Roboto-Thin.ttf in Resources */,
 				6BE4E12824B1F85800FD735B /* Roboto-ThinItalic.ttf in Resources */,
+				793990D926C539C8007ED29A /* ConstituentGrievance.storyboard in Resources */,
 				793990CA26C52315007ED29A /* Widgets.storyboard in Resources */,
+				793990DE26C53E01007ED29A /* ConstituentMeeting.storyboard in Resources */,
 				6BE4E12B24B1F85800FD735B /* Roboto-Bold.ttf in Resources */,
+				793990D426C5376A007ED29A /* ConstituentProfile.storyboard in Resources */,
 				6BC36B3024B33AB3006043D9 /* DashBoard.storyboard in Resources */,
 				6BE4E12424B1F85800FD735B /* Roboto-Medium.ttf in Resources */,
 				6BE4E12724B1F85800FD735B /* Roboto-Regular.ttf in Resources */,
 				6B7220AA24A75792004424CA /* LaunchScreen.storyboard in Resources */,
 				6B7220A724A75792004424CA /* Assets.xcassets in Resources */,
+				793990E826C54826007ED29A /* ReportDetails.storyboard in Resources */,
 				793990CF26C52348007ED29A /* WidgetDetails.storyboard in Resources */,
 				6B966D5424CA01A00045BB3A /* Report.storyboard in Resources */,
 				6B9A3F6F24B9BE2000B1D349 /* Constituent.storyboard in Resources */,
@@ -1270,6 +1289,7 @@
 				6B7220A524A7578B004424CA /* Main.storyboard in Resources */,
 				6BE4E12124B1F85800FD735B /* Roboto-BoldItalic.ttf in Resources */,
 				6BE4E12624B1F85800FD735B /* Roboto-MediumItalic.ttf in Resources */,
+				793990E326C5448A007ED29A /* Report2.storyboard in Resources */,
 				6BE4E12024B1F85800FD735B /* Roboto-BlackItalic.ttf in Resources */,
 				6BE4E12224B1F85800FD735B /* Roboto-Black.ttf in Resources */,
 				6BE4E12524B1F85800FD735B /* Roboto-Light.ttf in Resources */,

@@ -10,7 +10,6 @@ import UIKit
 
 class ReportFestivalVc: UIViewController,PaguthiView,OfficeView,ReportFestivalView,UIPickerViewDataSource,UIPickerViewDelegate, BirthdayYearView {
   
-    
     @IBOutlet var pageTitle: UILabel!
     @IBOutlet var reportImageView: UIImageView!
     @IBOutlet var fromDate: TextFieldWithImage!
@@ -407,7 +406,6 @@ class ReportFestivalVc: UIViewController,PaguthiView,OfficeView,ReportFestivalVi
     func finishLoadingCI() {
 //
     }
-    
     
     func startLoadingSubCategoery() {
         
