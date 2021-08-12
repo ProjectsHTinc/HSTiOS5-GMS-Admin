@@ -14,6 +14,7 @@ class ReportStaffCell: UITableViewCell {
     @IBOutlet var total: UILabel!
     @IBOutlet var active: UILabel!
     @IBOutlet var inactive: UILabel!
+    
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code

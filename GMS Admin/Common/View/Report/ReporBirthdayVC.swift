@@ -8,7 +8,9 @@
 
 import UIKit
 
-class ReporBirthdayVC: UIViewController,UIPickerViewDataSource,UIPickerViewDelegate,PaguthiView,OfficeView,ReportFestivalView, BirthdayYearView {
+class ReporBirthdayVC: UIViewController,UIPickerViewDataSource,UIPickerViewDelegate,PaguthiView,OfficeView, BirthdayYearView {
+   
+    
       
     @IBOutlet var pageTitle: UILabel!
     @IBOutlet var reportImageView: UIImageView!
@@ -397,6 +399,7 @@ class ReporBirthdayVC: UIViewController,UIPickerViewDataSource,UIPickerViewDeleg
             self.birtdayYearArr.append(year)
         }
     }
+    
     
     func setEmptySubCategoery(errorMessage: String) {
         

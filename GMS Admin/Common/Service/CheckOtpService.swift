@@ -19,5 +19,5 @@ class OTPService {
                   failureCallback?(errorMessage)
               }
           )
-      }
+     }
 }

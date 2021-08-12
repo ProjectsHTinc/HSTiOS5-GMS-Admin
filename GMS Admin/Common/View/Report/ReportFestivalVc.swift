@@ -9,6 +9,7 @@
 import UIKit
 
 class ReportFestivalVc: UIViewController,PaguthiView,OfficeView,ReportFestivalView,UIPickerViewDataSource,UIPickerViewDelegate, BirthdayYearView {
+  
     
     @IBOutlet var pageTitle: UILabel!
     @IBOutlet var reportImageView: UIImageView!
@@ -380,9 +381,9 @@ class ReportFestivalVc: UIViewController,PaguthiView,OfficeView,ReportFestivalVi
          })
     }
     
-    func setFestival(festival: [ReportFestivalData]) {
+    func setFestival(reportFestivalData: [ReportFestivalData]) {
         
-        festivalData = festival
+        festivalData = reportFestivalData
         for items in festivalData {
             
             let festivals = items.festival_name
@@ -394,6 +395,19 @@ class ReportFestivalVc: UIViewController,PaguthiView,OfficeView,ReportFestivalVi
          self.festivalName.insert("ALL", at: 0)
          self.festivalId.insert("ALL", at: 0)
     }
+
+    func setEmptyCI(errorMessage:String) {
+        
+    }
+    
+    func startLoadingCi() {
+//
+    }
+    
+    func finishLoadingCI() {
+//
+    }
+    
     
     func startLoadingSubCategoery() {
         

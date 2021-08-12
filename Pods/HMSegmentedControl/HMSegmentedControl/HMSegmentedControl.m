@@ -149,7 +149,7 @@ NSUInteger HMSegmentedControlNoSegment = (NSUInteger)-1;
     
     _backgroundColor = [UIColor whiteColor];
     self.opaque = NO;
-    _selectionIndicatorColor = [UIColor colorWithRed:45.0f/255.0f green:148.0f/255.0f blue:235.0f/255.0f alpha:1.0f];
+    _selectionIndicatorColor = [UIColor colorWithRed:52.0f/255.0f green:181.0f/255.0f blue:229.0f/255.0f alpha:1.0f];
     _selectionIndicatorBoxColor = _selectionIndicatorColor;
 
     self.selectedSegmentIndex = 0;
@@ -157,7 +157,7 @@ NSUInteger HMSegmentedControlNoSegment = (NSUInteger)-1;
     self.selectionIndicatorHeight = 5.0f;
     self.selectionIndicatorEdgeInsets = UIEdgeInsetsMake(0.0f, 0.0f, 0.0f, 0.0f);
     self.selectionStyle = HMSegmentedControlSelectionStyleTextWidthStripe;
-    self.selectionIndicatorLocation = HMSegmentedControlSelectionIndicatorLocationBottom;
+    self.selectionIndicatorLocation = HMSegmentedControlSelectionIndicatorLocationTop;
     self.segmentWidthStyle = HMSegmentedControlSegmentWidthStyleFixed;
     self.userDraggable = YES;
     self.touchEnabled = YES;
@@ -348,7 +348,7 @@ NSUInteger HMSegmentedControlNoSegment = (NSUInteger)-1;
                 
                 CGFloat widthForIndex = [[self.segmentWidthsArray objectAtIndex:idx] floatValue];
                 rect = CGRectMake(xOffset, y, widthForIndex, stringHeight);
-                fullRect = CGRectMake(xOffset, 0, 100, oldRect.size.height);
+                fullRect = CGRectMake(xOffset, 0, widthForIndex, oldRect.size.height);
                 rectDiv = CGRectMake(xOffset - (self.verticalDividerWidth / 2), self.selectionIndicatorHeight * 2, self.verticalDividerWidth, self.frame.size.height - (self.selectionIndicatorHeight * 4));
             }
             
@@ -1067,7 +1067,7 @@ NSUInteger HMSegmentedControlNoSegment = (NSUInteger)-1;
 
 - (NSDictionary *)resultingTitleTextAttributes {
     NSDictionary *defaults = @{
-        NSFontAttributeName : [UIFont fontWithName:@"Roboto-Medium" size:15],
+        NSFontAttributeName : [UIFont systemFontOfSize:19.0f],
         NSForegroundColorAttributeName : [UIColor blackColor],
     };
     

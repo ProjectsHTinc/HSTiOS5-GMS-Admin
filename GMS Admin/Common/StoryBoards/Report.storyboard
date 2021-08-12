@@ -1016,7 +1016,7 @@
                                         </tableViewCellContentView>
                                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <connections>
-                                            <outlet property="backView" destination="2CG-pV-uVW" id="AyY-Zm-nHa"/>
+                                            <outlet property="backView" destination="2CG-pV-uVW" id="2Qk-Gs-gH9"/>
                                             <outlet property="dob" destination="Yyc-dx-2Ft" id="dXf-3J-JFC"/>
                                             <outlet property="fatherName" destination="qEP-dY-8Jf" id="sef-H7-pvH"/>
                                             <outlet property="location" destination="cwi-sY-JyZ" id="NWa-bt-IZI"/>
@@ -4721,7 +4721,7 @@
         </designable>
     </designables>
     <inferredMetricsTieBreakers>
-        <segue reference="lth-r5-bhU"/>
+        <segue reference="I8A-gY-qZV"/>
     </inferredMetricsTieBreakers>
     <resources>
         <image name="Cm" width="25" height="18"/>

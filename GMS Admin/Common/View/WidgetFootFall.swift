@@ -70,7 +70,6 @@ class WidgetFootFall: UIViewController,FootFallView {
         {
             let vc = segue.destination as! FootFallDetails
             vc.paguthi_Id = GlobalVariables.shared.selectedPaguthiId
-           
         }
     }
 }
