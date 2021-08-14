@@ -23,7 +23,7 @@ class MobileLogin: UIViewController, UIPopoverPresentationControllerDelegate, Co
         self.addCustomizedBackBtn(title:"")
     }
     
-    @IBAction func loginAction(_ sender: Any){
+    @IBAction func loginAction(_ sender: Any) {
         guard CheckValuesAreEmpty () else {
               return
         }
@@ -91,7 +91,6 @@ class MobileLogin: UIViewController, UIPopoverPresentationControllerDelegate, Co
              return false
          }
         return true
-
     }
     
     func CheckValuesAreEmpty () -> Bool{

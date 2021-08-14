@@ -883,7 +883,7 @@
             <objects>
                 <viewController storyboardIdentifier="reportConstituent" modalPresentationStyle="fullScreen" id="mhU-vY-hNB" customClass="ReportConstituentVC" customModule="GMS_Admin" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="6uo-4d-dQg">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="700"/>
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="L5N-DX-hqT">
@@ -1276,7 +1276,7 @@
             <size key="intrinsicContentSize" width="119.5" height="34"/>
         </designable>
         <designable name="0mw-fh-Cws">
-            <size key="intrinsicContentSize" width="103" height="34"/>
+            <size key="intrinsicContentSize" width="133" height="34"/>
         </designable>
         <designable name="5w0-2D-82T">
             <size key="intrinsicContentSize" width="119.5" height="34"/>
@@ -1291,13 +1291,13 @@
             <size key="intrinsicContentSize" width="119.5" height="34"/>
         </designable>
         <designable name="BYF-y6-1a6">
-            <size key="intrinsicContentSize" width="101" height="34"/>
+            <size key="intrinsicContentSize" width="131" height="34"/>
         </designable>
         <designable name="D7F-21-2xz">
-            <size key="intrinsicContentSize" width="85.5" height="34"/>
+            <size key="intrinsicContentSize" width="115.5" height="34"/>
         </designable>
         <designable name="H4v-bV-NYD">
-            <size key="intrinsicContentSize" width="85.5" height="34"/>
+            <size key="intrinsicContentSize" width="115.5" height="34"/>
         </designable>
         <designable name="HMB-kk-50Z">
             <size key="intrinsicContentSize" width="168.5" height="34"/>
@@ -1321,14 +1321,14 @@
             <size key="intrinsicContentSize" width="129.5" height="34"/>
         </designable>
         <designable name="jBG-RZ-P0A">
-            <size key="intrinsicContentSize" width="83.5" height="34"/>
+            <size key="intrinsicContentSize" width="113.5" height="34"/>
         </designable>
         <designable name="jN5-Cf-zGN">
-            <size key="intrinsicContentSize" width="103" height="34"/>
+            <size key="intrinsicContentSize" width="133" height="34"/>
         </designable>
     </designables>
     <inferredMetricsTieBreakers>
-        <segue reference="Sax-nu-CMf"/>
+        <segue reference="6fr-Bf-hjg"/>
     </inferredMetricsTieBreakers>
     <resources>
         <image name="Constituents-1" width="87.5" height="48.5"/>

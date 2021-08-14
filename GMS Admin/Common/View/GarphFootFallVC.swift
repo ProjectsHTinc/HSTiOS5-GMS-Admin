@@ -73,6 +73,7 @@ class GarphFootFallVC: UIViewController, ChartViewDelegate {
     
             setChart(dispMonth: self.dispMonth, newgrev: self.new_grev, repetedgrev: self.repeeated_grev, totalgrev: self.total)
         }
+    
         func setChart(dispMonth: [String], newgrev: [Double], repetedgrev: [Double], totalgrev: [Double]) {
     
             barchart.noDataText = "You need to provide data"
@@ -182,7 +183,7 @@ class GarphFootFallVC: UIViewController, ChartViewDelegate {
                 catch
                 {
                     print("Unable to load data: \(error)")
-                }
+              }
           }
-    }
+     }
 }

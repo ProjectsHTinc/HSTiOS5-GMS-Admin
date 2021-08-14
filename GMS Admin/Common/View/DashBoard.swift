@@ -5,7 +5,7 @@
 //  Created by Happy Sanz Tech on 06/07/20.
 //  Copyright © 2020 HappySanzTech. All rights reserved.
 //
- 
+
 import UIKit
 import Alamofire
 import SwiftyJSON
@@ -69,7 +69,6 @@ class DashBoard: UIViewController, ChartViewDelegate,OfficeView {
     var officeId = [String]()
     var selectedofficeID  = String()
     
-    
     override func viewDidLoad() {
         super.viewDidLoad()
 
@@ -78,7 +77,6 @@ class DashBoard: UIViewController, ChartViewDelegate,OfficeView {
         containerView2.alpha = 0
         dashboardView.alpha = 0
     
-        
         self.setViewShadow()
         let dynamic_db = UserDefaults.standard.object(forKey:"dynamicDBKey") ?? ""
         
@@ -213,7 +211,6 @@ class DashBoard: UIViewController, ChartViewDelegate,OfficeView {
         super.viewWillDisappear(animated)
         
     }
-    
     
     func makeSettings() -> SideMenuSettings{
         var settings = SideMenuSettings()
@@ -643,7 +640,6 @@ extension DashBoard : PaguthiView, UIPickerViewDelegate, UIPickerViewDataSource,
         {
             return self.officeName.count
         }
-        
     }
     
     func pickerView(_ pickerView: UIPickerView, titleForRow row: Int, forComponent component: Int) -> String? {
@@ -814,7 +810,3 @@ extension DashBoard : PaguthiView, UIPickerViewDelegate, UIPickerViewDataSource,
                 view7?.layer.shadowRadius = 2
     }
 }
-
-
-
-
