@@ -9,7 +9,7 @@
 import UIKit
 import SideMenu
 
-class Staff: UIViewController {
+class Staff: UIViewController,SideMenuNavigationControllerDelegate {
     
     /*Get Staff List*/
     let presenter = StaffPresenter(staffService: StaffService())
@@ -91,6 +91,26 @@ class Staff: UIViewController {
             NSAttributedString.Key.foregroundColor: UIColor.black
         ], for: .selected)
     }
+    
+    func sideMenuWillAppear(menu: SideMenuNavigationController, animated: Bool) {
+           print("SideMenu Appearing! (animated: \(animated))")
+        view.alpha = 0.8
+       }
+
+       func sideMenuDidAppear(menu: SideMenuNavigationController, animated: Bool) {
+           print("SideMenu Appeared! (animated: \(animated))")
+        
+       }
+
+       func sideMenuWillDisappear(menu: SideMenuNavigationController, animated: Bool) {
+           print("SideMenu Disappearing! (animated: \(animated))")
+        view.alpha = 1
+       }
+
+       func sideMenuDidDisappear(menu: SideMenuNavigationController, animated: Bool) {
+           print("SideMenu Disappeared! (animated: \(animated))")
+       }
+    
     
     @IBAction func segmentedControlAction(_ sender: Any) {
         

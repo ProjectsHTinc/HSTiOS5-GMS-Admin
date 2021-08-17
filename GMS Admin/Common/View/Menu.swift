@@ -18,6 +18,7 @@ class Menu: UITableViewController {
     @IBOutlet var userLocation: UILabel!
     @IBOutlet var userName: UILabel!
     @IBOutlet var userImage: UIImageView!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 

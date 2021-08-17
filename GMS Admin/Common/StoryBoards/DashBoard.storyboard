@@ -103,7 +103,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="YtF-Hj-I1W">
-                                <rect key="frame" x="12" y="82" width="349" height="143"/>
+                                <rect key="frame" x="12" y="38" width="349" height="143"/>
                                 <subviews>
                                     <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="general_banner" translatesAutoresizingMaskIntoConstraints="NO" id="loJ-3s-BLl">
                                         <rect key="frame" x="0.0" y="0.0" width="349" height="143"/>
@@ -128,7 +128,7 @@
                                 </userDefinedRuntimeAttributes>
                             </view>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Welcome !" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="AV3-E7-k8S" userLabel="Grievance Count">
-                                <rect key="frame" x="12" y="56" width="150" height="18"/>
+                                <rect key="frame" x="12" y="12" width="150" height="18"/>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="18" id="zUy-a1-dVv"/>
@@ -138,7 +138,7 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="6J8-7c-SUs">
-                                <rect key="frame" x="0.0" y="225" width="375" height="775"/>
+                                <rect key="frame" x="0.0" y="181" width="375" height="819"/>
                                 <subviews>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="mEi-cd-ctC">
                                         <rect key="frame" x="0.0" y="0.0" width="375" height="775"/>
@@ -150,14 +150,14 @@
                                                         <rect key="frame" x="15" y="484" width="164.5" height="115"/>
                                                         <subviews>
                                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Meeting Count" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="e2M-xi-7K8">
-                                                                <rect key="frame" x="3.5" y="58" width="157.5" height="17.5"/>
+                                                                <rect key="frame" x="3.5" y="58" width="157.5" height="18"/>
                                                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                                 <fontDescription key="fontDescription" name="Roboto-Medium" family="Roboto" pointSize="15"/>
                                                                 <color key="textColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                                 <nil key="highlightedColor"/>
                                                             </label>
                                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="_" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="TAE-PC-lKt">
-                                                                <rect key="frame" x="3.5" y="82.5" width="157.5" height="21"/>
+                                                                <rect key="frame" x="3.5" y="83" width="157.5" height="21"/>
                                                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                                 <constraints>
                                                                     <constraint firstAttribute="width" constant="157.5" id="8Eb-3d-2vN"/>
@@ -333,7 +333,7 @@
                                                         <rect key="frame" x="195" y="607" width="165" height="115"/>
                                                         <subviews>
                                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Video Count" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Joi-01-BkC">
-                                                                <rect key="frame" x="5" y="59" width="155" height="17.5"/>
+                                                                <rect key="frame" x="5" y="59" width="155" height="18"/>
                                                                 <fontDescription key="fontDescription" name="Roboto-Medium" family="Roboto" pointSize="15"/>
                                                                 <color key="textColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                                 <nil key="highlightedColor"/>
@@ -346,7 +346,7 @@
                                                                 </constraints>
                                                             </imageView>
                                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="_" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="tr2-9S-OEg">
-                                                                <rect key="frame" x="6" y="86.5" width="153" height="20"/>
+                                                                <rect key="frame" x="6" y="87" width="153" height="20"/>
                                                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                                 <constraints>
                                                                     <constraint firstAttribute="width" constant="153" id="VXK-SG-gjo"/>
@@ -1047,11 +1047,11 @@
             <objects>
                 <viewController storyboardIdentifier="search" id="2h7-aY-0GI" customClass="Search" customModule="GMS_Admin" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="YPK-2r-58H">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="647"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="none" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="DiB-h7-JNV">
-                                <rect key="frame" x="0.0" y="87" width="375" height="580"/>
+                                <rect key="frame" x="0.0" y="43" width="375" height="604"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <prototypes>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="none" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="cell" rowHeight="118" id="mcs-cc-Syw" customClass="SearchCell" customModule="GMS_Admin" customModuleProvider="target">
@@ -1158,7 +1158,7 @@
                                 </connections>
                             </tableView>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="10 Constituents" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="97M-58-bLB">
-                                <rect key="frame" x="16" y="55" width="343" height="21"/>
+                                <rect key="frame" x="16" y="11" width="343" height="21"/>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="343" id="5eS-3B-Gpf"/>
@@ -1169,7 +1169,7 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="c6a-KL-awr">
-                                <rect key="frame" x="16" y="80" width="343" height="1"/>
+                                <rect key="frame" x="16" y="36" width="343" height="1"/>
                                 <color key="backgroundColor" white="0.66666666669999997" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="1" id="faX-M1-mQY"/>
@@ -1222,14 +1222,14 @@
             <objects>
                 <viewController storyboardIdentifier="moreGraph" id="hN6-kX-3vQ" customClass="MoreGraph" customModule="GMS_Admin" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="z8g-2d-6qS">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="647"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Nfz-5T-dNU">
-                                <rect key="frame" x="0.0" y="44" width="375" height="623"/>
+                                <rect key="frame" x="0.0" y="0.0" width="375" height="647"/>
                                 <subviews>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="2fJ-zG-yAO">
-                                        <rect key="frame" x="0.0" y="0.0" width="375" height="623"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="375" height="647"/>
                                         <subviews>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Grievance Progress Report" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="af3-O6-nPd">
                                                 <rect key="frame" x="14.5" y="14" width="254" height="20"/>
@@ -1341,9 +1341,9 @@
         <!--Side Menu Navigation Controller-->
         <scene sceneID="CDr-uE-ChL">
             <objects>
-                <navigationController storyboardIdentifier="LeftMenuNavigationController" modalPresentationStyle="fullScreen" id="bga-Ym-ZHG" customClass="SideMenuNavigationController" customModule="SideMenu" sceneMemberID="viewController">
+                <navigationController storyboardIdentifier="LeftMenuNavigationController" modalPresentationStyle="fullScreen" navigationBarHidden="YES" id="bga-Ym-ZHG" customClass="SideMenuNavigationController" customModule="SideMenu" sceneMemberID="viewController">
+                    <nil key="simulatedTopBarMetrics"/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" translucent="NO" id="9gL-r7-hGZ">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                         <color key="backgroundColor" name="AppBaseColor"/>
                         <color key="tintColor" name="AppBaseColor"/>
@@ -1374,7 +1374,7 @@
             <objects>
                 <tableViewController storyboardIdentifier="menu" modalPresentationStyle="fullScreen" id="cyo-OE-Q8t" customClass="Menu" customModule="GMS_Admin" customModuleProvider="target" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="static" style="plain" separatorStyle="none" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" id="d4t-3F-dcV">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="656"/>
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="700"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <color key="tintColor" name="AppBaseColor"/>
@@ -1510,7 +1510,7 @@
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                                 <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="downArrow" translatesAutoresizingMaskIntoConstraints="NO" id="kb3-y8-sX4">
-                                                    <rect key="frame" x="202" y="14" width="15" height="15"/>
+                                                    <rect key="frame" x="234" y="14" width="15" height="15"/>
                                                     <constraints>
                                                         <constraint firstAttribute="height" constant="15" id="Hwv-HT-b0c"/>
                                                         <constraint firstAttribute="width" constant="15" id="NVi-Lk-JlV"/>
@@ -1573,7 +1573,7 @@
                                                 <constraint firstItem="kb3-y8-sX4" firstAttribute="top" secondItem="G6n-uh-3U8" secondAttribute="top" constant="14" id="MMU-9p-MgG"/>
                                                 <constraint firstItem="uCZ-YD-FGp" firstAttribute="leading" secondItem="G6n-uh-3U8" secondAttribute="leading" constant="52" id="Mzc-17-Esu"/>
                                                 <constraint firstItem="D2o-Gu-Ppf" firstAttribute="top" secondItem="S9L-qY-FBN" secondAttribute="bottom" constant="14" id="Wp9-el-Q9o"/>
-                                                <constraint firstItem="kb3-y8-sX4" firstAttribute="leading" secondItem="isl-sU-af9" secondAttribute="trailing" constant="8" id="aGu-s4-1GT"/>
+                                                <constraint firstItem="kb3-y8-sX4" firstAttribute="leading" secondItem="isl-sU-af9" secondAttribute="trailing" constant="40" id="aGu-s4-1GT"/>
                                                 <constraint firstItem="QAQ-DT-GQM" firstAttribute="leading" secondItem="G6n-uh-3U8" secondAttribute="leading" constant="52" id="b1J-Vr-RxL"/>
                                                 <constraint firstItem="Jd8-Pr-nb3" firstAttribute="top" secondItem="G6n-uh-3U8" secondAttribute="top" constant="11" id="m8c-ef-6f1"/>
                                                 <constraint firstItem="isl-sU-af9" firstAttribute="top" secondItem="G6n-uh-3U8" secondAttribute="top" constant="11" id="mei-1L-pet"/>
@@ -1858,7 +1858,7 @@
                 </viewControllerPlaceholder>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="fqL-o9-2uU" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="101" y="-255"/>
+            <point key="canvasLocation" x="101" y="-303"/>
         </scene>
         <!--greivancesAll-->
         <scene sceneID="iDd-Tg-cg2">
@@ -1908,7 +1908,7 @@
                 </viewControllerPlaceholder>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="mgu-pb-18b" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="71" y="-303"/>
+            <point key="canvasLocation" x="71" y="-258"/>
         </scene>
         <!--Garph Foot FallVC-->
         <scene sceneID="ZIY-Tv-JMe">
@@ -1962,17 +1962,18 @@
     </scenes>
     <designables>
         <designable name="4nX-ib-SkR">
-            <size key="intrinsicContentSize" width="128.5" height="34"/>
+            <size key="intrinsicContentSize" width="127.5" height="34"/>
         </designable>
         <designable name="7eO-od-pvC">
             <size key="intrinsicContentSize" width="109.5" height="34"/>
         </designable>
         <designable name="IgH-ad-VLc">
-            <size key="intrinsicContentSize" width="86" height="19"/>
+            <size key="intrinsicContentSize" width="84" height="19.5"/>
         </designable>
     </designables>
     <inferredMetricsTieBreakers>
-        <segue reference="Z5p-mS-Zt9"/>
+        <segue reference="M6h-S3-MtH"/>
+        <segue reference="DWE-Lb-ZeL"/>
     </inferredMetricsTieBreakers>
     <resources>
         <image name="Consmobile" width="12" height="12"/>

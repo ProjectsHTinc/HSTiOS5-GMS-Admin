@@ -12,7 +12,7 @@ import SwiftyJSON
 import Charts
 import SideMenu
 
-class DashBoard: UIViewController, ChartViewDelegate,OfficeView {
+class DashBoard: UIViewController, ChartViewDelegate,OfficeView,SideMenuNavigationControllerDelegate {
        
 //    @IBOutlet var searchText: TextFieldWithImage!
     @IBOutlet var fromDate: TextFieldWithImage!
@@ -142,6 +142,25 @@ class DashBoard: UIViewController, ChartViewDelegate,OfficeView {
         self.office.text = ""
     }
     
+    func sideMenuWillAppear(menu: SideMenuNavigationController, animated: Bool) {
+           print("SideMenu Appearing! (animated: \(animated))")
+        view.alpha = 0.8
+       }
+
+       func sideMenuDidAppear(menu: SideMenuNavigationController, animated: Bool) {
+           print("SideMenu Appeared! (animated: \(animated))")
+        
+       }
+
+       func sideMenuWillDisappear(menu: SideMenuNavigationController, animated: Bool) {
+           print("SideMenu Disappearing! (animated: \(animated))")
+        view.alpha = 1
+       }
+
+       func sideMenuDidDisappear(menu: SideMenuNavigationController, animated: Bool) {
+           print("SideMenu Disappeared! (animated: \(animated))")
+       }
+    
     func setUpSegementControl ()
     {
         segmentedControl = HMSegmentedControl(sectionTitles: self.segmentTitle)
@@ -195,6 +214,7 @@ class DashBoard: UIViewController, ChartViewDelegate,OfficeView {
         SideMenuManager.default.leftMenuNavigationController = storyboard?.instantiateViewController(withIdentifier: "LeftMenuNavigationController") as? SideMenuNavigationController
         //SideMenuPresentationStyle.menuSlideIn
         SideMenuManager.default.leftMenuNavigationController?.settings = makeSettings()
+//        SideMenuManager.default.menuAnimationFadeStrength = 0.5
 //        SideMenuManager.menuWidth = 240
         
         // Enable gestures. The left and/or right menus must be set up above for these to work.
@@ -202,6 +222,7 @@ class DashBoard: UIViewController, ChartViewDelegate,OfficeView {
 //        SideMenuManager.default.addPanGestureToPresent(toView: navigationController!.navigationBar)
 //        SideMenuManager.default.addScreenEdgePanGesturesToPresent(toView: view)
     }
+    
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
     
@@ -213,18 +234,23 @@ class DashBoard: UIViewController, ChartViewDelegate,OfficeView {
     }
     
     func makeSettings() -> SideMenuSettings{
+        
         var settings = SideMenuSettings()
         settings.allowPushOfSameClassTwice = false
         settings.presentationStyle = .menuDissolveIn
         settings.presentationStyle.backgroundColor = .black
-        settings.presentationStyle.presentingEndAlpha = 0.5
-//        settings.menuWidth = 400
+        settings.presentationStyle.presentingEndAlpha = 0
+        settings.dismissOnPresent = true
+        settings.menuWidth = 400
+        settings.presentationStyle.onTopShadowOpacity = 0.5
         settings.statusBarEndAlpha = 1
+        settings.presentationStyle.menuStartAlpha = 0.5
         
         return settings
     }
         
     func createPickerView() {
+        
          pickerView.dataSource = self
          pickerView.delegate = self
          pickerView.backgroundColor = UIColor.white

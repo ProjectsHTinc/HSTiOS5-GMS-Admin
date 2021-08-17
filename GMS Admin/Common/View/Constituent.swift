@@ -11,7 +11,7 @@ import SideMenu
 
 let constituentcyList = "apiandroid/listConstituentnew"
 
-class Constituent: UIViewController, PaguthiView {
+class Constituent: UIViewController, PaguthiView,SideMenuNavigationControllerDelegate {
 
     var searchBar = UISearchController()
     var segmentedControl = HMSegmentedControl()
@@ -70,6 +70,26 @@ class Constituent: UIViewController, PaguthiView {
         self.idArr.removeAll()
 
     }
+    
+    func sideMenuWillAppear(menu: SideMenuNavigationController, animated: Bool) {
+           print("SideMenu Appearing! (animated: \(animated))")
+        view.alpha = 0.8
+       }
+
+       func sideMenuDidAppear(menu: SideMenuNavigationController, animated: Bool) {
+           print("SideMenu Appeared! (animated: \(animated))")
+        
+       }
+
+       func sideMenuWillDisappear(menu: SideMenuNavigationController, animated: Bool) {
+           print("SideMenu Disappearing! (animated: \(animated))")
+        view.alpha = 1
+       }
+
+       func sideMenuDidDisappear(menu: SideMenuNavigationController, animated: Bool) {
+           print("SideMenu Disappeared! (animated: \(animated))")
+       }
+    
     
     private func setupSideMenu() {
         // Define the menus

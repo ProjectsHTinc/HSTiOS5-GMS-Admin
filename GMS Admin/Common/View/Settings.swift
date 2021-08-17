@@ -9,7 +9,7 @@
 import UIKit
 import SideMenu
 
-class Settings: UIViewController {
+class Settings: UIViewController,SideMenuNavigationControllerDelegate {
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -42,6 +42,26 @@ class Settings: UIViewController {
         settings.statusBarEndAlpha = 0
         return settings
     }
+    
+    func sideMenuWillAppear(menu: SideMenuNavigationController, animated: Bool) {
+           print("SideMenu Appearing! (animated: \(animated))")
+        view.alpha = 0.8
+       }
+
+       func sideMenuDidAppear(menu: SideMenuNavigationController, animated: Bool) {
+           print("SideMenu Appeared! (animated: \(animated))")
+        
+       }
+
+       func sideMenuWillDisappear(menu: SideMenuNavigationController, animated: Bool) {
+           print("SideMenu Disappearing! (animated: \(animated))")
+        view.alpha = 1
+       }
+
+       func sideMenuDidDisappear(menu: SideMenuNavigationController, animated: Bool) {
+           print("SideMenu Disappeared! (animated: \(animated))")
+       }
+    
     
     @objc public override func sideMenuButtonClick()
     {

@@ -14,6 +14,7 @@ PODS:
     - SDWebImage/Core (= 5.8.0)
   - SDWebImage/Core (5.8.0)
   - SideMenu (6.4.8)
+  - SideMenuSwift (2.0.7)
   - SwiftyJSON (4.3.0)
 
 DEPENDENCIES:
@@ -24,7 +25,8 @@ DEPENDENCIES:
   - HMSegmentedControl
   - IQKeyboardManagerSwift
   - SDWebImage (~> 5.0)
-  - SideMenu
+  - SideMenu (~> 6.0)
+  - SideMenuSwift
   - SwiftyJSON (~> 4.0)
 
 SPEC REPOS:
@@ -38,6 +40,7 @@ SPEC REPOS:
     - ObjectMapper
     - SDWebImage
     - SideMenu
+    - SideMenuSwift
     - SwiftyJSON
 
 SPEC CHECKSUMS:
@@ -50,8 +53,9 @@ SPEC CHECKSUMS:
   ObjectMapper: 97111c97e054a6ee25917662106689f0b4127b37
   SDWebImage: 84000f962cbfa70c07f19d2234cbfcf5d779b5dc
   SideMenu: 4a891be552d30bb6fa87ad404d62e485f8450c34
+  SideMenuSwift: ffbbc88d23741932177ad1320df837cedfb3bc5e
   SwiftyJSON: 6faa0040f8b59dead0ee07436cbf76b73c08fd08
 
-PODFILE CHECKSUM: ded40d26b15e8ba8135538768058558088427505
+PODFILE CHECKSUM: c0bf886371c33b9e1c7166ace53f1beca1f88b9d
 
 COCOAPODS: 1.10.1

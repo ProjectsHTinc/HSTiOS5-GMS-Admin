@@ -9,7 +9,7 @@
 import UIKit
 import SideMenu
 
-class Meeting: UIViewController {
+class Meeting: UIViewController,SideMenuNavigationControllerDelegate {
     
     let meetingPresener = MeetingPresenter(meetingService: MeetingService())
     var meetingeData = [MeetingData]()
@@ -64,6 +64,26 @@ class Meeting: UIViewController {
         SideMenuManager.default.addPanGestureToPresent(toView: navigationController!.navigationBar)
         SideMenuManager.default.addScreenEdgePanGesturesToPresent(toView: view)
     }
+    
+    func sideMenuWillAppear(menu: SideMenuNavigationController, animated: Bool) {
+           print("SideMenu Appearing! (animated: \(animated))")
+        view.alpha = 0.8
+       }
+
+       func sideMenuDidAppear(menu: SideMenuNavigationController, animated: Bool) {
+           print("SideMenu Appeared! (animated: \(animated))")
+        
+       }
+
+       func sideMenuWillDisappear(menu: SideMenuNavigationController, animated: Bool) {
+           print("SideMenu Disappearing! (animated: \(animated))")
+        view.alpha = 1
+       }
+
+       func sideMenuDidDisappear(menu: SideMenuNavigationController, animated: Bool) {
+           print("SideMenu Disappeared! (animated: \(animated))")
+       }
+    
     
     func makeSettings() -> SideMenuSettings{
         var settings = SideMenuSettings()

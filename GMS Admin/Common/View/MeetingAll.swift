@@ -11,7 +11,7 @@ import SideMenu
 
 let meetingUrl = "apiandroid/meetingRequestnew"
 
-class MeetingAll: UIViewController {
+class MeetingAll: UIViewController,SideMenuNavigationControllerDelegate {
     
     /*Get Meeting All List*/
     let presenter = MeetingAllPresenter(meetingAllService: MeetingAllService())
@@ -57,6 +57,26 @@ class MeetingAll: UIViewController {
         //
         self.callAPIMeetingAll(url: meetingUrl, keyword: "no", constituency_id: GlobalVariables.shared.constituent_Id, offset: "0", rowcount: "50")
     }
+    
+    func sideMenuWillAppear(menu: SideMenuNavigationController, animated: Bool) {
+           print("SideMenu Appearing! (animated: \(animated))")
+        view.alpha = 0.8
+        navigationController?.navigationBar.alpha = 0.8
+       }
+
+       func sideMenuDidAppear(menu: SideMenuNavigationController, animated: Bool) {
+           print("SideMenu Appeared! (animated: \(animated))")
+        
+       }
+
+       func sideMenuWillDisappear(menu: SideMenuNavigationController, animated: Bool) {
+           print("SideMenu Disappearing! (animated: \(animated))")
+        view.alpha = 1
+       }
+
+       func sideMenuDidDisappear(menu: SideMenuNavigationController, animated: Bool) {
+           print("SideMenu Disappeared! (animated: \(animated))")
+       }
     
     private func setupSideMenu() {
         // Define the menus
