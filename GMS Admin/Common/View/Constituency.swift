@@ -76,7 +76,7 @@ class Constituency: UIViewController, ClientUrlView{
     
     @IBAction func okAction(_ sender: Any) {
         
-        guard Reachability.isConnectedToNetwork() == true else{
+        guard Reachability.isConnectedToNetwork() == true else {
               AlertController.shared.offlineAlert(targetVc: self, complition: {
                 //Custom action code
              })

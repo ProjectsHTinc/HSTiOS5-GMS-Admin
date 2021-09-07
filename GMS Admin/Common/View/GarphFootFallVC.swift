@@ -27,7 +27,7 @@ class GarphFootFallVC: UIViewController, ChartViewDelegate {
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        self.setupView()
+        
         callAPI (paguthi:GlobalVariables.shared.selectedPaguthiId,FromDate:GlobalVariables.shared.widgetFromDate,ToDate:GlobalVariables.shared.widgetToDate,dynamic_db:GlobalVariables.shared.dynamic_db)
     }
     
@@ -85,6 +85,7 @@ class GarphFootFallVC: UIViewController, ChartViewDelegate {
     
                 let dataEntry = BarChartDataEntry(x: Double(i) , y: Double(self.repeeated_grev[i]))
                 dataEntries.append(dataEntry)
+                print(dataEntries)
     
                 let dataEntry1 = BarChartDataEntry(x: Double(i) , y: Double(self.new_grev[i]))
                 dataEntries1.append(dataEntry1)
@@ -121,7 +122,9 @@ class GarphFootFallVC: UIViewController, ChartViewDelegate {
     func callAPI (paguthi:String,FromDate:String,ToDate:String,dynamic_db:String)
     {
         let url = GlobalVariables.shared.CLIENTURL + "apiandroid/dashBoard/"
-        let parameters = ["paguthi": paguthi,"from_date":FromDate,"to_date":ToDate,"dynamic_db":dynamic_db]
+        print(GlobalVariables.shared.CLIENTURL)
+        let parameters = ["paguthi": "ALL","from_date":"06-09-2019","to_date":"06-09-2021","dynamic_db":dynamic_db,"office":"ALL"]
+        print(parameters)
 //        self.view.activityStartAnimating()
         DispatchQueue.global().async
             {
@@ -139,19 +142,23 @@ class GarphFootFallVC: UIViewController, ChartViewDelegate {
                             self.meeting_request.removeAll()
                             self.month_year.removeAll()
                             /*Bar Chart*/
-                            let footFall = json["footfall_graph"]
+                            let footFall = json["graph_result"]
                             for i in 0..<(footFall.count)
                             {
                                 let dict = footFall[i]
-                                let dispMonth = dict["disp_month"].string
-                                let newGrev = dict["new_grev"].double
-                                let repeatedGrev = dict["repeated_grev"].double
-                                let _total = dict["total"].double
+                                let dispMonth = dict["day_name"].string
+                                let newGrev = dict["unique_count"].string
+                                let repeatedGrev = dict["repeat_count"].string
+                                let _total = dict["total"].string
+                                
+                                let newGri = Double(newGrev!)
+                                let repGri = Double(repeatedGrev!)
+                                let total = Double(_total!)
                                 
                                 self.dispMonth.append(dispMonth!)
-                                self.new_grev.append(newGrev!)
-                                self.repeeated_grev.append(repeatedGrev!)
-                                self.total.append(_total!)
+                                self.new_grev.append(newGri!)
+                                self.repeeated_grev.append(repGri!)
+                                self.total.append(total!)
                             }
 //                            self.setupView()
                             /*Pie Chart*/
@@ -174,7 +181,10 @@ class GarphFootFallVC: UIViewController, ChartViewDelegate {
 
                                 self.meeting_request.append(meetingrequest)
                                 self.month_year.append(monthyear!)
+                                
                         }
+//                        self.barchart.reloadInputViews()
+                        self.setupView()
                      }) {
                         (error) -> Void in
                         print(error)

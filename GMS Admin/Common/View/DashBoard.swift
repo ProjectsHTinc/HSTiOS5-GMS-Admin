@@ -142,24 +142,29 @@ class DashBoard: UIViewController, ChartViewDelegate,OfficeView,SideMenuNavigati
         self.office.text = ""
     }
     
+    @IBAction func findAction(_ sender: Any) {
+        
+    self.CheckValuesAreEmpty()
+        
+    }
+    
     func sideMenuWillAppear(menu: SideMenuNavigationController, animated: Bool) {
            print("SideMenu Appearing! (animated: \(animated))")
         view.alpha = 0.8
-       }
+    }
 
-       func sideMenuDidAppear(menu: SideMenuNavigationController, animated: Bool) {
+    func sideMenuDidAppear(menu: SideMenuNavigationController, animated: Bool) {
            print("SideMenu Appeared! (animated: \(animated))")
-        
-       }
+    }
 
-       func sideMenuWillDisappear(menu: SideMenuNavigationController, animated: Bool) {
+    func sideMenuWillDisappear(menu: SideMenuNavigationController, animated: Bool) {
            print("SideMenu Disappearing! (animated: \(animated))")
-        view.alpha = 1
-       }
+           view.alpha = 1
+    }
 
-       func sideMenuDidDisappear(menu: SideMenuNavigationController, animated: Bool) {
+    func sideMenuDidDisappear(menu: SideMenuNavigationController, animated: Bool) {
            print("SideMenu Disappeared! (animated: \(animated))")
-       }
+    }
     
     func setUpSegementControl ()
     {
@@ -233,7 +238,7 @@ class DashBoard: UIViewController, ChartViewDelegate,OfficeView,SideMenuNavigati
         
     }
     
-    func makeSettings() -> SideMenuSettings{
+    func makeSettings() -> SideMenuSettings {
         
         var settings = SideMenuSettings()
         settings.allowPushOfSameClassTwice = false
@@ -286,7 +291,7 @@ class DashBoard: UIViewController, ChartViewDelegate,OfficeView,SideMenuNavigati
             self.office.text = self.officeName[row]
             self.selectedofficeID = self.officeId[row]
           }
-          self.CheckValuesAreEmpty()
+         
 //          self.callAPI(paguthi:GlobalVariables.shared.selectedPaguthiId)
           self.area.resignFirstResponder()
           self.office.resignFirstResponder()
@@ -748,7 +753,7 @@ extension DashBoard : PaguthiView, UIPickerViewDelegate, UIPickerViewDataSource,
         }
     }
         
-    @objc func cancelDatePicker(){
+    @objc func cancelDatePicker() {
        self.view.endEditing(true)
      }
     
@@ -779,8 +784,17 @@ extension DashBoard : PaguthiView, UIPickerViewDelegate, UIPickerViewDataSource,
                     
                 })
         }
-            
            else if self.toDate.text?.count == 0 {
+                  AlertController.shared.showAlert(targetVc: self, title: Globals.alertTitle, message: "To Date is Empty", complition: {
+                      
+                })
+        }
+           else if self.area.text?.count == 0 {
+                  AlertController.shared.showAlert(targetVc: self, title: Globals.alertTitle, message: "To Date is Empty", complition: {
+                      
+                })
+        }
+           else if self.office.text?.count == 0 {
                   AlertController.shared.showAlert(targetVc: self, title: Globals.alertTitle, message: "To Date is Empty", complition: {
                       
                 })

@@ -259,8 +259,6 @@
 		79398FFD26C4D412007ED29A /* ReportMeetingListService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 79398FFC26C4D412007ED29A /* ReportMeetingListService.swift */; };
 		7939900226C4D6ED007ED29A /* SeekerNameService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7939900126C4D6ED007ED29A /* SeekerNameService.swift */; };
 		7939900726C4D9A9007ED29A /* BirthdayYearService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7939900626C4D9A9007ED29A /* BirthdayYearService.swift */; };
-		7939900C26C4DA8F007ED29A /* ReportFestivalPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7939900B26C4DA8F007ED29A /* ReportFestivalPresenter.swift */; };
-		7939901126C4DBE3007ED29A /* ReportConstituentPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7939901026C4DBE3007ED29A /* ReportConstituentPresenter.swift */; };
 		7939901626C4DDB7007ED29A /* StatusReportCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7939901526C4DDB7007ED29A /* StatusReportCell.swift */; };
 		793990CA26C52315007ED29A /* Widgets.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 793990C926C52315007ED29A /* Widgets.storyboard */; };
 		793990CF26C52348007ED29A /* WidgetDetails.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 793990CE26C52348007ED29A /* WidgetDetails.storyboard */; };
@@ -306,12 +304,15 @@
 		79E55A23262FD75C00CBA0EE /* GreetingCountModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 79E55A22262FD75C00CBA0EE /* GreetingCountModel.swift */; };
 		79E55A28262FD77300CBA0EE /* VedioCountModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 79E55A27262FD77300CBA0EE /* VedioCountModel.swift */; };
 		79E55A2D262FD7AC00CBA0EE /* VolounteerCountService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 79E55A2C262FD7AC00CBA0EE /* VolounteerCountService.swift */; };
-		79E55A32262FD7CE00CBA0EE /* VedioCountPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 79E55A31262FD7CE00CBA0EE /* VedioCountPresenter.swift */; };
+		79E66F7026E5D37400C81A79 /* VedioCountPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 79E66F6D26E5D37300C81A79 /* VedioCountPresenter.swift */; };
+		79E66F7126E5D37400C81A79 /* GetFestivalPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 79E66F6E26E5D37400C81A79 /* GetFestivalPresenter.swift */; };
+		79E66F7226E5D37400C81A79 /* ReportFestivalPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 79E66F6F26E5D37400C81A79 /* ReportFestivalPresenter.swift */; };
+		79E66F8C26E5DA0800C81A79 /* ReportConstituentListPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 79E66F8B26E5DA0800C81A79 /* ReportConstituentListPresenter.swift */; };
 		79E9D159268DEFA00076ACD1 /* StatusReportList.swift in Sources */ = {isa = PBXBuildFile; fileRef = 79E9D158268DEFA00076ACD1 /* StatusReportList.swift */; };
 		79EBFD26268B3FA90048D493 /* OfficePresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 79EBFD25268B3FA90048D493 /* OfficePresenter.swift */; };
 		79EBFD2B268B3FE00048D493 /* OfficeService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 79EBFD2A268B3FE00048D493 /* OfficeService.swift */; };
 		79EBFD30268B3FFF0048D493 /* OfficeModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 79EBFD2F268B3FFF0048D493 /* OfficeModel.swift */; };
-		F976C3C60102A305CCC3C64D /* Pods_GMS_Admin.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CF67CCE406D64C68A1A6BE70 /* Pods_GMS_Admin.framework */; };
+		7D1D41A52124E586C7179F99 /* Pods_GMS_Admin.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7FDED1C8C75872473EEF0EA7 /* Pods_GMS_Admin.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -332,7 +333,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
-		420972924DAD62D0702CA179 /* Pods-GMS Admin.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-GMS Admin.debug.xcconfig"; path = "Target Support Files/Pods-GMS Admin/Pods-GMS Admin.debug.xcconfig"; sourceTree = "<group>"; };
+		3BCEF6355F9A2A0A289866E3 /* Pods-GMS Admin.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-GMS Admin.debug.xcconfig"; path = "Target Support Files/Pods-GMS Admin/Pods-GMS Admin.debug.xcconfig"; sourceTree = "<group>"; };
 		6B02B6752595A129000567F4 /* GreetingCount.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GreetingCount.swift; sourceTree = "<group>"; };
 		6B02B67A2595A168000567F4 /* GreetingCountPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GreetingCountPresenter.swift; sourceTree = "<group>"; };
 		6B02B67F2595A1AD000567F4 /* GreetingCountService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GreetingCountService.swift; sourceTree = "<group>"; };
@@ -594,8 +595,6 @@
 		79398FFC26C4D412007ED29A /* ReportMeetingListService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReportMeetingListService.swift; sourceTree = "<group>"; };
 		7939900126C4D6ED007ED29A /* SeekerNameService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SeekerNameService.swift; sourceTree = "<group>"; };
 		7939900626C4D9A9007ED29A /* BirthdayYearService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BirthdayYearService.swift; sourceTree = "<group>"; };
-		7939900B26C4DA8F007ED29A /* ReportFestivalPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = ReportFestivalPresenter.swift; path = ../../../../../../ReportFestivalPresenter.swift; sourceTree = "<group>"; };
-		7939901026C4DBE3007ED29A /* ReportConstituentPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = ReportConstituentPresenter.swift; path = ../../../../../../ReportConstituentPresenter.swift; sourceTree = "<group>"; };
 		7939901526C4DDB7007ED29A /* StatusReportCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StatusReportCell.swift; sourceTree = "<group>"; };
 		793990C926C52315007ED29A /* Widgets.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Widgets.storyboard; sourceTree = "<group>"; };
 		793990CE26C52348007ED29A /* WidgetDetails.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = WidgetDetails.storyboard; sourceTree = "<group>"; };
@@ -641,13 +640,16 @@
 		79E55A22262FD75C00CBA0EE /* GreetingCountModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GreetingCountModel.swift; sourceTree = "<group>"; };
 		79E55A27262FD77300CBA0EE /* VedioCountModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VedioCountModel.swift; sourceTree = "<group>"; };
 		79E55A2C262FD7AC00CBA0EE /* VolounteerCountService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VolounteerCountService.swift; sourceTree = "<group>"; };
-		79E55A31262FD7CE00CBA0EE /* VedioCountPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = VedioCountPresenter.swift; path = "/Users/happysanzimac/Documents/HSTiOS5/GMS Admin/GMS Admin/Common/Presenter/VedioCountPresenter.swift"; sourceTree = "<absolute>"; };
+		79E66F6D26E5D37300C81A79 /* VedioCountPresenter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = VedioCountPresenter.swift; sourceTree = "<group>"; };
+		79E66F6E26E5D37400C81A79 /* GetFestivalPresenter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GetFestivalPresenter.swift; sourceTree = "<group>"; };
+		79E66F6F26E5D37400C81A79 /* ReportFestivalPresenter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ReportFestivalPresenter.swift; sourceTree = "<group>"; };
+		79E66F8B26E5DA0800C81A79 /* ReportConstituentListPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReportConstituentListPresenter.swift; sourceTree = "<group>"; };
 		79E9D158268DEFA00076ACD1 /* StatusReportList.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StatusReportList.swift; sourceTree = "<group>"; };
 		79EBFD25268B3FA90048D493 /* OfficePresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OfficePresenter.swift; sourceTree = "<group>"; };
 		79EBFD2A268B3FE00048D493 /* OfficeService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OfficeService.swift; sourceTree = "<group>"; };
 		79EBFD2F268B3FFF0048D493 /* OfficeModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OfficeModel.swift; sourceTree = "<group>"; };
-		8D5B48A720339871EC514D67 /* Pods-GMS Admin.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-GMS Admin.release.xcconfig"; path = "Target Support Files/Pods-GMS Admin/Pods-GMS Admin.release.xcconfig"; sourceTree = "<group>"; };
-		CF67CCE406D64C68A1A6BE70 /* Pods_GMS_Admin.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_GMS_Admin.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		7FDED1C8C75872473EEF0EA7 /* Pods_GMS_Admin.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_GMS_Admin.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		EFA0F8550FEEB89E91B4C54E /* Pods-GMS Admin.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-GMS Admin.release.xcconfig"; path = "Target Support Files/Pods-GMS Admin/Pods-GMS Admin.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -655,7 +657,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				F976C3C60102A305CCC3C64D /* Pods_GMS_Admin.framework in Frameworks */,
+				7D1D41A52124E586C7179F99 /* Pods_GMS_Admin.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -680,7 +682,7 @@
 			isa = PBXGroup;
 			children = (
 				6B71CDEE24B3AEAD0099ECC8 /* SideMenuSwift.framework */,
-				CF67CCE406D64C68A1A6BE70 /* Pods_GMS_Admin.framework */,
+				7FDED1C8C75872473EEF0EA7 /* Pods_GMS_Admin.framework */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -688,8 +690,8 @@
 		59DC38A0D55C98332E9953BB /* Pods */ = {
 			isa = PBXGroup;
 			children = (
-				420972924DAD62D0702CA179 /* Pods-GMS Admin.debug.xcconfig */,
-				8D5B48A720339871EC514D67 /* Pods-GMS Admin.release.xcconfig */,
+				3BCEF6355F9A2A0A289866E3 /* Pods-GMS Admin.debug.xcconfig */,
+				EFA0F8550FEEB89E91B4C54E /* Pods-GMS Admin.release.xcconfig */,
 			);
 			path = Pods;
 			sourceTree = "<group>";
@@ -939,16 +941,17 @@
 				6BAC950A24CB8DBE0082FCD3 /* ReportBirthdayPresenter.swift */,
 				794BA0C2269047D400F6CFD2 /* ReportGrievanceListPresenter.swift */,
 				6B85D80024CDF82A00371319 /* ProfileDetailPresenter.swift */,
-				7939900B26C4DA8F007ED29A /* ReportFestivalPresenter.swift */,
 				6B85D80224CDF84000371319 /* ProfileUpdatePresenter.swift */,
+				79E66F6D26E5D37300C81A79 /* VedioCountPresenter.swift */,
 				6B85D80424CDF85200371319 /* ProfilePicPresenter.swift */,
 				6B85D80624CDF86200371319 /* ChangePasswordPresenter.swift */,
 				790C06672692FD8C00A79346 /* FestivalListPresenter.swift */,
-				79E55A31262FD7CE00CBA0EE /* VedioCountPresenter.swift */,
 				790C06352692D52F00A79346 /* BirthdayYearPresenter.swift */,
-				7939901026C4DBE3007ED29A /* ReportConstituentPresenter.swift */,
 				799139BF269329D9007CFE9A /* ReportVideoListPresenter.swift */,
 				799139D5269336A5007CFE9A /* ReportStaffListPresenter.swift */,
+				79E66F6F26E5D37400C81A79 /* ReportFestivalPresenter.swift */,
+				79E66F6E26E5D37400C81A79 /* GetFestivalPresenter.swift */,
+				79E66F8B26E5DA0800C81A79 /* ReportConstituentListPresenter.swift */,
 			);
 			path = Presenter;
 			sourceTree = "<group>";
@@ -1165,11 +1168,11 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 6B7220C424A75792004424CA /* Build configuration list for PBXNativeTarget "GMS Admin" */;
 			buildPhases = (
-				726FA26A150E3CC1F811FE48 /* [CP] Check Pods Manifest.lock */,
+				8089C5EAAD81A499492C0F30 /* [CP] Check Pods Manifest.lock */,
 				6B72209624A7578B004424CA /* Sources */,
 				6B72209724A7578B004424CA /* Frameworks */,
 				6B72209824A7578B004424CA /* Resources */,
-				612DBC5ACDE3427157797862 /* [CP] Embed Pods Frameworks */,
+				312815CE072384345CD92C9E /* [CP] Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
@@ -1314,7 +1317,7 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXShellScriptBuildPhase section */
-		612DBC5ACDE3427157797862 /* [CP] Embed Pods Frameworks */ = {
+		312815CE072384345CD92C9E /* [CP] Embed Pods Frameworks */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -1331,7 +1334,7 @@
 			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-GMS Admin/Pods-GMS Admin-frameworks.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
-		726FA26A150E3CC1F811FE48 /* [CP] Check Pods Manifest.lock */ = {
+		8089C5EAAD81A499492C0F30 /* [CP] Check Pods Manifest.lock */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -1363,6 +1366,7 @@
 				799139D126933217007CFE9A /* ReportStaffListCell.swift in Sources */,
 				6BC8FE4524BCFECF007457A2 /* InteractionCell.swift in Sources */,
 				6BC0724924C6062300BD09E4 /* ConstituentGreivancesModel.swift in Sources */,
+				79E66F7126E5D37400C81A79 /* GetFestivalPresenter.swift in Sources */,
 				6B1703EA24B84A4C0029DDF4 /* ConstituentMemberModel.swift in Sources */,
 				6BCE976924CDD5890032E5EF /* AboutUs.swift in Sources */,
 				6BE603BA24C8D18500DA7ED5 /* GreivancesAllDetail.swift in Sources */,
@@ -1411,7 +1415,6 @@
 				79AB3FE826B7D2F300038485 /* MobileLoginModel.swift in Sources */,
 				6BC0725324C62DF000BD09E4 /* ConstituentGreivancesDetail.swift in Sources */,
 				79EBFD2B268B3FE00048D493 /* OfficeService.swift in Sources */,
-				7939900C26C4DA8F007ED29A /* ReportFestivalPresenter.swift in Sources */,
 				6BB5FCF724CABF18003B5F56 /* ReportPresenter.swift in Sources */,
 				797DE7F0268D94C700857DE9 /* ReportFestivalVc.swift in Sources */,
 				6BBB901D24C69C0500BF2C43 /* ConstituentGreivancesMessageService.swift in Sources */,
@@ -1484,7 +1487,6 @@
 				6B2B1E4024C846D700D78634 /* MeetingAllDetailService.swift in Sources */,
 				6BEE0CF724B447930032EFA4 /* SearchCell.swift in Sources */,
 				6BE7922524B7330500FB087F /* CustomLabelsXAxisValueFormatter.swift in Sources */,
-				79E55A32262FD7CE00CBA0EE /* VedioCountPresenter.swift in Sources */,
 				6BC0725124C60AF400BD09E4 /* ConstituentGreivancesCell.swift in Sources */,
 				6B6494D92594DC2700D68D40 /* VolounteerCountPresenter.swift in Sources */,
 				6BA49F2524CAFCD500262ED2 /* SubCategoeryModel.swift in Sources */,
@@ -1544,6 +1546,7 @@
 				6BEF3F2D24B88988009BA5DF /* ConstituentinterActionPresenter.swift in Sources */,
 				6BE603BE24C8E9F600DA7ED5 /* Staff.swift in Sources */,
 				6BAC94FB24CB81340082FCD3 /* ReportStaffModel.swift in Sources */,
+				79E66F8C26E5DA0800C81A79 /* ReportConstituentListPresenter.swift in Sources */,
 				79EBFD30268B3FFF0048D493 /* OfficeModel.swift in Sources */,
 				7901BD42267DD03F00D950B2 /* CheckConstituentService.swift in Sources */,
 				7971DA0926B9453A0068A996 /* SceduledCell.swift in Sources */,
@@ -1557,6 +1560,7 @@
 				6BB7E15124B2FB6A00E46D28 /* AppVersionService.swift in Sources */,
 				6B6B3CE624C87B69006DA7FD /* MeetingAllDetailUpdatePresenter.swift in Sources */,
 				6B85D7FD24CDF50300371319 /* ProfilePicUploadService.swift in Sources */,
+				79E66F7226E5D37400C81A79 /* ReportFestivalPresenter.swift in Sources */,
 				6BC0724F24C60AD200BD09E4 /* ConstituentGreivances.swift in Sources */,
 				6BC295E124BC880100DB8640 /* ConstituentDetail.swift in Sources */,
 				6BBB902124C69DC300BF2C43 /* ConstituentGreivancesMessage.swift in Sources */,
@@ -1588,6 +1592,7 @@
 				6BC8FE3124BCE54B007457A2 /* Meeting.swift in Sources */,
 				6BD604E924B5132400EB84D3 /* DashBoard.swift in Sources */,
 				6BE4E11024B1EF0200FD735B /* RechabilityManager.swift in Sources */,
+				79E66F7026E5D37400C81A79 /* VedioCountPresenter.swift in Sources */,
 				6BE4E10424B1EEE800FD735B /* OneSidedRoundedCorners.swift in Sources */,
 				6BAC950324CB8A2B0082FCD3 /* ReportBirthDaySearch.swift in Sources */,
 				6BC8FE4B24BD0D58007457A2 /* ConsDocumentModel.swift in Sources */,
@@ -1620,7 +1625,6 @@
 				6BC8FE4124BCFD50007457A2 /* InteractionPresenter.swift in Sources */,
 				6B1703EC24B84A730029DDF4 /* TotalMeetings.swift in Sources */,
 				6B1703E624B83DE00029DDF4 /* Widgets.swift in Sources */,
-				7939901126C4DBE3007ED29A /* ReportConstituentPresenter.swift in Sources */,
 				6BE4E10D24B1EF0200FD735B /* Constants.swift in Sources */,
 				6B85D80124CDF82A00371319 /* ProfileDetailPresenter.swift in Sources */,
 				6B7C2E1824C717690077FAC2 /* Container.swift in Sources */,
@@ -1803,7 +1807,7 @@
 		};
 		6B7220C524A75792004424CA /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 420972924DAD62D0702CA179 /* Pods-GMS Admin.debug.xcconfig */;
+			baseConfigurationReference = 3BCEF6355F9A2A0A289866E3 /* Pods-GMS Admin.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ENABLE_MODULES = YES;
@@ -1829,7 +1833,7 @@
 		};
 		6B7220C624A75792004424CA /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 8D5B48A720339871EC514D67 /* Pods-GMS Admin.release.xcconfig */;
+			baseConfigurationReference = EFA0F8550FEEB89E91B4C54E /* Pods-GMS Admin.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ENABLE_MODULES = YES;

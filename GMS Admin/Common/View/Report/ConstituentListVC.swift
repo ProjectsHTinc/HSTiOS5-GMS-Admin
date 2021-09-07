@@ -9,8 +9,8 @@
 import UIKit
 
 class ConstituentListVC: UIViewController,UITableViewDelegate,UITableViewDataSource, ReportConstituentListView{
- 
-    let presenter = ReportConstituentListPresenter(reportConstituentListService: ReportConstituentListService())
+    
+    let presenter = ReportConstituentListPresenter(reportConstituentListServiceService: ReportConstituentListService())
     var reportData = [ReportConstituentListData]()
     
     var paguthi = String()
@@ -73,7 +73,8 @@ class ConstituentListVC: UIViewController,UITableViewDelegate,UITableViewDataSou
         self.view.activityStopAnimating()
     }
     
-    func setReportConstituentList(reportConstituentList: [ReportConstituentListData]) {
+    func setFestival(reportConstituentList: [ReportConstituentListData]) {
+     
         reportData = reportConstituentList
         for datas in reportData {
             

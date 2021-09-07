@@ -1061,7 +1061,7 @@
             </objects>
             <point key="canvasLocation" x="1559.2" y="177.66116941529236"/>
         </scene>
-        <!--Terms and Conditions-->
+        <!--Privacy Policy-->
         <scene sceneID="dx1-TG-YP9">
             <objects>
                 <viewController storyboardIdentifier="termsAndCondition" modalPresentationStyle="fullScreen" id="jTw-eA-3AY" customClass="TermsAndCondition" customModule="GMS_Admin" customModuleProvider="target" sceneMemberID="viewController">
@@ -1126,7 +1126,7 @@
                             <constraint firstItem="dGZ-S6-hIv" firstAttribute="leading" secondItem="zQ1-bR-4PP" secondAttribute="leading" id="tUI-q6-7hq"/>
                         </constraints>
                     </view>
-                    <navigationItem key="navigationItem" title="Terms and Conditions" id="6Gn-Qc-zxU">
+                    <navigationItem key="navigationItem" title="Privacy Policy" id="6Gn-Qc-zxU">
                         <barButtonItem key="backBarButtonItem" title="  " id="C10-xh-6CG"/>
                     </navigationItem>
                     <connections>
